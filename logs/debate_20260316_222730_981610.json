@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:27:30.981610Z",
+  "question": "Are some Do It Yourself projects potentially lethal?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 149,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Some DIY projects involve hazardous materials, high voltage electricity, structural loads, or flammable gases, where mistakes can cause electrocution, poisoning, fires, or collapse. Examples include rewiring a breaker panel, building unsafe load-bearing structures, or improperly handling chemicals. These risks can be fatal if safety procedures and expertise are lacking.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Some DIY projects involve hazardous activities like electrical wiring, gas line work, structural modifications, or handling toxic chemicals. Mistakes in these areas can cause electrocution, fires, explosions, poisoning, or building collapse. Therefore, certain DIY projects can be potentially lethal.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and provide similar, commonsense reasoning that certain DIY activities can be dangerous enough to cause death. Each cites plausible categories of risk (electricity, gas, structural work, chemicals) and links them to lethal outcomes (electrocution, fire/explosion, collapse, poisoning). Debater A is slightly more concrete by adding specific examples like rewiring a breaker panel and unsafe load-bearing structures, which strengthens the support. Debater B’s reasoning is equally valid but a bit more general and less example-driven. With no rebuttals or disagreement, the outcome is effectively a tie, with a slight edge to A on specificity. The best-supported final answer remains “yes.”",
+    "strongest_a": "Provides concrete examples (breaker panel rewiring, load-bearing structures) connecting DIY mistakes to fatal outcomes.",
+    "weakest_a": "Does not clarify the scope of “potentially lethal” beyond general hazard categories.",
+    "strongest_b": "Clearly enumerates multiple DIY hazard domains and plausible lethal consequences.",
+    "weakest_b": "More generic; offers fewer specific illustrative examples than A.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Some DIY projects involve hazardous materials, high voltage electricity, structural loads, or flammable gases. Mistakes in these areas can cause electrocution, poisoning, fires, explosions, or building collapses. Therefore, certain DIY projects can be potentially lethal if done improperly.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Some DIY projects can involve hazardous materials, high voltage electricity, structural modifications, or dangerous tools. Mistakes in areas like electrical wiring, gas lines, or load-bearing construction can cause fires, explosions, electrocution, or collapse. Because these risks can be fatal if done incorrectly, some DIY projects are potentially lethal.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Some DIY projects involve hazardous materials, high voltage electricity, gas lines, or structural modifications that can cause fatal accidents if done incorrectly. For example, improper electrical wiring can lead to electrocution or fires, and mishandling chemicals can produce toxic fumes. Therefore, certain DIY projects can be potentially lethal without proper expertise and safety precautions.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Some DIY projects involve hazardous materials, high voltage electricity, gas lines, or structural modifications that can cause fatal accidents if done incorrectly. Examples include improper electrical wiring leading to electrocution or fires, or mistakes with gas appliances causing explosions or carbon monoxide poisoning. Because these risks can be severe, certain DIY tasks are potentially lethal without proper expertise and safety precautions.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

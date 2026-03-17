@@ -1,0 +1,181 @@
+{
+  "timestamp": "2026-03-16T22:32:47.480406Z",
+  "question": "Did number of Imams Reza Shah believed in exceed number of Jesus's disciples?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 165,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Reza Shah Pahlavi was a secularizing Iranian monarch and not known for adhering to Shi'a doctrine of the Twelve Imams as a matter of belief. Jesus is traditionally said to have had 12 disciples. Since Reza Shah is not credibly described as believing in more than 12 Imams, the number would not exceed 12.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Reza Shah was a Muslim from Iran and would have been raised in a context that recognizes the Twelve Imams (Twelver Shiism), i.e., 12 Imams. Jesus is traditionally described as having 12 disciples. Since 12 does not exceed 12, this would normally suggest \"no,\" but the question asks if the number of Imams he believed in exceeded the number of disciples; if he believed in more than 12 Imams it would be yes, yet standard doctrine is 12. Therefore the correct comparison is 12 vs 12, so it does not exceed.",
+      "confidence": 2
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Jesus is traditionally said to have had 12 disciples. In Shia Islam, the number of Imams is also traditionally 12, and Imam Reza is the 8th Imam within that set. Reza Shah was born into a Shia context, so the number of Imams he would be associated with believing in would not exceed 12. Since 12 does not exceed 12, the answer is no.",
+        "rebuttal": "There is no opponent point yet; however, if the opponent claims the Imams are more than 12, that conflicts with the standard Twelver Shia doctrine where the Imams are exactly twelve.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Jesus is traditionally described as having 12 disciples. In Twelver Shi'a Islam, which is the dominant Shi'a tradition in Iran, there are 12 Imams, and Imam Reza is the 8th of those 12. Reza Shah, as an Iranian from a Shi'a cultural context, would most plausibly be associated with belief in 12 Imams, which does not exceed 12. Therefore, the number of Imams does not exceed the number of Jesus’s disciples.",
+        "rebuttal": "Debater A’s core comparison is correct: 12 Imams versus 12 disciples means it cannot be “exceed.” Any claim of more than 12 Imams would rely on a nonstandard sectarian framing not suggested by the question’s mention of Imam Reza (a Twelver figure).",
+        "confidence": 4
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Jesus is traditionally said to have had 12 disciples (the Twelve Apostles). Imam Reza is specifically the 8th Imam in Twelver Shi'a Islam, whose defining doctrine is that there are exactly 12 Imams. Since 12 Imams does not exceed 12 disciples, the number of Imams Reza Shah would be associated with believing in would not exceed the number of Jesus’s disciples.",
+        "rebuttal": "Debater B’s point aligns with mine: invoking Imam Reza strongly cues the Twelver framework of 12 Imams. Under that standard context, there is no basis for a number greater than 12, so “exceed” cannot be true.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Jesus is traditionally said to have had 12 disciples (the Twelve Apostles). Imam Reza is identified as the 8th Imam specifically within Twelver Shi'ism, whose core doctrine is that there are exactly 12 Imams. Even if Reza Shah’s personal religiosity is debated, the question’s framing around “Imam Reza” strongly implies the Twelver count of 12, which does not exceed 12. Therefore, the number of Imams does not exceed the number of Jesus’s disciples.",
+        "rebuttal": "Debater A’s comparison is correct, but it leans on an assumption about Reza Shah’s belief; the safer grounding is that the mention of Imam Reza itself fixes the relevant tradition as Twelver Shi’ism with 12 Imams. Under that implied context, “exceed” is impossible because it’s 12 versus 12.",
+        "confidence": 4
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Jesus is traditionally said to have had 12 disciples (the Twelve Apostles). The reference to “Imam Reza” points to Twelver Shi’ism, where Reza is the 8th of exactly 12 Imams. Since 12 Imams is not greater than 12 disciples, the number of Imams in that framework does not exceed the number of Jesus’s disciples. Therefore the correct comparison yields “no.”",
+        "rebuttal": "Debater B notes the key point: the question’s mention of Imam Reza effectively fixes the relevant count to the Twelver 12 Imams. Even if Reza Shah’s personal piety were uncertain, the only standard Imam count associated with Imam Reza is 12, which cannot exceed 12 disciples.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Jesus is traditionally said to have had 12 disciples (the Twelve Apostles). Imam Reza is the 8th Imam specifically in Twelver Shi’ism, whose defining doctrine is that there are exactly 12 Imams. Since 12 does not exceed 12, the number of Imams in the Imam Reza framework cannot exceed the number of Jesus’s disciples. Therefore the correct answer is no.",
+        "rebuttal": "Debater A is right that invoking Imam Reza effectively anchors the question in Twelver Shi’ism, where the Imam count is fixed at 12. Even if one questioned Reza Shah’s personal religiosity, the only standard “Imam Reza” tradition yields 12, so “exceed” is still false.",
+        "confidence": 4
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Both debaters converged on the same core comparison: Jesus is traditionally associated with 12 disciples, and Imam Reza is the 8th Imam in Twelver Shi’ism, which posits exactly 12 Imams. Given that 12 does not exceed 12, the conclusion “no” is well supported by the shared reasoning. Debater A’s initial claim that Reza Shah was secular and thus not credibly described as believing in more than 12 Imams is somewhat speculative and not necessary to resolve the question. Debater B improved the grounding by noting that the question’s explicit reference to “Imam Reza” effectively anchors the relevant Imam-counting framework to Twelver Shi’ism, making “exceed” impossible under that framing. Since both ultimately provide the same supported answer, neither clearly outperforms the other overall.",
+    "strongest_a": "Correctly ties Imam Reza to Twelver Shi’ism’s fixed set of 12 Imams and compares it to the 12 disciples, yielding “no.”",
+    "weakest_a": "Leans on an unnecessary and weakly supported assumption about Reza Shah’s personal religiosity/secularism.",
+    "strongest_b": "Uses the question’s mention of Imam Reza to justify the Twelver 12-Imam framework, avoiding reliance on Reza Shah’s personal beliefs.",
+    "weakest_b": "Initial position says “yes” while the reasoning already implies “no,” showing inconsistency at the start.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Reza Shah was from a Twelver Shia Muslim background, which holds that there are 12 Imams. Jesus is traditionally described as having 12 disciples. Since the number of Imams in Twelver Shiism is 12, it does not exceed 12, but it is equal; however, if interpreted as believing in the line of Imams generally beyond just the Twelve, it could be seen as exceeding. Under the standard Twelver count, it does not exceed, but equals.",
+      "confidence": 2
+    },
+    "self_consistency": {
+      "num_samples": 9,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Reza Shah Pahlavi was a secularizing Iranian monarch and did not promote or adhere to Shi'a doctrine of the Twelve Imams as a matter of religious belief. Jesus is traditionally said to have had 12 disciples. Since Reza Shah is not known for believing in a number of Imams greater than 12, the number would not exceed the disciples.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Imam Reza Shah (Reza Shah Pahlavi) was a Muslim and would have believed in the line of the Twelve Imams in Twelver Shi'a Islam. Jesus is traditionally described as having 12 disciples. Since 12 is not greater than 12, this would only exceed if counting more than 12, but the standard Shi'a count is exactly 12; however, compared to Jesus's disciples, the number of Imams is equal, not exceeding. Therefore the correct comparison is that it did not exceed.",
+          "confidence": 2
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reza Shah was a Muslim and would have believed in the Islamic concept of prophets, which includes many prophets (traditionally far more than a dozen). Jesus's disciples are commonly counted as 12. Since the number of prophets/imams acknowledged in Islam exceeds 12, the number Reza Shah believed in would exceed the number of Jesus's disciples.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "Reza Shah Pahlavi was a secularizing monarch and not known for adherence to Shi'a doctrine of the Twelve Imams as a religious belief system. Jesus is traditionally described as having 12 disciples. Since Reza Shah is not credibly described as believing in more than 12 Imams, the number of Imams he believed in would not exceed the number of Jesus's disciples.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reza Shah was associated with Twelver Shia Islam, which recognizes 12 Imams. Jesus is traditionally described as having 12 disciples (apostles). Since the numbers are the same, the number of Imams would not exceed the number of disciples.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Imam Reza is the eighth Imam in Twelver Shiism, implying belief in a line of at least eight Imams. Jesus is traditionally described as having 12 disciples. Since 8 does not exceed 12, the number of Imams associated with Imam Reza does not exceed the number of Jesus's disciples.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "Imams Reza refers to Ali al-Ridha, the eighth Imam in Twelver Shiism, and Reza Shah was associated with Twelver Shiism, which recognizes 12 Imams in total. Jesus is traditionally said to have had 12 disciples (apostles). Since both counts are 12, the number of Imams does not exceed the number of disciples.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Imam Reza Shah refers to Reza Shah Pahlavi, who was a Muslim and would be associated with belief in the Twelve Imams of Twelver Shiism. Jesus is traditionally said to have had 12 disciples (apostles). Since both numbers are 12, the number of Imams would not exceed the number of disciples.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reza Shah was a Muslim and would have believed in the Islamic concept of multiple Imams, which is more than twelve in Sunni tradition and twelve in Twelver Shi'ism. Jesus is traditionally described as having twelve disciples. Since the number of Imams in Islam is at least twelve (and can be more depending on interpretation), it exceeds the number of Jesus's disciples.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "no": 4,
+        "yes": 5
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 9,
+    "llm_calls_for_debate_plus_direct": 10,
+    "total_llm_calls": 19,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

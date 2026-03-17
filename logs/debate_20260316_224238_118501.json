@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:42:38.118501Z",
+  "question": "Is Christmas celebrated during winter?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 193,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Christmas is celebrated on December 25. In the Northern Hemisphere, where the holiday originated and where most traditional celebrations are based, December falls in winter. While it is summer in the Southern Hemisphere then, the question generally refers to the usual seasonal context.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Christmas is celebrated on December 25. In the Northern Hemisphere, where many Christmas traditions originate and where most people live, December falls in winter. While it is summer in the Southern Hemisphere then, the holiday date is still during winter in the common seasonal context.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical reasoning: Christmas is on December 25, which is in winter in the Northern Hemisphere where the holiday’s traditions and the majority of its cultural framing originate. They both acknowledge the Southern Hemisphere counterpoint (December is summer there) but argue the question is asked in the common seasonal context. Since there were no debate rounds, neither side improved or undermined the other. The claim that Christmas is celebrated during winter is generally supported under the typical (Northern Hemisphere) interpretation. With no meaningful differences, the result is a tie and the best-supported answer remains \"yes.\"",
+    "strongest_a": "Correctly ties Christmas’s fixed date (Dec 25) to winter in the Northern Hemisphere and notes the common-context interpretation.",
+    "weakest_a": "Relies on an implicit assumption that the question uses Northern Hemisphere seasons despite global variation.",
+    "strongest_b": "Acknowledges hemispheric differences while defending the conventional seasonal framing for December 25.",
+    "weakest_b": "Does not add additional support beyond the shared Northern Hemisphere assumption.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Christmas is celebrated on December 25. In the Northern Hemisphere, where many Christmas traditions originate and where most people live, December falls in winter. Therefore, Christmas is commonly celebrated during winter.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Christmas is celebrated on December 25. In the Northern Hemisphere, where many Christmas traditions originated and where most people live, December falls in winter. Therefore, Christmas is commonly celebrated during winter, even though in the Southern Hemisphere it occurs in summer.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Christmas is celebrated on December 25. In the Northern Hemisphere, December falls in winter, and most Christmas traditions are associated with wintertime there. While it is summer in the Southern Hemisphere during December, the holiday is still commonly considered a winter celebration based on its traditional context.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Christmas is celebrated on December 25. In the Northern Hemisphere, December falls during winter, and most places that traditionally celebrate Christmas are in the Northern Hemisphere. Therefore, Christmas is generally celebrated during winter.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

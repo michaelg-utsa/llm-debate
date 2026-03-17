@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:33:04.836634Z",
+  "question": "Has Billy Joel sold out Astana Arena?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 9,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Astana Arena is a stadium in Astana (Kazakhstan), and there is no well-known record of Billy Joel performing there, let alone selling it out. Billy Joel’s major international stadium sell-outs are typically documented for venues in the US, UK, and other common tour stops; Astana is not among his notable concert locations. Given the lack of evidence of any concert at Astana Arena, the most likely answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Billy Joel’s touring history is heavily centered on the U.S., especially his long-running Madison Square Garden residency, and I’m not aware of any concert dates in Kazakhstan. Astana Arena is a major stadium venue and such an event would likely be well-documented; there’s no widely known record of him performing there, let alone selling it out. Therefore, it’s unlikely he has sold out Astana Arena.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on similar reasoning: Billy Joel’s touring history is well documented and is not known to include Kazakhstan or Astana Arena, and a sell-out at a major stadium would likely be widely reported. Debater A adds slightly more specificity by noting that Joel’s notable stadium sell-outs are typically in the US/UK and other common tour stops, making Astana an unlikely omission. Debater B’s argument is essentially the same but framed more around his US-centric touring and MSG residency. Neither provides concrete evidence (e.g., tour date lists or venue records), so the conclusion is based on plausibility and absence of known documentation. Given the identical stance and comparable support, neither clearly outperforms the other, though A is marginally more detailed.",
+    "strongest_a": "Notes lack of any known record of Joel performing at Astana Arena and that such major sell-outs are typically documented.",
+    "weakest_a": "Relies on absence of evidence without citing specific tour/venue sources.",
+    "strongest_b": "Emphasizes that a sell-out at a major stadium would likely be well-documented and is not widely known.",
+    "weakest_b": "Also relies on personal awareness/absence of documentation without concrete citations.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Astana Arena is a stadium in Astana (Nur-Sultan), Kazakhstan. Billy Joel is primarily known for performances in the United States and major international venues, but there is no reliable record of him performing at, let alone selling out, Astana Arena. Therefore the claim that he has sold out Astana Arena is not supported.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Astana Arena is a large stadium in Kazakhstan, and there is no well-known record of Billy Joel performing there. Billy Joel's major tours and sold-out shows are primarily documented in North America and some parts of Europe, not Central Asia. Given the lack of credible evidence that he has played Astana Arena, it is unlikely he has sold it out.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Astana Arena is a stadium in Kazakhstan that primarily hosts football matches and large-scale events. Billy Joel's touring history and major concert records are centered on venues in the United States, especially Madison Square Garden, and there is no well-known record of him performing at Astana Arena. Given the lack of evidence that he has played there at all, it follows that he has not sold it out.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Astana Arena is a stadium in Kazakhstan that primarily hosts local sporting events and occasional large concerts. Billy Joel's touring history is concentrated in North America and select major international cities, and there is no well-known record of him performing at Astana Arena. Given the lack of evidence of a concert there, it is unlikely he has sold it out.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

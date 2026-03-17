@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:59:03.821439Z",
+  "question": "Did Alfred Nobel write a banned book?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 74,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Alfred Nobel is best known as an inventor and industrialist, not as an author of a notable book. While he did write letters, poems, and a play, there is no well-established historical record of him writing a book that was officially banned. Therefore the best supported answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Alfred Nobel is primarily known as an inventor and industrialist (e.g., dynamite) and for establishing the Nobel Prizes, not as an author of a notable book. While he wrote letters, poems, and some dramatic works, there is no well-known or widely documented case of him writing a book that was officially banned. Therefore the best-supported answer is no.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) with essentially identical reasoning: Nobel is known for inventions and the Nobel Prizes, and there is no widely documented instance of him authoring a banned book. Neither provides specific evidence (e.g., citations, named works, or a check of whether any of his writings were prohibited), so the support is largely an argument from absence and general historical prominence. Given the lack of any counterargument or debate rounds, there is no basis to prefer one debater over the other. From general knowledge, Nobel did write some literary works (notably a play), but it is not commonly associated with being banned as a “book,” making “no” the best-supported choice on the record presented. Therefore the result is a tie with a moderate confidence in “no.”",
+    "strongest_a": "Correctly notes Nobel is not known for a banned book and frames the claim as lacking historical record.",
+    "weakest_a": "Relies on absence of evidence without checking specific works or definitions of 'banned book.'",
+    "strongest_b": "Mirrors the mainstream historical view that Nobel is not known as an author of a banned book.",
+    "weakest_b": "No additional evidence beyond general reputation; does not address edge cases (plays/pamphlets) or what counts as 'banned.'",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Alfred Nobel was primarily an inventor and industrialist, best known for inventing dynamite and founding the Nobel Prizes. There is no well-established historical record of him authoring a book that was banned. While he wrote letters, poems, and some literary works, none are commonly documented as having been banned.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Alfred Nobel is primarily known as a chemist, engineer, inventor of dynamite, and the founder of the Nobel Prizes. There is no well-established historical record of him authoring a book that was banned. While he did write letters, poems, and some literary works, none are commonly documented as being banned.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alfred Nobel was primarily known as an inventor, engineer, and industrialist, and he did not author a notable book that is historically recorded as being banned. While he wrote letters, poems, and some literary pieces, there is no well-known or documented case of a \"banned book\" written by him. Therefore, the best-supported answer is no.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alfred Nobel is primarily known as an inventor and industrialist, not as an author of a notable book. There is no well-established historical record of him writing a book that was banned. While he wrote letters, poems, and plays, these are not commonly cited as banned books.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

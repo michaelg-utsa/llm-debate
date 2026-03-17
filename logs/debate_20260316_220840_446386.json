@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:08:40.446386Z",
+  "question": "Does menthol make cigarettes less addictive?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 101,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Menthol does not make cigarettes less addictive; nicotine is the primary addictive substance regardless of flavoring. Menthol can mask harshness and make smoke easier to inhale, which may facilitate initiation and sustained use. Some evidence suggests menthol cigarettes can be associated with greater dependence or harder quitting for some groups.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Menthol does not make cigarettes less addictive; nicotine is the primary addictive substance and menthol does not remove it. Menthol’s cooling and anesthetic effects can mask harshness, making smoke easier to inhale and potentially facilitating dependence. Some evidence suggests menthol may even increase nicotine exposure or make quitting harder for some smokers.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave the same final answer (“no”) and offered consistent reasoning. Each correctly identifies nicotine as the primary addictive agent and argues that menthol does not reduce nicotine content or its addictive potential. Both also add a plausible mechanism—menthol masks harshness and can make inhalation easier—which would not make cigarettes less addictive and could plausibly increase uptake or persistence. Debater B slightly strengthens the case by noting the possibility of increased nicotine exposure and cessation difficulty, though neither provides specific evidence or citations. With no disagreement and no debate rounds, the outcome is effectively a tie with a well-supported “no.”",
+    "strongest_a": "Explains that menthol masks harshness and may facilitate initiation/sustained use rather than reduce addiction.",
+    "weakest_a": "No concrete evidence or citations to support claims about dependence or quitting difficulty.",
+    "strongest_b": "Adds that menthol may increase nicotine exposure and make quitting harder, reinforcing that it is not less addictive.",
+    "weakest_b": "Also lacks specific supporting data; claims remain general.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Menthol does not make cigarettes less addictive; nicotine is the primary addictive substance regardless of flavoring. Menthol can mask the harshness of smoke and make inhalation feel smoother, which may encourage deeper inhalation or more frequent smoking. This can facilitate initiation and continued use rather than reducing dependence.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Menthol does not reduce nicotine’s addictive properties. Instead, menthol can mask the harshness of smoke and make inhalation feel smoother, which may encourage deeper or more frequent smoking. This can facilitate nicotine intake and dependence rather than lessen it.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Menthol does not make cigarettes less addictive; nicotine is the primary addictive substance regardless of flavoring. Menthol can mask the harshness of smoke and make inhalation feel smoother, which may encourage deeper inhalation or more frequent use. Some evidence suggests menthol cigarettes can make quitting harder for some smokers.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Menthol does not make cigarettes less addictive; nicotine is the primary addictive substance regardless of flavoring. Menthol can mask the harshness of smoke and make inhalation feel smoother, which may encourage deeper inhalation or more frequent use. This can facilitate initiation and continued smoking rather than reduce dependence.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

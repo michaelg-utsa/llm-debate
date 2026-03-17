@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:49:31.167887Z",
+  "question": "Is Ganymede in the Milky Way galaxy?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 48,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Ganymede is a moon of Jupiter, and Jupiter is in the Solar System. The Solar System is located within the Milky Way galaxy. Therefore, Ganymede is in the Milky Way.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Ganymede is a moon of Jupiter, and Jupiter is in the Solar System. The Solar System is located within the Milky Way galaxy. Therefore, Ganymede is in the Milky Way.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same argument: Ganymede orbits Jupiter, Jupiter is in the Solar System, and the Solar System is within the Milky Way. This chain of reasoning is straightforward and aligns with general astronomical knowledge about the Solar System’s location in the Milky Way. No counterarguments or alternative interpretations were presented, and no debate rounds occurred to differentiate the sides. Since their reasoning and conclusions are identical, neither is more persuasive than the other. The best-supported final answer based on the presented reasoning is that Ganymede is in the Milky Way.",
+    "strongest_a": "Correctly links Ganymede’s location to the Solar System and the Milky Way.",
+    "weakest_a": "Provides no additional detail or justification beyond the basic chain of containment.",
+    "strongest_b": "Uses the same clear containment argument from moon to galaxy.",
+    "weakest_b": "No independent support or elaboration; identical to Debater A.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Ganymede is a moon of Jupiter, and Jupiter is in our Solar System. The Solar System is located within the Milky Way galaxy. Therefore, Ganymede is in the Milky Way.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Ganymede is a moon of Jupiter, and Jupiter is part of the Solar System. The Solar System is located within the Milky Way galaxy. Therefore, Ganymede is in the Milky Way.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Ganymede is a moon of Jupiter, and Jupiter is part of the Solar System. The Solar System is located within the Milky Way galaxy. Therefore, Ganymede is also in the Milky Way.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Ganymede is a moon of Jupiter, and Jupiter is part of the Solar System. The Solar System is located within the Milky Way galaxy. Therefore, Ganymede is in the Milky Way.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

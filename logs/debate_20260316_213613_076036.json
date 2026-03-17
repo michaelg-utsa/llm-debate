@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:36:13.076036Z",
+  "question": "Has the Holy Grail been featured in at least five films?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 15,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The Holy Grail is a common film subject and plot device, appearing in multiple well-known movies such as \"Monty Python and the Holy Grail\" and \"Indiana Jones and the Last Crusade.\" It also features in various Arthurian and Grail-related films beyond those, easily reaching five or more distinct titles. Given its long-standing presence in cinema across decades and genres, the threshold of five films is very likely met.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The Holy Grail is a recurring artifact in film, appearing in many well-known titles. Examples include \"Monty Python and the Holy Grail\" (1975), \"Indiana Jones and the Last Crusade\" (1989), \"Excalibur\" (1981), \"The Fisher King\" (1991), and \"The Da Vinci Code\" (2006), among others. That exceeds five films.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer “yes” and argue that the Holy Grail appears in well over five films. Debater B is more persuasive because they provide a concrete list of five specific titles, directly addressing the “at least five” threshold. Debater A relies on general plausibility and only names two films, which is weaker support even if likely correct. Debater B’s list includes some entries where the Grail’s presence could be debated (e.g., whether it is explicitly featured versus thematically referenced), but the overall claim remains well-supported given the breadth of Arthurian and Grail cinema. With no rebuttals, the side offering more explicit evidence is better supported.",
+    "strongest_a": "Correctly notes the Grail is a common cinematic plot device and cites two clear examples.",
+    "weakest_a": "Does not enumerate enough specific films to substantiate the “at least five” requirement.",
+    "strongest_b": "Provides five named films, directly meeting the numeric threshold.",
+    "weakest_b": "Some cited films may involve the Grail indirectly or ambiguously rather than as a clear featured object.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The Holy Grail has appeared in numerous films across decades. Examples include \"Monty Python and the Holy Grail\" (1975), \"Indiana Jones and the Last Crusade\" (1989), \"Excalibur\" (1981), \"The Fisher King\" (1991), and \"The Da Vinci Code\" (2006), among others. This exceeds five distinct films featuring the Holy Grail as a plot element or referenced object.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The Holy Grail has appeared in numerous films across decades. Examples include \"Monty Python and the Holy Grail\" (1975), \"Excalibur\" (1981), \"Indiana Jones and the Last Crusade\" (1989), \"The Fisher King\" (1991), and \"The Da Vinci Code\" (2006), all of which reference or center on the Grail. Since these already total five distinct films, the condition is met.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Holy Grail has appeared in numerous films across decades. Examples include \"Monty Python and the Holy Grail\" (1975), \"Excalibur\" (1981), \"Indiana Jones and the Last Crusade\" (1989), \"The Fisher King\" (1991), and \"The Da Vinci Code\" (2006). Since these already total five distinct films, it has been featured in at least five films.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Holy Grail has appeared in numerous films across decades. Examples include \"Monty Python and the Holy Grail\" (1975), \"Indiana Jones and the Last Crusade\" (1989), \"Excalibur\" (1981), \"The Fisher King\" (1991), and \"The Da Vinci Code\" (2006), among others. Since these already total at least five, the answer is yes.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

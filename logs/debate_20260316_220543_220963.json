@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:05:43.220963Z",
+  "question": "Do suburbs encourage the use of cars?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 92,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Suburbs are typically lower-density and spread out, with homes separated from jobs, schools, and shopping, which increases travel distances. Public transit and walkable infrastructure are often less available or less convenient than in dense urban areas, making driving the easiest option for many trips. Zoning that separates residential and commercial areas further reinforces car dependence.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Suburbs are typically lower-density and spread out, which increases distances between homes, jobs, and services. Public transit and walkable amenities are often less available or less convenient than in dense urban areas. This built environment makes car ownership and driving the easiest option for many trips.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: suburbs tend to be low-density and spatially separated from jobs and services, which increases trip distances and makes walking, biking, and transit less convenient. This is a widely accepted urban-planning relationship and directly supports the claim that suburbs encourage car use. Debater A adds an extra supporting mechanism (single-use zoning separating residential and commercial areas), which slightly strengthens the causal explanation beyond Debater B’s more general statement. Since there were no rebuttals or competing claims, the evaluation rests on completeness and specificity. Overall, both support “yes,” with A marginally more detailed.",
+    "strongest_a": "Adds zoning separation as an additional mechanism reinforcing car dependence.",
+    "weakest_a": "No concrete examples or data; relies on general suburban patterns.",
+    "strongest_b": "Clear, straightforward link between low density, longer distances, and reduced transit/walkability.",
+    "weakest_b": "Less detailed than A; largely repeats generalities without additional mechanisms.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Suburbs are typically lower-density and spread out, with homes, jobs, and shopping separated by longer distances. Public transit and walkable infrastructure are often less frequent or less convenient than in dense urban areas. As a result, residents commonly rely on cars for commuting and daily errands.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Suburbs are typically lower-density and spread out, with homes, shops, and workplaces separated by longer distances. This makes walking or biking less practical for many daily trips. Public transit is often less frequent or less available in suburban areas, so residents commonly rely on cars.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Suburbs are typically designed with lower density housing and separated residential, commercial, and work areas. This spread-out layout makes walking or biking less practical for many daily trips. Public transit is often less frequent or less available in suburban areas, so residents commonly rely on cars for commuting and errands.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Suburbs are typically designed with lower density housing and separated residential, commercial, and workplace areas. This often makes destinations farther apart and less convenient to reach by walking or public transit. As a result, residents commonly rely on cars for commuting and daily errands.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

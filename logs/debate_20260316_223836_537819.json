@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:38:36.537819Z",
+  "question": "Would a CEO typically clean the toilets in a company's building?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 182,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "In most companies, cleaning toilets is handled by janitorial staff or contracted cleaning services, not executives. A CEO’s typical responsibilities focus on strategy, leadership, and high-level decision-making rather than facility maintenance. While a CEO could choose to do it symbolically or in a very small startup, it is not typical.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "In most companies, cleaning toilets is handled by janitorial staff or contracted cleaning services, not executives. A CEO’s role typically focuses on strategy, leadership, and high-level decision-making rather than routine facility maintenance. While a CEO could choose to do it symbolically or in a very small startup, it is not typical.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave the same answer and essentially identical reasoning: CEOs generally focus on leadership and strategy, while toilet cleaning is typically done by janitorial staff or contractors. They also both acknowledged plausible exceptions (symbolic acts or very small startups) but correctly framed these as atypical. Since there were no debate rounds, neither side added evidence or rebuttals that would differentiate persuasiveness. The reasoning aligns with common organizational role divisions and the question’s emphasis on what is “typical.” With no substantive differences, the result is a tie and the best-supported answer remains “no.”",
+    "strongest_a": "Clear appeal to typical corporate role division; notes exceptions but keeps focus on 'typical.'",
+    "weakest_a": "No concrete examples or supporting evidence beyond general common-sense claims.",
+    "strongest_b": "Matches the question’s 'typically' framing and explains why CEOs usually wouldn’t do maintenance tasks.",
+    "weakest_b": "Adds no distinct reasoning beyond Debater A; lacks additional support or nuance.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A CEO typically focuses on executive leadership, strategy, and high-level decision-making rather than routine maintenance tasks. Cleaning toilets is usually handled by janitorial or facilities staff or outsourced cleaning services. While a CEO could choose to do it in unusual circumstances, it is not typical.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "In most companies, cleaning toilets is handled by janitorial staff or contracted cleaning services, not the CEO. A CEO’s role typically focuses on leadership, strategy, and high-level decision-making rather than routine facility maintenance. While a CEO might do such cleaning in unusual circumstances (e.g., a very small startup or a symbolic gesture), it is not typical.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A CEO typically focuses on executive leadership, strategy, and high-level decision-making rather than routine maintenance tasks. Cleaning toilets is usually handled by janitorial staff or contracted cleaning services. While a CEO could choose to do it in unusual circumstances, it is not typical.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "In most companies, cleaning toilets is handled by janitorial staff or contracted cleaning services, not the CEO. A CEO’s role typically focuses on executive leadership, strategy, and high-level decision-making. While a CEO could choose to do such tasks symbolically or in a very small startup, it is not typical.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

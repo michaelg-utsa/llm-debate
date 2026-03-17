@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:29:50.158093Z",
+  "question": "Is the tibia necessary to win the Stanley Cup?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 157,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Stanley Cup is won by an NHL team, and while players typically need functional legs to play, the specific bone \"tibia\" is not a formal requirement to win the trophy. A team could win even if some individuals are injured, and the Cup is awarded to the team organization rather than contingent on any one person’s anatomy. Thus, the tibia is not strictly necessary to win the Stanley Cup.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Stanley Cup is awarded to the NHL team that wins the playoffs, which depends on team performance and rules, not on possessing any particular bone. While players typically have tibias as part of normal human anatomy, the tibia itself is not a requirement stated by the competition. Therefore it is not necessary in the sense of being a condition to win the Stanley Cup.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the same core distinction: the Stanley Cup is awarded based on NHL playoff outcomes and league rules, not on any explicit anatomical requirement like possessing a tibia. Debater A adds a slightly richer argument by noting the Cup is awarded to the team/organization and that teams can win despite individual injuries, reinforcing that no single person’s anatomy is a necessary condition. Debater B’s reasoning is clear but a bit more tautological, mainly stating that the tibia is not a stated requirement. Neither debater addresses edge cases (e.g., whether any player must physically play hockey, which typically requires legs), but given the question’s framing, the “formal requirement” interpretation is the most reasonable. Overall, A is marginally more persuasive due to the additional team-level necessity point.",
+    "strongest_a": "Highlights that the Cup is awarded to a team and not contingent on any one individual’s anatomy.",
+    "weakest_a": "Doesn’t explicitly clarify the interpretation of “necessary” (practical vs formal) beyond implying it.",
+    "strongest_b": "Directly ties necessity to competition rules/conditions rather than biology.",
+    "weakest_b": "Somewhat circular: asserts it’s not required because it’s not stated, without further support.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Stanley Cup is won by an NHL team through winning playoff hockey games, not by possessing any specific bone. While players typically need functional legs to play, the tibia itself is not a formal requirement to win the Cup. Teams can win regardless of any individual player's injury or anatomy as long as they meet league rules and win the games.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Stanley Cup is won by an ice hockey team, and the tibia is a bone in the human leg. While players typically have tibias as part of normal anatomy, the bone itself is not a requirement or rule for winning the trophy. Winning depends on team performance and game outcomes, not possession of a specific bone.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Stanley Cup is won by an NHL team, and having a tibia is not a formal requirement to win it. While players typically need functional legs to play hockey, the trophy can be won by a team regardless of any one individual's anatomy. Therefore, the tibia is not strictly necessary to win the Stanley Cup.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Stanley Cup is awarded to the NHL team that wins the playoffs, and winning depends on team performance, not on possessing a specific bone. A tibia is a human shin bone; while players typically have tibias, the bone itself is not a requirement stated by the rules for winning the Cup. Therefore, the tibia is not necessary to win the Stanley Cup.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

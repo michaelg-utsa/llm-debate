@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:09:38.240571Z",
+  "question": "Do you need both hot and cold water to peel a tomato?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 104,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "To peel a tomato, you typically blanch it briefly in hot (boiling) water to loosen the skin, then peel it off. Cold water is often used afterward to stop the cooking and make handling easier, but it is not strictly required to remove the skin. You could peel after blanching without an ice bath, just with care.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "To peel a tomato, you typically blanch it briefly in hot/boiling water to loosen the skin, then remove it. Cold water is commonly used afterward to stop the cooking and make handling easier, but it is not strictly required to peel the tomato. You could peel it after hot water alone, just with more care to avoid overcooking or burning your fingers.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and nearly identical reasoning. They correctly describe the common blanch-and-shock method: hot water loosens the skin, while cold water is mainly for stopping cooking and making the tomato easier to handle. Their key claim—that cold water is helpful but not strictly necessary for peeling—is plausible and consistent with typical cooking practice (you can peel after blanching without an ice bath, though it’s less comfortable and may slightly overcook). Because no debate rounds occurred, neither side adds additional evidence or addresses edge cases, but the shared reasoning is straightforward and coherent. With no substantive differences, the result is effectively a tie, and the best-supported final answer remains “no.”",
+    "strongest_a": "Clearly distinguishes what is required (hot water blanching) from what is optional (cold water to stop cooking/handling).",
+    "weakest_a": "Provides no concrete support beyond common practice (no citation or alternative method discussion).",
+    "strongest_b": "Accurately notes cold water is for stopping cooking and comfort, not a necessity for peeling.",
+    "weakest_b": "Does not address whether peeling can be done without any water at all, though that’s outside the question’s core.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "To peel a tomato, you typically blanch it briefly in hot or boiling water and then transfer it to cold water to stop the cooking and make handling easier. The cold water step is helpful but not strictly required for the skin to loosen. You can peel it after hot water alone, though it may be hotter to handle and slightly more likely to overcook.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "To peel a tomato, you typically blanch it briefly in hot or boiling water and then transfer it to cold or ice water to stop the cooking and loosen the skin. The cold water step is helpful but not strictly required; you can still peel after blanching if you work quickly and rinse under cool water. Therefore you don't need both hot and cold water to peel a tomato.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "To peel a tomato, you typically blanch it briefly in hot/boiling water to loosen the skin, then remove it. Cold or ice water is commonly used afterward to stop the cooking and make handling easier, but it is not strictly required to peel the tomato. You could peel it after hot water alone, just more carefully and quickly.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "To peel a tomato, you typically blanch it briefly in boiling water to loosen the skin, then cool it to stop the cooking and make handling easier. The cold water step is helpful but not strictly required; you can peel after hot water alone if you work quickly and avoid overcooking. Therefore you do not need both hot and cold water.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

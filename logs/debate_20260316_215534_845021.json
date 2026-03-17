@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:55:34.845021Z",
+  "question": "Was milliner in Alice in Wonderland (1951 film) likely in need of succimer?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 66,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Succimer is a chelating agent primarily used to treat significant lead poisoning. The milliner (the Mad Hatter) in Disney's 1951 Alice in Wonderland is portrayed as eccentric, but the film does not indicate heavy metal exposure or symptoms consistent with lead toxicity. The phrase \"mad as a hatter\" is historically linked more to mercury exposure in hat-making, and succimer is not the standard treatment for mercury poisoning anyway.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Succimer is a chelating agent used to treat significant heavy metal poisoning, especially lead. A milliner (hat maker) in the 1951 Alice in Wonderland film is not depicted as having symptoms or circumstances indicating heavy metal poisoning requiring medical chelation. While some historical hat-making involved mercury exposure (“mad as a hatter”), that would not specifically imply a need for succimer, which is not a standard treatment for mercury poisoning in that context.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same conclusion (“no”) and provide essentially the same supporting rationale. They correctly identify succimer as primarily indicated for clinically significant lead poisoning and note that the 1951 film portrayal of the Mad Hatter/milliner does not establish exposure or symptoms consistent with heavy metal toxicity requiring chelation. They also appropriately address the common association of hatters with mercury exposure (“mad as a hatter”) and explain that even if mercury were relevant, succimer is not the standard chelator for that scenario. With no debate rounds, neither side refines or challenges the other, so the support is equal. The shared reasoning aligns with general medical knowledge about succimer’s typical use and the lack of textual evidence from the film.",
+    "strongest_a": "Connects succimer’s main indication (lead poisoning) to lack of evidence in the film, and notes hatter-madness is mercury-related not succimer-treated.",
+    "weakest_a": "Does not explicitly consider the hypothetical historical milliner exposure beyond noting it’s not shown in the film.",
+    "strongest_b": "Clearly states succimer is for significant heavy metal poisoning (esp. lead) and that mercury-hatter link doesn’t imply succimer need.",
+    "weakest_b": "Relies on absence of depicted symptoms without detailing what symptoms would be expected or required for chelation.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Succimer is a chelating agent used to treat heavy metal poisoning, especially lead. The milliner character in Disney's 1951 \"Alice in Wonderland\" is a fictional figure with no indication of heavy metal exposure or poisoning symptoms. Nothing in the film suggests a medical condition that would warrant chelation therapy. Therefore it is unlikely they would need succimer.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Succimer is a chelating medication used to treat heavy metal poisoning, most commonly lead. The milliner in Disney's 1951 \"Alice in Wonderland\" is a fictional character with no indication of lead or other heavy metal exposure requiring medical treatment. Being a hat maker does not inherently imply lead poisoning, and the film provides no evidence of such a condition. Therefore it is unlikely he would need succimer.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Succimer is a chelating agent used to treat heavy metal poisoning, especially lead. The milliner in Disney's 1951 Alice in Wonderland is a fictional character and the film does not depict symptoms or circumstances suggesting heavy metal poisoning. While historical hat-makers sometimes suffered mercury poisoning, there is no indication this character specifically would need medical chelation. Therefore it is unlikely he was in need of succimer.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Succimer is a chelating medication primarily used to treat lead poisoning. A milliner is a hat maker, and the milliner character in the 1951 Alice in Wonderland is a fictional figure with no indication of heavy metal poisoning. The story’s “madness” is whimsical and not presented as a medical condition requiring chelation therapy.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

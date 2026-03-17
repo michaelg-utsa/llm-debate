@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:31:15.700525Z",
+  "question": "Are the names of The Powerpuff Girls alliterative?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 162,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Alliteration typically means repeating the same initial sound across multiple words in a name. The Powerpuff Girls are named Blossom, Bubbles, and Buttercup, which are single-word names rather than multi-word phrases. While two of them start with 'B', the set of names is not uniformly alliterative.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Powerpuff Girls are named Blossom, Bubbles, and Buttercup. Alliteration requires the same initial sound across the set, but only Bubbles and Buttercup share the same starting sound while Blossom does not. Therefore, the names as a group are not alliterative.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue for “no” and rely on the standard definition of alliteration as repetition of initial sounds. Debater B’s reasoning is more directly tied to the specific names, noting that only Bubbles and Buttercup share the initial sound while Blossom does not, so the trio is not alliterative as a set. Debater A introduces an additional point about alliteration applying to multi-word phrases, which is less convincing because alliteration can also be discussed across a list of single-word names. Still, A’s main conclusion aligns with B’s. With no debate rounds, the better-supported position is the one that cleanly applies the definition to the full set of three names.",
+    "strongest_a": "Correctly notes the names are not uniformly alliterative across all three girls.",
+    "weakest_a": "Implies alliteration requires multi-word names, which is not necessary for alliteration.",
+    "strongest_b": "Clearly applies the alliteration criterion to all three names and identifies the mismatch (Blossom vs the two B-names).",
+    "weakest_b": "Assumes alliteration must hold across the entire set; doesn’t address alternative interpretations (e.g., partial alliteration).",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The Powerpuff Girls are named Blossom, Bubbles, and Buttercup. Each name starts with the letter 'B', which is a form of alliteration across the set of names. Therefore, their names are alliterative.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Alliteration means the words start with the same initial sound or letter. The Powerpuff Girls are named Blossom, Bubbles, and Buttercup. While Bubbles and Buttercup both start with 'B', Blossom starts with 'Bl', so the set of names is not fully alliterative.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Powerpuff Girls are named Blossom, Bubbles, and Buttercup. Alliteration would require the names to start with the same sound or letter. Only Bubbles and Buttercup share the same initial letter, while Blossom does not. Therefore, the set of names is not alliterative as a whole.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Powerpuff Girls are named Blossom, Bubbles, and Buttercup. Alliteration would require the names to start with the same sound or letter. While Bubbles and Buttercup both start with 'B', Blossom starts with 'Bl', so the set of names is not alliterative as a whole.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

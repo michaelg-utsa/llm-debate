@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:26:14.065330Z",
+  "question": "Would World War II have been the same without Alan Turing?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 145,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Alan Turing’s work at Bletchley Park, especially on methods and machinery that helped break Enigma, materially accelerated Allied intelligence and operational advantages. While the Allies likely still had substantial industrial and manpower advantages, the timing, duration, and specific outcomes of campaigns (e.g., in the Atlantic) could have differed without his contributions. So WWII would not have been the same in important respects.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Alan Turing’s work at Bletchley Park, especially on methods and machinery that accelerated breaking German Enigma traffic, materially improved Allied intelligence. While the war likely would still have ended in an Allied victory, the timing, losses, and specific operations would plausibly have differed without that contribution. So it would not have been the same war in terms of duration and cost.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Turing’s contributions to codebreaking at Bletchley Park plausibly affected Allied intelligence, which in turn could have changed the war’s duration, losses, and some campaign outcomes. Given the question asks whether WWII would have been “the same,” even modest plausible differences in timeline or casualty counts support answering “no.” Neither side provides concrete counterfactual evidence or specific historical estimates, but the general claim that Ultra/Enigma decryption influenced the Battle of the Atlantic and other operations is broadly consistent with common historical understanding. Because there were no debate rounds and the reasoning is nearly identical, neither side is more persuasive than the other. The best-supported final answer from the presented reasoning is therefore “no.”",
+    "strongest_a": "Connects Turing’s Enigma work to operational impacts and potential campaign differences.",
+    "weakest_a": "Relies on plausible counterfactuals without specific evidence or quantification.",
+    "strongest_b": "Clearly frames “not the same” in terms of duration, losses, and operations even if outcome unchanged.",
+    "weakest_b": "Adds no distinct support beyond A; similarly speculative without concrete historical backing.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Alan Turing was central to British codebreaking efforts at Bletchley Park, including advances that helped decrypt German communications. This intelligence is widely credited with shortening the war and saving many lives by improving Allied strategic and tactical decisions. Without his contributions, codebreaking would likely have been slower or less effective, altering timelines and outcomes of key operations. The war would still have occurred, but it likely would not have unfolded the same way.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Alan Turing played a major role in developing methods and machines that helped break German Enigma communications at Bletchley Park. That intelligence significantly affected Allied naval and military operations, especially in the Battle of the Atlantic. Without his contributions, codebreaking would likely have been slower or less effective, changing timelines and outcomes of key campaigns. Therefore the course of World War II would not have been the same.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alan Turing played a major role in British codebreaking efforts at Bletchley Park, especially in advancing methods and machines used against German ciphers like Enigma. Those breakthroughs improved Allied intelligence and likely shortened the war and reduced losses. While others also contributed and the Allies may still have won, the course and timing of World War II would probably have differed without him.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alan Turing played a major role in codebreaking at Bletchley Park, contributing to efforts that helped the Allies read German encrypted communications. This intelligence affected key military decisions and likely shortened the war and reduced casualties. Even if the Allies might still have won, the course, timing, and specific outcomes of operations would likely have differed without his contributions.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

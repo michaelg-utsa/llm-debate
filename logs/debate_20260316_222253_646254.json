@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:22:53.646254Z",
+  "question": "Can citrus grow in Ulaanbaatar?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 137,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Ulaanbaatar has an extremely cold, continental climate with long winters where temperatures commonly drop far below freezing. Citrus trees are frost-sensitive and generally require mild winters and a long warm growing season. Without heated greenhouses or indoor cultivation, citrus cannot grow there outdoors.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Ulaanbaatar has a very cold, high-altitude continental climate with long freezing winters, often far below what citrus trees can tolerate. Citrus generally requires frost-free or only very light-frost conditions and a long warm growing season. Without heated greenhouses and controlled conditions, citrus cannot be grown there outdoors.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Ulaanbaatar’s climate is extremely cold with long, severe winters, while citrus is frost-sensitive and typically needs mild, largely frost-free conditions and a long warm season. This reasoning aligns with general horticultural knowledge about citrus cold tolerance and the known continental climate of Ulaanbaatar. Neither debater provides quantitative temperature thresholds or addresses the ambiguity of whether “grow” could include indoor/heated greenhouse cultivation, though both explicitly qualify that outdoor cultivation is not feasible. Since their positions and support are equivalent and no further debate occurred, neither is more persuasive than the other. The best-supported final answer, given the likely intended meaning (outdoor growth), is “no.”",
+    "strongest_a": "Correctly links Ulaanbaatar’s severe winters to citrus frost sensitivity and concludes outdoor growth is not feasible.",
+    "weakest_a": "Does not clarify the question’s scope (outdoors vs greenhouse) or provide specific hardiness/temperature thresholds.",
+    "strongest_b": "Same solid climate-vs-citrus tolerance argument and explicitly notes need for controlled conditions to grow.",
+    "weakest_b": "Also lacks quantitative support and does not resolve ambiguity about indoor/greenhouse cultivation.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Ulaanbaatar has a very cold, continental climate with long freezing winters and short summers. Citrus trees are subtropical and are highly sensitive to frost, requiring mild winters to survive outdoors. Without heated greenhouses or indoor cultivation, citrus cannot grow there.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Ulaanbaatar has a very cold, continental climate with long freezing winters and a short growing season. Most citrus trees require warm temperatures and are highly sensitive to frost. Without heated greenhouses, citrus cannot survive or fruit reliably there.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Ulaanbaatar has a very cold, continental climate with long freezing winters and short summers. Citrus trees require warm temperatures and are highly sensitive to frost, generally needing subtropical conditions. Without heated greenhouses and controlled environments, citrus cannot be grown there outdoors.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Ulaanbaatar has a very cold, continental climate with long freezing winters and short summers. Citrus trees require warm temperatures and are highly sensitive to frost, typically needing subtropical conditions or protection in greenhouses. Outdoor cultivation in Ulaanbaatar would not survive the winter, so citrus cannot grow there naturally.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

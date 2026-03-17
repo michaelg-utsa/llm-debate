@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:49:52.425266Z",
+  "question": "Are selfies more dangerous than plague in modern times?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 49,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "In modern times, plague is rare but can still be a severe, potentially fatal infectious disease when it occurs, whereas selfies are generally safe and only become dangerous in specific risky contexts (e.g., taking them near cliffs or traffic). The overall public health impact and lethality of plague, even if uncommon, exceeds the typical risk posed by selfies for most people. Therefore, selfies are not more dangerous than plague in modern times.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "In modern times, plague causes very few deaths globally due to antibiotics and public health measures, while selfie-related accidents do cause deaths but at a relatively low scale. Comparing “danger” as overall mortality or public health impact, selfies do not approach the potential severity of infectious diseases, even if plague is currently rare. Thus, selfies are not more dangerous than plague in modern times.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and broadly similar reasoning, so neither clearly outperforms the other. Debater A emphasizes the intrinsic lethality of plague when it occurs and argues that selfie danger is context-specific, but does not address that plague incidence is extremely low today. Debater B more directly engages the “modern times” framing by noting plague deaths are very few due to antibiotics and public health, while also noting selfie-related deaths are low; however, B then leans on plague’s potential severity rather than providing a clear comparative metric. Neither side provides concrete comparative statistics (e.g., annual plague deaths vs. selfie-related fatalities), which weakens the support for the conclusion. Given the arguments presented and general modern context, the claim that selfies are more dangerous than plague is not well supported, so “no” remains the best-supported answer.",
+    "strongest_a": "Highlights that plague is a severe, potentially fatal disease, while selfie risk is usually limited to risky situations.",
+    "weakest_a": "Does not grapple with the very low modern incidence of plague when comparing overall danger.",
+    "strongest_b": "Directly addresses modern mitigation (antibiotics/public health) and low current plague mortality.",
+    "weakest_b": "Lacks a clear comparative framework or data and partially relies on plague’s theoretical severity despite rarity.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "In modern times, taking selfies has been linked to a notable number of accidental deaths (e.g., falls, drowning, traffic incidents). Plague today is rare and typically treatable with antibiotics, leading to very few deaths compared to historical outbreaks. Therefore, in terms of current real-world risk to the general public, selfies can be more dangerous than plague.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "In modern times, plague is rare but can still be deadly and has the potential for outbreaks if not treated promptly. Selfies can lead to accidents and deaths, but the overall risk and mortality they cause is far lower than the potential impact of a serious infectious disease. Therefore, selfies are not more dangerous than plague in modern times.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "In modern times, plague is rare but can still be fatal and has the potential for outbreaks, whereas selfie-related injuries and deaths are sporadic accidents. The overall mortality and public health risk from plague, when it occurs, is far greater than the risk posed by selfies. Selfies can be dangerous in specific situations, but they do not constitute a comparable disease threat.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "In modern times, plague is rare but can still be deadly and has the potential to cause serious outbreaks if not controlled. Selfies can lead to accidents and injuries, but the overall mortality and societal risk are far lower than that posed by a severe infectious disease like plague. Therefore, selfies are not more dangerous than plague in modern times.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

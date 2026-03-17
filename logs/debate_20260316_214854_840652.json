@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:48:54.840652Z",
+  "question": "Is Atlantic cod found in a vegemite sandwich?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 46,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A Vegemite sandwich is typically made with bread, butter, and Vegemite, a yeast extract spread. Atlantic cod is a fish and is not an ingredient in the standard preparation of a Vegemite sandwich. While someone could add fish to a sandwich, it would no longer be a typical Vegemite sandwich.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A Vegemite sandwich typically consists of bread, butter, and Vegemite, a yeast extract spread. Atlantic cod is a fish and is not an ingredient in standard Vegemite sandwiches. Unless someone adds fish intentionally, it would not be found there.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: a typical Vegemite sandwich is bread, butter, and Vegemite, and Atlantic cod is not part of that standard composition. Their reasoning aligns with common knowledge about what Vegemite is (a yeast extract spread) and what ingredients are customary in a Vegemite sandwich. Neither provides external evidence, but the claim is straightforward and does not require specialized facts beyond general familiarity. Both also appropriately acknowledge an edge case (someone could add fish) while maintaining the question’s implied “typical” interpretation. Since the arguments are equivalent in strength and completeness, neither side is more persuasive than the other.",
+    "strongest_a": "Correctly identifies standard Vegemite sandwich ingredients and excludes cod as nonstandard.",
+    "weakest_a": "Relies on the implicit assumption that the question refers to a typical Vegemite sandwich.",
+    "strongest_b": "Clear, direct reasoning that cod is not a standard ingredient in Vegemite sandwiches.",
+    "weakest_b": "No additional support beyond common-knowledge description; same implicit 'typical' assumption.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A Vegemite sandwich typically consists of bread, butter, and Vegemite spread. Atlantic cod is a fish and is not a standard ingredient in a Vegemite sandwich. Unless someone intentionally adds fish, it would not be found there.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A Vegemite sandwich is typically made with bread, butter, and Vegemite, which is a yeast extract spread. Atlantic cod is a fish and is not an ingredient in standard Vegemite sandwiches. Unless someone intentionally adds fish, it would not be found in one.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Vegemite sandwich is typically made with bread, butter, and Vegemite, which is a yeast extract spread. Atlantic cod is a fish and is not an ingredient in standard Vegemite sandwiches. While someone could add fish to a sandwich, it would no longer be a typical Vegemite sandwich.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Vegemite sandwich is typically made with bread, butter, and Vegemite spread. Atlantic cod is a fish and is not an ingredient in a standard Vegemite sandwich. Unless someone specifically adds fish, it would not be found there.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:29:17.008938Z",
+  "question": "Would a student in eleventh grade be unable to run for president of the United States?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 155,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The U.S. Constitution requires the president to be at least 35 years old. An eleventh-grade student is typically around 16–17 years old, far below that minimum age. Therefore, they would be unable to run for president.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "To be U.S. president, a person must be at least 35 years old, a natural-born citizen, and a resident for 14 years. An eleventh-grade student is typically around 16–17 years old, well below the minimum age requirement. Therefore they would be unable to run for president.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and essentially the same reasoning: the U.S. Constitution sets a minimum age of 35 for the presidency, while an eleventh-grade student is typically 16–17. That directly supports the conclusion that such a student would be unable to run for president. Debater B adds the other constitutional eligibility requirements (natural-born citizen and 14-year residency), but the age requirement alone already resolves the question. Neither debater addresses edge cases (e.g., unusually old eleventh graders), but the question is framed in the typical sense, making their inference reasonable. Since the arguments are equally sound and no debate occurred to differentiate them, the result is a tie with a well-supported “yes.”",
+    "strongest_a": "Correctly identifies the constitutional minimum age (35) and compares it to typical 11th-grade age.",
+    "weakest_a": "Relies on typical age assumption without noting rare atypical cases.",
+    "strongest_b": "States the full set of constitutional eligibility requirements and applies the age requirement clearly.",
+    "weakest_b": "Extra requirements are unnecessary for the conclusion and still relies on typical age assumption.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "To be president of the United States, a person must be at least 35 years old. An eleventh-grade student is typically around 16 or 17 years old, far below the minimum age requirement. Therefore, an eleventh grader would be unable to run for president.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "To run for U.S. president, a person must be at least 35 years old, a natural-born U.S. citizen, and a resident for 14 years. An eleventh-grade student is typically around 16–17 years old, far below the minimum age requirement. Therefore, they would be unable to run for president.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "To be president of the United States, a person must be at least 35 years old, a natural-born U.S. citizen, and a resident for 14 years. An eleventh-grade student is typically around 16–17 years old. That is well below the minimum age requirement, so they would be unable to run.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "To run for U.S. president, a person must be at least 35 years old, a natural-born U.S. citizen, and a resident for 14 years. An eleventh-grade student is typically around 16–17 years old, far below the minimum age requirement. Therefore, such a student would be unable to run for president.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

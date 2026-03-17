@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:01:32.393260Z",
+  "question": "Would a vegetarian be able to eat something at Chick-fil-A?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 82,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Chick-fil-A offers some vegetarian-friendly items such as waffle fries, side salads, fruit cups, and some breakfast options without meat. While many main entrees are chicken-based, a vegetarian could still find something to eat by choosing sides or customizing items to omit meat. Availability can vary by location, but generally there are meatless options.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A vegetarian could eat some items at Chick-fil-A that do not contain meat, such as salads without chicken, fries, fruit cups, or certain sides. While many menu items are chicken-based, there are still meatless options available. They would need to check ingredients for things like animal-based broths or add-ons, but it is generally possible.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters converge on the same answer (“yes”) and provide similar reasoning: Chick-fil-A has non-meat items (fries, fruit, salads without chicken) that a vegetarian could eat. Neither offers concrete counterexamples that would force a “no,” and their claims align with general knowledge that fast-food chains typically have at least some meatless sides. Debater B slightly strengthens the case by noting potential hidden animal-derived ingredients and the need to check, which shows awareness of edge cases without undermining the core claim. Debater A’s mention of “some breakfast options without meat” is plausible but less specific. With no debate rounds, the best-supported conclusion remains that a vegetarian can find something to eat there.",
+    "strongest_a": "Identifies multiple clearly meatless menu items (fries, fruit, side salads) and customization to omit meat.",
+    "weakest_a": "Less attention to hidden animal-derived ingredients or preparation methods that could matter to some vegetarians.",
+    "strongest_b": "Acknowledges ingredient caveats (broths/add-ons) while still supporting that meatless options exist.",
+    "weakest_b": "Does not provide specific named menu items beyond general categories, similar to A.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Chick-fil-A offers some items that can be suitable for vegetarians, such as salads (without meat), waffle fries, and some sides. They also have beverages and desserts that contain no meat. However, some items may be cooked in shared oil or contain animal-derived ingredients, so a vegetarian may need to check specifics.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A vegetarian avoids meat but can eat foods that do not contain meat. Chick-fil-A offers some meat-free items such as waffle fries and certain salads or sides that can be ordered without meat. Therefore, a vegetarian would be able to eat something there.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A vegetarian avoids meat but can eat foods that contain no meat. Chick-fil-A offers items like waffle fries, some salads (without chicken), and certain sides that can be ordered without meat. While many menu items are chicken-based, there are still vegetarian-friendly options available.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A vegetarian could eat some items at Chick-fil-A that do not contain meat, such as waffle fries, certain salads without chicken, and some breakfast sides. They would need to avoid the chicken-based entrees and check for ingredients like meat-based broths or animal-derived additives. Availability can vary by location, but there are typically at least a few vegetarian-friendly options.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

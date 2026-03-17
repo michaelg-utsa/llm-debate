@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:53:51.541630Z",
+  "question": "Is material from an aloe plant sometimes enclosed in petroleum-derived products?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 61,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Aloe-derived ingredients (like aloe vera gel or extracts) are commonly added to skincare and cosmetic products for soothing or moisturizing effects. Many of those products (e.g., lotions, creams, ointments) can also contain petroleum-derived ingredients such as mineral oil, petrolatum, or paraffin. So aloe material is sometimes enclosed/mixed within petroleum-derived product formulations.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Aloe-derived ingredients (like aloe vera gel or extract) are commonly added to skincare and cosmetic products. Many of those products use petroleum-derived bases or ingredients such as mineral oil, petrolatum, or certain synthetic polymers. In such cases, aloe material can be enclosed or suspended within a petroleum-derived formulation.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: aloe-derived ingredients are often included in topical products, and many such products also contain petroleum-derived ingredients (e.g., petrolatum, mineral oil), so aloe material can be present within petroleum-derived formulations. This is a plausible interpretation of “enclosed in petroleum-derived products,” since ointments and lotions can be petroleum-based carriers containing aloe extracts. Neither debater provides concrete examples or citations, and neither addresses potential ambiguity in “enclosed” (physically encapsulated vs. simply mixed). However, given common consumer products like aloe-containing petroleum jelly or ointments, the reasoning supports a “yes.” Because the arguments are equivalent in strength and specificity, neither side is more persuasive than the other.",
+    "strongest_a": "Connects common aloe additives in skincare with common petroleum-derived bases like petrolatum/mineral oil.",
+    "weakest_a": "Does not clarify the meaning of “enclosed” or provide a specific product example/citation.",
+    "strongest_b": "Notes aloe can be suspended within petroleum-derived formulations, matching the question’s “enclosed” phrasing.",
+    "weakest_b": "Similarly lacks concrete examples and does not resolve ambiguity in the term “enclosed.”",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Aloe plant material (like aloe vera gel or extract) is commonly used in skincare and cosmetic products. Many of those products also contain petroleum-derived ingredients such as petrolatum, mineral oil, or paraffin. In such cases, the aloe material is mixed into and effectively enclosed within a petroleum-derived base.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Aloe plant material (like aloe vera gel or extract) is commonly used in skincare and topical products. Many of those products, such as lotions, creams, and ointments, can be formulated with petroleum-derived ingredients (e.g., mineral oil, petrolatum, or paraffin). Therefore, aloe material is sometimes enclosed or mixed within petroleum-derived product bases.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Aloe plant material (like aloe vera gel or extract) is commonly used as an ingredient in skincare and cosmetic products. Many of those products also contain petroleum-derived ingredients such as mineral oil, petrolatum, or certain synthetic polymers. In that sense, aloe material can be enclosed or incorporated within petroleum-derived product formulations.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Aloe plant material (like aloe vera gel or extract) is commonly included as an ingredient in many skincare and ointment products. Some of those products use petroleum-derived bases such as petrolatum (petroleum jelly) or mineral oil. Therefore, aloe material is sometimes enclosed or mixed within petroleum-derived products.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

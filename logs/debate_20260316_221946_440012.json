@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:19:46.440012Z",
+  "question": "Can a Kia Rio fit inside the Oval Office?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 127,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A Kia Rio is roughly 14–15 feet long and about 5.7 feet wide. The Oval Office is large (on the order of a few dozen feet across), but its doorways and interior circulation are not designed to admit a full-sized car; the main constraint is getting the vehicle through the entrances rather than floor area. Without dismantling walls or removing windows, a Kia Rio would not fit inside the Oval Office.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A Kia Rio is roughly 14 feet long and about 5.7 feet wide. The Oval Office is an office with doorways and interior circulation not designed for vehicle access; even if the floor area might be comparable, you would not be able to bring a full car inside through the entrances. Therefore, in practical terms, it cannot fit inside the Oval Office.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the same core argument: while the Oval Office’s floor area might be large enough, the practical constraint is access through doorways/entrances that are not sized for a car. This is a reasonable interpretation of “fit inside” as meaning the car could be placed inside under normal building constraints, not via demolition or disassembly. Neither debater provides concrete measurements for Oval Office doors or discusses alternative access routes (e.g., large windows) beyond a brief mention, so the support is more qualitative than quantitative. Debater A is slightly more persuasive because it explicitly distinguishes floor-area sufficiency from ingress constraints and notes the “without dismantling walls or removing windows” condition, clarifying assumptions. Debater B largely repeats the same point with less explicit framing. Overall, the best-supported answer from the presented reasoning is “no.”",
+    "strongest_a": "Clearly identifies ingress through entrances as the binding constraint rather than floor area, and states assumptions about not dismantling the building.",
+    "weakest_a": "Does not cite specific doorway/window dimensions or authoritative Oval Office measurements to make the argument quantitative.",
+    "strongest_b": "Concise practical framing: even if area is sufficient, typical entrances prevent bringing a car inside.",
+    "weakest_b": "Adds little beyond Debater A and lacks explicit assumptions or supporting details.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A Kia Rio is a full-sized passenger car roughly 14 feet long and about 5.7 feet wide. The Oval Office has limited doorway access and interior circulation space, and its entrances are not designed to admit a vehicle of that size. Even if the floor area might seem large enough in isolation, physically getting the car inside through the doors and hallways is not feasible.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A Kia Rio is roughly 14–15 feet long and about 5.5–6 feet wide. The Oval Office is about 35 feet long by 29 feet wide, so it could physically fit a small car by floor area. However, you cannot realistically get a car into the Oval Office because of building access constraints like door sizes, corridors, and security, making it not feasible in practice.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Kia Rio is a full-sized passenger car that is roughly 14 feet long and about 5.7 feet wide. The Oval Office is a large room, but it is not designed with vehicle access in mind and has standard doorways that are far too small for a car to pass through. Even if space might be sufficient in theory, the car cannot realistically be brought inside without major structural changes.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Kia Rio is a full-sized passenger car that is roughly 14–15 feet long and about 5–6 feet wide. The Oval Office is a large room, but it is not designed with vehicle access in mind and has standard doorways that are far smaller than a car’s width. Even if the floor area could theoretically accommodate the car’s footprint, you could not practically get the car inside through the entrances.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

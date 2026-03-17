@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:22:15.628726Z",
+  "question": "Do Leafhoppers compete with Log Cabin syrup producers for resources?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 135,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Leafhoppers are insects that feed on plant sap, typically from grasses, shrubs, and various crops. Log Cabin syrup producers make a commercial table syrup (often corn-syrup-based) and do not rely on the same direct biological resources that leafhoppers consume. There is no meaningful overlap in resource use between leafhoppers and a branded syrup producer.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Leafhoppers are insects that feed on plant sap, typically from a variety of plants, and their resource needs are biological (host plants). Log Cabin syrup producers are human manufacturers that use agricultural inputs like corn syrup or maple syrup and industrial resources. They do not draw on the same direct resources in a way that constitutes competition.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: leafhoppers consume plant sap from host plants, while Log Cabin syrup producers are a human manufacturing operation relying on processed agricultural inputs (commonly corn syrup) and industrial supply chains. On the notion of “compete for resources,” competition typically implies drawing from the same limited resource pool in an ecologically meaningful way; neither debater identifies a shared, limiting resource between an insect herbivore and a branded syrup manufacturer. While one could imagine indirect overlap (e.g., both ultimately depend on agricultural crops), the question is framed around direct competition, and both explanations reasonably reject that. Since there were no rebuttals or additional evidence, the support is equal. The best-supported answer from the presented reasoning is “no.”",
+    "strongest_a": "Clearly distinguishes leafhopper biological resource use (plant sap) from a syrup brand’s industrial inputs.",
+    "weakest_a": "Does not address possible indirect overlap via shared agricultural crops (e.g., corn supply).",
+    "strongest_b": "Explicitly frames competition as requiring shared direct resources and notes the mismatch between insect host plants and manufacturing inputs.",
+    "weakest_b": "Similarly overlooks any indirect competition through agriculture or land use, though likely irrelevant here.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Leafhoppers are insects that feed on plant sap and use living plants as their primary resource. Log Cabin syrup producers make a commercial syrup product using agricultural inputs like corn syrup and flavorings, not the same resources leafhoppers consume. Any overlap is indirect at most (both relate to agriculture), but they do not directly compete for the same resources.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Leafhoppers are insects that feed on plant sap and compete with other herbivores for plant resources. Log Cabin syrup producers are human-run companies that produce pancake syrup, typically from corn syrup and flavorings rather than directly relying on the same plant resources leafhoppers use. They do not share or directly compete for the same ecological resources.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Leafhoppers are insects that feed on plant sap and compete with other herbivores or insects for plant resources. Log Cabin syrup producers are human companies that produce table syrup using industrial ingredients and supply chains, not by consuming plant sap in the same ecological niche. Therefore, leafhoppers do not compete with syrup producers for resources in any direct biological sense.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Leafhoppers are insects that feed on plant sap and compete with other herbivores for plant resources. Log Cabin syrup producers are human-run companies that produce table syrup, relying on agricultural inputs and industrial resources rather than plant sap in the wild. They do not directly share or compete for the same immediate resources in an ecological sense.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

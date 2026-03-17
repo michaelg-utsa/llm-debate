@@ -1,0 +1,205 @@
+{
+  "timestamp": "2026-03-16T22:34:10.404783Z",
+  "question": "At a presentation about post traumatic stress disorder, would Ariana Grande be a topic of relevance?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 167,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A presentation about post traumatic stress disorder generally focuses on clinical definitions, symptoms, causes, and treatments rather than specific celebrities. Ariana Grande is a pop singer and is not inherently a standard topic in PTSD education. While she has publicly discussed trauma after the 2017 Manchester attack, she would only be relevant if the presentation used her as a specific example or case discussion.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Ariana Grande could be relevant in a presentation on PTSD because she has publicly discussed experiencing trauma-related symptoms after the 2017 Manchester Arena bombing at her concert. High-profile cases can be used as real-world examples of how traumatic events can affect mental health and lead to PTSD. Whether she is included would depend on the presentation’s focus and sensitivity to privacy and context.",
+      "confidence": 4
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "no",
+        "argument": "A presentation about post-traumatic stress disorder is typically focused on clinical definitions, symptoms, causes, diagnosis, and evidence-based treatments rather than specific celebrities. Ariana Grande is primarily a pop singer and not a standard subject in PTSD education unless the talk is explicitly about celebrity case examples. Without that special framing, she is not inherently relevant to the topic.",
+        "rebuttal": "No opponent point has been presented yet, but if the other side argues she experienced trauma, that would make her at most an optional illustrative example, not a generally relevant topic for a PTSD presentation.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Ariana Grande can be relevant in a PTSD presentation as a real-world example of trauma exposure and public discussion of PTSD-related symptoms. After the 2017 Manchester Arena bombing at her concert, she and her team publicly referenced psychological impacts and she participated in the One Love Manchester benefit, which is often discussed in the context of trauma response and recovery. Presentations frequently use recognizable case examples to illustrate triggers, acute stress reactions, and pathways to PTSD, especially when discussing mass-violence events. Thus, she can be a relevant topic depending on the presentation’s use of illustrative examples and cultural context.",
+        "rebuttal": "Debater A sets an overly narrow standard by implying relevance requires being a “standard subject”; relevance can include illustrative case examples, especially widely known trauma events. Given her direct connection to a major terrorist attack and subsequent public discourse, she is plausibly relevant to PTSD education even if not required.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "no",
+        "argument": "A PTSD presentation is generally about the disorder’s clinical features, risk factors, assessment, and treatments, and it does not need to center on any particular public figure. Ariana Grande is not a clinician, researcher, or canonical case study used to teach PTSD, so she is not inherently a topic of relevance. While a presenter could choose to mention a high-profile traumatic event for illustration, that is optional and contingent on the talk’s specific framing rather than a natural or expected component of a PTSD presentation.",
+        "rebuttal": "Debater B’s point shows she could be used as an example, not that she would be a relevant topic in general. The question asks whether she would be a topic of relevance at such a presentation; absent an explicit “celebrity/mass-violence case examples” angle, she’s not a typical or necessary subject.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Ariana Grande is relevant to PTSD discussions because she is directly linked to a widely known mass-trauma event (the 2017 Manchester Arena bombing) that produced PTSD in survivors and was followed by extensive public discourse about trauma, recovery, and community response. Presentations on PTSD commonly include real-world case contexts to illustrate risk factors (terror attacks), triggers, acute stress reactions, and longer-term outcomes, and her concert is a salient example. Even if she is not a clinician, her role as the event’s focal public figure makes her a useful reference point for discussing trauma exposure and aftermath.",
+        "rebuttal": "Debater A wrongly treats “not necessary” and “not canonical” as equivalent to “not relevant.” Relevance only requires a plausible connection to PTSD content, and a high-profile terror attack associated with her provides exactly that, even if the presenter could choose other examples.",
+        "confidence": 4
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "no",
+        "argument": "A presentation about post-traumatic stress disorder is typically organized around clinical concepts—diagnostic criteria, symptom clusters, prevalence, risk factors, and evidence-based treatments—rather than around specific celebrities. Ariana Grande is not a PTSD researcher, clinician, or a standard educational case study, so she is not inherently a relevant topic. While a presenter could optionally reference the Manchester Arena bombing as an example of mass-trauma exposure, that does not make Ariana herself a generally relevant subject of a PTSD presentation.",
+        "rebuttal": "Debater B shows a plausible connection via a well-known traumatic event, but that supports mentioning the event or survivors’ outcomes, not making Ariana Grande a topic of relevance. “Could be used as an illustrative hook” is weaker than “would be relevant” in the typical scope of a PTSD presentation.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Ariana Grande can be relevant to a PTSD presentation because she is directly associated with a major mass-trauma event (the 2017 Manchester Arena bombing) that is frequently discussed in terms of psychological aftermath, including PTSD among survivors and communities. PTSD education often uses recognizable real-world incidents to illustrate risk factors (terror attacks), acute stress responses, and longer-term outcomes, and her concert provides a salient, widely known reference point. Relevance here doesn’t require her to be a clinician or a “canonical case,” only that mentioning her can meaningfully support explaining PTSD concepts in context.",
+        "rebuttal": "Debater A conflates “not typical/necessary” with “not relevant.” If a presentation covers mass-violence trauma or community recovery, Ariana Grande is a natural entry point because she is inseparable from the public understanding of that incident, even if the core clinical content remains general.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 4,
+      "debater_a": {
+        "answer": "no",
+        "argument": "A PTSD presentation is ordinarily structured around clinical knowledge—diagnostic criteria, symptom clusters, risk factors, and treatments—rather than around individual celebrities. Ariana Grande is not a clinician, researcher, or a commonly used instructional case, so she is not inherently a relevant topic for such a presentation. While a presenter might choose to reference the Manchester Arena bombing as an example of mass-trauma exposure, that makes the incident (and survivor outcomes) relevant, not Ariana Grande herself as a topic.",
+        "rebuttal": "Debater B’s argument establishes that her concert is linked to a mass-trauma event, but that only supports using the event as an illustrative context. “Can be used as a recognizable hook” is different from “would be a topic of relevance” in a typical PTSD-focused presentation, where the disorder and evidence-based content are central.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Ariana Grande can be relevant in a PTSD presentation because she is closely associated with the 2017 Manchester Arena bombing, a widely recognized mass-trauma event with documented PTSD impacts on survivors and the community. PTSD talks often use high-profile incidents to contextualize risk factors (terrorism), acute stress reactions, and longer-term outcomes, and her concert is a salient reference point for that. Relevance doesn’t require her to be a clinician; it requires that mentioning her can help anchor discussion of trauma exposure, media attention, and recovery efforts in a concrete example.",
+        "rebuttal": "Debater A’s distinction between “the incident” and “Ariana herself” is too rigid: in public discourse and educational framing, she is the identifier people use to recognize that incident (“the Ariana Grande concert bombing”). If a presenter uses that case context, her name is naturally relevant even if the clinical focus remains on PTSD.",
+        "confidence": 3
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Debater B provided a concrete, widely known linkage between Ariana Grande and a mass-trauma event (the 2017 Manchester Arena bombing) that is plausibly used in PTSD education as an illustrative case context. Debater A’s core point—that PTSD presentations typically focus on clinical concepts and don’t need celebrities—is reasonable, but it argues more about what is common or necessary rather than whether Ariana Grande could be relevant. The question’s phrasing (“would … be a topic of relevance”) is closer to “could be relevant in such a presentation,” and B repeatedly justified that relevance via recognizable real-world examples and public discourse around trauma. A’s attempt to separate “the incident” from “Ariana herself” is somewhat persuasive, yet B effectively counters that her name is often the identifier for the incident in public/educational framing. Overall, B’s argument better matches a broad notion of relevance and is supported by a specific factual connection.",
+    "strongest_a": "PTSD presentations generally emphasize clinical definitions, symptoms, and treatments rather than focusing on celebrities.",
+    "weakest_a": "Treats 'not typical/necessary' as implying 'not relevant,' which is a stronger claim than supported.",
+    "strongest_b": "Direct association with the Manchester Arena bombing makes her a plausible illustrative reference point in PTSD education about mass-violence trauma.",
+    "weakest_b": "Relies on the assumption that presentations commonly use celebrity-linked examples, which may vary by context.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Ariana Grande has publicly discussed experiencing PTSD symptoms after the 2017 Manchester Arena bombing at her concert. Because PTSD is the topic of the presentation, a well-known public example of someone describing PTSD can be relevant for illustrating real-world impact and awareness. Her experience could be used as a case study or example in a discussion of trauma and recovery.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 11,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on symptoms, causes, diagnosis, and treatment rather than specific celebrities. Ariana Grande is a singer and is not inherently relevant to PTSD as a general topic. She could only be relevant if the presentation specifically used her as an example of someone discussing trauma publicly, but that is not required.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on clinical definitions, symptoms, causes, and treatments. Ariana Grande is a pop singer and not inherently a standard topic in a general PTSD presentation. She would only be relevant if the talk specifically used her experiences or public statements as an example case study.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on symptoms, causes, diagnosis, and treatment rather than specific celebrities. Ariana Grande is not inherently a standard topic in PTSD education. She would only be relevant if the presentation used her experiences as a case example, which is not implied by the question.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on symptoms, causes, diagnosis, and treatment rather than specific celebrities. Ariana Grande is not inherently relevant to PTSD as a general topic. She could only become relevant if the presentation specifically used her as an example due to her public experiences after the 2017 Manchester attack, but that is not implied by the question.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on clinical definitions, symptoms, causes, and treatments. Ariana Grande is a pop singer and not inherently a standard topic in a PTSD-focused presentation. She could be mentioned only if the talk uses celebrity examples or discusses her public statements about trauma, but that is not generally required for relevance.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on clinical definitions, symptoms, causes, and treatments. Ariana Grande is a pop singer and is not inherently a standard topic in a PTSD-focused presentation. She could be mentioned only if discussing a specific case study or public example related to trauma, but that is not generally required or expected.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on clinical definitions, symptoms, causes, and treatments rather than specific celebrities. Ariana Grande is not inherently relevant to PTSD as a general topic. While she has publicly discussed trauma after the 2017 Manchester attack, mentioning her would be optional and only relevant as a specific example, not a core topic.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on clinical definitions, symptoms, causes, and treatments. Ariana Grande is a pop singer and not inherently relevant to PTSD as a general topic. She could only be relevant if the presentation specifically discussed celebrity experiences or her public statements related to trauma, which is not implied by the question.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder typically focuses on symptoms, causes, diagnosis, and treatment rather than specific celebrities. Ariana Grande is not inherently relevant to PTSD as a general medical topic. She could only be relevant if the presentation specifically discussed public figures who have spoken about trauma or PTSD-related experiences, which is not implied by the question.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder would typically focus on clinical definitions, symptoms, causes, and treatments. Ariana Grande is a pop singer and not inherently relevant to PTSD as a general topic. She would only be relevant if the presentation specifically discussed her personal experiences or public statements related to trauma and PTSD.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A presentation about post traumatic stress disorder typically focuses on symptoms, causes, diagnosis, and treatment rather than specific celebrities. Ariana Grande could be mentioned only if discussing a real, documented example of trauma exposure and its psychological impacts, but she is not inherently central to the topic. Unless the presentation is specifically using her experience as a case study, she would not be a relevant topic.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 11
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 11,
+    "llm_calls_for_debate_plus_direct": 12,
+    "total_llm_calls": 23,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

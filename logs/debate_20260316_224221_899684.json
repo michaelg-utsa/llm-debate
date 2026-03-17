@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:42:21.899684Z",
+  "question": "Can the Powerpuff Girls form a complete tag team wrestling match?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 192,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "A standard tag team wrestling match requires two teams with at least two wrestlers each. The Powerpuff Girls are a trio, so they can supply at least two members to form one tag team, and even have a third as an alternate under some rules. Assuming they have opponents (not specified), they can participate as a complete tag team in a proper match format.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A complete tag team wrestling match typically needs two teams with at least two wrestlers each. The Powerpuff Girls are three distinct characters, so they can form at least one full team of two (or even three, depending on rules) and still have enough members to field opponents by splitting into teams. Therefore, they can form a complete tag team match among themselves.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer “yes,” but they justify it differently. Debater A argues the Powerpuff Girls can constitute a valid tag team (at least two members) and could participate in a proper match if opponents exist, which is a reasonable reading of “can form” as “can field a team.” Debater B goes further and claims they can form a complete tag team match among themselves by splitting into teams, but that is weak because a standard tag match requires two teams of at least two wrestlers each, and three individuals cannot make two full teams without additional participants. Since the question is about whether the Powerpuff Girls can form a complete tag team wrestling match, the more defensible interpretation is that they can form a complete tag team (one side) rather than an entire match with both sides solely from the trio. Thus A’s reasoning is better supported and avoids the arithmetic/rules issue in B’s claim.",
+    "strongest_a": "Correctly notes they have enough members to form at least one standard tag team (two wrestlers).",
+    "weakest_a": "Relies on unspecified opponents, leaving ambiguity about forming an entire match versus just a team.",
+    "strongest_b": "Recognizes standard tag matches require teams of at least two wrestlers.",
+    "weakest_b": "Incorrectly suggests three characters can be split to create both teams for a complete match under standard rules.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "A tag team wrestling match requires at least two wrestlers per team, and the Powerpuff Girls are a group of three individuals. They can form a team of two (or three in a trios-style tag match) and have enough members to participate in a standard tag match. Therefore, they can form a complete tag team wrestling match.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A complete tag team wrestling match requires at least two wrestlers per team. The Powerpuff Girls are three distinct characters (Blossom, Bubbles, and Buttercup), so they can form at least one two-person team, and even have a third as an alternate. Therefore, they can constitute the participants needed for a full tag team match setup.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A standard tag team wrestling match requires two teams with at least two wrestlers each. The Powerpuff Girls are three distinct characters, so they can form a two-person team and still have another participant available for the opposing team or as an additional partner depending on match rules. Therefore, they can supply enough wrestlers to make a complete tag team match possible.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A complete tag team wrestling match requires at least two wrestlers per team. The Powerpuff Girls are three distinct characters, so they can form at least one two-person team, and they could also provide an additional partner or opponent if needed. Therefore, they can form the participants needed for a complete tag team match.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

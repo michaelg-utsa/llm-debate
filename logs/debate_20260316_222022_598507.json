@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:20:22.598507Z",
+  "question": "Is surfing popular in Des Moines, Iowa?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 129,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Surfing requires ocean waves, and Des Moines, Iowa is inland with no coastline. While there may be occasional river or lake activities nearby, they do not support a widespread surfing culture comparable to coastal areas. Therefore, surfing is not popular in Des Moines.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Des Moines, Iowa is an inland city far from the ocean, so it lacks the coastal waves that make surfing common. While there may be occasional river or wake surfing opportunities, these are niche activities and not broadly popular compared to coastal areas.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the common-sense geographic fact that Des Moines is far inland and lacks ocean surf, which is the primary driver of mainstream surfing popularity. Debater B slightly strengthens the case by acknowledging possible alternatives (wake surfing/river or lake-based surfing) and explaining these would be niche rather than broadly popular, directly addressing a potential counterpoint. Debater A makes a similar point but in a more general way and without naming specific inland surfing variants. With no debate rounds, neither side is challenged, but B’s reasoning is marginally more complete. Overall, the best-supported conclusion is that surfing is not popular in Des Moines, Iowa.",
+    "strongest_a": "Correctly ties surfing popularity to access to ocean waves and notes Des Moines is inland.",
+    "weakest_a": "Does not explicitly address wake surfing or other inland surfing variants beyond a vague mention.",
+    "strongest_b": "Anticipates counterexamples (wake/river surfing) and argues they remain niche, supporting “not popular.”",
+    "weakest_b": "Provides no concrete evidence (e.g., participation rates), relying on plausibility like A.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Surfing is typically popular in coastal areas with ocean waves. Des Moines, Iowa is inland and does not have ocean surf conditions. While people might surf on rivers or artificial wave parks in some places, that is not a common or defining activity for Des Moines.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Surfing is typically popular in coastal areas with ocean waves. Des Moines, Iowa is inland and does not have access to the ocean. While there may be occasional river or wake surfing opportunities, it is not a common or widely popular activity there.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Surfing is typically popular in coastal areas with ocean waves. Des Moines, Iowa is inland and does not have access to the ocean, so it lacks the natural conditions that support a strong surfing culture. While people could surf on artificial wave pools or travel elsewhere, it is not generally considered popular locally.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Surfing is typically popular in coastal areas with ocean waves. Des Moines, Iowa is an inland city without access to the ocean, so it lacks the natural conditions that support a surfing culture. While people might surf occasionally on artificial wave parks or during travel, it is not generally popular there.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

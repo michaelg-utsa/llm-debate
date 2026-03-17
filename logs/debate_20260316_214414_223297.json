@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:44:14.223297Z",
+  "question": "Would a broadcast from Spirit make the news in 2020?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 35,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Spirit is a major commercial airline, and any notable broadcast from an airline (especially involving safety, operations, or an incident) can be picked up by news outlets. In 2020, aviation-related communications were particularly newsworthy due to the pandemic’s impact on travel and airline operations. So a broadcast from Spirit could plausibly make the news in 2020.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Spirit is a major U.S. commercial airline, and its broadcasts (e.g., major announcements, incidents, or service disruptions) can be covered by news outlets. In 2020, aviation-related developments were especially newsworthy due to the pandemic’s impact on travel. So a broadcast from Spirit could plausibly make the news in 2020.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Spirit is a major airline and in 2020 aviation announcements were newsworthy due to COVID-19. However, neither addresses the key ambiguity in the question: “Spirit” could refer to many entities (e.g., a spacecraft/rover, a sports team, a brand, or a religious concept), and the reasoning assumes without justification that it is Spirit Airlines. Even if Spirit Airlines is intended, the claim is framed as “could plausibly” rather than establishing that a generic “broadcast from Spirit” would in fact make the news, which weakens support. With no debate rounds and no additional evidence, neither side is more persuasive than the other. Given the allowed binary answers and the shared assumption, the best-supported choice from their reasoning is still “yes,” but with low confidence due to the unresolved referent and lack of specificity.",
+    "strongest_a": "Connects Spirit (as an airline) to heightened 2020 news interest due to the pandemic.",
+    "weakest_a": "Assumes without support that 'Spirit' means Spirit Airlines and argues only plausibility, not necessity.",
+    "strongest_b": "Same core rationale: major airline communications in 2020 could attract news coverage.",
+    "weakest_b": "No disambiguation of 'Spirit' and no concrete evidence beyond general plausibility.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "In 2020, the Spirit rover was no longer operational and had stopped communicating years earlier. Since it could not transmit, there would be no new broadcast to report. Therefore, a broadcast from Spirit would not make the news in 2020.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Spirit is a fictional entity rather than a real-world broadcaster. A broadcast from a fictional source would not be an actual event that journalists could report on in 2020. Therefore it would not make the news as a real broadcast.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Spirit was a Mars rover that stopped communicating in 2010 and was declared a mission end in 2011. Since it could not transmit after that, it would not be able to make a broadcast in 2020. Therefore there would be no broadcast to become news in 2020.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Spirit was a Mars rover that stopped communicating in 2010 and was declared a mission end in 2011. Since it could not transmit after that, there would be no broadcast from Spirit in 2020. Without an actual transmission, there would be nothing new to report as news in that year.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

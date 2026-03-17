@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:09:01.533509Z",
+  "question": "Is it more expensive to run for President of India than to buy a new iPhone 11?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 102,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Running for President of India involves significant expenses like campaign travel, outreach, and compliance costs, even though the electorate is limited to elected representatives. A new iPhone 11 costs on the order of tens of thousands of rupees, whereas a serious presidential bid would typically exceed that amount. Therefore, it is more expensive to run for President of India than to buy a new iPhone 11.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Running for President of India requires paying a nomination security deposit and typically involves significant campaign-related expenses, even if the electorate is limited to elected representatives. A new iPhone 11 costs on the order of tens of thousands of rupees, while the formal deposit alone is much higher than that. Therefore, it is more expensive to run for President of India than to buy a new iPhone 11.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer “yes” and rely on the idea that running for President of India costs more than an iPhone 11. Debater A’s argument is plausible but largely speculative, asserting “significant expenses” without citing any required amounts or typical spending, especially given the unusually small electorate in India’s presidential election. Debater B attempts a more concrete comparison by pointing to a nomination security deposit, but makes an unsupported claim that the deposit alone is “much higher” than an iPhone 11, without providing figures; this is a key factual hinge and could easily be wrong. With no debate rounds and no evidence, neither side is strongly supported, but B is slightly more persuasive for at least identifying a specific mandatory cost component rather than only general campaign expenses. Still, the lack of numbers makes confidence low.",
+    "strongest_a": "Reasonable intuition that a serious national campaign would exceed the cost of a phone",
+    "weakest_a": "No concrete required costs or citations; relies on vague “significant expenses”",
+    "strongest_b": "Points to a specific formal cost (nomination/security deposit) as a basis for comparison",
+    "weakest_b": "Unsubstantiated claim that the deposit alone exceeds an iPhone 11’s price",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Running for President of India involves significant campaign and compliance expenses, typically far exceeding the cost of a consumer smartphone. A new iPhone 11 costs on the order of tens of thousands of Indian rupees, while a national-level presidential campaign would generally require much larger spending. Therefore, it is more expensive to run for President of India than to buy a new iPhone 11.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Running for President of India typically involves significant campaign-related expenses such as travel, outreach, and organizing support, which can add up to far more than the cost of a consumer smartphone. A new iPhone 11 costs on the order of tens of thousands of rupees, while a national-level presidential bid would generally require substantially higher spending. Therefore, it is more expensive to run for President of India than to buy a new iPhone 11.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Running for President of India typically involves substantial campaign and logistical expenses, including travel, outreach, and organizational costs, which can be very high. A new iPhone 11 has a fixed retail price that is comparatively much lower than the overall cost of mounting a serious presidential campaign. Therefore, it is more expensive to run for President of India than to buy a new iPhone 11.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Running for President of India typically involves significant campaign and election-related expenses, including travel, outreach, and organizational costs. A new iPhone 11 has a fixed retail price that is relatively small compared to the scale of a national-level presidential campaign. Even with spending limits or indirect campaigning, the overall cost to run is generally higher than buying a single smartphone.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

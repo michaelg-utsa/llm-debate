@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:54:29.001004Z",
+  "question": "Can you carry a Chrysler in a laptop bag?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 63,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A Chrysler is a brand of automobiles, and a car is far too large and heavy to fit in or be carried by a laptop bag. Even if referring to a typical Chrysler vehicle part, it would generally not be something designed to fit in a laptop bag. Therefore, you cannot carry a Chrysler in a laptop bag.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A Chrysler is a full-sized automobile brand, and even the smallest Chrysler vehicle is far too large and heavy to fit in a laptop bag. Laptop bags are designed to carry small electronics and accessories, not cars. Therefore, you cannot carry a Chrysler in a laptop bag.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and rely on the common-sense interpretation that “a Chrysler” refers to an automobile, which cannot fit in a laptop bag due to size and weight. Their reasoning is straightforward and consistent with general knowledge about cars and laptop bags. Debater A adds a small caveat about “vehicle part,” but that introduces ambiguity without strengthening the main claim, since the question most naturally refers to the car itself. Debater B stays focused on the core interpretation and directly contrasts the intended use of laptop bags with the size of cars. With no debate rounds and essentially identical support, neither side clearly outperforms the other.",
+    "strongest_a": "Correctly notes a Chrysler (car) is far too large/heavy for a laptop bag.",
+    "weakest_a": "Introduces unnecessary ambiguity about parts, slightly weakening focus.",
+    "strongest_b": "Clear, direct common-sense comparison of car size vs laptop bag capacity.",
+    "weakest_b": "Does not address potential alternate meanings (e.g., toy model), though the main reading is obvious.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A Chrysler is a full-sized vehicle and far too large and heavy to fit in a laptop bag. Laptop bags are designed to carry small electronics and accessories, not cars. Even a small model car would not be an actual Chrysler vehicle.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A Chrysler is a full-sized automobile that weighs hundreds to thousands of pounds and is several feet long. A laptop bag is designed to carry small, lightweight items like a computer and accessories. The car's size and weight make it impossible to fit in or be carried by a laptop bag.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Chrysler is a full-sized automobile that weighs thousands of pounds and is several meters long. A laptop bag is designed to hold small, lightweight items and cannot physically fit or support a car. Therefore, you cannot carry a Chrysler in a laptop bag.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Chrysler is an automobile brand, and a car is far too large and heavy to fit in or be carried by a laptop bag. Laptop bags are designed to hold small electronics and accessories, not vehicles. Therefore, you cannot carry a Chrysler in a laptop bag.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:39:50.064356Z",
+  "question": "Are there mental disorders you can hide?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 186,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Some mental disorders can be concealed or go unnoticed, especially if symptoms are internal (e.g., anxiety, depression) or a person masks them in public. People may compensate with coping strategies, avoid triggering situations, or present differently in different settings. While severe symptoms can become harder to hide over time, it is possible to hide certain disorders at least for periods.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Some mental disorders can be concealed from others, especially if symptoms are internal (like intrusive thoughts, anxiety, or depression) or if a person masks them in public. People may also avoid situations that reveal symptoms or compensate with coping strategies. While severe cases often become noticeable over time, it is still possible to hide a disorder for long periods.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“yes”) and provide essentially identical reasoning: many mental disorders have internal symptoms and can be masked through coping strategies or situational avoidance, making them concealable at least for some time. This aligns with general knowledge that conditions like anxiety, depression, OCD, and some personality or eating disorders can be hidden from others, especially in public or professional contexts. Neither debater addresses limits or counterexamples in depth, but both acknowledge that severe symptoms may become harder to hide over time. Since there were no debate rounds, there is no additional evidence or rebuttal to distinguish them. Overall, the shared reasoning supports “yes,” and neither side is more persuasive than the other.",
+    "strongest_a": "Notes internal symptoms and masking can conceal disorders, at least temporarily.",
+    "weakest_a": "Provides no concrete examples beyond a few and no discussion of diagnostic/functional limits.",
+    "strongest_b": "Emphasizes concealment via masking/avoidance and that it can persist for long periods.",
+    "weakest_b": "Largely repeats A without adding distinct support or nuance.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Some mental disorders can be concealed because symptoms may be internal or subtle, such as anxiety, depression, or certain eating disorders. People can mask behaviors in public, avoid situations that reveal symptoms, or function well enough that others do not notice. However, severity, context, and close relationships can make hiding them harder over time.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Some mental disorders can be concealed because symptoms may be internal or manageable in public settings. People may mask signs through coping strategies, avoiding triggers, or not disclosing their condition. Disorders like depression, anxiety, or high-functioning substance use can sometimes go unnoticed by others for long periods.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Some mental disorders can be concealed because symptoms may be internal (like intrusive thoughts, anxiety, or depression) and not obvious to others. People can also mask or compensate for symptoms in public settings, especially for periods of time. However, severity, context, and close relationships can make hiding symptoms harder over time.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Some mental disorders can be concealed, especially when symptoms are internal (like anxiety, depression, or certain eating disorders) or when a person actively masks them. People may avoid situations that reveal symptoms, use coping strategies, or present a socially acceptable facade. However, severity, context, and close relationships can make hiding harder over time.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

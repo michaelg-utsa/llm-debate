@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:54:52.283780Z",
+  "question": "Can a Reconstruction era coin buy DJI Mavic Pro Drone?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 64,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A \"Reconstruction era\" coin refers to U.S. coins from roughly 1865–1877, whose face value would be cents to dollars, far below the price of a DJI Mavic Pro drone (hundreds of dollars). Even if such a coin has collectible value, a single typical Reconstruction-era coin would not reliably be worth enough to purchase a modern drone. Therefore, it cannot buy a DJI Mavic Pro drone.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A Reconstruction era coin would be a historical U.S. coin from the late 1860s–1870s, with a face value like 1 cent, 5 cents, etc. Even if it has collectible value, a single such coin typically would not be worth hundreds of dollars. A DJI Mavic Pro drone costs several hundred dollars, so one coin from that era generally cannot buy it.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: a Reconstruction-era coin’s face value is far below the cost of a DJI Mavic Pro drone, which is typically several hundred dollars. They also acknowledge the potential collectible value but argue that a “single typical” coin from that era is not reliably worth enough to cover the drone’s price. With no transcript rounds, neither side adds additional evidence (e.g., specific coin types or auction values), so the support level is comparable. The conclusion “no” is consistent with general pricing realities unless the coin is an unusually rare specimen, which the question does not specify. Since both positions and reasoning are equivalent, the result is a tie with a shared best-supported answer.",
+    "strongest_a": "Correctly contrasts typical face value/collectible value against the drone’s hundreds-of-dollars price point.",
+    "weakest_a": "Relies on 'typical' and 'not reliably' without citing concrete market values or addressing rare high-value coins explicitly.",
+    "strongest_b": "Clearly states the drone’s cost scale and that most single coins from that era won’t reach it.",
+    "weakest_b": "Also lacks specific valuation evidence and leaves room for exceptions (rare coins) without bounding them.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A Reconstruction era coin is an old U.S. coin from the late 1860s–1870s, typically worth at most a small amount at face value unless it is a rare collectible. A DJI Mavic Pro drone costs hundreds of dollars. A single such coin would not be sufficient to purchase the drone.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A Reconstruction era coin is a historical U.S. coin from the late 1860s–1870s, and its face value would be far below the cost of a DJI Mavic Pro drone. Even if the coin has collectible value, most single common coins from that period would not be worth hundreds of dollars. A DJI Mavic Pro typically costs several hundred dollars or more, so one such coin would not buy it.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Reconstruction era coin dates to the late 1860s–1870s and would have a face value of only a few cents to a dollar. A DJI Mavic Pro drone costs hundreds of dollars. Even if the coin has collectible value, a single typical Reconstruction-era coin would not reliably be worth enough to purchase the drone.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Reconstruction era coin (late 1860s–1870s) is a piece of currency from that time, typically worth far less than the modern price of a DJI Mavic Pro drone when used at face value. Even if the coin is collectible, most such coins are not valuable enough to cover the drone’s cost unless it is a rare, high-grade specimen. Therefore, in general, a Reconstruction era coin cannot buy a DJI Mavic Pro drone.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:04:46.775755Z",
+  "question": "Should you wrap a gift for a mother of a stillborn in stork wrapping paper?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 89,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Stork-themed wrapping paper is strongly associated with celebrating a new baby’s arrival, which can be painful or feel insensitive for a mother who experienced a stillbirth. A more neutral, gentle wrapping (or a simple gift bag/card) is safer and more respectful. If you’re unsure, choose understated paper and focus on a supportive message.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Stork-themed wrapping paper is strongly associated with celebrating a new baby’s arrival, which can be painful and inappropriate for a mother who experienced a stillbirth. A more neutral, gentle wrapping (or a simple bag) better respects her grief while still conveying care. When in doubt, avoid baby-arrival imagery and choose something understated.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and nearly identical reasoning. They correctly connect stork imagery with celebrating a newborn’s arrival and argue it could be emotionally painful or feel insensitive after a stillbirth. Each proposes a practical alternative (neutral wrapping or a simple bag/card) and frames it as a safer, more respectful default when uncertain. Since no debate occurred and neither provides additional nuance beyond the other, neither is more persuasive. The best-supported final answer from the presented reasoning is to avoid stork wrapping paper.",
+    "strongest_a": "Clearly explains why stork imagery can be hurtful after a stillbirth and suggests neutral alternatives.",
+    "weakest_a": "Does not consider any context where the recipient might explicitly welcome baby-themed symbolism.",
+    "strongest_b": "Directly ties stork wrapping to baby-arrival celebration and recommends understated wrapping to respect grief.",
+    "weakest_b": "Largely repeats A’s points without adding new justification or edge-case considerations.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Stork-themed wrapping paper is strongly associated with celebrating a new baby and can be painful or insensitive for a mother who experienced a stillbirth. A more neutral, gentle wrapping (or a simple gift bag) is more appropriate and respectful. If unsure, choose understated colors and avoid baby-announcement imagery.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Stork-themed wrapping paper is strongly associated with celebrating a new baby and can be painful or insensitive for a mother who experienced a stillbirth. A more neutral, gentle wrapping or a simple bag is more appropriate and respectful. The focus should be on offering comfort rather than emphasizing birth imagery.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Stork-themed wrapping paper is strongly associated with celebrating a new baby, which can be painful and inappropriate for a mother grieving a stillbirth. A more neutral, subdued wrapping or a simple gift bag is generally more respectful. The focus should be on sympathy and support rather than baby-arrival imagery.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Stork-themed wrapping paper is strongly associated with celebrating a new baby and can feel painful or insensitive to someone grieving a stillbirth. A more appropriate choice would be neutral, subdued wrapping or a simple gift bag with a condolence note. The goal is to avoid symbols that highlight the loss and instead convey care and respect.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

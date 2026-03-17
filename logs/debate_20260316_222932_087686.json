@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:29:32.087686Z",
+  "question": "Could George Washington's own speeches have been recorded live to a compact disc?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 156,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "George Washington lived from 1732 to 1799, long before any audio recording technology existed. The first practical sound recording devices appeared in the late 19th century, and compact discs were introduced in the 1980s. Therefore his speeches could not have been recorded live to a compact disc.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "George Washington lived from 1732 to 1799, long before any audio recording technology existed. The first practical sound recording devices appeared in the late 19th century, and compact discs were introduced in the 1980s. Therefore his speeches could not have been recorded live to a compact disc.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters provide the same answer and essentially identical reasoning. They correctly anchor the argument in the historical timeline: Washington died in 1799, while practical audio recording did not exist until the late 1800s, and compact discs are a late-20th-century medium. Given these dates, it is not plausible that Washington’s speeches could have been recorded live onto a compact disc. With no additional debate rounds, neither side adds extra support or addresses potential edge cases, but the core reasoning is straightforward and sufficient. Since their support is equivalent, the result is a tie with a clear final answer.",
+    "strongest_a": "Correctly uses historical chronology to rule out live CD recording.",
+    "weakest_a": "Does not explicitly distinguish between any recording at all vs direct-to-CD recording, though implied.",
+    "strongest_b": "Same solid timeline-based argument linking Washington’s era to lack of recording and CDs.",
+    "weakest_b": "No additional detail beyond A; no extra corroboration or nuance.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "George Washington lived in the 18th century and died in 1799. Live audio recording technology did not exist until the late 19th century, and compact discs were not developed until the late 20th century. Therefore his speeches could not have been recorded live to a compact disc.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "George Washington lived from 1732 to 1799, long before any audio recording technology existed. The first practical sound recordings were made in the late 19th century, and compact discs were introduced in the 1980s. Therefore, his speeches could not have been recorded live to a compact disc.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "George Washington lived from 1732 to 1799, long before any audio recording technology existed. Compact discs were not developed until the late 20th century and require digital recording and playback equipment. Therefore, his speeches could not have been recorded live to a compact disc.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "George Washington lived in the 18th century and died in 1799. Compact discs were not developed until the late 20th century, and even earlier audio recording technology did not exist during his lifetime. Therefore his speeches could not have been recorded live to a compact disc.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

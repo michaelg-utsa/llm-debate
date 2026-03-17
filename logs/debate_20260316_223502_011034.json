@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:35:02.011034Z",
+  "question": "Would four shoes be insufficient for a set of octuplets?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 170,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Octuplets are eight babies, so they would collectively need eight pairs of shoes if each child needs a pair. Four shoes amount to only two pairs, which would cover at most two of the eight children. Therefore, four shoes would be insufficient for a set of octuplets.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Octuplets are eight babies, and each baby would typically need two shoes to have a complete pair. Four shoes only make two pairs, which would not cover eight children. Therefore, four shoes would be insufficient for a set of octuplets.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: octuplets means eight children, and a typical assumption is each child needs two shoes (a pair). Under that assumption, eight children require 16 shoes, while four shoes only cover two children, so four shoes are insufficient. Neither debater addresses potential edge cases (e.g., babies not needing shoes yet), but StrategyQA questions usually rely on the conventional interpretation that each person needs a pair of shoes. Since their reasoning is aligned and comparably clear, neither side is more persuasive than the other. The best-supported final answer from the presented reasoning is \"yes.\"",
+    "strongest_a": "Correctly maps octuplets to eight children and compares required shoes to four shoes.",
+    "weakest_a": "Does not consider the possibility that babies might not need shoes, relying on a typical assumption.",
+    "strongest_b": "Clear explanation that four shoes equals two pairs, insufficient for eight children needing pairs.",
+    "weakest_b": "Also assumes all eight babies need shoes without discussing that assumption.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Octuplets are eight babies. Each baby would typically need two shoes, totaling sixteen shoes for the group. Four shoes would only cover two feet pairs, so it would be insufficient for all eight children.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Octuplets are eight babies. A baby typically needs two shoes to have a complete pair. Four shoes make only two pairs, which would not be enough for eight children.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Octuplets are eight babies. A set of octuplets would typically require shoes for eight individuals, meaning at least eight shoes if each needs one shoe, or sixteen shoes for pairs. Four shoes would not be enough for all eight children.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Octuplets are eight babies. A pair of shoes is two shoes, so four shoes would only make two pairs. Eight children would typically need eight pairs, or sixteen shoes, so four shoes would be insufficient.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

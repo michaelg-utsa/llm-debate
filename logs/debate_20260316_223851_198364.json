@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:38:51.198364Z",
+  "question": "Does Alec Baldwin have more children than Clint Eastwood?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 183,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Alec Baldwin has 8 children (one with Kim Basinger and seven with Hilaria Baldwin). Clint Eastwood has at least 8 children, commonly reported as 8, across several relationships. Since Baldwin does not exceed Eastwood’s count, the answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Alec Baldwin has eight children (one with Kim Basinger and seven with Hilaria Baldwin). Clint Eastwood is widely reported to have eight children as well. Since they have the same number, Baldwin does not have more.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and nearly identical reasoning: Alec Baldwin is stated to have 8 children, and Clint Eastwood is stated to have 8 children. Neither provides citations, but both rely on commonly reported public figures’ family counts, which is reasonable for this question type. Debater A adds a small hedge (“at least 8”) that acknowledges potential ambiguity in Eastwood’s count, but still concludes Baldwin does not exceed it. Debater B is slightly cleaner and more direct, asserting both are “widely reported” as 8 and therefore Baldwin does not have more. With no substantive disagreement and no debate rounds, the result is effectively a tie, and the best-supported answer remains that Baldwin does not have more children than Eastwood.",
+    "strongest_a": "Notes Eastwood is commonly reported as having 8 and frames it as 'at least 8,' addressing possible ambiguity.",
+    "weakest_a": "No sourcing; the 'at least 8' phrasing could undermine certainty while still not resolving the exact count.",
+    "strongest_b": "Clear, consistent comparison: both have 8, so Baldwin does not have more.",
+    "weakest_b": "No sourcing and does not acknowledge potential ambiguity in Eastwood’s reported number.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Alec Baldwin has eight children. Clint Eastwood has eight children as well. Since they have the same number of children, Alec Baldwin does not have more than Clint Eastwood.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Alec Baldwin has eight children (one with Kim Basinger and seven with Hilaria Baldwin). Clint Eastwood has eight known children from multiple relationships. Since they have the same number of children, Alec Baldwin does not have more than Clint Eastwood.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alec Baldwin has eight children. Clint Eastwood has eight children as well. Since they have the same number of children, Alec Baldwin does not have more than Clint Eastwood.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alec Baldwin has eight children. Clint Eastwood has eight children as well. Since they have the same number of children, Alec Baldwin does not have more than Clint Eastwood.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

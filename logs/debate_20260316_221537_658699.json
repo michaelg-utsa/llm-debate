@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:15:37.658699Z",
+  "question": "Would a member of the United States Air Force get a discount at Dunkin Donuts?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 117,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Dunkin' has commonly offered military discounts at many locations, and U.S. Air Force members are part of the U.S. military. While discounts can vary by franchise and location, it is generally true that a service member could get a discount when a military discount is offered. Therefore, a member of the United States Air Force would get a discount at Dunkin Donuts in many cases.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Dunkin’ Donuts locations commonly offer military discounts, and U.S. Air Force members qualify as active-duty military. While discounts can vary by franchise and location, it is generally possible for an Air Force member to receive a discount when asked and with valid ID. Therefore, the best overall answer is yes.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: some Dunkin’ Donuts locations offer military discounts and Air Force members qualify as military. Neither provides concrete evidence (e.g., a corporate policy statement) and both acknowledge the key limitation that discounts vary by franchise/location, which weakens the universality of the claim. Given the question is phrased generally (“Would…get a discount”), the best-supported interpretation from their reasoning is that it is possible/typical rather than guaranteed. Since both sides converge on “yes” with similar caveats and no further debate occurred, neither is more persuasive than the other. The final answer is therefore best taken as “yes” in the common/likely sense implied by their arguments.",
+    "strongest_a": "Notes Air Force members qualify for military discounts and acknowledges location variability.",
+    "weakest_a": "No citation or proof of a consistent Dunkin’ discount policy; claim is not universally true.",
+    "strongest_b": "Frames the claim as generally possible with valid ID, matching the franchise variability caveat.",
+    "weakest_b": "Also lacks evidence and relies on an assumed common practice without support.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Dunkin' locations commonly offer a military discount, and U.S. Air Force members are part of the U.S. military. However, discounts can vary by franchise and location, so it may not be available everywhere. In general, an Air Force member would be eligible where the discount is offered.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Dunkin' locations commonly offer discounts to military members, and U.S. Air Force personnel qualify as active-duty military. While discounts can vary by franchise and location, it is generally possible for an Air Force member to receive a military discount at Dunkin'. Therefore, a member of the United States Air Force would get a discount at Dunkin Donuts in many cases.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Dunkin' locations commonly offer discounts or promotions for military members, though participation can vary by franchise. A member of the United States Air Force is part of the U.S. military and would typically qualify where such a discount is offered. Since many Dunkin' stores participate in military discounts, it is reasonable to expect they could get one.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Dunkin' Donuts locations commonly offer military discounts, though policies can vary by franchise and location. A member of the United States Air Force is part of the U.S. military and would typically qualify where such discounts are offered. Because it is not a universal corporate-wide guarantee, it depends on the specific store.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

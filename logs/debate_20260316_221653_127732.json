@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:16:53.127732Z",
+  "question": "Did Mike Tyson train to use the gogoplata?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 121,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The gogoplata is a Brazilian jiu-jitsu submission typically trained in grappling contexts, not in boxing. Mike Tyson is primarily known for boxing training and techniques, and there is no well-known evidence that he trained specifically to use the gogoplata. While he may have done some general martial arts or fitness cross-training, that does not imply training this particular submission.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The gogoplata is a Brazilian jiu-jitsu submission typically trained in grappling arts, not in boxing. Mike Tyson is known for boxing training and did not have a public history of training BJJ submissions like the gogoplata. While he may have done general conditioning or some martial arts exposure, there’s no credible indication he trained specifically for that technique.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the same core reasoning: the gogoplata is a BJJ/grappling submission and Tyson is primarily a boxer with no widely known record of training that specific technique. Neither provides concrete citations or specific biographical details, so the support is largely an argument from absence and plausibility rather than direct evidence. Given general knowledge, it is reasonable that a career boxer would not train a niche BJJ submission, and no countervailing evidence is offered. Since their arguments are effectively identical in strength and limitations, neither is more persuasive than the other. The best-supported final answer from the presented reasoning is “no.”",
+    "strongest_a": "Plausibly notes gogoplata is a BJJ submission and Tyson is known for boxing, making specific training unlikely.",
+    "weakest_a": "Relies on lack of well-known evidence without providing sources or addressing any later-life MMA/BJJ training possibilities.",
+    "strongest_b": "Same plausible domain mismatch argument: boxer with no public history of BJJ submissions like gogoplata.",
+    "weakest_b": "Also argument from absence; no concrete evidence or citations.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The gogoplata is a Brazilian jiu-jitsu submission most associated with grappling specialists rather than boxers. Mike Tyson is known for boxing training and techniques, not for training in BJJ submissions like the gogoplata. There is no widely documented evidence that he trained specifically to use the gogoplata.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The gogoplata is a Brazilian jiu-jitsu submission typically used in grappling and MMA, not in boxing. Mike Tyson is known for boxing training and techniques, and there is no well-known evidence that he trained specifically to use the gogoplata. While he may have had some exposure to martial arts generally, the move is not associated with his training or competitive context.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The gogoplata is a Brazilian jiu-jitsu submission typically associated with grappling and MMA training rather than traditional boxing. Mike Tyson is primarily known for boxing and there is no well-known evidence that he trained specifically to use the gogoplata. While he may have done some general martial arts or conditioning, the gogoplata is not part of his documented skill set.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The gogoplata is a Brazilian jiu-jitsu submission typically used in MMA or grappling, not in boxing. Mike Tyson is known for training in boxing techniques like the peek-a-boo style, not for practicing BJJ submissions. There is no well-known evidence or reporting that Tyson trained specifically to use the gogoplata.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

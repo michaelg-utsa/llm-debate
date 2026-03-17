@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:21:21.118557Z",
+  "question": "Does Fraktur have a sordid history?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 132,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Fraktur is a style of blackletter type that became strongly associated with German nationalism and was used prominently in Nazi-era Germany, which gives it a politically fraught legacy. Although the Nazis later discouraged it in favor of Antiqua, its earlier association with that regime and with exclusionary nationalist symbolism contributes to a “sordid history” perception. The script itself is not inherently immoral, but its historical associations can be.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Fraktur is a style of blackletter type that became strongly associated with German nationalism and was used extensively in Nazi-era Germany, which gives it a politically fraught legacy. Although the Nazis later discouraged it (mislabeling it as \"Jewish\"), its earlier prominence in that period contributes to a sordid history in public perception. The script itself is not inherently immoral, but its historical associations can be.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Fraktur, a blackletter typeface, is historically associated with German nationalism and was used in Nazi-era Germany, which can make its legacy seem politically tainted. They also both note the nuance that the Nazis later discouraged it, which slightly complicates a simple “Nazi font” narrative but doesn’t erase the association. Debater B adds a specific detail—that Nazis mischaracterized it as “Jewish”—which is a known historical claim and makes B’s reasoning marginally more concrete. Neither debater provides countervailing context (e.g., Fraktur’s long pre-Nazi use across German-speaking Europe) that might weaken the “sordid history” framing, but the question asks about having a sordid history, not exclusively being sordid. Given the shared core reasoning and B’s extra specificity, B is slightly better supported, though the outcome is effectively a tie on substance.",
+    "strongest_a": "Connects Fraktur’s public perception to nationalist/Nazi-era associations while acknowledging the script isn’t inherently immoral.",
+    "weakest_a": "Relies on broad association without specific historical details or examples beyond the general Nazi-era link.",
+    "strongest_b": "Adds a concrete historical detail about Nazi discouragement and the “Jewish” mislabeling, strengthening credibility.",
+    "weakest_b": "Still largely rests on perception/association and doesn’t address the much longer non-Nazi history that could complicate “sordid.”",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Fraktur is a style of blackletter type that became closely associated with German nationalism. In the 20th century it was used in Nazi-era propaganda and official materials, which gives it a troubling historical association. Although the script itself predates Nazism by centuries and has broader cultural uses, that association contributes to a “sordid history” perception.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Fraktur is a style of blackletter type that became strongly associated with German nationalism. In the 20th century it was used in Nazi-era propaganda and official publications, which contributes to a negative historical association. Although it predates that period by centuries and was also used broadly in non-sinister contexts, that association gives it a sordid history for many people.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Fraktur is a style of blackletter type that became strongly associated with German nationalism and was used in Nazi-era propaganda and official materials. That association gives it a \"sordid\" historical connotation for many people. Although the Nazis later discouraged its use by labeling it \"Jewish,\" its earlier prominent role in that period still ties it to a dark chapter of history.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Fraktur is a style of blackletter type that became strongly associated with German nationalism and was used widely in Nazi-era propaganda and official printing. That association gives it a controversial or \"sordid\" historical connection for many people. Although the script itself predates the 20th century and was used broadly in German-speaking Europe, its later political use contributes to a negative historical legacy.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

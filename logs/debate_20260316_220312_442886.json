@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:03:12.442886Z",
+  "question": "Did President William Howard Taft read DC Comics?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 87,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "DC Comics as a company/brand did not exist during William Howard Taft’s lifetime; it was formed later (National Allied Publications in 1934, with the DC brand emerging afterward). Taft died in 1930, so he could not have read DC Comics in the sense of DC-published comic books. While he could have read earlier newspaper comic strips, those are not DC Comics.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "DC Comics as a company/brand and its superhero comic books emerged well after William Howard Taft’s presidency and after his lifetime (he died in 1930). While earlier comic strips existed in newspapers during his era, there’s no credible evidence that Taft read what would later be known as DC Comics. Therefore the best-supported answer is no.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same conclusion (“no”) and rely on a strong chronological argument: Taft died in 1930, while DC Comics as a company/brand is generally dated to the mid-1930s and later. Debater A is slightly more persuasive because it cleanly distinguishes between DC Comics as a publisher/brand versus earlier newspaper comic strips, reducing ambiguity about what “read DC Comics” means. Debater B adds that there is “no credible evidence” Taft read DC, but that point is weaker because the absence-of-evidence claim is unnecessary given the timeline and is not supported by any cited sources. Since there were no debate rounds, neither side challenges potential edge cases (e.g., retroactive labeling of earlier publications), but the basic temporal reasoning remains compelling. Overall, the best-supported answer from the presented reasoning is that Taft did not read DC Comics.",
+    "strongest_a": "Clear timeline argument: DC Comics formed after Taft’s death, so he could not have read DC-published comics.",
+    "weakest_a": "Assumes the question strictly refers to the DC publisher/brand without addressing any possible retroactive naming ambiguities.",
+    "strongest_b": "Reinforces the same timeline-based impossibility (DC emerged after Taft’s lifetime).",
+    "weakest_b": "Leans on an unsupported 'no credible evidence' claim when the timeline argument already suffices.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "William Howard Taft was president from 1909 to 1913, and DC Comics did not exist under that name until 1937 (originating from National Allied Publications in 1934). There is no credible historical evidence that Taft read DC Comics, and the timeline makes it effectively impossible for him to have read them as DC Comics. Therefore, the answer is no.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "William Howard Taft was president from 1909 to 1913, before DC Comics existed under that name and before its major superhero publications began. DC traces its origins to National Allied Publications in 1934, well after Taft's presidency and near the end of his life. There is no credible historical evidence that Taft read DC Comics.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "William Howard Taft was president from 1909 to 1913 and died in 1930. DC Comics as a company and its modern comic-book line emerged in the mid-to-late 1930s, after Taft's death. Therefore he could not have read DC Comics.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "William Howard Taft was president from 1909 to 1913, decades before DC Comics existed under that name and before its major comic book publications. DC traces its origins to the mid-1930s (e.g., National Allied Publications in 1934 and Detective Comics in 1937). Since Taft died in 1930, he could not have read DC Comics as such.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

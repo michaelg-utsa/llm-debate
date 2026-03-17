@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:30:25.404187Z",
+  "question": "Can you hunt Iberian wolves in the Southern United States?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 159,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Iberian wolves are native to the Iberian Peninsula (Spain and Portugal) and are not a wild game species in the Southern United States. Hunting regulations there apply to local wildlife, and you generally cannot legally hunt a non-native, non-established species that isn’t present in the wild. Unless in a special captive setting (which wouldn’t be typical “hunting” of wild Iberian wolves), the answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Iberian wolves are native to the Iberian Peninsula (Spain and Portugal) and are not a wild game species in the Southern United States. Hunting regulations there apply to local wildlife, and you generally cannot hunt a species that isn’t present in the wild. Unless kept in captivity (where hunting would not be legal hunting), there’s no context in which you could hunt Iberian wolves in the Southern U.S.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical arguments: Iberian wolves are native to Spain/Portugal and are not present as a wild, huntable species in the Southern United States. They also correctly note that hunting regulations generally apply to local wildlife populations and that you cannot hunt a species that is not established in the wild there. Each allows for a hypothetical captive setting but argues that this would not constitute typical legal hunting of wild game. With no debate rounds, neither side adds additional evidence or nuance beyond this shared reasoning. Given general knowledge about species distribution and hunting practice, the conclusion \"no\" is well supported, and neither debater is more persuasive than the other.",
+    "strongest_a": "Correctly ties species’ native range and absence in the Southern U.S. to practical/legal impossibility of hunting it there.",
+    "weakest_a": "Relies on generalities about legality without citing specific regulations; captive-hunt edge case not fully addressed.",
+    "strongest_b": "Clearly emphasizes the key point that the species isn’t present in the wild, making hunting infeasible.",
+    "weakest_b": "Also lacks concrete legal citations and treats captive contexts somewhat conclusorily.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Iberian wolves are native to the Iberian Peninsula in Europe and do not occur as a wild, huntable species in the Southern United States. Hunting regulations in the Southern U.S. apply to local wildlife, and there is no legal hunting season for a non-native species that is not present in the wild. Therefore, you cannot hunt Iberian wolves there.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Iberian wolves are native to the Iberian Peninsula in Europe, not the Southern United States. Since they do not naturally occur there, you cannot hunt Iberian wolves in the Southern United States. Hunting also depends on local wildlife laws, but the species’ absence already makes it infeasible.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Iberian wolves are native to the Iberian Peninsula in Europe, not the Southern United States. Since they do not naturally occur there, you generally cannot hunt them in that region. Hunting regulations also depend on the presence and legal status of the species in the area.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Iberian wolves are native to the Iberian Peninsula in Europe, not the Southern United States. Since they do not naturally occur there, you generally cannot hunt them in that region. Hunting regulations also depend on local wildlife presence and laws, which would not list Iberian wolves as a huntable species in the Southern U.S.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

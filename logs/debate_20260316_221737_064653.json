@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:17:37.064653Z",
+  "question": "Can Michael Jordan become a professional cook in America?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 123,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "There is no legal or practical barrier that would prevent someone named Michael Jordan from becoming a professional cook in America. Professional cooking generally does not require a specific license beyond standard workplace requirements (e.g., food safety training), which he could obtain. Therefore, it is possible for Michael Jordan to become a professional cook in the U.S.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "In America, becoming a professional cook does not require being a citizen or having a specific prior career; it mainly requires the ability to work legally and get hired or run a food business. Michael Jordan is an adult and could choose to train, apply for cooking jobs, or open a restaurant. Nothing about his identity inherently prevents him from becoming a professional cook.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer “yes” and give broadly similar reasoning: there is no inherent legal or practical barrier to someone named Michael Jordan becoming a professional cook in America. Debater A’s argument is slightly clearer in focusing on the typical requirements for professional cooking (generally no special license beyond standard food-safety/workplace requirements). Debater B adds a relevant nuance about needing legal authorization to work, but also makes an unnecessary assumption about Michael Jordan’s ability to work legally without establishing it. Since neither side provides evidence about a specific Michael Jordan (e.g., the famous athlete) being unable to do so, the general possibility claim is well-supported. Overall, the position “yes” is adequately justified, with A marginally more tightly reasoned.",
+    "strongest_a": "Directly addresses that professional cooking typically has no special licensing barrier beyond standard training, so it is feasible.",
+    "weakest_a": "Doesn’t mention work authorization/immigration status as a potential constraint for some individuals.",
+    "strongest_b": "Notes the key practical prerequisite: being able to work legally and get hired or run a business.",
+    "weakest_b": "Assumes without support that Michael Jordan can work legally in the U.S., which is not guaranteed for every person.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "In America, anyone can pursue becoming a professional cook by getting training or experience and being hired in a kitchen. Michael Jordan is a U.S. citizen and is not legally barred from working as a cook. His fame as an athlete does not prevent him from changing careers.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "In America, becoming a professional cook does not require a specific identity or background, only the ability to get hired or work professionally in cooking. Michael Jordan, as an adult U.S. citizen, could choose to train and seek employment as a cook. There is no legal or practical rule that would prevent him from doing so.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "In America, becoming a professional cook does not require a specific prior career or identity, and there is no legal barrier preventing someone named Michael Jordan from doing so. If he meets typical requirements like obtaining necessary food-safety certifications and being hired or running a food business, he can work professionally as a cook. Therefore, it is possible for Michael Jordan to become a professional cook in America.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "There is no legal or practical barrier that would prevent someone named Michael Jordan from becoming a professional cook in America. Becoming a professional cook generally requires gaining culinary skills and finding employment in a kitchen, not a specific license tied to a particular identity. Therefore, he could become a professional cook if he chose to pursue that career.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

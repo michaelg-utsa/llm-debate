@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:30:31.975085Z",
+  "question": "Would costumes with robes and pointy hats be helpful for Macbeth?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 4,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Macbeth is a Shakespearean tragedy about a Scottish nobleman, and costumes with robes and pointy hats are more associated with stereotypical witches or wizards than with Macbeth himself. While the witches appear in the play, such costumes wouldn’t generally be helpful for Macbeth’s role or goals. Macbeth would more plausibly wear armor or noble Scottish attire.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Macbeth is a Scottish noble and warrior in Shakespeare's play, and his goals involve political power and military action, not disguises. Robes and pointy hats are stereotypical \"wizard\" costumes and wouldn’t practically help him achieve his aims. While witches appear in the story, dressing like them wouldn’t provide Macbeth real advantage.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide closely aligned reasoning. Each correctly notes that Macbeth is a Scottish noble/warrior in Shakespeare’s tragedy and that robes with pointy hats are stereotypically associated with witches or wizards rather than Macbeth’s typical attire or needs. Debater A adds a slightly more text-grounded nuance by acknowledging the witches’ presence while still arguing such costumes would not help Macbeth’s role or goals, and contrasts with more plausible clothing (armor/noble attire). Debater B similarly argues from practical utility toward Macbeth’s aims, but is a bit more generic about why costumes wouldn’t help. With no rebuttal rounds, the decision rests on initial justification quality, where A is marginally more specific. Overall, the best-supported final answer remains “no.”",
+    "strongest_a": "Connects costume type to the play’s characters (witches vs Macbeth) and to Macbeth’s likely attire (armor/noble clothing).",
+    "weakest_a": "Assumes a narrow notion of “helpful” without considering theatrical staging contexts where such costumes might be useful.",
+    "strongest_b": "Clearly ties Macbeth’s objectives (political/military power) to why a wizard-like costume offers no practical advantage.",
+    "weakest_b": "More generalized and less specific to the play’s details beyond broad character description.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Macbeth is a Scottish noble and warrior, so typical costumes would be armor or noble attire rather than robes and pointy hats. Robes and pointy hats are more associated with wizards or witches, which would not help portray Macbeth accurately. Such costumes would likely confuse the character depiction.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Macbeth is a Scottish noble and warrior, so robes and pointy hats are not particularly relevant or helpful to his goals. Such costumes are more associated with stereotypical witches or wizards, and wearing them would not aid him in battle or in securing political power. If anything, it could make him look suspicious or ridiculous at court.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Macbeth is a Scottish noble and warrior, so robes and pointy hats are not particularly relevant to his role or goals. Such costumes are more associated with wizards or witches, and wearing them would not help him in battle or in gaining political legitimacy. If anything, it could make him look suspicious or ridiculous at court.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Macbeth is a Scottish noble and warrior, so robes and pointy hats are not typical or practical attire for him. Such costumes are more associated with witches or wizards, and wearing them would not help him in battle or in maintaining a credible royal image. If anything, it could make him look suspicious or ridiculous to others at court.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

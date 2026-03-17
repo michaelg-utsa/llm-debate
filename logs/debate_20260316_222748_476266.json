@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T22:27:48.476266Z",
+  "question": "Would a Superbowl Football Game be crowded on the Gettysburg Battlefield?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 150,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Gettysburg Battlefield is a historic outdoor site, not a stadium designed to host a Super Bowl. A Super Bowl game would be played in an NFL stadium, so it would not take place on the battlefield and thus would not be crowded there. While tourists may visit Gettysburg, that is unrelated to hosting the game itself.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Gettysburg Battlefield is a historic site and national park, not a stadium designed to host a Super Bowl. A Super Bowl game is held in a large professional football stadium with controlled seating and infrastructure, so it would not be played on the battlefield. Therefore, the question of it being crowded there doesn’t apply in normal circumstances.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: a Super Bowl is held in an NFL stadium, and Gettysburg Battlefield is a historic outdoor site, so the event would not occur there. Given the phrasing “be crowded on the Gettysburg Battlefield,” the most natural interpretation is whether that location would be crowded due to a Super Bowl game, which both correctly note is implausible. Neither provides additional nuance (e.g., hypothetical relocation), but within common-sense StrategyQA framing, their reasoning is sufficient. Since their positions and support are equivalent and no debate occurred, neither is more persuasive than the other. The best-supported final answer is that it would not be crowded on the battlefield for a Super Bowl game.",
+    "strongest_a": "Correctly notes Super Bowl games are played in NFL stadiums, not at Gettysburg Battlefield.",
+    "weakest_a": "Relies on an implicit assumption that the question is about real-world feasibility rather than a hypothetical scenario.",
+    "strongest_b": "Emphasizes the required infrastructure/controlled seating of a Super Bowl, making Gettysburg an unsuitable venue.",
+    "weakest_b": "Also assumes the question is about normal circumstances without addressing the hypothetical reading explicitly.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A Super Bowl football game is typically played in a large stadium designed to hold tens of thousands of spectators. The Gettysburg Battlefield is a historic site and not a football stadium, so it would not normally host such an event. Therefore, a Super Bowl game would not be crowded on the Gettysburg Battlefield because it would not be held there.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A Super Bowl football game draws tens of thousands of spectators, plus staff and media, making the venue very crowded. The Gettysburg Battlefield is a historic park not designed as a stadium, so accommodating a Super Bowl-sized crowd there would still result in heavy crowding. Therefore, it would be crowded on the battlefield.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Gettysburg Battlefield is a historic site and national park, not a stadium designed to host a Super Bowl. A Super Bowl game requires large seating capacity, infrastructure, and controlled access that the battlefield does not have. Therefore, a Super Bowl football game would not realistically be held there, so it would not be crowded on the battlefield in that sense.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A Super Bowl football game is held in a large modern stadium, not on the Gettysburg Battlefield. The battlefield is a historic site and not equipped or used for hosting major professional sports events. Therefore, a Super Bowl game would not make the Gettysburg Battlefield crowded.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "yes": 1,
+        "no": 2
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

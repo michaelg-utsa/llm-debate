@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:35:27.627589Z",
+  "question": "Would Felicity Huffman vote for Mike DeWine?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 13,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Felicity Huffman is a Hollywood actor who has generally been associated with liberal-leaning circles in the entertainment industry. Mike DeWine is a Republican politician (Ohio governor), and there’s no public indication Huffman supports him specifically. Given typical partisan alignment patterns, it’s unlikely she would vote for him.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Felicity Huffman is a Hollywood actor who has publicly supported Democratic candidates and causes, and she is associated with liberal-leaning entertainment circles. Mike DeWine is a Republican governor of Ohio, so it is unlikely she would vote for him absent specific evidence of cross-party support. There is no well-known public statement indicating she supports DeWine.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on similar probabilistic reasoning: Huffman is a Hollywood actor associated with liberal/Democratic circles, while DeWine is a Republican politician, making support unlikely absent specific evidence. Debater B is slightly more persuasive because it adds a more concrete claim (that Huffman has publicly supported Democratic candidates/causes), whereas Debater A stays at the level of general association with liberal-leaning circles. However, neither provides verifiable, specific evidence about Huffman’s voting behavior, residency/eligibility in Ohio, or any explicit statement about DeWine, so the conclusion remains an inference rather than a demonstrated fact. Given the lack of countervailing evidence and typical partisan alignment, “no” is the best-supported answer from the arguments presented. Overall, the debate is weakly supported due to absence of citations or concrete facts beyond general political stereotypes.",
+    "strongest_a": "Uses plausible partisan-alignment inference: liberal Hollywood actor vs Republican governor.",
+    "weakest_a": "No specific evidence of Huffman’s political activity or any statement about DeWine; purely generalization.",
+    "strongest_b": "Adds a more specific rationale by asserting Huffman has supported Democratic candidates/causes.",
+    "weakest_b": "Still lacks concrete, verifiable evidence tying Huffman to a stance on DeWine or voting behavior.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Felicity Huffman is a Hollywood actress who has publicly supported Democratic candidates and causes. Mike DeWine is a Republican politician and current governor of Ohio. Based on her known political alignment, it is unlikely she would vote for a Republican like DeWine.",
+      "confidence": 3
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Felicity Huffman is a Hollywood actress who has generally been associated with liberal-leaning circles. Mike DeWine is a Republican politician and governor of Ohio, typically supported by conservative voters. While an individual's vote can't be known for sure without a direct statement, it is unlikely she would vote for him based on typical political alignment.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Felicity Huffman is a Hollywood actor who has not been publicly associated with supporting Republican politicians like Mike DeWine. Mike DeWine is a Republican governor of Ohio, and celebrities in Huffman’s demographic more commonly align with Democratic candidates. With no specific evidence that she supports DeWine, the best guess is that she would not vote for him.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "Felicity Huffman is a Hollywood actor who has generally been associated with liberal-leaning social circles and causes. Mike DeWine is a Republican politician (Ohio governor), and voting for him would typically align with Republican-leaning voters. While an individual could vote across party lines, there is no specific public indication that Huffman supports DeWine. Given the typical political alignment, it is unlikely she would vote for him.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:37:40.913651Z",
+  "question": "Do guitarists need both hands to play?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 19,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Standard guitar playing requires one hand to fret notes on the neck while the other hand plucks or strums the strings to produce sound. While there are specialized techniques (e.g., tapping) that can shift roles, they still typically involve coordinated use of both hands for full playing. You can make some sound with one hand, but playing as a guitarist in the usual sense generally needs both.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Standard guitar playing uses one hand to fret notes on the neck and the other to pluck or strum the strings. While there are specialized techniques or accommodations that can reduce reliance on one hand, typical guitar performance requires coordinated use of both hands. Therefore, guitarists generally need both hands to play.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: standard guitar technique uses two hands, one for fretting and one for strumming/plucking. They also both acknowledge edge cases (tapping, accommodations) but maintain that in the usual sense of “play guitar,” two-handed coordination is required. Since there were no debate rounds, neither side responded to possible counterexamples like one-handed playing with modified instruments, open tunings, or slide techniques. Given the question’s broad phrasing, the most supported interpretation from their reasoning is the conventional one: guitarists need both hands to play in typical practice. Because the arguments are equivalent in clarity and support, neither debater is more persuasive than the other.",
+    "strongest_a": "Clearly explains the standard division of labor between fretting and strumming hands and notes exceptions without undermining the main claim.",
+    "weakest_a": "Does not address whether the question could be answered by existence of one-handed/modified-instrument playing.",
+    "strongest_b": "Concise statement that typical guitar performance requires coordinated use of both hands.",
+    "weakest_b": "Also omits discussion of counterexamples that might shift the answer under a strict existential reading.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Standard guitar playing uses both hands: one hand frets notes and chords on the neck while the other hand plucks or strums the strings. Most common techniques require coordinated use of both hands to produce melody and rhythm. While there are limited exceptions or adaptations, typical guitarists need both hands to play normally.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "In standard guitar playing, one hand frets notes and chords on the neck while the other hand plucks or strums the strings. Using both hands allows control of pitch and rhythm at the same time. While some techniques can reduce reliance on one hand briefly, typical playing requires both.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Standard guitar playing requires one hand to fret notes on the neck while the other hand plucks or strums the strings. Using both hands allows control over pitch and rhythm simultaneously. While there are rare adaptations for one-handed playing, typical guitarists need both hands.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "In standard guitar playing, one hand frets notes and chords on the neck while the other hand plucks or strums the strings. Using only one hand would severely limit the ability to change pitch and articulate rhythm at the same time. While there are specialized techniques like two-hand tapping, they still typically involve both hands.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

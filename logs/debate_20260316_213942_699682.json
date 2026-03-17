@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:39:42.699682Z",
+  "question": "Was Augustus his real name?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 25,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Augustus was an honorific title granted to Octavian by the Roman Senate in 27 BCE, not his birth name. He was born Gaius Octavius and later became Gaius Julius Caesar Octavianus after adoption by Julius Caesar. Therefore, \"Augustus\" was not his real (given) name.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Augustus was an honorific title granted by the Roman Senate in 27 BCE, not his birth name. He was born Gaius Octavius and later adopted by Julius Caesar, after which he used the name Gaius Julius Caesar Octavianus (often called Octavian). Therefore, Augustus was not his real (original) name.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and essentially identical reasoning: “Augustus” was an honorific/title conferred by the Senate in 27 BCE rather than a birth name. They support this by citing his birth name (Gaius Octavius) and his later adopted name after Julius Caesar (Gaius Julius Caesar Octavianus), which aligns with standard historical understanding. With no debate rounds, there is no divergence to evaluate; both positions are equally well-supported. The conclusion that “Augustus” was not his real (original) name follows directly from the premise that it was a title assumed later. Therefore the best-supported final answer is “no.”",
+    "strongest_a": "Correctly identifies Augustus as a later honorific title and contrasts it with his birth/adopted names.",
+    "weakest_a": "Does not clarify what definition of “real name” is being used beyond implying “birth/given name.”",
+    "strongest_b": "Provides the same historically grounded name progression (Gaius Octavius → adopted name → Augustus as title).",
+    "weakest_b": "Also leaves slight ambiguity about whether a regnal/title name could count as a “real name” in some contexts.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Augustus was an honorific title granted by the Roman Senate in 27 BCE. His birth name was Gaius Octavius, and after adoption by Julius Caesar he was known as Gaius Julius Caesar Octavianus (often called Octavian). He later used \"Imperator Caesar Augustus\" as part of his official name and titles.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Augustus was an honorific title granted by the Roman Senate in 27 BCE. His birth name was Gaius Octavius, and after adoption by Julius Caesar he was known as Gaius Julius Caesar Octavianus. He later used \"Imperator Caesar Augustus\" as his official name and title.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Augustus was an honorific title granted by the Roman Senate in 27 BCE, not his birth name. He was born Gaius Octavius and later adopted by Julius Caesar, becoming Gaius Julius Caesar Octavianus. He is commonly called Augustus because of the title he used as Rome’s first emperor.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Augustus was an honorific title granted by the Roman Senate in 27 BCE, not his birth name. He was born Gaius Octavius and later adopted by Julius Caesar, after which he used the name Gaius Julius Caesar Octavianus. He became known as Augustus after receiving that title.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

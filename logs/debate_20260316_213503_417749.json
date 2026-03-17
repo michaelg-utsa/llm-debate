@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:35:03.417749Z",
+  "question": "Can olive oil kill rabies?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 12,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Rabies is caused by a virus that infects the nervous system, and once symptoms begin it is almost always fatal without proper medical care. Olive oil has no proven antiviral effect against rabies and cannot replace post-exposure prophylaxis (rabies vaccine and immunoglobulin). At most, oil might affect a wound’s surface but it will not eliminate virus already introduced into tissue.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Rabies is caused by a virus that requires prompt medical treatment after exposure, such as wound cleaning and post-exposure vaccination. Olive oil is not an antiviral treatment for rabies and cannot prevent or cure the infection once exposure has occurred. Relying on it would dangerously delay effective care.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide consistent reasoning grounded in general medical knowledge about rabies. They correctly note that rabies is a viral infection requiring prompt post-exposure prophylaxis (wound cleaning, vaccine, and often immunoglobulin) and that once symptomatic it is almost always fatal. Neither presents any evidence or plausible mechanism by which olive oil would inactivate rabies virus in vivo or treat an established infection. Debater A adds a useful nuance that topical oil might affect only the wound surface and not virus already in tissue, which slightly strengthens the explanation. Debater B emphasizes the practical danger of delaying effective care, which is also relevant but less directly about “killing” the virus. Overall, the support is essentially equal with a slight edge to A for mechanistic clarity.",
+    "strongest_a": "Explains rabies pathophysiology and why topical olive oil cannot eliminate virus in tissue or replace PEP.",
+    "weakest_a": "Does not cite specific studies or authoritative sources, relying on general medical consensus.",
+    "strongest_b": "Highlights that rabies requires prompt medical prophylaxis and that relying on olive oil could dangerously delay care.",
+    "weakest_b": "Less mechanistic detail on why olive oil cannot inactivate rabies virus beyond stating it is not antiviral.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Rabies is a viral infection that requires medical treatment such as post-exposure prophylaxis with rabies vaccine and immunoglobulin. Olive oil has no proven antiviral effect that can kill the rabies virus in the body or prevent the disease after exposure. Relying on olive oil instead of proper medical care would be ineffective and dangerous.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Rabies is caused by a virus that infects the nervous system and requires prompt medical treatment such as wound cleaning and post-exposure vaccination. Olive oil is not an antiviral treatment and cannot eliminate the rabies virus from a wound or the body. While cleaning a bite wound is important, using olive oil does not replace proper disinfection and medical care.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Rabies is caused by a virus that infects the nervous system and requires prompt medical treatment such as post-exposure vaccination and immune globulin. Olive oil has no proven antiviral effect that can neutralize rabies virus in a person or animal after exposure. Relying on olive oil instead of medical care would be dangerous and ineffective.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Rabies is a viral infection that requires medical prevention (vaccination) and, after exposure, prompt post-exposure prophylaxis. Olive oil is not an antiviral treatment and cannot kill the rabies virus in a way that would prevent infection after a bite. Delaying proper medical care in favor of home remedies can be dangerous.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

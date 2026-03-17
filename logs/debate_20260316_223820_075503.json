@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:38:20.075503Z",
+  "question": "Are Mayors safe from harm from the federal government?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 181,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Mayors are not immune from federal action; they can be investigated, prosecuted, or sued under federal law like other officials. The federal government can also impose penalties or remove them from office through legal processes if they violate federal statutes (e.g., corruption or civil rights violations). While they have certain local-government powers, that does not make them safe from harm by the federal government.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Mayors are not immune from federal action; they can be investigated, prosecuted, or sued under federal law like other individuals. The federal government can also enforce constitutional and statutory requirements against municipalities, which can affect a mayor’s actions and office. While there are some legal protections for official acts, they do not make mayors categorically safe from harm.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same answer and reasoning: mayors do not have categorical immunity from federal government action. Each notes that mayors can be investigated, prosecuted, or sued under federal law, which directly supports answering “no” to whether they are safe from harm from the federal government. Debater A adds the claim that the federal government can “remove them from office,” which is less clearly supported as a general federal power (removal is typically governed by state/local law), slightly weakening A’s precision. Debater B stays more careful by focusing on enforcement against individuals and municipalities and acknowledging limited protections for official acts without overstating them. With no debate rounds and near-identical support, B’s framing is marginally more accurate and thus better-supported overall.",
+    "strongest_a": "Correctly identifies that mayors lack immunity from federal investigation/prosecution under federal law.",
+    "weakest_a": "Overstates federal ability to remove mayors from office as a general matter.",
+    "strongest_b": "Accurately emphasizes that mayors can be subject to federal criminal/civil enforcement and that protections are limited.",
+    "weakest_b": "Somewhat general/vague about what counts as “harm” and the scope of any official-act protections.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Mayors are not inherently protected from harm or legal action by the federal government. Federal authorities can investigate, prosecute, or otherwise act against a mayor if there is a violation of federal law. While mayors have certain local governmental powers, they do not have immunity from federal enforcement.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Mayors are not immune from federal action; they can be investigated, prosecuted, or sued under federal law like other individuals. The federal government can also take actions that affect cities, such as enforcing civil rights laws or conditioning federal funding, which can indirectly pressure or constrain mayors. While mayors have authority within their municipalities, that does not make them safe from harm or legal consequences from the federal government.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Mayors are not immune from federal action and can be investigated, prosecuted, or otherwise legally constrained by the federal government if they violate federal law. The federal government can also bring civil enforcement actions or impose conditions tied to federal funding that affect a mayor’s city. While mayors have certain local powers, those do not provide blanket protection from federal legal consequences.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Mayors are not immune from federal action and can be investigated, prosecuted, or sued under federal law. Federal authorities can bring charges for corruption, civil rights violations, or other federal offenses. While mayors have certain local governmental powers, those do not shield them from harm or legal consequences imposed by the federal government.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

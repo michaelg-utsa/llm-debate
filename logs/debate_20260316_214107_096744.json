@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:41:07.096744Z",
+  "question": "Was  Godfrey of Bouillon an Islamaphobe?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 29,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "\"Islamophobia\" is a modern concept describing prejudice or hostility toward Muslims/Islam, and it is anachronistic to apply it straightforwardly to an 11th-century Crusader. Godfrey of Bouillon fought in the First Crusade against Muslim forces, but that military-religious conflict does not by itself establish a personal, generalized anti-Muslim prejudice in the modern sense. Given the lack of direct evidence about his personal attitudes framed in those terms, the safest answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Godfrey of Bouillon was a leader of the First Crusade in the late 11th century, long before the modern concept and term \"Islamophobia\" existed. While he fought Muslim forces as part of a religious-military campaign, that does not cleanly map onto a modern category describing prejudice or irrational fear of Islam. With limited direct evidence of his personal attitudes toward Islam as a religion, it’s not justified to label him an Islamophobe in the modern sense.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: applying the modern label “Islamophobia” to an 11th-century Crusader is anachronistic, and participation in the First Crusade does not by itself prove a generalized prejudicial attitude toward Islam in the modern sense. Neither provides specific historical evidence (e.g., writings, policies, or reported statements) that would support either a “yes” or a stronger “no” beyond the anachronism point. Given the question’s binary format, the shared reasoning supports choosing “no” as the more defensible answer absent direct evidence. Since their positions and support are equivalent and no debate occurred to differentiate them, neither is more persuasive than the other. The best-supported final answer from the presented reasoning is “no.”",
+    "strongest_a": "Correctly highlights the anachronism of applying a modern sociopolitical term to an 11th-century figure and notes lack of direct evidence of personal prejudice.",
+    "weakest_a": "Relies mainly on definitional/anachronism reasoning without engaging with historical context that could still indicate anti-Muslim animus.",
+    "strongest_b": "Emphasizes that military-religious conflict does not automatically equate to modern-category prejudice and notes evidentiary limits.",
+    "weakest_b": "Does not add any distinct evidence or argument beyond the anachronism point, leaving the conclusion under-supported historically.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Godfrey of Bouillon was a medieval Christian leader of the First Crusade, and the modern term \"Islamaphobe\" is anachronistic for his time. While he fought Muslim forces during the Crusade, that does not by itself establish a personal, generalized fear or hatred of Islam as understood today. Historical sources focus on his role as a crusading commander rather than documenting a specific ideological stance that maps cleanly onto the modern concept.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Godfrey of Bouillon was a leader of the First Crusade in the late 11th century, a period marked by religious warfare between Christian and Muslim powers. However, the modern concept of \"Islamophobia\" refers to prejudicial attitudes toward Islam and Muslims in a contemporary sociopolitical sense, which is anachronistic to apply directly to a medieval figure. While he fought Muslim forces, that alone does not establish a personal, modern-style phobia or prejudice as the term is used today.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Godfrey of Bouillon was a leader of the First Crusade in the late 11th century and fought Muslim forces as part of a religious-military campaign. However, the modern concept of \"Islamophobia\" refers to prejudicial attitudes toward Islam or Muslims in a contemporary sociopolitical sense, which is difficult to apply reliably to medieval figures. Historical sources mainly describe him in terms of crusading warfare and piety rather than a generalized ideological hatred of Islam as a distinct modern phenomenon. Therefore it is not accurate to label him an Islamophobe.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Godfrey of Bouillon was a leader of the First Crusade and fought Muslim forces, but the modern concept of \"Islamophobia\" refers to prejudice or hostility toward Islam or Muslims as a group. Historical sources mainly describe him in terms of medieval religious warfare and political-military aims rather than a documented personal ideology of anti-Muslim prejudice in the modern sense. Because applying a contemporary label to a 11th-century figure is anachronistic and not clearly supported by evidence about his personal attitudes, the best answer is no.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

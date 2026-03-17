@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-03-16T21:34:40.634413Z",
+  "question": "Would Atlantic Salmon be within David Duchovny's dietary guidelines?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 11,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "David Duchovny has publicly said he is a pescatarian, meaning he avoids meat but eats fish and seafood. Atlantic salmon is a fish, so it fits within a pescatarian diet. Unless additional restrictions (like avoiding certain fish) are specified, salmon would be allowed.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "David Duchovny has publicly said he follows a vegan diet. Atlantic salmon is an animal product (fish), which is not permitted in vegan dietary guidelines. Therefore it would not fit within his stated diet.",
+      "confidence": 4
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "David Duchovny has publicly described following a vegan diet, which is typically a personal dietary guideline rather than a medically mandated restriction. If the question is interpreted as whether Atlantic salmon fits within common “healthy eating” guidelines he might endorse (e.g., lean protein, omega-3s), salmon is generally considered a healthy food. Absent an explicit statement that his guidelines categorically exclude all animal products in every context, it’s plausible to answer that salmon could be within broad dietary guidelines focused on health.",
+        "rebuttal": "No opponent point has been presented yet. If the opponent argues he is strictly vegan and therefore excludes fish, that hinges on treating “dietary guidelines” as strict vegan rules rather than general health-oriented guidance.",
+        "confidence": 2
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Atlantic salmon is an animal product (fish), so it is not compatible with vegan dietary guidelines. David Duchovny has been reported in multiple interviews as following a vegan (or largely vegan) diet, which by definition excludes fish and seafood. Therefore, salmon would fall outside his dietary rules if “dietary guidelines” refers to what he personally eats/avoids.",
+        "rebuttal": "Debater A’s argument shifts the meaning of “dietary guidelines” from Duchovny’s stated diet to generic health advice; the question is about his guidelines, not what is broadly healthy. If he identifies as vegan, the exclusion of fish is categorical, so salmon would not be included.",
+        "confidence": 4
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "The question asks whether Atlantic salmon would be within David Duchovny’s “dietary guidelines,” which can reasonably be read as general diet/health guidance he follows rather than a strict identity label. Duchovny has been described as eating “mostly” or “largely” vegan at times, which implies flexibility rather than an absolute prohibition on all animal products in every circumstance. In that broader, health-oriented sense, Atlantic salmon is commonly considered a nutritious food (high-quality protein and omega-3s) and could fit within sensible dietary guidelines. Because the prompt doesn’t specify “strict vegan rules,” a permissive interpretation supports yes.",
+        "rebuttal": "Debater B’s argument depends on equating “dietary guidelines” with strict veganism and assuming Duchovny’s diet is categorically vegan. But reports that he is “largely/mostly” vegan weaken the claim of an absolute fish ban, and the question’s wording leaves room for broader health-based guidelines under which salmon fits.",
+        "confidence": 2
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Atlantic salmon is fish, i.e., an animal product. If David Duchovny’s dietary guidelines are described as vegan, then fish and seafood are excluded by definition, regardless of salmon’s health benefits. Even if some sources say he is “mostly/largely” vegan, the guideline being referenced is still vegan-leaning and would not include salmon as an allowed item within that framework. So salmon would not be within his dietary guidelines.",
+        "rebuttal": "Debater A’s move to “general healthy eating” ignores the question’s possessive framing—Duchovny’s guidelines are about what he avoids, not what nutritionists deem healthy. “Mostly vegan” indicates imperfect adherence, not that fish is permitted under the guideline itself; veganism still categorically excludes salmon.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "The question hinges on what “dietary guidelines” means for David Duchovny: many references describe him as eating “mostly” or “largely” vegan, which reads more like a flexible pattern than a strict rulebook. If the guideline is broadly health-oriented (plant-forward, generally clean eating) rather than a categorical ban on all animal products, then Atlantic salmon can fit because it’s widely considered a nutrient-dense food (protein and omega-3s). Since the prompt doesn’t explicitly say “strict vegan,” it’s reasonable to treat his guidelines as permissive enough that salmon could be included.",
+        "rebuttal": "Debater B assumes the guideline is strict veganism, but “mostly/largely vegan” is commonly used to signal non-absolute adherence. Even if vegan is the dominant theme, the question asks whether salmon would be within his guidelines, and a flexible, plant-forward guideline can still allow occasional fish without contradicting the “mostly vegan” description.",
+        "confidence": 2
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Atlantic salmon is fish, an animal product, and therefore not compatible with vegan dietary guidelines. David Duchovny has been described as following a vegan or largely vegan diet; the salient “guideline” in that description is avoiding animal-derived foods. Even if he is not perfectly strict in practice, the guideline itself (vegan/plant-based) would still classify salmon as outside what’s permitted. Thus, salmon would not be within Duchovny’s dietary guidelines.",
+        "rebuttal": "Debater A conflates “mostly vegan” with “fish is allowed,” but “mostly” typically describes adherence level, not a redefinition of vegan rules to include seafood. The question asks about his guidelines, and under a vegan/plant-based guideline salmon remains excluded regardless of its health profile.",
+        "confidence": 4
+      }
+    },
+    {
+      "round": 4,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "“Dietary guidelines” is ambiguous: it can mean a strict identity-based rule set (vegan) or the practical, health-oriented pattern someone generally follows. Duchovny is often described as “mostly/largely” vegan, which suggests a plant-forward guideline rather than an absolute prohibition in all cases. Under a flexible, health-motivated guideline, Atlantic salmon is commonly considered compatible (nutrient-dense protein and omega-3s). Given that the question doesn’t specify “strict vegan,” it’s reasonable to answer that salmon could fall within his broader guidelines.",
+        "rebuttal": "Debater B treats “mostly vegan” as if it still implies a categorical fish ban, but “mostly” commonly signals flexibility in what’s actually permitted/consumed. Since the prompt asks about Duchovny’s guidelines without clarifying strict veganism, the more permissive interpretation remains viable.",
+        "confidence": 2
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Atlantic salmon is fish, i.e., an animal product. David Duchovny has been described as following a vegan or plant-based diet, and the core guideline of veganism is excluding animal-derived foods, including seafood. Even if some write-ups say “mostly” or “largely” vegan, that describes imperfect adherence, not that fish is within the guideline itself. Therefore Atlantic salmon would not be within his dietary guidelines.",
+        "rebuttal": "Debater A’s “health-oriented flexibility” reading swaps in generic nutrition advice for Duchovny’s stated diet pattern. “Mostly vegan” doesn’t imply pescatarian allowances; it typically means he sometimes deviates from vegan rules, and salmon remains outside the vegan guideline.",
+        "confidence": 4
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Debater B’s case is more internally consistent with the possessive phrasing “David Duchovny’s dietary guidelines,” which most naturally refers to what his diet permits or excludes, not generic health advice. B also maintains a clear rule-based inference: if the guideline is vegan/plant-based, fish is excluded by definition, so salmon is out. Debater A begins with a strong pescatarian claim in the initial position but then pivots to arguing ambiguity and “health-oriented” guidelines, which weakens the link to Duchovny specifically and looks like a semantic retreat rather than evidence-based support. A’s reliance on “mostly/largely vegan” to imply fish could be allowed is less persuasive than B’s point that “mostly” typically indicates imperfect adherence, not a redefinition of what the guideline allows. Neither side provides concrete citations, but given the debate record, B’s interpretation better matches common usage and the question’s intent.",
+    "strongest_a": "Points out potential ambiguity in “dietary guidelines” and notes “mostly/largely vegan” could indicate flexibility.",
+    "weakest_a": "Shifts from Duchovny’s stated diet to generic healthfulness of salmon, undermining relevance to “his” guidelines.",
+    "strongest_b": "Uses the definitional exclusion of fish under vegan/plant-based guidelines and ties it to the question’s possessive framing.",
+    "weakest_b": "Relies on an asserted fact about Duchovny being vegan without supporting evidence in the transcript.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "David Duchovny has publicly followed a pescatarian-style diet, which includes fish but avoids other meats. Atlantic salmon is a type of fish. Therefore, it would fit within those dietary guidelines.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 11,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny has publicly said he follows a pescatarian-style diet, meaning he avoids meat but eats fish. Atlantic salmon is a fish, so it fits within pescatarian dietary guidelines. Therefore, it would be allowed under his stated diet.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny has publicly said he follows a pescatarian-style diet, meaning he avoids meat like beef and poultry but eats fish. Atlantic salmon is a fish, so it fits within pescatarian dietary guidelines. Therefore, it would be allowed under his described diet.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny has been reported to follow a pescatarian-style diet, meaning he avoids meat but eats fish and seafood. Atlantic salmon is a type of fish. Therefore, it would fit within those dietary guidelines.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny has been reported to follow a pescatarian-style diet, which includes fish but avoids other meats. Atlantic salmon is a type of fish. Therefore, it would fit within dietary guidelines that allow fish consumption.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny has publicly followed a pescatarian-style diet, meaning he avoids meat but eats fish and seafood. Atlantic salmon is a fish, so it fits within pescatarian dietary guidelines. Therefore, it would be allowed under his stated diet.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny has publicly said he follows a pescatarian-style diet, meaning he avoids meat but eats fish. Atlantic salmon is a fish, so it fits within pescatarian dietary guidelines. Therefore, it would be allowed under his stated diet.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "David Duchovny has publicly said he follows a vegan diet. Vegan dietary guidelines exclude all animal products, including fish. Atlantic salmon is a fish, so it would not fit within vegan guidelines.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "David Duchovny has been reported to follow a vegan diet, which excludes all animal products. Atlantic salmon is a fish and therefore an animal product. As a result, it would not fit within vegan dietary guidelines.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "David Duchovny is not known for having dietary guidelines that exclude fish, such as being vegetarian or vegan. Atlantic salmon is a common food that fits within typical omnivorous diets. Therefore, it would be within his dietary guidelines.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "David Duchovny has been reported to follow a vegan diet, which avoids all animal products. Atlantic salmon is a fish and therefore an animal product. That would place it outside vegan dietary guidelines.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "David Duchovny has publicly said he follows a vegan diet. Vegan dietary guidelines exclude all animal products, including fish. Atlantic salmon is a fish, so it would not fit within a vegan diet.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 7,
+        "no": 4
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 11,
+    "llm_calls_for_debate_plus_direct": 12,
+    "total_llm_calls": 23,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

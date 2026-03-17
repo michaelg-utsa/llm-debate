@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:50:56.902314Z",
+  "question": "Can you find a snow leopard in the Yucatan?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 52,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Snow leopards are native to the high mountains of Central and South Asia, not the Americas. The Yucatán Peninsula is a lowland tropical region in Mexico, far outside the snow leopard’s natural range and habitat. You would not find one there in the wild (aside from an unlikely captive situation).",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Snow leopards are native to the high mountains of Central and South Asia, not the Americas. The Yucatan is a lowland tropical region in Mexico where snow leopards do not occur in the wild. You would not normally find one there except potentially in captivity at a zoo, which the question does not imply.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical reasoning: snow leopards are native to high-altitude regions of Central and South Asia and are not part of the fauna of the Yucatán Peninsula in Mexico. They also correctly note the habitat mismatch (tropical lowlands vs. cold mountainous terrain) and geographic separation (Asia vs. the Americas). Each acknowledges a narrow caveat about captivity (e.g., a zoo), but interprets the question as asking about natural occurrence, which is the standard reading for StrategyQA-style questions. Since there were no debate rounds and no substantive differences in argument quality or evidence, neither side is more persuasive than the other. The best-supported final answer is therefore \"no.\"",
+    "strongest_a": "Correctly identifies the snow leopard’s native range (Central/South Asia) and contrasts it with Yucatán’s geography and habitat.",
+    "weakest_a": "Does not explicitly clarify whether the question could include captive animals, though it briefly mentions captivity as unlikely.",
+    "strongest_b": "Adds the explicit interpretation that the question concerns wild occurrence and notes captivity only as an exception.",
+    "weakest_b": "Relies on the same general-range claim without additional supporting detail beyond Debater A.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Snow leopards are native to the high mountains of Central and South Asia. The Yucatan is a lowland tropical region in Mexico and Central America, far outside the snow leopard’s natural range and habitat. You would not find a wild snow leopard there.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Snow leopards are native to the high mountains of Central and South Asia, such as the Himalayas. The Yucatan is a lowland tropical region in Mexico and does not provide the habitat or geographic range for snow leopards. You would only encounter one there in captivity, like a zoo, not in the wild.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Snow leopards are native to the high mountain ranges of Central and South Asia, such as the Himalayas. The Yucatan is a lowland tropical region in southeastern Mexico, far outside the snow leopard’s natural range and habitat. You would not find a wild snow leopard there, except possibly in captivity in a zoo.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Snow leopards are native to the high mountains of Central and South Asia, such as the Himalayas. The Yucatan is a lowland tropical region in southeastern Mexico and does not provide the snow leopard's natural habitat. Snow leopards are not wild in the Americas, so you would not find one in the Yucatan except possibly in captivity, which the question implies is not the case.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

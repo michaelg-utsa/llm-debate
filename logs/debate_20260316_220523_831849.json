@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:05:23.831849Z",
+  "question": "Does Billy Graham support agnosticism?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 91,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Billy Graham was a prominent evangelical Christian preacher who advocated faith in Jesus Christ and the truth of Christianity. Agnosticism, which withholds belief due to claimed lack of knowledge, is contrary to his core message of personal conversion and commitment to Christian belief. While he may have engaged respectfully with doubters, his public teaching did not endorse agnosticism as a position to support.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Billy Graham was a prominent Christian evangelist who preached faith in Jesus Christ and the truth of Christianity. Agnosticism, which withholds belief about God’s existence or knowability, conflicts with his core message and ministry. While he might have engaged respectfully with doubters, he did not support agnosticism as a stance.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and offer essentially identical reasoning: Graham’s identity and public ministry as an evangelical Christian preacher centered on affirming Christian belief and calling for conversion, which is incompatible with endorsing agnosticism as a position. Neither provides specific quotations or incidents, but the argument aligns with widely known facts about Graham’s role and message. Because there were no debate rounds, there is no differential rebuttal or additional evidence to separate the two. Debater A is marginally more persuasive by explicitly noting that respectful engagement with doubters is not the same as supporting agnosticism, clarifying a potential confusion. Overall, the best-supported final answer from the presented reasoning is “no.”",
+    "strongest_a": "Connects Graham’s evangelistic mission and call to commitment with incompatibility with agnosticism, while distinguishing respect for doubters from endorsement.",
+    "weakest_a": "No concrete citations or specific examples demonstrating Graham’s stance toward agnosticism.",
+    "strongest_b": "Clear, straightforward linkage between Graham’s Christian evangelism and non-support of agnosticism.",
+    "weakest_b": "Largely repeats general background without adding distinguishing detail or evidence.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Billy Graham was a prominent Christian evangelist who advocated faith in Jesus Christ and the truth of Christianity. He generally treated agnosticism as a position to be challenged or moved beyond through belief and conversion, not something to endorse. His public ministry emphasized certainty in God and the gospel rather than suspension of belief.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Billy Graham was a prominent Christian evangelist who preached faith in Jesus Christ and the truth of Christianity. Agnosticism, which withholds belief about God's existence or knowability, conflicts with his core message of committed belief and conversion. While he might have engaged respectfully with doubters, his public stance did not endorse agnosticism.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Billy Graham was a prominent Christian evangelist who preached faith in Jesus Christ and the truth of Christianity. Agnosticism, which holds that the existence of God is unknown or unknowable, conflicts with his message of confident belief and conversion. While he may have engaged respectfully with doubters, his public stance did not endorse agnosticism.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Billy Graham was a prominent Christian evangelist who strongly promoted faith in Jesus Christ and the truth of Christianity. Agnosticism, which withholds belief due to uncertainty about God's existence, is not a position he endorsed. In his preaching and writings, he generally urged people to move from doubt to faith rather than remain agnostic.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

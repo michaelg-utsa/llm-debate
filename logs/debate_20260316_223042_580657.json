@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:30:42.580657Z",
+  "question": "Did producer of Easy Rider ever star in a movie with Dean Cain's Princeton girlfriend?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 160,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The producer of Easy Rider is commonly credited as Peter Fonda. Dean Cain's \"Princeton girlfriend\" refers to Brooke Shields, who attended Princeton. I am not aware of any film in which Peter Fonda and Brooke Shields both appeared, and their filmographies do not have an obvious overlap.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The producer most associated with Easy Rider is Peter Fonda (also a star of the film). Dean Cain's \"Princeton girlfriend\" refers to Brooke Shields, who attended Princeton. There is no notable film credit where Peter Fonda and Brooke Shields co-starred.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters converge on the same chain: identify the Easy Rider producer as Peter Fonda and interpret “Dean Cain’s Princeton girlfriend” as Brooke Shields. Given that shared premise, both conclude there is no known co-starring credit between Fonda and Shields, and neither provides a concrete counterexample or overlapping title. The arguments are plausible but lightly evidenced: they rely on “commonly credited” and “not aware,” rather than citing specific filmographies or verifying the premise about Cain’s girlfriend. Debater B is marginally clearer in stating Fonda is both a producer and star, but otherwise the support level is essentially identical. With no debate rounds and no conflicting evidence, the best-supported outcome from the presented reasoning is “no,” albeit at moderate confidence due to possible ambiguity in who counts as producer and who the “Princeton girlfriend” is.",
+    "strongest_a": "Plausible identification of Brooke Shields as the Princeton reference and checks for obvious filmography overlap.",
+    "weakest_a": "Does not substantiate the producer identification or the girlfriend identification with specific sources/titles.",
+    "strongest_b": "Clearly notes Peter Fonda’s association with Easy Rider as producer and star, aligning the key entity for the comparison.",
+    "weakest_b": "Also relies on lack of awareness rather than confirming via concrete co-star credits or disambiguating the girlfriend claim.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The producer of Easy Rider is commonly credited as Peter Fonda. Dean Cain's Princeton girlfriend refers to Brooke Shields. Peter Fonda and Brooke Shields do not have a known acting credit together in the same film.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Easy Rider was produced by Peter Fonda. Dean Cain's Princeton girlfriend refers to Brooke Shields. There is no known film in which Peter Fonda and Brooke Shields both appeared.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "The producer of Easy Rider is commonly credited as Peter Fonda. Dean Cain's \"Princeton girlfriend\" refers to Brooke Shields, who attended Princeton. Peter Fonda and Brooke Shields do not have a known shared acting credit in the same film.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "The producer of Easy Rider was Peter Fonda. Dean Cain's Princeton girlfriend refers to Brooke Shields, who dated Cain while they were at Princeton. Peter Fonda and Brooke Shields do not have a known shared acting credit in the same film.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

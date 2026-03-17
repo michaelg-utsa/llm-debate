@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:14:30.875980Z",
+  "question": "Will Donald Duck hypothetically purchase bell-bottoms for himself?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 114,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Donald Duck is a fictional character and does not make real-world purchases, so he would not hypothetically purchase clothing for himself in a literal sense. Even within typical portrayals, he is usually depicted in a sailor outfit and is not commonly associated with bell-bottoms as a personal purchase choice. Therefore the safer answer is no.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Donald Duck is a fictional cartoon character and does not make real-world purchases. Even hypothetically within his typical depiction, he is usually shown wearing a sailor shirt and cap without pants, so buying bell-bottoms for himself is unlikely. Therefore the best answer is no.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on similar reasoning: Donald Duck is fictional and typically depicted in a sailor outfit, often without pants, making the idea of him purchasing bell-bottoms unlikely. With no debate rounds, there is no additional argumentation to distinguish them. Debater B’s reasoning is slightly more directly tied to the specific item (bell-bottoms) by noting his usual lack of pants, which makes buying bell-bottoms particularly incongruent. Debater A adds a meta-point about “literal” purchases, but the question is explicitly hypothetical, so that framing is a bit less aligned. Overall, both support “no,” with B marginally clearer on the character depiction relevance.",
+    "strongest_a": "Notes Donald Duck is fictional and not portrayed making purchases; typical sailor outfit not associated with bell-bottoms.",
+    "weakest_a": "Leans on literal real-world purchasing despite the question being hypothetical.",
+    "strongest_b": "Connects the improbability to Donald’s usual depiction (sailor shirt/cap, typically no pants), making bell-bottoms especially unlikely.",
+    "weakest_b": "Also relies on the “fictional character can’t purchase” point, which is less decisive given the hypothetical framing.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Donald Duck is typically depicted wearing a sailor shirt and cap and notably does not wear pants. Since bell-bottoms are a style of pants, it would be out of character for him to purchase them for himself. Hypothetically, he could buy them, but based on his standard portrayal the most likely answer is no.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Donald Duck is typically depicted wearing a sailor shirt and hat and notably no pants at all. Bell-bottoms are a type of pants, so buying them for himself would be out of character for his usual portrayal. While it's hypothetically possible, the most reasonable inference from the character's standard depiction is that he would not purchase them.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Donald Duck is typically depicted wearing a sailor shirt and hat and notably does not wear pants. Bell-bottoms are a type of pants, so buying them for himself would be out of character with his usual portrayal. Hypothetically he could, but based on common canon and depiction, it is unlikely.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Donald Duck is typically depicted wearing a sailor shirt and hat and notably no pants. Bell-bottoms are a style of pants, so buying them for himself would be out of character and unnecessary given his usual attire. While it's hypothetically possible, the most consistent inference is that he would not purchase them.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

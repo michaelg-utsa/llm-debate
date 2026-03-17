@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:38:46.316722Z",
+  "question": "Can paratroopers be used in a vacuum?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 22,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Paratroopers rely on parachutes, which need an atmosphere to generate drag and slow descent. In a vacuum there is no air, so a parachute cannot inflate or provide lift/drag. Without other propulsion or landing systems, paratroopers cannot be deployed as intended in a vacuum.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Paratroopers rely on an atmosphere to provide aerodynamic drag for parachutes to deploy and slow descent. In a vacuum there is no air, so a parachute cannot inflate and provide lift or drag. They would effectively be in free fall until impact or until another propulsion/landing system intervenes.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: paratroopers as a concept depend on parachutes, and parachutes require an atmosphere to generate drag and inflate. In a vacuum, there is no air, so the parachute cannot function, making “paratrooper” deployment infeasible in the intended sense. Neither side introduces counterexamples (e.g., using propulsion or pressurized canopies), but the question is phrased generally and the standard meaning supports a negative answer. Since there were no debate rounds, neither side improved or challenged the other’s reasoning. The support level is equal and consistent with basic physics, so the result is a tie with the shared conclusion.",
+    "strongest_a": "Correctly links parachute function to atmospheric drag, which is absent in a vacuum.",
+    "weakest_a": "Does not address possible alternative deployment methods that might still involve troops without parachutes.",
+    "strongest_b": "Clear statement that without air a parachute cannot inflate or slow descent, so paratrooper use fails.",
+    "weakest_b": "Assumes the definition of paratroopers strictly requires parachutes, without discussing edge cases.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Paratroopers rely on an atmosphere for parachutes to generate drag and slow descent. In a vacuum there is no air, so a parachute would not work and a person would fall unimpeded. Additionally, humans cannot survive exposure to vacuum without a pressurized suit and life support.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Paratroopers rely on air resistance and a parachute canopy to slow their descent, which requires an atmosphere. In a vacuum, a parachute cannot generate drag, so it would not function. Additionally, humans need pressure and oxygen to survive, so operating in a vacuum would require a spacesuit and different insertion methods.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Paratroopers rely on air resistance and a parachute canopy to slow their descent, which requires an atmosphere. In a vacuum, a parachute cannot inflate and provides essentially no drag, so it would not function. Additionally, humans would need a pressurized suit and life support to survive exposure to vacuum.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Paratroopers rely on an atmosphere to provide air resistance so a parachute can slow their descent. In a vacuum, a parachute would not inflate or generate drag, so it would not function. Additionally, humans cannot survive unprotected exposure to vacuum, making standard paratrooper operations impossible.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:39:07.610847Z",
+  "question": "Is basil safe from Hypervitaminosis D?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 184,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Hypervitaminosis D results from excessive vitamin D intake, typically via high-dose supplements or certain medical conditions. Basil is not a meaningful source of vitamin D, so eating basil would not cause vitamin D toxicity. Therefore basil is safe with respect to hypervitaminosis D.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Hypervitaminosis D results from excessive vitamin D intake, typically from high-dose supplements or certain medical conditions, not from eating common herbs. Basil contains little to no vitamin D and is not a meaningful source of it. Therefore consuming basil would not pose a risk for vitamin D toxicity.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: hypervitaminosis D is caused by excessive vitamin D intake, typically from supplements, and basil is not a meaningful dietary source of vitamin D. This reasoning is consistent with general nutritional knowledge that leafy herbs do not contain significant vitamin D, so they would not plausibly contribute to vitamin D toxicity. Neither debater provides citations or quantitative nutrient data, but the claim is straightforward and does not hinge on fine details. Since there were no rebuttals and both positions are equally supported, neither side is more persuasive than the other. The best-supported final answer remains that basil is safe with respect to hypervitaminosis D.",
+    "strongest_a": "Correctly links vitamin D toxicity to high vitamin D intake and notes basil is not a significant source.",
+    "weakest_a": "No supporting evidence or nutrient data; relies on general assertion.",
+    "strongest_b": "Same clear causal reasoning: common herbs like basil have negligible vitamin D so won't cause toxicity.",
+    "weakest_b": "Also lacks citations/quantification; largely repeats the premise.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Hypervitaminosis D is caused by excessive intake of vitamin D, usually from high-dose supplements, not from typical foods. Basil is an herb that contains negligible vitamin D and is not a meaningful source of it. Therefore, eating basil would not contribute to vitamin D toxicity.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Hypervitaminosis D is caused by excessive vitamin D intake, typically from high-dose supplements, not from herbs like basil. Basil contains negligible vitamin D and is not a meaningful source of the vitamin. Therefore, eating basil would not pose a risk of causing vitamin D toxicity.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Hypervitaminosis D is caused by excessive intake of vitamin D, usually from supplements or very high-dose fortified foods. Basil is an herb and contains negligible vitamin D, so eating basil would not contribute meaningfully to vitamin D overload. Therefore basil is safe with respect to hypervitaminosis D.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Hypervitaminosis D is caused by excessive intake of vitamin D, typically from high-dose supplements or certain medical conditions. Basil is an herb and is not a meaningful source of vitamin D. Eating basil would not provide enough vitamin D to cause toxicity.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

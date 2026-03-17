@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:41:25.096203Z",
+  "question": "Would Rime of the Ancient Mariner make a good sonnet?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 189,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A sonnet is a tightly structured 14-line poem with specific rhyme schemes and meter. \"The Rime of the Ancient Mariner\" is a long narrative poem with many stanzas and a ballad-like form, so it doesn’t fit sonnet constraints without drastic alteration. While themes could be adapted into a sonnet, the work as written would not make a good sonnet.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Rime of the Ancient Mariner is a long narrative poem with many stanzas, not a 14-line lyric poem with a sonnet’s typical structure and rhyme scheme. Sonnets are usually tightly focused and concise, whereas this work tells an extended story. It could be adapted into a sonnet only by heavy condensation and restructuring, so as-is it would not make a good sonnet.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: a sonnet is a 14-line, tightly structured lyric form, while \"The Rime of the Ancient Mariner\" is a long narrative poem in ballad-like stanzas. Given the question asks whether it would make a good sonnet, their shared reasoning that it does not fit sonnet constraints without drastic condensation is directly responsive and grounded in general literary form knowledge. Neither provides additional nuance beyond noting possible adaptation, but both correctly distinguish form and function (extended narrative vs concise lyric). With no debate rounds, there is no further evidence to separate them; their support is equally strong. Therefore the result is a tie, and the best-supported final answer is \"no.\"",
+    "strongest_a": "Clearly contrasts sonnet structural constraints with the poem’s long narrative ballad form.",
+    "weakest_a": "Doesn’t address whether an adaptation (not the original) could still be considered a 'good sonnet' beyond a brief caveat.",
+    "strongest_b": "Emphasizes the mismatch between sonnet concision/lyric focus and the work’s extended storytelling.",
+    "weakest_b": "Largely repeats form-based points without adding distinct supporting detail or examples.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Rime of the Ancient Mariner is a long narrative poem with many stanzas, not a 14-line lyric poem. A sonnet typically follows a strict structure and rhyme scheme, which this work does not. Condensing it into a sonnet would lose most of its story and pacing.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Rime of the Ancient Mariner is a long narrative poem with many stanzas, not a 14-line structure. A sonnet typically follows a strict rhyme scheme and meter, which this poem does not maintain throughout. Its storytelling scope and length would not fit well into the concise form of a sonnet.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Rime of the Ancient Mariner is a long narrative poem with many stanzas, not a 14-line structure. A sonnet has strict length and often specific rhyme and meter patterns, which this poem does not follow. Condensing its story and episodic structure into a sonnet would lose much of its content and effect.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Rime of the Ancient Mariner is a long narrative poem with many stanzas and a storytelling structure. A sonnet is typically 14 lines with a specific rhyme scheme and meter. The poem’s length and form do not fit the constraints of a sonnet, so it would not make a good sonnet without major alteration.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

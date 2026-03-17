@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:56:18.154739Z",
+  "question": "Did Moon Jae-in's residence exist when the World Trade Center was completed?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 68,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Moon Jae-in's residence refers to the Blue House (Cheong Wa Dae), the official residence of South Korea's president, which was established and used well before the 1970s. The World Trade Center in New York was completed in 1973. Since the Blue House existed prior to 1973, it did exist when the World Trade Center was completed.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Moon Jae-in's residence refers to the Blue House (Cheong Wa Dae), the official residence of South Korea's president, which has existed since the late 1940s (and the site was used even earlier). The World Trade Center in New York was completed in the early 1970s (1973). Since the Blue House existed well before 1973, it did exist when the World Trade Center was completed.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters make the same core identification: Moon Jae-in's residence as president refers to the Blue House (Cheong Wa Dae). They also correctly place the completion of the original World Trade Center complex in 1973. Given general historical knowledge that the Blue House served as the South Korean presidential residence from 1948 onward (with earlier use of the site), the inference that it existed in 1973 is well supported. Neither debater provides citations, but the claims are consistent and mutually reinforcing. Because their reasoning is essentially identical and no debate occurred to differentiate them, neither is more persuasive than the other.",
+    "strongest_a": "Correctly links Moon Jae-in's residence to the Blue House and compares its pre-1973 existence to WTC completion in 1973.",
+    "weakest_a": "No supporting evidence or citations; assumes the referent of 'residence' without addressing possible alternatives.",
+    "strongest_b": "Adds a slightly more specific timeframe (late 1940s) for the Blue House’s existence, aligning with WTC completion in 1973.",
+    "weakest_b": "Also lacks citations and similarly assumes 'residence' unambiguously means the Blue House.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Moon Jae-in's residence is the Blue House (Cheong Wa Dae) in Seoul, which has existed for centuries and has served as the presidential residence since the mid-20th century. The original World Trade Center in New York City was completed in the early 1970s. Since the Blue House existed well before the 1970s, it did exist when the World Trade Center was completed.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Moon Jae-in's residence refers to the Blue House (Cheong Wa Dae) in Seoul, which has existed in some form since the mid-20th century and became the South Korean presidential residence in 1948. The World Trade Center in New York was completed in the early 1970s (with the Twin Towers finished in 1973). Since the Blue House already existed and was in use decades earlier, it did exist when the World Trade Center was completed.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Moon Jae-in's residence is the Blue House (Cheong Wa Dae) in Seoul, which has existed in some form for centuries and served as the South Korean presidential residence since 1948. The World Trade Center in New York was completed in the early 1970s (with the Twin Towers completed in 1973). Since the Blue House predates 1973, it existed when the World Trade Center was completed.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Moon Jae-in's residence refers to the Blue House (Cheong Wa Dae) in Seoul, the official residence of South Korea's president. The Blue House complex has existed for decades and was established long before Moon Jae-in became president. The World Trade Center in New York was completed in the early 1970s, and the Blue House already existed by then. Therefore, his residence did exist when the World Trade Center was completed.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

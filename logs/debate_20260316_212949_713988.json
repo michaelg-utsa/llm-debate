@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:29:49.713988Z",
+  "question": "Can Burundi's communicate with citizens of New Brunswick?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 2,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "People in Burundi can communicate with citizens of New Brunswick through shared languages and modern communication channels. Burundi has speakers of French, and New Brunswick is officially bilingual with many French speakers, enabling direct communication. Even without a shared first language, translation and English/French as lingua francas make communication feasible.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "People in Burundi can communicate with citizens of New Brunswick because there are shared languages and common communication channels. Burundi has French as an official language, and New Brunswick is officially bilingual (English and French), so French provides a direct linguistic bridge. Beyond language, modern communication methods like phone and internet enable contact across countries.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue that communication is feasible due to shared language (French) and modern communication technologies. Their reasoning aligns with general knowledge: Burundi uses French officially, and New Brunswick is officially bilingual with a significant Francophone population, so at least some Burundians and New Brunswickers could communicate directly in French. Even if not everyone shares a language, the question asks whether Burundians can communicate with citizens of New Brunswick in general, which is satisfied by the existence of overlapping languages and translation/technology. Neither side provides additional evidence or addresses potential ambiguities (e.g., whether “Burundi's” means the government vs. people), but both interpretations still support “yes.” Since the arguments are essentially identical and no debate occurred, neither side is more persuasive than the other.",
+    "strongest_a": "Correctly identifies French as a shared official language enabling direct communication.",
+    "weakest_a": "Relies on broad assumptions about language proficiency without clarifying the subject (“Burundi's”).",
+    "strongest_b": "Connects New Brunswick’s bilingual status to a concrete linguistic bridge (French) plus communication channels.",
+    "weakest_b": "Adds little beyond Debater A and does not address possible ambiguity in the question wording.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "People in Burundi can communicate with citizens of New Brunswick through shared languages and modern communication methods. Burundi’s official languages include French and English is also used, while New Brunswick is officially bilingual in English and French. Even if individuals do not share a common language, translation tools and intermediaries enable communication. Therefore, communication is possible.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "People from Burundi can communicate with citizens of New Brunswick because there is no inherent barrier preventing communication across these regions. They can use shared languages such as French (official in Burundi and widely used in New Brunswick) or English (also common in New Brunswick), as well as translation tools. Modern communication methods like phone and internet make such interaction feasible.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "People from Burundi can communicate with citizens of New Brunswick because they are both human populations capable of communication. They may use shared languages such as English or French (common in New Brunswick) if they know them, or communicate through translation tools and interpreters. Physical distance does not prevent communication via phone or the internet.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "People from Burundi can communicate with citizens of New Brunswick because there are shared languages that can bridge the two places. Burundi has French as an official language, and New Brunswick is officially bilingual with French widely spoken (especially among Acadians). Even without French, communication could occur through English or translation tools.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

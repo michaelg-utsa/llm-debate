@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:20:59.330203Z",
+  "question": "Did Saint Augustine use the Julian calendar?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 131,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Saint Augustine lived from 354 to 430 CE in the Roman Empire, where the Julian calendar was the standard civil calendar. The Gregorian reform was introduced much later (1582), so Augustine could not have used it. While he also engaged with ecclesiastical dating (e.g., Easter calculations), the underlying civil calendar in his time was Julian.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Saint Augustine lived from 354 to 430 CE in the Roman Empire, when the Julian calendar was the standard civil calendar. The Gregorian reform did not occur until 1582, long after his lifetime. Therefore, the calendar in use during Augustine’s life would have been the Julian calendar.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Augustine lived in the late Roman Empire (354–430 CE), and the Julian calendar was the prevailing civil calendar then, with the Gregorian reform occurring much later in 1582. This is a straightforward chronological inference and aligns with general historical knowledge about calendar usage in the Roman Empire. Neither debater provides direct textual evidence from Augustine’s writings, but the contextual argument is sufficient for a StrategyQA-style question. Debater A adds a small nuance about ecclesiastical dating and Easter calculations, showing awareness of potential complications while maintaining the same conclusion. Since both positions are equally supported and no debate occurred, the result is effectively a tie, with a slight edge to A for addressing a possible caveat.",
+    "strongest_a": "Notes the Julian calendar was the standard civil calendar in Augustine’s Roman context and acknowledges ecclesiastical dating nuances.",
+    "weakest_a": "Does not cite specific primary evidence that Augustine personally referenced the Julian calendar explicitly.",
+    "strongest_b": "Clear chronological argument: Augustine predates the Gregorian reform, so the operative calendar would have been Julian.",
+    "weakest_b": "No nuance or supporting detail beyond the basic timeline; no primary-source linkage.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Saint Augustine lived from 354 to 430 CE, during the Roman Empire. The Julian calendar, introduced in 45 BCE, was the standard civil calendar in the Roman world throughout his lifetime. Therefore, dates and timekeeping in his context would have been based on the Julian calendar.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Saint Augustine lived from 354 to 430 CE, during the Roman Empire. The Julian calendar was introduced in 45 BCE and remained the standard civil calendar in the Roman world throughout Augustine's lifetime. The Gregorian reform did not occur until 1582, long after his death. Therefore, the calendar in use for dating in his context would have been the Julian calendar.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Saint Augustine lived from 354 to 430 CE, during the Roman Empire. The Julian calendar, introduced in 45 BCE, was the standard civil calendar in the Roman world throughout Augustine's lifetime. Therefore, the dates and calendar system he would have used were based on the Julian calendar.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Saint Augustine lived from 354 to 430 CE, during the Roman Empire. The Julian calendar was the standard civil calendar in the Roman world at that time, long before the Gregorian reform of 1582. Therefore, dates in his era would have been reckoned using the Julian calendar.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

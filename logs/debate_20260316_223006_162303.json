@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:30:06.162303Z",
+  "question": "Do people of the Iyer caste eat meat?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 158,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Iyer caste are Tamil Brahmins traditionally associated with strict vegetarianism as part of orthodox Hindu practice. While individual exceptions can exist in modern contexts, the customary dietary norm for Iyers is to avoid meat. Therefore, the expected answer in a general-knowledge setting is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Iyer caste is a Tamil Brahmin community traditionally associated with strict vegetarianism and adherence to orthodox Hindu dietary rules. While individual exceptions can exist, the customary and expected practice for Iyers is not to eat meat. StrategyQA-style questions typically target the traditional norm rather than outliers.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same answer and reasoning: Iyers are Tamil Brahmins and are traditionally vegetarian under orthodox Hindu dietary norms. Neither provides citations, but the claim aligns with common general knowledge about Iyer community practices. Both also appropriately hedge that individuals may differ while interpreting the StrategyQA question as asking about the customary norm. Since there are no debate rounds and no substantive differences in argument quality, neither side is more persuasive than the other. The best-supported final answer, based on the shared reasoning, is that Iyers do not eat meat in the traditional sense.",
+    "strongest_a": "Correctly frames the question as about traditional dietary norms of Iyer Tamil Brahmins (vegetarianism).",
+    "weakest_a": "No concrete evidence or sourcing; relies on generalization.",
+    "strongest_b": "Explicitly connects the expected answer format to StrategyQA’s tendency to target norms rather than exceptions.",
+    "weakest_b": "Also lacks specific supporting evidence beyond general knowledge.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Iyers are a Tamil Brahmin community traditionally associated with strict vegetarianism. Their customary religious and cultural practices generally prohibit eating meat. While individual exceptions can exist, the typical norm for the caste is vegetarian.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Iyer caste is a Tamil Brahmin community traditionally associated with strict vegetarianism. Their customary dietary practices generally prohibit eating meat, fish, and eggs. While individual adherence can vary in modern times, the traditional norm is vegetarian.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Iyer caste is a Tamil Brahmin community traditionally associated with strict vegetarianism. As Brahmins following orthodox Hindu dietary rules, they generally avoid meat and fish. While individual practices can vary today, the customary norm for Iyers is not to eat meat.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Iyers are a Tamil Brahmin community traditionally associated with strict vegetarianism as part of their religious and cultural practices. While individual exceptions can exist in any group, the customary dietary norm for Iyers is to avoid meat, fish, and eggs. Therefore, the general answer is that they do not eat meat.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

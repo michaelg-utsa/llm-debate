@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:02:33.130643Z",
+  "question": "Are pancakes typically prepared in a pot?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 85,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Pancakes are typically cooked on a flat surface like a griddle or frying pan so they can spread out and be flipped. A pot is generally used for boiling or simmering liquids and isn’t suited to forming and turning pancake batter. While batter can be mixed in a bowl, the cooking step is not usually done in a pot.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Pancakes are typically cooked on a flat surface like a griddle or frying pan, not in a pot. A pot is generally used for boiling or simmering liquids, whereas pancake batter is poured and cooked as a flat cake. While you could improvise with a pot, it is not the typical preparation method.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and support it with standard culinary knowledge: pancakes are cooked on a flat surface such as a griddle or frying pan so they can spread and be flipped. Each contrasts this with a pot’s typical use for boiling/simmering liquids, which is not suited to pancake formation and flipping. Debater A adds a clear distinction between mixing batter in a bowl versus cooking, which directly addresses possible confusion about “prepared.” Debater B similarly notes improvisation is possible but not typical, which is reasonable but slightly less focused than A’s clarification. With no disagreement and near-identical reasoning, the outcome is effectively a tie, with A marginally clearer on the “prepared” ambiguity.",
+    "strongest_a": "Clarifies that cooking (not mixing) is the relevant step and it’s done on a griddle/pan, not a pot.",
+    "weakest_a": "Doesn’t explicitly address edge cases like oven-baked or steamed pancake variants, though the question asks 'typically.'",
+    "strongest_b": "Notes that while a pot could be improvised, it is not the typical method.",
+    "weakest_b": "Slightly redundant and less direct about the 'prepared' vs 'cooked' distinction.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Pancakes are typically cooked on a flat griddle or in a frying pan/skillet. A pot is generally used for boiling or simmering foods, not for making pancakes. While batter could be mixed in a bowl, the cooking surface is usually flat rather than a pot.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Pancakes are typically cooked on a flat surface like a griddle or frying pan. The batter is poured and spread out to form a thin round cake, which is flipped as it cooks. A pot is generally used for boiling or simmering, not for making pancakes.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pancakes are typically cooked on a flat griddle or in a frying pan, where the batter can spread into a thin round shape. A pot is generally used for boiling or simmering liquids and is not suited to making flat pancakes. While a pot could be improvised in unusual cases, it is not the typical method.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pancakes are typically cooked on a flat griddle or in a frying pan, where the batter can spread and brown evenly. A pot is deep and better suited for boiling or simmering, not for pan-frying a flat cake. While you could improvise in unusual circumstances, it is not the typical preparation method.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

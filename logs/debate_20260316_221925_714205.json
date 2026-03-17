@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-03-16T22:19:25.714205Z",
+  "question": "Did Gauss have a normal brain structure?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 126,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Gauss’s brain was examined after his death and was reported to have unusual anatomical features, such as a high degree of convolution and an atypical pattern in certain sulci. These observations were often cited historically as deviations from an average “normal” brain structure, even if the scientific significance is debated. Given the question’s binary framing, those reported differences point to a non-normal structure.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Reports from the post-mortem examination of Carl Friedrich Gauss’s brain describe it as structurally typical, with no obvious abnormalities or unusual features that would make it \"non-normal.\" While some accounts note measurements or impressions taken by anatomists, these do not establish a clearly abnormal structure. So the best-supported choice is that his brain structure was normal.",
+      "confidence": 3
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Gauss is often cited among historical geniuses whose brains were examined post-mortem and found to have unusual anatomical features rather than being entirely typical. Popular historical accounts report atypical patterns in the cerebral convolutions (gyri/sulci), which is commonly summarized as his brain not being “normal.” Since the question asks about normal brain structure, these reported irregularities support answering no.",
+        "rebuttal": "There is no opponent point yet to address. If the opponent argues there was no verified abnormality, the common historical reporting of atypical convolution patterns is exactly why the expected answer is “no.”",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Gauss’s brain was preserved and examined, and while some observers described prominent or complex convolutions, that does not establish a pathological or structurally abnormal brain. Reports of “unusual” gyri/sulci in famous brains are often subjective, lack modern controls, and generally fall within normal human anatomical variation. “Normal brain structure” in this context means no clear lesion, disease, or gross abnormality, which is consistent with historical descriptions of Gauss’s brain.",
+        "rebuttal": "Debater A relies on popular accounts of “atypical” convolution patterns, but atypical does not equal non-normal—gyral patterns vary widely across healthy individuals. Without evidence of a defined abnormality (e.g., malformation, pathology), the safer interpretation is that his brain structure was normal despite anecdotal remarks about complexity.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Gauss’s brain is historically reported as having atypical cortical folding, with accounts emphasizing unusual or highly developed convolution patterns compared to what examiners considered ordinary. The question asks whether he had a “normal brain structure,” and in common reference sources this is precisely one of the famous cases cited as not anatomically typical. Even if not pathological, “not normal” can mean structurally unusual relative to the norm, which matches how Gauss’s preserved brain has been described.",
+        "rebuttal": "Debater B narrows “normal” to “no disease,” but the question is about structure, not pathology. The recurring historical characterization of Gauss’s brain as unusually convoluted is enough to classify it as not normal in the intended, lay sense of the prompt.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Post-mortem descriptions of Gauss’s brain do not report gross malformations, lesions, or disease; they mainly note subjective impressions about prominent or complex cortical folds. Gyral/sulcal patterns vary widely among healthy people, and 19th-century comparisons lacked modern population baselines, making “unusual” a weak basis for declaring “not normal.” In a StrategyQA-style prompt, “normal brain structure” is best read as “no clear structural abnormality,” which fits the historical record. Therefore, the most defensible answer is that Gauss had a normal brain structure.",
+        "rebuttal": "Debater A equates “unusually convoluted” with “not normal,” but unusual folding is often still within normal human variation and was frequently overstated in popular accounts of geniuses. Without a specific documented abnormality beyond subjective folding impressions, “no” overclaims what the evidence supports.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Gauss’s brain is widely described in historical and popular scientific accounts as having atypical cortical convolution patterns noted at autopsy, i.e., a structure that observers considered unusual rather than ordinary. The question is phrased in a lay StrategyQA way (“normal brain structure”), where “normal” contrasts with “notably unusual anatomy,” not strictly with “pathological disease.” Since the salient, commonly repeated fact about Gauss’s preserved brain is that it was anatomically unusual in its folding, the best fit is that it was not normal.",
+        "rebuttal": "Debater B’s standard (“normal unless there’s a lesion/malformation”) is narrower than how these prompts typically use “normal.” Even if the folding differences aren’t a disease, the repeated characterization of Gauss’s brain as structurally atypical is exactly what the question is targeting.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "The autopsy and subsequent examinations of Gauss’s preserved brain did not identify any gross structural abnormality (e.g., malformation, lesion, or disease); the recurring remarks are about prominent/complex gyri, which is a qualitative observation. Cortical folding varies substantially across healthy individuals, and 19th-century claims of “unusual” convolutions in geniuses were often based on small samples and subjective comparison rather than a defined anatomical anomaly. In that evidentiary context, the most defensible reading is that Gauss’s brain was structurally normal, with any noted features falling within normal human variation.",
+        "rebuttal": "Debater A’s case hinges on “widely described as unusual,” but “unusual” in popular retellings is not the same as “not normal” anatomically—especially when no specific, diagnosable structural abnormality is cited. StrategyQA typically expects a fact-like distinction, and the record supports “no pathology/abnormal structure reported,” not a confirmed non-normal brain.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 4,
+      "debater_a": {
+        "answer": "no",
+        "argument": "Gauss is one of the classic “genius brain” cases where post-mortem examiners explicitly highlighted atypical cortical convolution patterns rather than describing an entirely ordinary brain. In a StrategyQA-style, lay reading, “normal brain structure” contrasts with “notably unusual anatomy,” and the most salient repeated claim about Gauss’s preserved brain is that its folding was unusual. Even if not a disease state, being structurally atypical relative to what anatomists considered standard supports answering no. Thus, the intended factoid is that his brain was not considered normal in structure.",
+        "rebuttal": "Debater B’s standard (“normal unless there’s a lesion/malformation”) is too clinical for this prompt; the question is about normal structure, not pathology. The historical record’s emphasis on unusually complex/atypical gyri is exactly the kind of structural non-normality the question is targeting, even if it falls within broad human variation.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "Accounts of Gauss’s preserved brain do not describe gross anatomical abnormalities such as malformations, lesions, or disease; they mainly report impressions of prominent or complex cortical folding. Variation in gyri and sulci is common across healthy humans, and 19th-century “genius brain” comparisons were typically subjective and based on weak baselines. Without a specific, documented structural anomaly beyond qualitative “unusual convolutions,” the most defensible classification is that his brain structure was normal.",
+        "rebuttal": "Debater A repeatedly relies on the vague claim that examiners found the folding “unusual,” but “unusual” is not equivalent to “non-normal” absent a defined abnormality. A lay StrategyQA prompt still generally distinguishes normal structure from clear anatomical abnormality, not from subjective impressions about convolution complexity.",
+        "confidence": 3
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Debater B was more persuasive because they drew a clearer distinction between “structurally abnormal” and “subjectively described as unusual,” arguing that the latter can still fall within normal human anatomical variation. Debater A repeatedly relied on vague appeals to “popular/historical accounts” of atypical convolutions but did not provide a concrete, well-defined abnormality or specific anatomical finding that would robustly justify labeling the brain as non-normal. The crux of the disagreement is the meaning of “normal,” and B offered the more defensible interpretation for a binary factoid question: normal unless a clear abnormality/malformation/pathology is reported. A’s attempt to broaden “not normal” to include any notable variation makes the criterion too elastic and less evidentially grounded. Given the transcript, B’s position better matches what can be supported without overclaiming from qualitative descriptions.",
+    "strongest_a": "Emphasized that multiple historical retellings highlight Gauss’s brain as unusually convoluted, suggesting the prompt may be targeting that factoid.",
+    "weakest_a": "Did not cite any specific, documented anatomical abnormality beyond vague ‘atypical folding,’ and leaned heavily on popular accounts.",
+    "strongest_b": "Argued that no gross abnormality/pathology was reported and that gyral variation is common, making ‘unusual’ insufficient to conclude non-normal structure.",
+    "weakest_b": "Relied on an interpretive definition of ‘normal’ (no clear abnormality) rather than directly rebutting the existence of any specific reported atypical sulcal pattern.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "After Carl Friedrich Gauss died, his brain was examined and preserved. Reports from the examination did not identify any clear abnormalities in its gross structure. While some later writers speculated about unusual features, there is no solid evidence that his brain structure was abnormal.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 11,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "After Carl Friedrich Gauss died, his brain was examined and preserved. Reports from the time describe his brain as not showing unusual structural abnormalities, despite some measurements being taken. There is no well-established evidence that his brain had an abnormal structure compared to typical human brains.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reports from examinations of Carl Friedrich Gauss's brain after his death indicate it was anatomically typical, without clear structural abnormalities. While some accounts note measurements like weight or convolution patterns, these were not established as definitively unusual or causally linked to his abilities. Overall, the historical record supports that his brain structure was considered normal.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reports from examinations of Carl Friedrich Gauss's brain after his death describe it as having typical overall structure, though some observers noted prominent convolutions. Such qualitative observations do not establish an abnormal brain anatomy. Therefore, his brain structure is generally considered normal.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Reports from examinations of Carl Friedrich Gauss's brain after his death noted unusual anatomical features, such as an exceptionally developed region associated with mathematical ability. These observations were often cited historically as evidence that his brain differed from typical structure. Therefore, it was not considered normal in structure by those accounts.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reports from examinations of Carl Friedrich Gauss's brain after his death indicate it was structurally normal, without unusual anatomical features. While some measurements (like brain weight) were noted, they did not establish an abnormal structure. Therefore, his brain structure is generally described as normal.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Reports from examinations of Carl Friedrich Gauss's brain after his death noted unusual anatomical features rather than an entirely typical structure. Such observations were often cited historically as possible correlates of his exceptional mathematical ability. Therefore, his brain was not described as having a normal structure.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Reports about Carl Friedrich Gauss's brain after his death indicate it was preserved and examined, with no widely accepted findings of major structural abnormalities. While some measurements and observations were recorded, they did not establish that his brain was fundamentally non-normal in structure. Therefore, based on common historical accounts, it is reasonable to say he had a normal brain structure.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Carl Friedrich Gauss's brain was examined after his death and was not found to have any dramatic or clearly abnormal structural differences compared to typical human brains. While some reports noted features like pronounced convolutions, such observations are not definitive evidence of an abnormal structure. Overall, the historical accounts do not support the claim that his brain structure was abnormal in a clear, medically established way.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Reports from examinations of Carl Friedrich Gauss's brain after his death noted unusual anatomical features rather than an entirely typical structure. Such accounts are often cited as suggesting his brain was not strictly \"normal\" in structure. Therefore, the best choice is that he did not have a normal brain structure.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "After Carl Friedrich Gauss died, his brain was examined and preserved. Reports from the examination did not identify any gross abnormalities; it was generally described as normal in structure, though notably well-developed in some respects. Therefore, he is considered to have had a normal brain structure.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "After Carl Friedrich Gauss died, his brain was examined and preserved. Reports from anatomists described it as generally normal in overall structure, though with some noted features like pronounced convolutions. There is no well-established claim that he had an abnormal brain structure.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 8,
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 11,
+    "llm_calls_for_debate_plus_direct": 12,
+    "total_llm_calls": 23,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

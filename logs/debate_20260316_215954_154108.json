@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:59:54.154108Z",
+  "question": "Are goats found on abyssal plains?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 77,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Abyssal plains are deep-ocean seafloor regions typically 3,000–6,000 meters below the surface. Goats are terrestrial mammals and cannot live in deep marine environments. Therefore, goats are not found on abyssal plains.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Abyssal plains are deep-ocean environments typically 3,000–6,000 meters below sea level. Goats are terrestrial mammals and cannot live in the deep sea. Therefore goats are not found on abyssal plains.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and essentially identical reasoning. They correctly characterize abyssal plains as deep-ocean seafloor environments and note that goats are terrestrial mammals not adapted to living in deep marine habitats. With no debate rounds, neither side adds extra evidence or nuance beyond this straightforward biological and environmental mismatch. Since the arguments are equally sound and neither contains an apparent flaw, the result is a tie. The best-supported final answer remains that goats are not found on abyssal plains.",
+    "strongest_a": "Correctly links abyssal plains to deep seafloor and goats to terrestrial life, making coexistence impossible.",
+    "weakest_a": "Provides no additional supporting detail beyond the basic habitat mismatch.",
+    "strongest_b": "Clear, accurate habitat-based reasoning that goats cannot inhabit deep-sea environments.",
+    "weakest_b": "No extra evidence or elaboration; mirrors Debater A.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Abyssal plains are deep-ocean regions thousands of meters below the surface. Goats are terrestrial mammals that live on land and cannot survive underwater or at extreme ocean depths. Therefore, goats are not found on abyssal plains.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Abyssal plains are deep-ocean regions typically 3,000–6,000 meters below the surface. Goats are terrestrial mammals that live on land and cannot survive in deep-sea environments. Therefore, goats are not found on abyssal plains.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Abyssal plains are deep-ocean environments thousands of meters below the surface. Goats are terrestrial mammals that live on land and cannot survive in deep-sea conditions. Therefore, goats are not found on abyssal plains.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Abyssal plains are deep-ocean environments thousands of meters below the surface. Goats are terrestrial mammals that live on land and cannot survive the pressure, lack of oxygen, and conditions of the deep sea. Therefore, goats are not found on abyssal plains.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

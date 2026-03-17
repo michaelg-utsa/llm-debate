@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:42:34.810407Z",
+  "question": "Would Alexander Graham Bell hypothetically support Nazi eugenics?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 33,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Although Alexander Graham Bell endorsed some early 20th-century eugenic ideas (notably advocating restrictions on marriage for the deaf), Nazi eugenics involved coercive sterilization, racial persecution, and genocidal policies that go far beyond those views. There is no solid basis to claim he would support the Nazi program, and his documented positions do not indicate endorsement of violent, state-run racial extermination. Given the scale and nature of Nazi eugenics, it is more plausible he would not support it.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Alexander Graham Bell did express eugenic ideas in the late 19th/early 20th century, particularly around discouraging deaf people from intermarrying. However, Nazi eugenics was tied to coercive state power, racial ideology, and mass violence, which goes far beyond Bell’s documented positions and historical context. It’s not well-supported to claim he would endorse the Nazi program specifically.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters converge on the same answer (“no”) and provide essentially the same justification: Bell had some involvement with early eugenic thinking (notably regarding deafness and marriage) but Nazi eugenics was qualitatively different in its coercive, racialized, and genocidal character. Given the lack of any transcripted back-and-forth, neither side adds additional evidence or refutes counterpoints, so the evaluation rests on plausibility and historical distinction. The reasoning is generally sound: endorsing limited, non-genocidal eugenic measures does not imply support for Nazi racial policy and mass violence. Neither debater provides direct primary-source evidence about Bell’s views on race or coercion, which limits confidence, but the inference that he would not support Nazi eugenics is better supported than the opposite. Since their arguments are effectively equivalent, the result is a tie with the shared final answer.",
+    "strongest_a": "Clearly distinguishes Bell’s limited eugenic views from Nazi coercive/genocidal eugenics.",
+    "weakest_a": "No direct evidence about Bell’s stance on coercion/racial ideology; relies on plausibility.",
+    "strongest_b": "Emphasizes historical context and the gap between Bell’s ideas and Nazi state violence.",
+    "weakest_b": "Similarly lacks specific sourcing beyond general characterization of Bell’s views.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Alexander Graham Bell supported some early 20th-century eugenic ideas, particularly regarding discouraging marriages among the deaf, but this was not equivalent to endorsing Nazi racial ideology or its coercive, genocidal policies. Nazi eugenics involved forced sterilization, persecution, and mass murder, which goes far beyond the reformist or pseudoscientific positions Bell expressed. Given the lack of evidence that Bell would support such extreme measures, the most reasonable answer is no.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Alexander Graham Bell did express support for certain early 20th-century eugenic ideas, particularly around discouraging marriages among the deaf, but that does not imply endorsement of Nazi ideology. Nazi eugenics was inseparable from a totalitarian, racist program involving coercion, persecution, and mass murder. Given the extreme, violent, and explicitly racial nature of Nazi policies, it is unlikely Bell would hypothetically support \"Nazi eugenics\" as implemented by the regime.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alexander Graham Bell did express support for certain early 20th-century eugenic ideas, particularly around discouraging marriages among deaf people, which aligns with the broader eugenics movement of his era. However, Nazi eugenics was inseparable from a violent, racist, state-coerced program including forced sterilization and mass murder. Given the extreme, genocidal nature of Nazi policies and the lack of evidence that Bell endorsed such brutality, it is unlikely he would support Nazi eugenics as implemented.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alexander Graham Bell did support some early 20th-century eugenic ideas, particularly regarding hereditary deafness, which shows he was not opposed to eugenics in principle. However, Nazi eugenics was inseparable from a racist, coercive state program involving forced sterilization, persecution, and mass murder. There is no good basis to claim Bell would endorse those extreme, violent policies, and his known positions do not imply support for genocide. Therefore, he would not hypothetically support Nazi eugenics.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:00:15.669859Z",
+  "question": "Are Doctors of Homeopathy more likely than Doctors of Internal Medicine to recommend Quartz as a treatment?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 78,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Homeopathy commonly uses highly diluted substances and includes remedies derived from minerals and crystals, so recommending something like quartz fits within that tradition. Internal medicine is evidence-based and would not typically recommend quartz as a medical treatment. Therefore, Doctors of Homeopathy are more likely than Doctors of Internal Medicine to recommend quartz.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Homeopathy commonly includes remedies derived from minerals and crystals, and practitioners are more likely to endorse crystal-based or quartz-related treatments within alternative medicine traditions. Internal medicine physicians are trained in evidence-based conventional medicine and would not typically recommend quartz as a medical treatment. Therefore, doctors of homeopathy are more likely than internal medicine doctors to recommend quartz.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave essentially the same argument and reached the same conclusion, so neither is more persuasive than the other. Their reasoning aligns with general knowledge: internal medicine is conventionally evidence-based and would be very unlikely to recommend quartz as a treatment. They also plausibly connect homeopathy/alternative practice with mineral-derived remedies, making it more likely (relative to internal medicine) that a homeopathy practitioner might recommend quartz. However, both arguments slightly overreach by conflating homeopathy specifically with crystal healing; quartz is more directly associated with crystal therapy than standard homeopathic materia medica, though overlap in alternative medicine communities makes the comparative claim still plausible. With no debate rounds and no additional evidence, the best-supported answer remains that homeopathy doctors are more likely than internal medicine doctors to recommend quartz.",
+    "strongest_a": "Correctly contrasts evidence-based internal medicine with alternative practices where quartz recommendations are more plausible.",
+    "weakest_a": "Conflates homeopathy with crystal healing without support that quartz is a typical homeopathic remedy.",
+    "strongest_b": "Clear comparative reasoning: internal medicine unlikely; alternative/homeopathy more likely to endorse quartz-related treatments.",
+    "weakest_b": "Relies on a broad association between homeopathy and crystal-based treatments rather than specific homeopathic practice.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Homeopathy is an alternative medicine system that commonly uses highly diluted substances and may include mineral-based remedies such as quartz in its materia medica. Internal medicine is a conventional, evidence-based medical specialty and does not recognize quartz as a medically effective treatment. Therefore, a Doctor of Homeopathy would be more likely than a Doctor of Internal Medicine to recommend quartz as a treatment.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Homeopathy is an alternative medicine system that commonly incorporates non-conventional remedies and concepts, and practitioners are more open to recommending mineral or crystal-based treatments. Quartz is associated with crystal healing and similar alternative practices rather than evidence-based medical treatment. Internal medicine physicians generally adhere to scientifically validated therapies and would be unlikely to recommend quartz as a treatment.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Homeopathy commonly uses highly diluted mineral substances and includes remedies derived from silica and related minerals, making it more plausible for a homeopathic doctor to recommend something like quartz. Internal medicine is evidence-based and would not typically recommend quartz as a medical treatment. Therefore, doctors of homeopathy are more likely than internal medicine physicians to recommend quartz.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Homeopathy is an alternative medicine system that often incorporates non-standard or metaphysical remedies, and practitioners are more likely to recommend crystal-based treatments like quartz. Internal medicine physicians are trained in evidence-based conventional medicine and generally do not recommend quartz as a medical treatment. Therefore, Doctors of Homeopathy are more likely than Doctors of Internal Medicine to recommend quartz.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

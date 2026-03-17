@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:35:50.523676Z",
+  "question": "Was the Treaty of Versailles settled over blueberry scones?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 14,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Treaty of Versailles was negotiated and signed in 1919 at the Paris Peace Conference, involving formal diplomatic meetings among Allied powers and Germany. There is no credible historical account that it was \"settled\" over blueberry scones; that phrasing suggests an informal tea-time agreement rather than a major international treaty process. While food may have been present at some gatherings, the treaty’s terms were decided through extensive official negotiations.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Treaty of Versailles was negotiated and signed in 1919 at the Paris Peace Conference, involving formal diplomatic meetings among Allied powers and Germany. There is no historical basis for it being \"settled over blueberry scones\"; that phrasing suggests an informal, anachronistic scenario rather than the documented process.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and rely on broadly accurate general knowledge: the Treaty of Versailles was negotiated through formal diplomatic processes at the 1919 Paris Peace Conference and signed at Versailles. Both argue that the “blueberry scones” framing implies an informal, whimsical setting that is inconsistent with the well-documented historical record. Debater A adds a slightly stronger nuance by acknowledging that food could have been present at some meetings while still rejecting the claim that the treaty was “settled” over scones, which directly addresses a possible loophole. Debater B’s argument is essentially the same but a bit more conclusory and leans on “anachronistic” without further support. With no transcript rounds, there is no additional evidence to differentiate beyond that minor nuance. Overall, the best-supported final answer is clearly “no.”",
+    "strongest_a": "Provides context about formal negotiations and addresses the possibility of food being present without changing the conclusion.",
+    "weakest_a": "Does not cite specific sources; relies on general historical knowledge.",
+    "strongest_b": "Correctly frames the treaty as a formal, documented diplomatic process inconsistent with the scones claim.",
+    "weakest_b": "More conclusory; the “anachronistic” point is asserted rather than substantiated.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Treaty of Versailles was negotiated and signed in 1919 at the Paris Peace Conference, primarily at the Palace of Versailles. There is no historical basis for it being \"settled\" over blueberry scones; that phrasing is a humorous or fictional idea rather than a documented fact. The treaty’s terms were determined through formal diplomatic negotiations among the Allied powers and Germany.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Treaty of Versailles was negotiated and signed in 1919 at the Paris Peace Conference, primarily at the Palace of Versailles. There is no historical account that it was \"settled over blueberry scones\"; that phrase is a humorous or anachronistic framing rather than a documented fact. The negotiations involved formal diplomatic meetings among the Allied powers.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Treaty of Versailles was negotiated and signed in 1919 at the Paris Peace Conference, primarily at the Palace of Versailles. There is no historical account that it was \"settled over blueberry scones\"; that phrasing suggests an informal or humorous scenario rather than a documented diplomatic process. The treaty resulted from formal negotiations among Allied powers after World War I.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Treaty of Versailles was negotiated and signed in 1919 as part of the Paris Peace Conference following World War I. It involved formal diplomatic negotiations among the Allied powers and Germany, not an informal agreement over food. There is no historical evidence that it was settled over blueberry scones.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:37:17.910580Z",
+  "question": "Is the title of Shirley Bassey's 1971 diamond song a true statement?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 18,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Shirley Bassey’s 1971 song is titled “Diamonds Are Forever.” As a factual claim, that isn’t true: diamonds can be destroyed (e.g., by burning at high temperatures or transforming under extreme conditions) and can also be lost or broken. The title is best understood as a romantic/metaphorical statement rather than a literal one.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Shirley Bassey’s 1971 song is titled “Diamonds Are Forever.” As a factual statement, that isn’t true: diamonds can be destroyed or altered (e.g., by extreme heat/pressure, cutting, or chemical processes), and they don’t literally last forever. The title is more of a poetic/marketing claim than a true statement.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) with essentially identical reasoning: the song title is “Diamonds Are Forever,” and taken literally it is not a true statement because diamonds can be destroyed, altered, or lost and thus do not last forever. This is consistent with general scientific understanding that diamonds can burn at high temperatures and can be transformed under certain conditions. Neither debater provides citations, but the claim is common knowledge and the reasoning is straightforward. Since there were no debate rounds, there is no additional differentiation in argument quality. Overall, the support for “no” is adequate and uncontested, so the result is a tie with a clear final answer.",
+    "strongest_a": "Correctly identifies the title and explains it is metaphorical rather than literally true.",
+    "weakest_a": "No concrete evidence or sourcing beyond general assertions.",
+    "strongest_b": "Provides multiple mechanisms (heat/pressure/chemical processes) showing diamonds are not literally forever.",
+    "weakest_b": "Some mechanisms mentioned are a bit vague and also lack sourcing.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Shirley Bassey's 1971 song is titled \"Diamonds Are Forever.\" That title claims diamonds last forever, but in reality diamonds can be destroyed or altered (for example by extreme heat, burning in oxygen, or being crushed under sufficient force). So the title is not literally a true statement.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Shirley Bassey's 1971 song is titled \"Diamonds Are Forever.\" That phrase is not literally true, because diamonds can be destroyed or altered under extreme conditions (such as very high heat or pressure) and they can also be lost. So the title is more a poetic slogan than a factual statement.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Shirley Bassey released a song in 1971 titled \"Diamonds Are Forever.\" The title claims that diamonds last forever, but in reality diamonds can be damaged, lost, or destroyed and do not literally last forever. So the title is not a strictly true statement.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Shirley Bassey recorded a 1971 song titled \"Diamonds Are Forever.\" The title claims diamonds last forever, but in reality diamonds can be damaged, lost, or destroyed, and they do not literally last forever. Therefore the title is not a strictly true statement.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

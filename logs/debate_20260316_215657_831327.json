@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:56:57.831327Z",
+  "question": "Would Iris (mythology) and Hermes hypothetically struggle at a UPS job?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 70,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Iris and Hermes are divine messengers associated with extremely fast travel and reliable delivery of messages. A UPS job centers on transporting and delivering items efficiently, which aligns well with their mythological roles and abilities. Hypothetically, they would be more likely to excel than to struggle.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "In mythology, Iris and Hermes are divine messengers known for extremely fast travel and reliable delivery of messages. Those traits map well onto the core demands of a UPS job: transporting items quickly and accurately. While modern logistics involves procedures and technology they might need to learn, nothing suggests they would inherently struggle compared to ordinary humans.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Iris and Hermes are mythological messengers associated with speed and reliable delivery, which directly matches the core function of a UPS delivery job. Neither provides a countervailing consideration that would make them “struggle,” beyond a brief nod to modern procedures/technology, which is not developed into a serious obstacle. Since there were no debate rounds, there is no additional evidence or rebuttal to distinguish the two positions. Debater B slightly strengthens the case by explicitly acknowledging modern logistics learning requirements while still concluding they would not inherently struggle. Overall, the best-supported answer from the presented reasoning is that they would not struggle.",
+    "strongest_a": "Directly maps their messenger roles and speed to UPS delivery tasks, implying they would excel.",
+    "weakest_a": "Does not address potential mismatches with modern job constraints (rules, technology, physical handling).",
+    "strongest_b": "Acknowledges modern logistics/procedural learning but argues it’s not an inherent barrier.",
+    "weakest_b": "Still largely assumes mythic abilities translate seamlessly to a modern corporate delivery role.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Iris is a divine messenger associated with swift travel between gods and humans, so delivering messages and moving quickly would be natural for her. Hermes is also a messenger god and is strongly associated with speed, travel, and commerce. Those traits align well with the core demands of a UPS delivery job, so they would not be likely to struggle.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Iris and Hermes are both divine messengers in Greek mythology, associated with swift travel and delivering communications or items. A UPS job centers on fast, reliable delivery and navigation, which aligns closely with their mythological roles. Hypothetically, their speed and messenger experience would make the work easier rather than a struggle.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Iris and Hermes are divine messengers in Greek mythology, associated with rapid travel and delivering messages or items. A UPS job centers on transporting and delivering packages efficiently, which aligns closely with their mythological roles. Their speed and navigation abilities would likely make the work easier rather than a struggle.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "In Greek mythology, Iris and Hermes are both divine messengers known for extremely fast travel and reliable delivery of messages. Those traits map well onto a parcel-delivery job that rewards speed, navigation, and communication. While modern logistics involves scanning systems and procedures they might need to learn, their core abilities suggest they would not struggle overall.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

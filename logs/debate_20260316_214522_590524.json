@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:45:22.590524Z",
+  "question": "Is clementine pith highly sought after?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 38,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Clementine pith is the white spongy layer under the peel and is generally considered bitter and undesirable to eat. Most people try to remove or avoid it rather than seek it out. While pith has some fiber and nutrients, it is not typically a highly sought-after part of the fruit.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Clementine pith is the white spongy layer under the peel, and it is typically considered bitter and undesirable to eat. Most people try to avoid it rather than seek it out, and culinary uses generally focus on the zest or the fruit segments instead. Therefore it is not highly sought after.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide essentially identical reasoning: pith is commonly viewed as bitter and something people avoid, while culinary interest tends to be in the zest or the fruit segments. Neither offers concrete evidence (e.g., market demand, culinary trends, or exceptions like candied peel/pith uses), but the general claim aligns with common consumer behavior and typical food preparation practices. Because there were no debate rounds, neither side responded to potential counterexamples such as pith being valued for fiber or in certain recipes. Overall, the conclusion that clementine pith is not “highly sought after” is adequately supported by general knowledge, and neither debater is meaningfully more persuasive than the other.",
+    "strongest_a": "Clear appeal to common practice: pith is usually avoided as bitter/undesirable.",
+    "weakest_a": "No supporting evidence or consideration of niche culinary/industrial uses.",
+    "strongest_b": "Connects typical culinary focus (zest/segments) to low demand for pith.",
+    "weakest_b": "Also lacks evidence and does not address possible exceptions where pith might be used.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Clementine pith is the white, spongy layer under the peel that is typically bitter. Most people try to avoid eating it and often remove it when peeling citrus. It is not generally considered a desirable or highly sought-after part of the fruit.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Clementine pith is the white spongy layer under the peel and is generally considered bitter and undesirable to eat. Most people try to avoid it when peeling citrus, and it is not commonly marketed as a valued ingredient. While pith can have some nutritional value, it is not typically highly sought after compared to the fruit itself or the zest.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Clementine pith is the white spongy layer under the peel, which is typically bitter and often removed when eating or cooking. Most people prefer the sweet flesh and may avoid the pith for taste and texture reasons. While pith contains fiber and some nutrients, it is not generally considered a highly sought-after part of the fruit.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Clementine pith is the white spongy layer under the peel, and it is typically considered bitter and undesirable to eat. Most people try to avoid it when peeling citrus, and it is not commonly marketed as a valued ingredient. While pith contains fiber and some nutrients, it is not generally something that is highly sought after.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

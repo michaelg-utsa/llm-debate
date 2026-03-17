@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:25:16.976818Z",
+  "question": "Is metal a type of folk music?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 142,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Metal (heavy metal) is a genre of rock music characterized by amplified instruments, heavy distortion, and aggressive rhythms. Folk music refers to traditional or acoustic-based music rooted in cultural or regional traditions. While some subgenres like folk metal blend elements of both, metal itself is not a type of folk music.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Metal (heavy metal) is a genre of rock music characterized by amplified instruments, distorted guitars, and aggressive rhythms. Folk music refers to traditional or roots-based music often passed through communities, typically using acoustic instruments and traditional forms. While there are hybrid styles like folk metal, metal itself is not a type of folk music.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide essentially the same justification: metal is a rock-derived genre defined by amplified, distorted instrumentation and aggressive rhythms, whereas folk music is rooted in traditional/community transmission and typically acoustic or traditional forms. Each also appropriately notes that hybrid subgenres (e.g., folk metal) exist but do not make metal itself a type of folk music. With no debate rounds, there is no additional evidence or rebuttal to distinguish them. The reasoning is consistent with general genre definitions and supports the conclusion. Since neither provides a clearly stronger argument than the other, the result is a tie.",
+    "strongest_a": "Clearly distinguishes metal as rock-derived and notes hybrids don’t redefine the parent genre.",
+    "weakest_a": "Relies on broad genre generalizations without citing specific authoritative definitions.",
+    "strongest_b": "Explains folk as community-transmitted roots music and contrasts it with metal’s typical instrumentation.",
+    "weakest_b": "Very similar to A; adds little unique support beyond general definitions.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Metal is a genre of rock music characterized by amplified instruments, heavy distortion, and aggressive rhythms. Folk music is typically rooted in traditional or acoustic styles and cultural heritage. While some bands blend metal with folk elements (folk metal), metal itself is not a type of folk music.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Metal is a genre of rock music characterized by amplified instruments, heavy distortion, and aggressive rhythms. Folk music typically refers to traditional or acoustic-based music rooted in cultural or regional traditions. While some subgenres may blend elements of metal and folk, metal itself is not a type of folk music.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Metal (heavy metal) is a genre of rock music characterized by amplified distortion, heavy rhythms, and aggressive vocals. Folk music refers to traditional or roots-based music often passed down within communities and typically uses acoustic instruments and storytelling. While some subgenres blend folk and metal (folk metal), metal itself is not a type of folk music.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Metal is a genre of music derived from rock, characterized by amplified instruments, heavy distortion, and aggressive rhythms. Folk music typically refers to traditional or acoustic-based music rooted in cultural or regional traditions. While some metal subgenres may incorporate folk elements (folk metal), metal itself is not a type of folk music.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

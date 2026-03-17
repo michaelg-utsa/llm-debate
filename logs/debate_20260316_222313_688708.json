@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:23:13.688708Z",
+  "question": "Would an American feel lost due to language barriers at Disneyland Paris?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 138,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Disneyland Paris is a major international tourist destination and English is widely used in signage, announcements, and by staff. Many visitors come from English-speaking countries, so the park is set up to accommodate them. While some guests and employees may primarily speak French, an American would generally be able to navigate without feeling lost.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Disneyland Paris is a major international tourist destination where English is widely used alongside French. Most signage, announcements, and staff interactions can be handled in English, and many employees are bilingual. While some situations may involve French, an American generally would not feel lost due to language barriers.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the same core rationale: Disneyland Paris is an international tourist destination with substantial English support. Their arguments are plausible and consistent with general expectations for major theme parks serving global visitors (bilingual signage, English-speaking staff, and frequent English announcements). Neither provides specific evidence or concrete examples, but neither is contradicted by anything in the record, and the claim is straightforward. Debater A slightly strengthens the reasoning by acknowledging that some guests/employees may primarily speak French while still concluding navigation would be fine, which anticipates an objection. With no debate rounds and near-identical support, the result is effectively a tie, with a modest lean toward “no” as best-supported.",
+    "strongest_a": "Acknowledges French presence but argues English support is sufficient to navigate",
+    "weakest_a": "No concrete evidence or citations about language availability",
+    "strongest_b": "Clear claim that signage/announcements/staff can be handled in English",
+    "weakest_b": "Similarly lacks specific supporting details beyond general assertions",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Disneyland Paris is a major international tourist destination where English is widely spoken by staff and used on signs, maps, and announcements. Many visitors come from English-speaking countries, so services are designed to accommodate them. While some interactions may involve French, an American would generally be able to navigate the park without feeling lost due to language barriers.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Disneyland Paris is an international tourist destination where English is widely spoken by staff and used on many signs and announcements. Many visitors come from English-speaking countries, so services are designed to accommodate them. While French is the primary language, an American would generally be able to navigate and communicate without feeling lost.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Disneyland Paris is a major international tourist destination where staff commonly speak English in addition to French. Signs, maps, and announcements are typically available in multiple languages, including English. While some interactions in the surrounding area may be primarily in French, within the park an American would generally be able to communicate and navigate without feeling lost.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Disneyland Paris is a major international tourist destination where English is widely spoken by staff and used on signs, menus, and announcements. Many visitors come from English-speaking countries, so services are designed to accommodate them. While French is the primary language, an American would generally be able to navigate without feeling lost due to language barriers.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:05:59.174601Z",
+  "question": "Does horseradish have a fetlock?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 93,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A fetlock is a joint on the leg of a hoofed animal, such as a horse. Horseradish is a plant (a root vegetable) and does not have legs or joints. Therefore it cannot have a fetlock.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A fetlock is a joint on the leg of a hoofed animal such as a horse. Horseradish is a plant root and does not have legs or joints. Therefore it cannot have a fetlock.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and essentially identical reasoning. They correctly define a fetlock as a joint on the leg of a hoofed animal (commonly referenced in horses) and note that horseradish is a plant root with no legs or joints. The conclusion that a plant cannot have a fetlock follows directly from the definition. Since there were no debate rounds, neither side added additional support or addressed potential ambiguities, but none seem necessary here. With equivalent arguments, neither debater is more persuasive than the other.",
+    "strongest_a": "Correctly links the definition of fetlock (hoofed animal leg joint) to horseradish being a plant.",
+    "weakest_a": "No additional elaboration or consideration of possible wordplay; purely definitional.",
+    "strongest_b": "Clear, straightforward definitional reasoning leading to the conclusion.",
+    "weakest_b": "Argument is identical to A; provides no extra support beyond the basic definition.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A fetlock is a joint found on the legs of hoofed animals like horses. Horseradish is a plant and does not have legs or joints. Therefore it cannot have a fetlock.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A fetlock is a joint found on the legs of hoofed animals like horses. Horseradish is a plant root and does not have legs or joints. Therefore it cannot have a fetlock.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A fetlock is a joint on the leg of a horse or similar hoofed animal. Horseradish is a plant (a root vegetable) and does not have animal anatomy like legs or joints. Therefore it cannot have a fetlock.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A fetlock is a joint found on the legs of hoofed animals such as horses. Horseradish is a plant and does not have animal anatomy like legs or joints. Therefore it cannot have a fetlock.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:52:56.459595Z",
+  "question": "Is waltz less injurious than slam dance?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 58,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "A waltz is a structured ballroom dance with controlled movements and partner coordination, typically performed at moderate speed with minimal physical contact beyond the partner hold. Slam dancing (moshing) involves forceful, chaotic collisions among multiple people, which commonly leads to bruises, sprains, or other injuries. Therefore, waltz is generally less injurious than slam dance.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A waltz is a structured ballroom dance with controlled movements and partner coordination, typically performed in a safe social setting. Slam dancing involves forceful, chaotic movements and often includes collisions in crowded spaces, which raises injury risk. Therefore, waltz is generally less injurious than slam dance.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same answer (“yes”) and provide essentially the same justification: waltz is controlled and structured, while slam dancing/moshing is chaotic with frequent collisions. Debater A is slightly more persuasive because it explicitly contrasts the typical physical contact patterns and gives concrete examples of likely injuries (bruises, sprains), strengthening the causal link to injury risk. Debater B’s reasoning is accurate but a bit more general and leans on “safe social setting” without adding additional supporting detail. Since there is no disagreement and both arguments align with common knowledge about these dance styles, the best-supported final answer is “yes.”",
+    "strongest_a": "Clear mechanism and concrete injury examples linking moshing collisions to higher injury risk than waltz.",
+    "weakest_a": "Does not acknowledge that any dance can cause injury (e.g., falls), though relative risk remains plausible.",
+    "strongest_b": "Accurately highlights collision-heavy, crowded nature of slam dancing as increasing injury risk.",
+    "weakest_b": "More generic; relies on setting-based claims without specific injury mechanisms or examples.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "A waltz is a structured ballroom dance with smooth, controlled movements and typically low physical contact intensity. Slam dancing involves forceful, chaotic movement and frequent collisions, which increases the risk of injury. Therefore, waltzing is generally less injurious than slam dancing.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A waltz is a structured ballroom dance with controlled movements and typically involves partners moving smoothly, so injuries are relatively uncommon. Slam dancing (moshing) involves forceful, chaotic movement and frequent collisions, which increases the risk of bruises, sprains, and other injuries. Therefore, waltz is generally less injurious than slam dance.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A waltz is a structured ballroom dance with smooth, controlled movements and typically involves close partner coordination. Slam dancing is a high-energy, often chaotic style common at concerts where people may collide or push each other. Because slam dancing has a higher likelihood of impacts and falls, it is generally more injurious than waltzing.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A waltz is a structured ballroom dance with smooth, controlled movements and typically involves close partner coordination. Slam dancing is a high-energy, often chaotic form of dancing that commonly includes bumping or colliding with others. Because it involves more physical contact and unpredictability, slam dancing is generally more likely to cause injuries than waltzing.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

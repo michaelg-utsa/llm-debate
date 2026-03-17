@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:32:03.206208Z",
+  "question": "Did Bruiser Brody wrestle on WWE Raw?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 6,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Bruiser Brody (Frank Goodish) was killed in 1988, before WWE's Raw debuted in 1993. While he wrestled for WWF in the 1980s, he could not have appeared on a show that started years after his death. Therefore he did not wrestle on WWE Raw.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Bruiser Brody (Frank Goodish) was most active in the 1970s–1980s and died in 1988. WWE Raw debuted in 1993, after his death, so he could not have wrestled on it. While he worked for WWF at times, that was before Raw existed.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same conclusion (“no”) and support it with the same core timeline argument: Bruiser Brody (Frank Goodish) died in 1988, while WWE Raw began in 1993. Given that Raw did not exist during his lifetime, it is highly implausible he could have wrestled on it. Each also notes that even if he appeared in WWF in the 1980s, those appearances predate Raw. No counterarguments or alternative interpretations (e.g., archival footage being aired) were raised, but the question asks whether he wrestled on Raw, which the timeline reasoning directly addresses. Since the reasoning is essentially identical and sufficient, neither side is more persuasive than the other.",
+    "strongest_a": "Clear timeline reasoning: death in 1988 vs Raw debut in 1993.",
+    "weakest_a": "Does not explicitly address edge cases like posthumous footage, though 'wrestle on' implies live participation.",
+    "strongest_b": "Same strong timeline argument, plus brief acknowledgment of WWF work being pre-Raw.",
+    "weakest_b": "Adds no additional independent evidence beyond the shared timeline point.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Bruiser Brody (Frank Goodish) died in 1988. WWE Raw debuted in 1993, several years after his death. Therefore, he could not have wrestled on WWE Raw.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Bruiser Brody (Frank Goodish) was active primarily in the 1970s and 1980s and died in 1988. WWE Raw debuted in 1993, after his death. Therefore, he could not have wrestled on WWE Raw.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bruiser Brody (Frank Goodish) was active primarily in the 1970s and 1980s and died in 1988. WWE Raw debuted in 1993, after his death. Therefore, he could not have wrestled on WWE Raw.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bruiser Brody (Frank Goodish) was a prominent wrestler mainly in the 1970s and 1980s and died in 1988. WWE Raw debuted in 1993, after his death. Therefore, he could not have wrestled on WWE Raw.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

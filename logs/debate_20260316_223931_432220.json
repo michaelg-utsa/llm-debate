@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:39:31.432220Z",
+  "question": "Was Los Angeles Memorial Sports Arena hypothetically inadequate for hosting Coachella?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 185,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Coachella is a large, multi-stage outdoor music festival that takes place on expansive grounds, and the Los Angeles Memorial Sports Arena is a sizable venue designed to host major events. While it is an indoor arena and would change the festival format, that does not make it inherently inadequate for hosting a music event hypothetically. The question asks about hypothetical inadequacy, and there is no clear basis to conclude it could not host such an event in some form.",
+      "confidence": 2
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Los Angeles Memorial Sports Arena was a major multi-purpose venue that hosted large concerts and sporting events, indicating it had substantial capacity and infrastructure. Coachella is a large music festival, but the question asks hypothetically inadequate; there’s no clear reason the arena couldn’t host a scaled version or multi-act event. While Coachella is typically outdoors and sprawling, that preference doesn’t imply the arena was inherently inadequate.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and broadly similar reasoning: the Sports Arena was a large, multi-purpose venue capable of hosting major concerts, so it is not clearly “inadequate” in a hypothetical sense. Neither provides concrete comparative details (e.g., Coachella attendance scale, number of stages, site acreage, or logistical requirements) that would more rigorously test adequacy, but the burden in the question is to justify inadequacy, and both argue that such a basis is missing. Debater A acknowledges the indoor-vs-outdoor mismatch and argues that format change does not equal inadequacy, which directly addresses the most obvious objection. Debater B similarly notes the possibility of a scaled version, but that can be read as conceding it might not host Coachella as typically constituted. Overall, A’s framing more directly rebuts the “inadequate” claim without relying on scaling down.",
+    "strongest_a": "Directly addresses the indoor/outdoor mismatch and argues it doesn’t inherently imply inadequacy in a hypothetical hosting scenario.",
+    "weakest_a": "Does not supply concrete capacity/logistics comparisons to Coachella’s typical scale.",
+    "strongest_b": "Points to the arena’s history as a major concert/sports venue as evidence of substantial infrastructure.",
+    "weakest_b": "Leans on the idea of a “scaled version,” which weakens the claim if the question implies Coachella at its usual scale.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Los Angeles Memorial Sports Arena was a large indoor venue capable of hosting major concerts and sporting events with substantial attendance. Coachella is a multi-day outdoor music festival, but the question asks whether the arena was hypothetically inadequate, and there is no clear basis to claim it could not host such an event in some form. While it would not match Coachella’s typical outdoor festival format or capacity, that is different from being inherently inadequate.",
+      "confidence": 3
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Coachella is a large outdoor music festival typically held on expansive grounds like the Empire Polo Club, not in an indoor arena. The Los Angeles Memorial Sports Arena was a major venue designed to host large crowds for sports and concerts, so it would not be inherently inadequate in capacity or infrastructure for music events. While it might not match Coachella’s outdoor, multi-stage festival format, that is a mismatch of setting rather than a clear inadequacy.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Coachella is a large multi-day outdoor music festival that is held at the Empire Polo Club in Indio, which provides extensive open space for multiple stages and large crowds. The Los Angeles Memorial Sports Arena was an indoor arena with a much smaller capacity and without the outdoor festival grounds setup. While it would be a poor fit for replicating Coachella’s format, it is not inherently “inadequate” for hosting concerts or music events in general. Therefore, calling it hypothetically inadequate for hosting Coachella is not strictly correct.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "Coachella is a large outdoor music festival held on expansive grounds, while the Los Angeles Memorial Sports Arena was an indoor arena designed to host major concerts and sporting events. An arena like that is generally capable of staging large music performances, even if it would change the festival format. So it would not be inherently inadequate for hosting Coachella in a hypothetical sense.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

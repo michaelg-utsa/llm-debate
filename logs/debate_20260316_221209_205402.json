@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:12:09.205402Z",
+  "question": "Did Hanuman ever experience an orgasm?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 109,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "In Hindu tradition, Hanuman is widely revered as a lifelong celibate (brahmachari) devoted to Rama, and narratives emphasize his chastity and self-control. There are no mainstream scriptural accounts describing him engaging in sexual activity, let alone experiencing orgasm. Given this portrayal and lack of textual support, the best answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "In Hindu tradition, Hanuman is widely revered as a lifelong celibate (brahmachari) devoted to Rama. As a celibate deity, narratives and devotional texts do not depict him engaging in sexual activity or experiencing sexual climax. Therefore, the best-supported answer is no.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and rely on the same core justification: Hanuman is traditionally portrayed as a lifelong brahmachari, and mainstream narratives do not depict sexual activity. Given the question asks about an explicit sexual experience, the absence of scriptural or devotional accounts combined with the strong cultural emphasis on celibacy makes “no” the best-supported conclusion from the provided reasoning. Neither debater offers additional textual citations, but the general characterization of Hanuman as celibate is widely recognized and directly relevant. Since there were no debate rounds, neither side improved or challenged the other’s argument. Overall, the support is adequate and essentially identical, resulting in a tie with a confident “no” based on tradition and lack of contrary evidence.",
+    "strongest_a": "Connects Hanuman’s brahmacharya portrayal with the lack of any mainstream textual depiction of sexual activity.",
+    "weakest_a": "No specific citations; relies on general tradition and absence of evidence.",
+    "strongest_b": "Clear, direct inference from Hanuman’s celibate status to the lack of depictions of orgasm.",
+    "weakest_b": "No additional nuance or sourcing beyond the general celibacy claim.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "In Hindu tradition, Hanuman is widely revered as a lifelong celibate (brahmachari) devoted to Rama. Standard scriptures and devotional narratives do not describe him engaging in sexual activity or experiencing orgasm. Given this portrayal and lack of textual support for the claim, the answer is no.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Hanuman is traditionally depicted in Hindu texts as a celibate (brahmachari) devotee of Rama. There are no canonical narratives describing him engaging in sexual activity, and thus no mention of orgasm. Given his established vow of celibacy and the absence of such accounts, the answer is no.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "In Hindu tradition, Hanuman is widely regarded as a lifelong celibate (brahmachari) devoted to Rama. As such, narratives and devotional texts do not depict him engaging in sexual activity or experiencing sexual climax. Therefore, there is no traditional basis to claim he ever experienced an orgasm.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Hanuman is traditionally depicted in Hindu texts as a celibate (brahmachari) deity devoted to Rama. There are no canonical narratives describing him engaging in sexual activity, let alone experiencing an orgasm. Given this portrayal and the absence of such accounts, the answer is no.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

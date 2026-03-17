@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:05:04.611973Z",
+  "question": "Is Pig Latin related to real Latin?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 90,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Pig Latin is a playful English word game that rearranges sounds (typically moving the initial consonant cluster to the end and adding “-ay”). It does not derive from or reflect the grammar, vocabulary, or structure of the Latin language, despite the name. The term “Latin” in “Pig Latin” is more of a humorous label than a linguistic relationship.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Pig Latin is a playful English word game that rearranges letters or syllables, not a language descended from Latin. It doesn’t share Latin grammar or vocabulary in any meaningful way beyond the name. The term \"Latin\" is used jokingly to suggest a secret or foreign-sounding code.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Pig Latin is an English word game/cant that manipulates English phonology (moving initial consonant clusters and adding “-ay”), and it is not historically or structurally derived from the Latin language. This directly addresses the question of whether it is “related” to real Latin, interpreting “related” as linguistic descent or substantive connection. Neither provides external evidence, but the claims align with general knowledge about Pig Latin being a children’s/secret speech game rather than a Romance language or Latin-based pidgin. Since there are no debate rounds and the reasoning is equivalent in strength and specificity, neither side is more persuasive than the other. The best-supported final answer from the presented reasoning is that Pig Latin is not related to real Latin.",
+    "strongest_a": "Clearly explains Pig Latin as an English sound-rearrangement game with no Latin grammar/vocabulary connection.",
+    "weakest_a": "Does not cite any sources or historical evidence beyond general description.",
+    "strongest_b": "Emphasizes that “Latin” is a joking label for a code, not linguistic descent from Latin.",
+    "weakest_b": "Slightly less precise (mentions letters or syllables) and also lacks supporting citations.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Pig Latin is a playful English language game that alters word sounds by moving initial consonants and adding a suffix like \"-ay.\" It is not derived from Latin and does not share Latin grammar or vocabulary in any systematic way. The name is a joke rather than an indication of linguistic relation.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Pig Latin is a playful English language game that rearranges letters and adds sounds like \"-ay\" to words. It is not derived from Latin grammar or vocabulary and does not function as a real language. The name is a joke implying it sounds like Latin.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pig Latin is a playful English language game that rearranges sounds (typically moving the initial consonant cluster to the end and adding \"ay\"). It is not derived from Latin grammar or vocabulary and does not have a historical linguistic relationship to the Latin language. The name is a joke rather than an indication of origin.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pig Latin is a playful English language game that rearranges letters or syllables to obscure words. It does not derive from or share linguistic roots with the Latin language. The name is a joke and not an indicator of a real connection to Latin.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

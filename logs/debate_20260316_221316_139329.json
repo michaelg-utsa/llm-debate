@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-03-16T22:13:16.139329Z",
+  "question": "Would a triples tandem bike support Apollo 15 crew?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 110,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A triples tandem bike is designed to carry three people, but the Apollo 15 crew consisted of three astronauts plus their equipment and life-support needs. Even ignoring the space context, the combined weight of three adult men and gear could exceed typical tandem bike load limits. So it would not reliably support the Apollo 15 crew as a practical matter.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A triples tandem bike is designed to carry three riders, so it would support three people in terms of seating and typical load capacity. The Apollo 15 crew had three astronauts. Assuming normal human weights and standard bike design, a triple tandem could accommodate them.",
+      "confidence": 4
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "no",
+        "argument": "A triples tandem bike is designed to carry three riders, while the Apollo 15 crew consisted of three astronauts plus their equipment and life-support needs. Even if only the three astronauts rode, their mass with spacesuits and gear would far exceed normal bicycle design loads, and a standard tandem bike cannot operate in the lunar environment (no atmosphere for conventional tires/traction assumptions and extreme conditions). Therefore, a triples tandem bike would not realistically support the Apollo 15 crew.",
+        "rebuttal": "No opponent point has been presented yet; if the claim is simply “three seats for three astronauts,” that ignores the much higher suited mass and the incompatibility of an Earth bicycle with lunar conditions.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "A triples tandem bike is built to carry three riders, and the Apollo 15 crew had three astronauts, so in terms of rider capacity it would support the crew. The question asks about supporting the crew, not operating on the Moon or carrying extra cargo beyond the riders. Since three-person tandems are specifically designed for three adults, the straightforward capacity match implies yes.",
+        "rebuttal": "Debater A adds constraints (lunar environment, spacesuits, life-support equipment) that aren’t stated in the question; “support Apollo 15 crew” can reasonably mean “can carry three people.” If we interpret it as a generic load/capacity question rather than “function on the Moon,” the triple tandem’s intended use aligns with three astronauts as riders.",
+        "confidence": 2
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "no",
+        "argument": "“Support Apollo 15 crew” most naturally means support them as they actually are: astronauts with mission gear, not three average cyclists in street clothes. Apollo astronauts with suits and life-support are far heavier and bulkier than typical tandem-bike design assumptions, and a conventional triple tandem is not engineered for that load or for the operational constraints of a space mission. Even ignoring the Moon, the crew’s required equipment and safety margins make a standard bicycle an implausible support platform. Thus, a triples tandem bike would not support the Apollo 15 crew in any realistic sense.",
+        "rebuttal": "Debater B’s reading reduces “Apollo 15 crew” to “three humans,” but the phrase usually implies the actual astronauts and their mission context. If the question were only about seat count, it would be trivial; StrategyQA questions typically hinge on the real-world mismatch between a bike and astronauts’ mass/gear and environment.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "A triples tandem bike is specifically designed to carry three adult riders at once, and the Apollo 15 crew consisted of three people. The question asks whether it would “support” the crew, which can reasonably be read as whether it can accommodate the crew’s headcount, not whether it can serve as lunar mission hardware. Under that straightforward capacity interpretation, a triple tandem supports three riders, matching the crew size. Nothing in the question specifies spacesuits, lunar operation, or additional payload requirements beyond the crew themselves.",
+        "rebuttal": "Debater A’s “realistic mission context” adds unstated constraints (EVA suits, life-support packs, lunar terrain), effectively changing the question to “could an Earth bike function on the Moon.” StrategyQA often tests simple commonsense mappings; here the most direct mapping is 3-seat tandem ↔ 3-person crew, so the capacity match supports “yes.”",
+        "confidence": 2
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "no",
+        "argument": "A triple tandem bike may seat three, but “support Apollo 15 crew” implies supporting three astronauts as astronauts, i.e., with the mass, bulk, and safety requirements of their mission context. Apollo-era EVA suits plus life-support backpacks add substantial weight and volume, far beyond what a normal bicycle frame, wheels, and braking system are designed to handle. Even aside from the Moon, a standard triple tandem is not an appropriate or reliable platform to carry suited astronauts and their critical equipment. So it would not support the Apollo 15 crew in the meaningful, real-world sense StrategyQA typically targets.",
+        "rebuttal": "The “headcount only” reading makes the question trivial (3 seats vs 3 people), which is unlikely for StrategyQA. Referring to the “Apollo 15 crew” normally invokes the actual astronauts and their operational constraints, not just three generic adults.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "A triples tandem bike is built to carry three riders simultaneously. The Apollo 15 crew consisted of three astronauts, so in the basic sense of “support” meaning “carry/hold the crew,” the bike’s capacity matches the crew size. The question does not specify lunar operation, spacesuits, or mission equipment—only whether the bike would support the crew—so the most direct commonsense interpretation is about accommodating three people.",
+        "rebuttal": "Debater A’s objection relies on importing a specific Apollo EVA context (suited mass, life-support packs, lunar conditions) that the question never states. If we stick to what’s asked—whether a triple tandem supports a three-person crew—the headcount/capacity match is sufficient for “yes.”",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 4,
+      "debater_a": {
+        "answer": "no",
+        "argument": "In StrategyQA, naming a specific crew like “Apollo 15” typically cues real-world context, not just counting heads. A triple tandem is engineered for three ordinary cyclists on Earth; Apollo astronauts are associated with bulky suits, life-support gear, and stringent safety/engineering requirements that a conventional bicycle cannot meet. Even if you ignore the Moon, “support the Apollo 15 crew” implies supporting them as astronauts with mission-relevant constraints, not merely providing three seats. Therefore a triples tandem bike would not support the Apollo 15 crew in the meaningful sense.",
+        "rebuttal": "The “headcount only” interpretation makes the question essentially tautological (3 riders vs 3 people), which is unlikely for StrategyQA. Mentioning “Apollo 15 crew” is precisely what brings in the mismatch between a normal bike’s design limits and astronauts’ operational needs.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "yes",
+        "argument": "A triples tandem bike is designed to support three riders at the same time. The Apollo 15 crew consisted of three people, so on the most direct reading—whether the bike can carry the whole crew together—the capacity matches. The question doesn’t specify lunar operation, spacesuits, or mission payload, so “support” reasonably reduces to accommodating three riders.",
+        "rebuttal": "Debater A’s claim depends on importing EVA suits, life-support packs, and lunar-environment constraints that aren’t stated. If StrategyQA intended “could it work on the Moon,” it would typically mention the Moon or spacesuits; as written, the salient fact is simply that Apollo 15 had three crew members and a triple tandem supports three riders.",
+        "confidence": 2
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Debater B’s case rests on a literal headcount mapping: a triple tandem supports three riders and Apollo 15 had three crew. Debater A argues the question’s phrasing (“Apollo 15 crew”) pragmatically invokes the real astronauts and their operational context (suits/gear and/or lunar conditions), making a normal bicycle an implausible support platform. While A’s lunar-environment point is somewhat speculative given the wording, A’s broader point about “supporting the Apollo 15 crew” meaning more than just “three humans” is a stronger interpretation argument for a StrategyQA-style question, which typically avoids tautological seat-count matches. B never addresses load limits or the semantic implication of naming a specific mission crew beyond asserting the question must be interpreted narrowly. Overall, A provides a more robust rationale for why the intended commonsense answer would be “no.”",
+    "strongest_a": "Argues that referencing a specific Apollo mission crew implies astronaut context (suits/gear/constraints), making an Earth triple tandem unsuitable beyond trivial headcount.",
+    "weakest_a": "Leans on lunar-operability details that are not explicitly stated in the question.",
+    "strongest_b": "Clear capacity match: triple tandem is designed for three riders and Apollo 15 had three crew members.",
+    "weakest_b": "Interpretation makes the question nearly trivial and doesn’t engage with plausible meaning of ‘support’ beyond seat count or with weight/gear considerations.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Apollo 15 had a crew of three astronauts. A triples tandem bicycle is designed to carry three riders. Therefore, it would support the Apollo 15 crew in terms of seating capacity.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 11,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bicycle is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights, a triple tandem bike would generally be capable of supporting three people, matching the crew size.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bicycle is designed to carry three riders, so it supports three people. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights, a triple tandem's frame and wheels are generally built to handle the combined load of three riders.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bicycle is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights and that the bike is built for three adults, it would support the crew in terms of seating capacity and load.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights and a standard triple tandem's load capacity, it would be intended to support three adults riding together.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts, but their combined weight with spacesuits and life-support gear would far exceed what a standard bicycle is built to support. Additionally, a tandem bike is not intended for transporting fully equipped astronauts or their equipment.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights, a triple tandem's load capacity would generally be sufficient to support three adults, so it could support the crew.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights and a standard triple tandem's load capacity, it would be intended to support three adults riding together.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bicycle is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights, a triple tandem bike would generally be capable of supporting three adults, matching the crew size.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts, but their combined weight plus gear would likely exceed the safe load and seating configuration of a standard tandem bicycle. Additionally, a tandem bike is not intended to support people in bulky space suits or with mission equipment.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights, a triple tandem would be intended to support three adults riding together, so it would support the crew.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A triples tandem bike is designed to carry three riders. The Apollo 15 crew consisted of three astronauts. Assuming typical adult weights, a triple tandem would generally be built to support three adults riding together, so it would support the Apollo 15 crew in terms of capacity.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 9,
+        "no": 2
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 11,
+    "llm_calls_for_debate_plus_direct": 12,
+    "total_llm_calls": 23,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

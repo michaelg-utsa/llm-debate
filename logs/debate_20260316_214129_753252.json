@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:41:29.753252Z",
+  "question": "Could a young Wizard of Oz Scarecrow have gotten Cerebral palsy?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 30,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Cerebral palsy is caused by damage or abnormal development of the brain, typically around birth or early childhood. The Wizard of Oz Scarecrow is a fictional, non-human construct made of straw with no biological brain or nervous system to be injured in that way. So, within the story’s premise, he could not have cerebral palsy.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Scarecrow in The Wizard of Oz is a fictional, non-human character made of straw, not a biological human body. Cerebral palsy is a neurological condition caused by damage to a developing human brain, typically before or around birth. Since the Scarecrow does not have a human brain or nervous system, he could not have cerebral palsy.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same conclusion and essentially identical reasoning: cerebral palsy is a neurological disorder arising from damage or abnormal development of a (human) brain early in life, and the Scarecrow is a non-human straw construct without a biological brain or nervous system. Given the question’s framing about the Wizard of Oz Scarecrow, this is a straightforward application of the condition’s definition to the character’s nature. Neither side offers additional nuance (e.g., magical reinterpretations), but none is needed because the premise strongly rules out the medical condition. Since the arguments are equivalent in clarity and support, neither debater is more persuasive than the other. The best-supported final answer is therefore “no.”",
+    "strongest_a": "Correctly ties cerebral palsy to early brain injury/development and notes Scarecrow lacks a biological brain.",
+    "weakest_a": "Does not address any possible magical/fictional reinterpretation, though likely unnecessary.",
+    "strongest_b": "Clear definition-based reasoning: CP requires a developing human brain; Scarecrow is straw and non-biological.",
+    "weakest_b": "Similarly omits consideration of fantasy biology, but the core argument suffices.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Cerebral palsy is a neurological condition caused by damage to a developing human brain, typically before or around birth. The Scarecrow in The Wizard of Oz is a fictional, non-human character made of straw without a biological brain. Since he lacks the human developmental biology required for cerebral palsy, it would not apply to him.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Cerebral palsy is caused by damage to a developing human brain, typically before or around birth. The Scarecrow in The Wizard of Oz is a fictional straw construct, not a human with a developing brain or nervous system. Therefore the condition would not apply to him in the usual medical sense.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Cerebral palsy is caused by damage to a developing human brain, typically before or around birth. The Scarecrow in The Wizard of Oz is a fictional straw figure brought to life, not a human with a developing brain. Therefore the condition, as medically defined, would not apply to him.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Scarecrow from The Wizard of Oz is a fictional straw construct, not a human with a developing brain and nervous system. Cerebral palsy is a neurological condition caused by damage or abnormal development of the human brain, typically before or around birth. Since the Scarecrow does not have human biology, he could not literally have cerebral palsy.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

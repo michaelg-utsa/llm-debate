@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:16:14.877141Z",
+  "question": "Is a paraplegic suitable for conducting an orchestra?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 119,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "A paraplegic has paralysis of the lower body but typically retains full use of the arms and hands, which are central to conducting. Conductors can and do work while seated, using upper-body gestures, baton technique, and facial cues to lead an orchestra. Mobility around the stage is not essential to the core task of conducting.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Paraplegia affects the lower limbs, but conducting primarily relies on upper-body movement, hand gestures, facial expression, and musical leadership. Many conductors can and do conduct while seated, using arms and torso to communicate. Therefore, paraplegia does not inherently prevent someone from conducting an orchestra.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue the same conclusion (yes) and provide essentially the same rationale: paraplegia primarily affects lower-body mobility while conducting depends mainly on upper-body gestures and musical communication. Each notes that conductors can perform while seated, which directly addresses the key functional requirement. Neither introduces countervailing considerations (e.g., exceptional staging demands), but given the question asks about suitability in general, the provided reasoning is sufficient. Debater A is marginally more explicit in distinguishing core conducting tasks from nonessential stage mobility. Overall, the support is equal and consistent, so the outcome is a tie with a clear final answer of yes.",
+    "strongest_a": "Clearly links paraplegia’s lower-body impact to the upper-body demands of conducting and notes seated conducting is feasible.",
+    "weakest_a": "Does not address rare cases where mobility might be required by specific productions or venues.",
+    "strongest_b": "Emphasizes the primary communication channels in conducting (hands, torso, facial expression) and seated viability.",
+    "weakest_b": "Very similar to A without adding additional evidence or examples to strengthen the claim.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "A paraplegic has paralysis of the lower body but typically retains full use of the arms and hands. Conducting an orchestra primarily requires upper-body movement, musical knowledge, and communication, and can be done while seated. Therefore, paraplegia does not inherently prevent someone from conducting.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A paraplegic has paralysis of the lower body but typically retains full use of the arms and hands. Conducting an orchestra primarily requires arm, hand, and upper-body gestures, and can be done while seated. Therefore, a paraplegic can be suitable for conducting an orchestra if they have the necessary musical skill and upper-body mobility.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A paraplegic has paralysis of the legs but typically retains full use of the arms and hands. Conducting an orchestra primarily requires upper-body gestures, musical knowledge, and communication rather than the ability to stand or walk. A conductor can conduct effectively while seated, so paraplegia does not inherently prevent conducting.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A paraplegic has paralysis of the legs but typically retains full use of the arms and hands. Conducting an orchestra primarily requires arm, hand, and upper-body movements, along with musical leadership and communication. A conductor can also conduct while seated if needed, so paraplegia does not inherently prevent conducting.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

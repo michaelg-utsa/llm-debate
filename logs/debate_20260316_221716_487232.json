@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:17:16.487232Z",
+  "question": "In most Mennonite homes, would children know of The Powerpuff Girls?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 122,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Most Mennonites are not uniformly isolated from mainstream media; many live in regular communities and their children attend public schools or interact with peers who know popular cartoons. Even in more conservative Mennonite homes that limit TV, children can still learn about widely known franchises through friends, books, toys, or the internet. Since The Powerpuff Girls is a well-known cultural reference in North America, it’s likely that in most Mennonite homes children would at least know of it.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Most Mennonites are not part of the most culturally isolated groups; many live in mainstream society and their children attend public school or have access to common media through peers. Even in more conservative Mennonite households that restrict TV, children can still learn about popular cartoons via friends, school, books, or the internet. So in most Mennonite homes, children would likely at least know of The Powerpuff Girls.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument and reach the same conclusion, so neither is more persuasive than the other. Their shared reasoning is plausible: “Mennonite” covers a wide range of communities, and many Mennonites (especially more moderate/contemporary groups) participate in mainstream life, where children could easily encounter common pop-culture references through school and peers. They also appropriately note that even households restricting television might still have indirect exposure via friends, books, toys, or the internet. However, neither provides concrete evidence about what proportion of Mennonite homes are conservative enough to significantly limit such exposure, so the claim about “most” remains somewhat asserted rather than demonstrated. Given general knowledge that Mennonites are diverse and many are integrated into broader society, the answer “yes” is still better supported than “no.”",
+    "strongest_a": "Recognizes Mennonite diversity and multiple exposure pathways beyond TV.",
+    "weakest_a": "No evidence or quantification to justify the 'most' claim.",
+    "strongest_b": "Clear argument that mainstream social contact makes awareness likely even with media restrictions.",
+    "weakest_b": "Largely repeats A and also lacks support for the 'most' generalization.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Mennonite communities vary widely, and many Mennonite families participate in mainstream culture to some extent. The Powerpuff Girls is a widely known children’s cartoon, so children in many Mennonite homes would likely have at least heard of it through school, peers, or media exposure. While some more conservative Mennonite groups restrict television and popular media, that is not true of most Mennonite households overall.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Many Mennonite communities, especially more conservative ones, limit exposure to television and mainstream popular culture. The Powerpuff Girls is a mainstream animated TV show, so children in such homes would be unlikely to watch it or know it well. While some more modern Mennonite families may allow TV, the question asks about most Mennonite homes, where restrictions are common.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Many Mennonite communities, especially more traditional ones, limit exposure to mainstream television and popular media. The Powerpuff Girls is a widely broadcast cartoon, so awareness typically comes from regular TV viewing or related merchandise. In most Mennonite homes that avoid or restrict such media, children would be unlikely to know it, though more modern Mennonite families could be exceptions.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Many Mennonite communities, especially more traditional ones, limit exposure to mainstream television and popular media. The Powerpuff Girls is a mainstream animated TV show, so children in such households would often not watch it or be familiar with it. While some more modern Mennonite families may allow TV, the question asks about most Mennonite homes.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

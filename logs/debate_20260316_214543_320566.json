@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:45:43.320566Z",
+  "question": "Could James Brown's ex-wives hold a doubles game of tennis?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 39,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "James Brown had multiple ex-wives (at least two). A doubles tennis game requires four players, and his ex-wives alone would not make four, but the question asks if they could hold a doubles game, which can be interpreted as organizing/hosting it rather than being all the players. With multiple ex-wives, they could host or arrange a doubles match.",
+      "confidence": 2
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "James Brown had multiple ex-wives, so there are at least two women who could participate. A doubles tennis game requires four players, and his ex-wives alone likely do not total four, but the question asks whether they could hold a doubles game, which they could by including other players while his ex-wives participate. Therefore, it is possible for his ex-wives to hold a doubles tennis game.",
+      "confidence": 2
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer “yes” and provide similar reasoning: James Brown had multiple ex-wives, and a doubles tennis game involves four players. Neither debater establishes how many ex-wives he had or whether there were at least four, which would be the most straightforward interpretation if “his ex-wives” are the players. Instead, both rely on a looser interpretation of “hold” as “host/organize” or “participate with others,” which makes the claim plausible but somewhat speculative given the question wording. Debater A’s argument is slightly clearer in explicitly addressing the ambiguity of “hold” and offering the hosting interpretation. Debater B adds the idea of including other players, but that similarly depends on interpreting the question as not requiring all four players to be ex-wives. Overall, the support is weak and hinges on ambiguity, so the result is a tie with low confidence.",
+    "strongest_a": "Explicitly notes the ambiguity of 'hold' and offers a hosting/organizing interpretation.",
+    "weakest_a": "Does not verify the number of ex-wives or justify why 'hold' should mean host rather than play.",
+    "strongest_b": "Explains how a doubles match could occur if ex-wives participate alongside other players.",
+    "weakest_b": "Also fails to establish the number of ex-wives and relies on an interpretive leap about the question’s intent.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "James Brown had multiple ex-wives, including at least two (e.g., Velma Warren and Deidre Jenkins). A doubles tennis game requires four players, and his ex-wives alone would not reach four, but the question asks if they could hold a doubles game, which can be interpreted as organizing/hosting it rather than all playing. Since at least two ex-wives exist, they could host or arrange a doubles match with additional players. Therefore, it is possible.",
+      "confidence": 2
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "James Brown had multiple ex-wives, including at least two. A doubles tennis game requires four players, and his ex-wives alone would not reach four unless there were four or more. However, James Brown had four wives, meaning his ex-wives would be three, which is still not enough for doubles. Therefore, they could not form two teams of two by themselves.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "James Brown had multiple ex-wives, meaning there are at least two women who were formerly married to him. A doubles tennis game requires four players, and four of his ex-wives could form two teams. Since he had more than three ex-wives, they could make up the needed four players.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "James Brown had multiple ex-wives, meaning there are at least two women in that group. A doubles tennis game requires four players, and his ex-wives include four individuals. Therefore, his ex-wives could form two teams and play a doubles match.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

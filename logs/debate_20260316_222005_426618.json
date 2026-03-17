@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:20:05.425605Z",
+  "question": "Were Greeks essential to crafting Egyptian Lighthouse of Alexandria?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 128,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The Lighthouse of Alexandria (Pharos) was built in the Hellenistic period under the Greek Ptolemaic dynasty that ruled Egypt after Alexander the Great. Its architect, Sostratus of Cnidus, was Greek, and the project was commissioned by Ptolemy I/II. Given Greek political control and Greek engineering leadership, Greeks were essential to its crafting.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The Lighthouse of Alexandria (Pharos) was built in the Ptolemaic Kingdom, a Greek-ruled dynasty in Egypt after Alexander the Great. Its architect, Sostratus of Cnidus, was Greek, and the project was commissioned by Ptolemy I/II, Greek rulers. While Egyptian labor and local context mattered, Greek leadership and design were central to its creation.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave essentially the same argument: the Lighthouse of Alexandria was constructed under the Greek Ptolemaic dynasty, commissioned by Ptolemy I/II, and attributed to a Greek architect, Sostratus of Cnidus. Given those points, the claim that Greeks were essential to its crafting is well-supported, since political sponsorship and architectural design are central to such a project. Neither side faced counterarguments because no debate rounds occurred, and neither addressed potential ambiguity in the word “essential” (e.g., whether Egyptian labor/materials could make Greeks non-essential). Debater B slightly strengthened the case by acknowledging Egyptian labor while still arguing Greek leadership was central, which anticipates an obvious objection. Overall, the support for “yes” is strong and uncontested in the transcript.",
+    "strongest_a": "Cites Greek Ptolemaic commissioning and a Greek architect as core evidence of Greek essentiality.",
+    "weakest_a": "Does not engage with the possibility that non-Greek labor/material contributions could challenge the term 'essential.'",
+    "strongest_b": "Acknowledges Egyptian labor but argues Greek design/commissioning were decisive, making the reasoning more robust.",
+    "weakest_b": "Still relies on the same limited set of facts without deeper justification of 'essential.'",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The Lighthouse of Alexandria was built in the Hellenistic period under the Ptolemaic dynasty, which was Greek-ruled. Ancient sources commonly credit its design to Sostratus of Cnidus, a Greek architect/engineer. While built in Egypt by local labor and materials, Greek leadership and design were central to its creation.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The Lighthouse of Alexandria was built in the Hellenistic period under the Ptolemaic Kingdom, which was a Greek-ruled dynasty in Egypt. Ancient sources commonly credit the architect Sostratus of Cnidus, who was Greek. Given Greek political control and Greek engineering leadership in the project, Greeks were essential to its crafting.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Lighthouse of Alexandria was built in the Hellenistic period under the Ptolemaic dynasty, which was Greek in origin and ruled Egypt after Alexander the Great. Ancient sources commonly credit the Greek architect Sostratus of Cnidus with its design. Given the Greek political leadership and architectural attribution, Greeks were essential to its crafting.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Lighthouse of Alexandria was built in the early Ptolemaic period, when Egypt was ruled by a Greek dynasty founded by Ptolemy I, a successor of Alexander the Great. It was commissioned by Ptolemy I and completed under Ptolemy II, both Greek rulers. Ancient sources commonly credit the architect Sostratus of Cnidus, who was Greek. These facts indicate Greeks were essential to its creation.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

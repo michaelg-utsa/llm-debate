@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:15:20.424514Z",
+  "question": "Are Leopard cats in less dire straits than Bornean Orangutan?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 116,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Leopard cats (Prionailurus bengalensis) are generally widespread across much of Asia and are commonly assessed as Least Concern, despite local threats. The Bornean orangutan (Pongo pygmaeus) is assessed as Critically Endangered due to severe habitat loss and population decline. Therefore, leopard cats are in less dire straits than Bornean orangutans.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Leopard cats (Prionailurus bengalensis) are widespread across much of Asia and are generally listed as Least Concern, despite local threats. The Bornean orangutan (Pongo pygmaeus) is classified as Critically Endangered due to habitat loss and other pressures. Therefore, leopard cats are in less dire straits overall than Bornean orangutans.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: leopard cats are widespread and typically assessed as Least Concern, while Bornean orangutans are assessed as Critically Endangered due to habitat loss and population decline. This directly supports answering “yes” to whether leopard cats are in less dire straits. Neither debater provides citations or addresses potential nuance (e.g., regional subspecies status for leopard cats), but the general conservation-status comparison is a standard and relevant line of reasoning. Since the reasoning and conclusion are indistinguishable in strength and no debate occurred to differentiate them, neither side is more persuasive. The best-supported final answer from the presented reasoning is “yes.”",
+    "strongest_a": "Clear comparison of typical IUCN statuses (Leopard cat Least Concern vs Bornean orangutan Critically Endangered).",
+    "weakest_a": "No citation and no discussion of possible regional/subspecies exceptions for leopard cats.",
+    "strongest_b": "Same strong conservation-status contrast supporting the conclusion.",
+    "weakest_b": "Adds no additional evidence beyond the general status claim; lacks nuance/citation.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Leopard cats are generally listed as Least Concern and are widespread across Asia, with stable or only moderately declining populations in many areas. Bornean orangutans are classified as Critically Endangered with severe population declines driven by habitat loss and hunting. Therefore, leopard cats are in less dire straits than Bornean orangutans.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Leopard cats are widespread across Asia and are generally listed as Least Concern, indicating relatively stable populations. The Bornean orangutan is classified as Critically Endangered due to habitat loss and other pressures. Therefore, leopard cats are in less dire straits than Bornean orangutans.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Leopard cats are widespread across Asia and are generally listed as Least Concern, indicating they are not currently at high risk of extinction. The Bornean orangutan is classified as Critically Endangered due to habitat loss and other pressures. Therefore, leopard cats are in less dire straits than Bornean orangutans.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Leopard cats are widespread across Asia and are generally listed as Least Concern, indicating relatively stable populations. The Bornean orangutan is classified as Critically Endangered due to habitat loss and other pressures. Therefore, leopard cats are in less dire straits than Bornean orangutans.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

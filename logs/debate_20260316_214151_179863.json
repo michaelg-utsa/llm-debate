@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:41:51.179863Z",
+  "question": "Are hippos dangerous to humans?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 31,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Hippos are widely considered one of the most dangerous large animals to humans, especially in parts of Africa where people live and travel near rivers and lakes. They are highly territorial in water and can charge boats or people, and their size and powerful jaws make attacks often severe or fatal. Human-hippo conflicts also occur when hippos graze on land at night near farms or paths.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Hippos are widely considered one of the most dangerous large animals to humans, especially in Africa where they share waterways with people. They are highly territorial and can charge boats or people near water, causing serious injury or death. Human fatalities from hippo encounters are well documented.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and provide closely overlapping reasoning. Each cites hippos’ territorial behavior in water, their tendency to charge boats or people, and the severe consequences due to their size and jaws, which aligns with common knowledge about hippo-related human fatalities in parts of Africa. Debater A adds a bit more context by mentioning land grazing at night and conflicts near farms or paths, slightly broadening the rationale beyond waterways. Debater B’s argument is succinct and includes the claim that fatalities are well documented, but it does not add distinct supporting detail beyond that. Since there is no disagreement and no debate rounds, the outcome is effectively a tie, with a slight edge in completeness to A’s explanation. The best-supported final answer remains “yes.”",
+    "strongest_a": "Provides multiple mechanisms of danger (territorial water behavior and land-based conflict) and explains why attacks are severe.",
+    "weakest_a": "Does not cite specific evidence or examples; relies on general claims.",
+    "strongest_b": "Clearly states that human fatalities are well documented and links this to territorial aggression.",
+    "weakest_b": "Less detailed than A; largely repeats common assertions without additional nuance.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Hippos are considered one of the most dangerous large animals to humans, especially in Africa. They are highly territorial and can be aggressive, particularly in or near water. Hippos can charge boats or people and can cause severe injury with their size and powerful jaws.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Hippos are widely considered dangerous to humans because they are highly territorial and can be aggressive, especially in or near water. They can charge boats or people and have powerful jaws capable of causing fatal injuries. In parts of Africa, hippos are responsible for a significant number of human deaths each year compared with many other large animals.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Hippos are widely considered dangerous to humans because they are highly territorial and can be aggressive, especially in or near water. They are large, fast over short distances, and have powerful jaws that can cause severe injury. Human encounters, particularly around rivers and lakes in Africa, have led to fatalities.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Hippos are considered one of the most dangerous large animals to humans, especially in parts of Africa where they live near people. They are highly territorial in water and can attack boats or people who get too close. Their size, speed, and powerful jaws can cause fatal injuries.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:13:52.963189Z",
+  "question": "Is Hanuman associated with a Norse god?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 112,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Hanuman is a Hindu deity/hero from the Ramayana, associated with devotion to Rama and with monkey symbolism. Norse gods belong to a distinct Germanic/Norse mythological tradition (e.g., Odin, Thor, Loki) with no standard association to Hanuman. Any cross-cultural comparisons are interpretive rather than an established association.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Hanuman is a Hindu deity, a central figure in the Ramayana and widely worshipped in Hindu traditions. Norse gods belong to a distinct Germanic/Norse mythological system (e.g., Odin, Thor, Loki) with no standard association to Hanuman. Any perceived similarities would be comparative mythology rather than an actual association.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and provide essentially identical reasoning. Each correctly situates Hanuman within Hindu tradition (Ramayana, devotion to Rama) and contrasts this with the separate Norse/Germanic pantheon, noting there is no established or standard association between them. Neither offers specific citations, but the claim aligns with general knowledge about the distinctness of these mythological systems. With no debate rounds, there is no additional evidence or rebuttal to differentiate the two. As a result, the outcome is effectively a tie, and the best-supported final answer remains “no.”",
+    "strongest_a": "Clear distinction between Hindu and Norse mythological traditions; notes any links would be merely interpretive.",
+    "weakest_a": "No concrete sources or examples to rule out obscure syncretic associations.",
+    "strongest_b": "Accurately frames any similarity as comparative mythology rather than an actual association.",
+    "weakest_b": "No concrete sources or examples; largely repeats A’s points without added support.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Hanuman is a deity from Hindu tradition, prominently featured in the Ramayana. Norse gods belong to a separate mythological tradition from Scandinavia, such as Odin, Thor, and Loki. There is no standard or historically grounded association between Hanuman and any Norse god.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Hanuman is a deity from Hindu tradition, known as a devotee of Rama and a central figure in the Ramayana. Norse gods belong to a different mythological tradition from Scandinavia, such as Odin, Thor, and Loki. There is no standard or widely recognized association identifying Hanuman as connected to a Norse god.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Hanuman is a Hindu deity from Indian mythology, primarily associated with the Ramayana and devotion to Rama. Norse gods come from a separate mythological tradition (e.g., Odin, Thor, Loki) and Hanuman is not part of that pantheon. While some people may draw loose thematic comparisons between mythologies, there is no direct association identifying Hanuman as linked to a Norse god.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Hanuman is a Hindu deity from Indian mythology, prominently featured in the Ramayana. Norse gods belong to the Scandinavian/Germanic pantheon, such as Odin, Thor, and Loki. Hanuman is not traditionally associated with any Norse god, even if some people draw loose cross-cultural comparisons.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

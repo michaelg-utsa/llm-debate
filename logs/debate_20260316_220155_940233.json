@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:01:55.940233Z",
+  "question": "Does USA fail separation of church and state in multiple ways?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 83,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "While the U.S. Constitution bars establishment of religion, in practice the boundary is contested and sometimes breached or blurred. Examples include government-sponsored prayer or religious displays in public institutions, public funding flowing to religious schools via vouchers or contracts, and religiously framed policies influencing legislation. Courts often police these issues, but recurring disputes suggest multiple ways the separation can fail in practice.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Although the U.S. Constitution bars establishment of religion, in practice the boundary is contested and sometimes breached. Examples often cited include government-led prayer or religious displays in public institutions, religious exemptions that affect public policy, and public funding reaching religious schools or services under certain programs. Courts sometimes permit and sometimes restrict these practices, but the recurring disputes indicate multiple ways the separation can fail in practice.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same position and support: the U.S. has a constitutional principle against establishment, but in practice there are recurring controversies that can be characterized as failures or blurring of separation (prayer, religious displays, funding, and policy influence). Neither provides concrete, specific examples with citations or distinguishes clearly between legally permitted accommodation and unconstitutional establishment, which weakens the rigor. Still, given the question’s broad phrasing (“fail … in multiple ways”), both arguments plausibly support a “yes” by pointing to multiple recurring categories of alleged breach. Because the content is nearly identical and no debate occurred, neither side is more persuasive than the other. The best-supported final answer from the presented reasoning is “yes.”",
+    "strongest_a": "Identifies multiple concrete categories (prayer/displays, funding, policy influence) where separation is contested.",
+    "weakest_a": "Relies on general claims and controversies without specific instances or legal grounding; “fail” is not clearly defined.",
+    "strongest_b": "Adds the notion of religious exemptions affecting public policy alongside prayer/displays and funding, reinforcing “multiple ways.”",
+    "weakest_b": "Similarly lacks specificity and does not separate constitutional accommodation from unconstitutional establishment.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The U.S. has constitutional protections against establishing a religion, but in practice there are multiple recurring areas of tension. Examples often cited include government funding or accommodation of religious institutions, religious language and rituals in public settings, and policy debates influenced by religious doctrine. Courts have repeatedly addressed these issues, indicating that separation is not absolute in practice.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Although the U.S. Constitution bars establishing a state religion, in practice government actions sometimes blur the line, such as official prayer in some public settings, religious symbols on public property, and faith-based exemptions or funding arrangements. Courts frequently litigate these issues, indicating recurring tensions and occasional violations depending on the specific facts. So the U.S. can be seen as failing separation of church and state in multiple ways at times.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Although the U.S. Constitution prohibits establishing a national religion, in practice the boundary is contested and sometimes breached. Examples often cited include government-led prayer or religious displays in public institutions, faith-based exemptions and funding arrangements, and religious rhetoric or symbols intertwined with official functions. Courts frequently litigate these issues, indicating multiple recurring ways the separation can be challenged.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Although the U.S. Constitution bars establishment of religion, in practice there are multiple recurring tensions with strict separation. Examples often cited include government-led prayer or religious displays in public institutions, faith-based exemptions and funding arrangements, and religious language or rituals in civic life. Courts sometimes permit some of these under specific legal tests, but they still represent ways the ideal of separation can be seen as failing or being compromised.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

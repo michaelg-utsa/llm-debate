@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:29:00.130611Z",
+  "question": "Could Snoopy transmit rabies?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 154,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Snoopy is a fictional cartoon dog, not a real animal, so he cannot carry or transmit any disease. Rabies transmission requires an infected mammal and real biological contact such as a bite. Therefore Snoopy could not transmit rabies.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Snoopy is a fictional cartoon dog, so he cannot physically carry or transmit any disease. Rabies transmission requires an infected animal capable of biting or exposing saliva to a wound, which does not apply to a fictional character. Therefore, Snoopy could not transmit rabies.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and essentially identical reasoning: Snoopy is a fictional cartoon dog and therefore cannot literally carry or transmit a biological disease like rabies. Their arguments correctly note that rabies transmission requires a real infected mammal and physical exposure (typically via saliva through a bite), which a fictional character cannot provide in the real world. With no debate rounds, there is no additional evidence or rebuttal to distinguish them. The reasoning aligns with common-sense interpretation of the question in StrategyQA, where fictional entities cannot cause real-world infections. Thus the result is a tie with a well-supported \"no.\"",
+    "strongest_a": "Correctly grounds rabies transmission in real biological infection and contact, which a fictional character lacks.",
+    "weakest_a": "Does not address hypothetical in-universe scenarios; assumes real-world interpretation without noting it explicitly.",
+    "strongest_b": "Clearly states the necessary mechanism for rabies transmission (saliva exposure/bite) and why it cannot apply.",
+    "weakest_b": "Adds little beyond Debater A; no additional nuance or supporting detail.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Snoopy is a fictional cartoon dog from the Peanuts comic strip. A fictional character cannot physically bite or transmit a virus like rabies. Rabies transmission requires an infected real animal to pass the virus, typically through saliva via a bite.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Snoopy is a fictional cartoon dog, so he cannot carry or transmit real diseases. Rabies transmission requires an infected animal capable of biting or otherwise exposing someone to infected saliva. Since Snoopy does not exist in reality, he could not transmit rabies.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Snoopy is a fictional cartoon dog, not a real animal capable of carrying or transmitting diseases. Rabies transmission requires an infected mammal and typically occurs through bites or saliva exposure. Since Snoopy does not exist in reality, he cannot transmit rabies.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Snoopy is a fictional cartoon dog, not a real animal capable of carrying or transmitting diseases. Rabies transmission requires an infected mammal and typically occurs through bites or saliva contact. Since Snoopy does not exist in reality, he cannot transmit rabies.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

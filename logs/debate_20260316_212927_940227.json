@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:29:27.940227Z",
+  "question": "Has cannabis been a big influence in rap music genre?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 1,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Cannabis has been a recurring theme in rap lyrics, imagery, and artist branding since early hip-hop and especially through West Coast G-funk and later mainstream eras. Many prominent rappers reference marijuana use, advocate legalization, or build businesses around cannabis, indicating cultural influence. While not universal across all subgenres, its presence is widespread and historically significant.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Cannabis has been a recurring theme in rap lyrics and imagery since early hip-hop and became especially prominent in West Coast rap and later mainstream rap. Many influential artists and subgenres (e.g., G-funk, stoner rap) reference or celebrate cannabis, shaping aesthetics, slang, and cultural identity within the genre.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and provide broadly similar reasoning: cannabis is a recurring lyrical and cultural theme in rap, especially visible in West Coast/G-funk and later mainstream eras. With no debate rounds, neither side challenges the other or adds decisive evidence, so the evaluation rests on the clarity and breadth of the initial justifications. Debater A slightly strengthens the case by noting multiple dimensions of influence (lyrics, imagery, branding, advocacy, and business ventures) and by acknowledging it is not universal across all subgenres while still being historically significant. Debater B is also plausible but is a bit more general and less nuanced. Since both support “yes” and A’s reasoning is marginally more comprehensive, A edges out. The claim itself aligns with general cultural knowledge about rap’s frequent cannabis references and associated aesthetics.",
+    "strongest_a": "Cites multiple channels of influence (lyrics, imagery, branding, legalization advocacy, cannabis businesses) and notes historical breadth.",
+    "weakest_a": "No concrete examples or citations; relies on general assertions.",
+    "strongest_b": "Connects cannabis influence to specific scenes/subgenres (West Coast rap, G-funk, stoner rap) and cultural elements like slang/aesthetics.",
+    "weakest_b": "More generalized and less nuanced; no specific examples or evidence.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Cannabis has been a prominent theme in rap music for decades, frequently referenced in lyrics and associated with artist personas and lifestyle imagery. Subgenres like West Coast rap and later stoner-rap have especially highlighted marijuana culture. Many influential rappers have openly advocated for or normalized cannabis use, reinforcing its cultural presence in the genre.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Cannabis has been a prominent theme in rap lyrics and culture for decades, often referenced in songs, artist personas, and imagery. Many influential rappers and subgenres (e.g., West Coast G-funk, stoner rap) have openly celebrated marijuana use. It has also shaped collaborations, branding, and lifestyle marketing within hip-hop.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Cannabis has been a prominent theme in rap music for decades, frequently referenced in lyrics and artist personas. Many influential rappers and subgenres (such as West Coast G-funk and later stoner-rap) have openly associated with marijuana culture. Cannabis has also influenced collaborations, branding, and imagery within hip-hop.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Cannabis has been a prominent theme in rap music for decades, frequently referenced in lyrics and associated with certain subgenres and artist personas. Many influential rappers and producers have openly discussed or promoted cannabis culture, making it a recurring cultural marker within hip-hop. While not universal across all rap, its influence is widely recognized in the genre's mainstream and underground scenes.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:31:53.705443Z",
+  "question": "Are common carp sensitive to their environments?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 164,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Common carp are fish that rely on environmental conditions like water temperature, oxygen levels, and pollution, and their behavior and health change in response to these factors. They also have sensory systems (e.g., smell, taste, lateral line) that detect changes in their surroundings, indicating environmental sensitivity.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Common carp are fish whose physiology and behavior respond strongly to environmental conditions like temperature, oxygen levels, and water quality. They alter feeding, movement, and stress responses based on changes in their surroundings, which indicates environmental sensitivity. Like many freshwater fish, they can tolerate a range of conditions but still react measurably to environmental shifts.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and provide broadly similar support: carp physiology and behavior change with temperature, oxygen, and water quality. Debater A adds a slightly more concrete biological basis by citing specific sensory modalities (smell, taste, lateral line) that detect environmental changes, which directly supports the notion of “sensitivity.” Debater B’s point about tolerance is reasonable but slightly dilutes the argument without adding distinct evidence beyond general fish responses. With no rebuttal rounds, the decision rests on which initial justification is more specific and directly tied to the question. Overall, A’s mention of sensory systems makes their case marginally better supported, though both are plausible and consistent with general knowledge about fish ecology.",
+    "strongest_a": "Cites specific sensory systems (lateral line, smell, taste) as mechanisms for environmental sensitivity.",
+    "weakest_a": "Does not distinguish between general environmental dependence and the specific notion of being 'sensitive' beyond examples.",
+    "strongest_b": "Connects environmental changes to measurable behavioral and stress responses (feeding, movement).",
+    "weakest_b": "Relies on generalities about freshwater fish and notes tolerance, which can weaken the 'sensitive' framing.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Common carp respond strongly to environmental conditions such as water temperature, oxygen levels, and pollution. Changes in these factors can affect their behavior, growth, and survival. They also adjust feeding and movement patterns based on habitat conditions.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Common carp respond strongly to environmental conditions such as water temperature, oxygen levels, and pollution. Changes in these factors can alter their feeding, growth, movement, and survival. They also adjust behavior based on habitat features like vegetation and turbidity, indicating sensitivity to their surroundings.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Common carp are fish whose behavior and physiology respond to environmental conditions like water temperature, oxygen levels, and pollution. They can experience stress and changes in feeding or movement when conditions worsen. Their sensory systems also detect changes in water quality and habitat features.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Common carp respond strongly to environmental conditions such as water temperature, oxygen levels, and pollution. They alter behavior like feeding and movement based on changes in their surroundings. Their physiology and survival are affected by water quality and habitat conditions, indicating environmental sensitivity.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:40:03.224541Z",
+  "question": "Did Alfred Hitchcock include internet slang in his films?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 26,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Alfred Hitchcock's films were made from the 1920s through the mid-1970s, decades before the internet and the emergence of internet slang. While his movies contain contemporary slang of their time, they could not have included internet-specific terms like \"LOL\" or \"meme\" in their intended usage. Therefore, he did not include internet slang in his films.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Alfred Hitchcock’s films were made decades before the internet and the emergence of internet slang. While his movies contain contemporary dialogue for their time, they would not include terms that originated in online culture. Any later-added subtitles or commentary wouldn’t count as Hitchcock including slang in the films themselves.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same conclusion (“no”) and base it on the strong chronological argument that Hitchcock’s filmmaking period predates the internet and thus predates internet slang. Debater A supports the claim with concrete examples of internet slang (“LOL,” “meme”) and clarifies the distinction between contemporary slang of Hitchcock’s era and internet-specific terms. Debater B adds a useful boundary condition by noting that later-added subtitles or commentary would not count as Hitchcock including slang in the films, which strengthens the interpretation of the question. Neither provides specific film-by-film evidence, but given the general historical timeline, the reasoning is sufficient and consistent. Since both are equally aligned and persuasive with minor complementary points, the result is effectively a tie with the same final answer.",
+    "strongest_a": "Clear timeline argument plus concrete examples of internet slang to illustrate impossibility.",
+    "weakest_a": "Does not explicitly address edge cases like later edits or re-releases altering dialogue/text.",
+    "strongest_b": "Explicitly rules out later-added subtitles/commentary as not attributable to Hitchcock.",
+    "weakest_b": "Less specific illustration of what counts as internet slang; relies on general timeline only.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Alfred Hitchcock's films were made primarily from the 1920s through the 1970s, before the internet existed and before internet slang developed. His dialogue and scripts reflect the language of their time, not online abbreviations or memes. Therefore, he did not include internet slang in his films.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Alfred Hitchcock's films were made primarily from the 1920s through the 1970s, long before the modern internet and its slang existed. While his movies contain contemporary dialogue for their time, they would not include internet-era terms like \"LOL\" or \"meme.\" Therefore, internet slang was not part of his film scripts.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alfred Hitchcock's films were made primarily from the 1920s through the 1970s, long before the internet and its slang existed. His dialogue and themes reflect the language of those eras rather than modern online terminology. Therefore, he did not include internet slang in his films.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Alfred Hitchcock's films were made primarily from the 1920s through the 1970s, long before the internet and its slang existed. While his movies include contemporary dialogue for their eras, they would not contain terms that originated as internet slang. Any modern slang would only appear in later works not directed by him.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T21:45:02.097938Z",
+  "question": "Does 2015 have more unlucky Friday's than usual?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 37,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "An \"unlucky Friday\" typically refers to Friday the 13th. In the Gregorian calendar, a year can have between 1 and 3 Friday the 13ths, and 2015 had three (February, March, and November), which is the maximum but still within the normal range. Since this maximum occurs in many years and isn’t above what’s possible or unusually rare, it’s not more than usual in a meaningful sense.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "An \"unlucky Friday\" typically refers to Friday the 13th. In the Gregorian calendar, a year can have between 1 and 3 Friday the 13ths, and 2015 had three (February, March, and November). Three is the maximum but it is not unprecedented or uniquely unusual, so it’s not more than what is possible in a normal year.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters interpret “unlucky Friday” as Friday the 13th, which is the standard cultural meaning, and both correctly note that a year can contain 1 to 3 Friday the 13ths. They also agree that 2015 had three such dates (February, March, and November), which is the maximum possible in a year. Their conclusion of “no” hinges on treating “more than usual” as “beyond the normal possible range” or “uniquely unusual,” but the question more naturally asks whether 2015 had more than the typical/average number. Since three is higher than the common case (many years have fewer than three), the reasoning provided does not adequately justify answering “no.” Because both sides make the same argument and share the same weakness, neither is more persuasive; however, the best-supported final answer given their own facts would be “yes.”",
+    "strongest_a": "Correctly identifies unlucky Fridays as Friday the 13th and lists 2015’s three occurrences.",
+    "weakest_a": "Equates “more than usual” with “outside the normal range,” ignoring that three is above the typical count.",
+    "strongest_b": "Accurately notes the 1–3 range and that 2015 had three Friday the 13ths.",
+    "weakest_b": "Concludes “no” without addressing what “usual” means statistically/typically.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "An \"unlucky Friday\" typically refers to Friday the 13th. Most years have one or two Friday the 13ths, and only some years have three. In 2015 there were three (February, March, and November), which is the maximum but still a normal occurrence in the calendar cycle rather than unusually beyond what can happen in a year.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "An \"unlucky Friday\" typically refers to Friday the 13th. In most years there are one to three Friday the 13ths, with one being common. In 2015 there were three (February, March, and November), which is more than the usual count for many years.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "An \"unlucky Friday\" typically refers to Friday the 13th. In 2015, Friday the 13th occurred three times (February, March, and November). Three occurrences is the maximum possible in a year but it happens in some years and is not uniquely unusual for 2015 compared to other years that also have three. Therefore, 2015 does not have more unlucky Fridays than usual in a way that stands out.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "An \"unlucky Friday\" typically refers to Friday the 13th. Most years have one to three Friday the 13ths, with three being the maximum. In 2015, there were three Friday the 13ths (February, March, and November), which is more than the usual one or two in many years.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 2,
+        "no": 1
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

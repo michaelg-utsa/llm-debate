@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:36:13.758563Z",
+  "question": "Was Harry Truman's presidency unaffected by the twenty-third Amendment to the US Constitution?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 174,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The Twenty-third Amendment, ratified in 1961, granted Washington, D.C. electors in presidential elections. Harry Truman’s presidency ended in 1953, so the amendment did not apply during his time in office or affect his elections. Therefore, his presidency was unaffected by it.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The Twenty-third Amendment, ratified in 1961, granted Washington, D.C. electoral votes in presidential elections. Harry Truman’s presidency ended in 1953, so the amendment had no effect on his elections or time in office. Therefore, his presidency was unaffected by it.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and essentially identical reasoning: the Twenty-third Amendment was ratified in 1961, while Truman’s presidency ended in 1953, so it could not have affected his time in office or his elections. This is a straightforward temporal argument that aligns with general knowledge about the amendment’s ratification date and Truman’s term dates. Neither debater introduces additional nuance (e.g., indirect historical effects), but none is needed given the question’s phrasing about Truman’s presidency being “unaffected.” Since there were no debate rounds and no divergence in arguments, neither side is more persuasive than the other. The conclusion that Truman’s presidency was unaffected is well-supported by the timeline.",
+    "strongest_a": "Correctly uses the ratification date (1961) versus Truman’s term ending (1953) to show no applicability.",
+    "weakest_a": "Does not address any possible indirect or retrospective effects, though likely irrelevant here.",
+    "strongest_b": "Same clear timeline-based reasoning showing the amendment could not impact Truman’s presidency.",
+    "weakest_b": "Adds no additional support beyond the basic date comparison.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The Twenty-third Amendment, ratified in 1961, granted Washington, D.C. electoral votes in presidential elections. Harry Truman's presidency ended in 1953, before the amendment was proposed or ratified. Therefore, it did not affect his presidency.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The Twenty-third Amendment, ratified in 1961, granted Washington, D.C. the right to appoint presidential electors. Harry Truman's presidency ended in 1953, before the amendment was proposed or ratified. Therefore, it did not affect his presidency.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Twenty-third Amendment, ratified in 1961, granted Washington, D.C. the right to appoint electors for president and vice president. Harry Truman's presidency ended in 1953, before the amendment existed. Therefore, the amendment could not have affected his presidency.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Twenty-third Amendment, ratified in 1961, granted Washington, D.C. the right to appoint electors for president and vice president. Harry Truman's presidency ended in 1953, before the amendment was proposed or ratified. Therefore, it did not affect his presidency or his elections.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

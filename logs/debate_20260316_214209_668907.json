@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T21:42:09.668907Z",
+  "question": "Did Dr. Seuss make himself famous?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 32,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Dr. Seuss (Theodor Geisel) became famous primarily through his own creative work as an author and illustrator, especially his bestselling children’s books. While publishers and cultural factors helped amplify his reach, his fame was driven by the success and popularity of what he produced. In that sense, he effectively made himself famous through his work.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Dr. Seuss (Theodor Geisel) became famous primarily through his own work as an author and illustrator, especially his bestselling children’s books. While publishers and broader cultural factors helped spread his work, his fame was driven by the books he created and promoted under his pen name.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Dr. Seuss became famous due to his own creative output as an author/illustrator, with publishers and cultural factors acting as amplifiers rather than primary causes. Neither provides specific evidence or addresses potential ambiguity in the question (e.g., whether “make himself famous” implies self-promotion/independent fame versus fame mediated by publishing and media). With no debate rounds and no differentiation in reasoning quality, neither side is more persuasive than the other. Given the common-sense interpretation that an author’s fame stems largely from their own works, the shared conclusion “yes” is reasonably supported. However, the lack of concrete support keeps confidence moderate.",
+    "strongest_a": "Connects fame to Geisel’s own creative work and book success.",
+    "weakest_a": "Does not address ambiguity of “made himself famous” or provide concrete evidence.",
+    "strongest_b": "Notes both creation and promotion under the pen name as drivers of fame.",
+    "weakest_b": "Largely repeats A’s reasoning without adding substantiation or nuance.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Dr. Seuss (Theodor Geisel) became famous primarily through his own work as an author and illustrator. His books like \"The Cat in the Hat\" and \"Green Eggs and Ham\" were created by him and drove his public recognition. While publishers and marketing helped distribute his work, his fame was fundamentally the result of his own creative output.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Dr. Seuss (Theodor Geisel) became famous primarily through the publication and popularity of his books and related work, which depended on publishers and public reception. Fame is not something he could unilaterally grant himself; it resulted from others reading, buying, and promoting his work. While he created the content that led to his success, he did not literally make himself famous.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Dr. Seuss (Theodor Geisel) became famous primarily through his own work as an author and illustrator. His books like \"The Cat in the Hat\" and \"Green Eggs and Ham\" achieved widespread popularity and established his reputation. While publishers helped distribute his work, his fame was driven by his creative output.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Dr. Seuss (Theodor Geisel) became famous primarily through his own work as an author and illustrator. His books like \"The Cat in the Hat\" and \"Green Eggs and Ham\" were created by him and drove his public recognition. While publishers helped distribute his work, the fame resulted from his personal creative output.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "no": 1,
+        "yes": 2
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

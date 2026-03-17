@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:26:53.932581Z",
+  "question": "Is Pearl Harbor the mythical home of a shark goddess?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 147,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Pearl Harbor is a real naval harbor in Hawaii, best known for the 1941 attack, not a mythological location. The idea of a shark goddess as a mythical home is associated with Hawaiian mythology (e.g., shark deities like Kaʻahupāhau), but Pearl Harbor itself is not commonly described as the mythical home of a shark goddess.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Pearl Harbor is a real harbor and U.S. naval base in Hawaii, best known for the 1941 attack. The mythical home of a shark goddess refers to Hawaiian mythology (e.g., Kaʻahupahau), which is associated with places like Puʻuloa/Ewa or specific coastal sites, not Pearl Harbor as such. Therefore the statement is not accurate.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer \"no\" and provide similar reasoning: Pearl Harbor is a real, historically significant naval harbor rather than a mythological locale. Each notes that shark deities/goddesses exist in Hawaiian mythology (e.g., Kaʻahupāhau), but argues Pearl Harbor is not commonly identified as the mythical home of such a figure. Debater B adds a slightly more specific geographic distinction by referencing Puʻuloa/Ewa or other coastal sites as the myth-associated places, which marginally strengthens the support. With no rebuttal rounds, neither side challenges the other, and the shared conclusion remains best-supported by general knowledge about Pearl Harbor’s real-world identity. Thus the best-supported final answer is \"no\".",
+    "strongest_a": "Clearly distinguishes Pearl Harbor as a real historical harbor versus a mythological location, while acknowledging relevant Hawaiian shark-deity mythology.",
+    "weakest_a": "Does not specify which locations are actually associated with the shark goddess, relying on a general \"not commonly described\" claim.",
+    "strongest_b": "Provides a bit more location-specific context by contrasting Pearl Harbor with other Hawaiian places more plausibly tied to the myth.",
+    "weakest_b": "The alternative locations are mentioned somewhat loosely without firm citation, so the added specificity is limited.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Pearl Harbor is a real naval harbor in Hawaii, best known for the 1941 attack during World War II. It is not a mythical location and is not described as the home of a shark goddess in Hawaiian mythology. While Hawaiian tradition includes shark deities (e.g., Kaʻahupāhau associated with Pearl Harbor), Pearl Harbor itself is not a \"mythical home\" in the sense implied by the question.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Pearl Harbor is a real harbor in Hawaii known primarily for the 1941 attack during World War II. It is not described in mythology as the home of a shark goddess. While Hawaiian mythology includes shark deities and guardian sharks, they are not specifically associated with Pearl Harbor as a mythical home.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pearl Harbor is a real harbor in Hawaii known for the 1941 military attack, not a mythological location. The mythical home of a shark goddess is associated with Hawaiian legends (e.g., Kaʻahupāhau) and specific places like Puʻuloa/Ewa or areas near Honolulu, but Pearl Harbor itself is not commonly identified as such a mythical home. Therefore the statement is not accurate.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pearl Harbor is a real naval harbor on the island of Oahu in Hawaii, known historically for the 1941 attack. It is not a mythical location and is not described as the home of a shark goddess. While Hawaiian mythology includes shark deities and guardian spirits, Pearl Harbor itself is not identified as their mythical home.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

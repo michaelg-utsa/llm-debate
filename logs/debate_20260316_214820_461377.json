@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:48:20.461377Z",
+  "question": "Should wool be hand washed only?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 44,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Wool is often recommended to be hand washed to avoid shrinking or felting, but it is not the only acceptable method. Many wool garments labeled \"machine washable\" can be washed on a gentle/wool cycle with cold water and mild detergent. The correct method depends on the garment’s care label and the type of wool.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Wool is not necessarily hand-wash only; many wool garments labeled \"machine washable\" (often superwash-treated) can be washed on a gentle/wool cycle with cold water. Some wool items do require hand washing or dry cleaning depending on the knit, finish, and care label. So it depends on the specific wool product and its instructions.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide essentially the same justification: wool is often recommended for hand washing to prevent shrinkage/felting, but some wool is machine-washable (e.g., superwash-treated) and care depends on the label and garment construction. This reasoning is consistent with common textile care guidance and directly addresses the “only” in the question by providing a clear counterexample class (machine-washable wool). Neither debater introduces unsupported claims or logical gaps, and neither has an advantage because no additional debate content was provided. Given the parity in arguments and absence of rebuttals, the result is a tie. The best-supported final answer remains that wool should not be hand washed only.",
+    "strongest_a": "Directly addresses the absolute claim by noting machine-washable wool and care-label dependence.",
+    "weakest_a": "No concrete examples or citations beyond general care guidance.",
+    "strongest_b": "Adds the specific concept of superwash-treated wool as a reason machine washing can be acceptable.",
+    "weakest_b": "Also relies on generalities and does not distinguish edge cases in detail.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Wool does not have to be hand washed only. Many wool garments can be machine washed on a gentle or wool cycle with cold water and mild detergent, depending on the care label. Some items, especially delicate or untreated wool, may still require hand washing to avoid shrinkage or felting.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Wool does not have to be hand washed only; many wool garments can be machine washed on a gentle or wool cycle with cold water. The correct method depends on the item’s care label and the wool type, since some are treated to be machine-washable. Hand washing is often recommended to reduce shrinking or felting, but it is not the only option.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Wool does not have to be hand washed only. Many wool garments can be machine washed on a gentle or wool cycle with cold water and mild detergent, depending on the care label. Some items, especially delicate or non-superwash wool, are safer to hand wash, but it is not the only option.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Wool does not have to be hand washed only. Many wool garments can be machine washed on a gentle or wool cycle with cold water and a wool-safe detergent, depending on the care label and whether the wool is treated (e.g., superwash). Some wool items still require hand washing to avoid shrinking or felting, but it is not universally required.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

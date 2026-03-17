@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:43:17.690282Z",
+  "question": "Could Eddie Murphy's children hypothetically fill a basketball court by themselves?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 195,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Eddie Murphy has 10 children. A standard basketball court is about 4,700 square feet, and 10 people cannot physically cover or \"fill\" that area by themselves in any reasonable sense. Even if they lay down spread out, they would occupy only a small fraction of the court’s surface.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A standard basketball team fields 5 players at a time, and a full court game uses 10 players. Eddie Murphy has 10 children, which could supply 10 players, but \"fill a basketball court\" typically implies covering the court area with people, which would require far more than 10 individuals. So by themselves, his children could not fill the court in that sense.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters converge on the same answer (“no”) and interpret “fill a basketball court” as physically covering the court’s surface area with bodies. Debater A supports this with an area-based argument, citing the approximate square footage of a court and noting that 10 people would occupy only a small fraction even if lying down. Debater B adds a useful clarification about an alternative interpretation (having enough players to populate a game) but correctly argues that this is different from “filling” the court. A’s reasoning is slightly more directly responsive to the “fill” phrasing because it quantifies the mismatch between people and court area. With no counterarguments or debate rounds, the best-supported conclusion remains that 10 children cannot fill a basketball court by themselves in the intended sense.",
+    "strongest_a": "Uses a direct area/coverage argument tied to the meaning of “fill.”",
+    "weakest_a": "Assumes the intended meaning is physical coverage without addressing the possible “players on court” interpretation.",
+    "strongest_b": "Explicitly considers and dismisses the alternative interpretation of “fill” as staffing a game.",
+    "weakest_b": "Less concrete/quantitative about why 10 people cannot “fill” the court area.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A standard basketball court is about 4,700 square feet (roughly 437,000 square inches). Eddie Murphy has 10 children, and even if each child lay flat and covered around 2,500–3,000 square inches of area, they would cover only about 25,000–30,000 square inches total. That is far less than the area of a full basketball court, so they could not fill it by themselves.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Eddie Murphy has 10 children. A standard basketball court is 94 feet by 50 feet, totaling 4,700 square feet. Even if each child lay down and covered around 15–20 square feet, 10 children would only cover roughly 150–200 square feet, far less than the court area. Therefore they could not fill a basketball court by themselves.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A standard basketball court is 94 feet by 50 feet, totaling 4,700 square feet. Eddie Murphy has 10 children, and even if each child lay flat and covered around 15–20 square feet, they would only cover roughly 150–200 square feet. That is far less than the area of the court, so they could not fill it by themselves.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A standard basketball court is about 94 feet by 50 feet, which is 4,700 square feet. Eddie Murphy has around 10 children, and even if each child lay flat and took up roughly 15–20 square feet, they would cover only about 150–200 square feet total. That is far less than the area of the court, so they could not fill it by themselves.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

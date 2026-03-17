@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:14:48.169514Z",
+  "question": "Can the Communist Party of the Soviet Union get a perfect all kill?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 115,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A \"perfect all kill\" is a modern South Korean music-chart achievement requiring a song to be #1 across multiple real-time, daily, and weekly charts. The Communist Party of the Soviet Union is a political organization and cannot release a song to compete on those charts. Therefore it cannot obtain a perfect all kill.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A \"perfect all kill\" is a modern South Korean music chart achievement, requiring a song to top multiple real-time, daily, and weekly charts simultaneously. The Communist Party of the Soviet Union is a political organization, not a musical act releasing songs on Korean charts. Therefore it cannot achieve a perfect all kill.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical arguments: a “perfect all kill” is a South Korean music-chart accomplishment requiring a song to rank #1 across multiple charts, and the Communist Party of the Soviet Union is a political organization that would not be eligible to compete on those charts. Given the meaning of the term in common usage, the conclusion that the CPSU cannot achieve such a chart feat is well supported. Neither debater introduces additional nuance (e.g., hypothetical edge cases like releasing music under an affiliated label), but the question is framed in a straightforward real-world sense. Since the reasoning and support are the same, neither side is more persuasive than the other. The best-supported final answer is therefore “no.”",
+    "strongest_a": "Correctly identifies 'perfect all kill' as a Korean music-chart achievement and notes CPSU is not a musical act.",
+    "weakest_a": "Does not address hypothetical edge cases (e.g., an organization releasing music), though likely irrelevant.",
+    "strongest_b": "Same clear mapping of term definition to CPSU’s ineligibility as a political organization.",
+    "weakest_b": "Adds no additional support beyond the shared definition-based argument.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A \"perfect all kill\" is a term from South Korean music charts meaning a song is #1 on all major real-time, daily, and weekly charts simultaneously. The Communist Party of the Soviet Union is a political organization, not a musical act releasing songs on those charts. Therefore it cannot achieve a perfect all kill.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A \"perfect all kill\" is a term from South Korean music charts, referring to a song simultaneously topping multiple real-time, daily, and weekly charts. The Communist Party of the Soviet Union is a political organization, not a musical act releasing songs on those charts. Therefore it cannot achieve a perfect all kill.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A \"perfect all kill\" is a term used in South Korean music charts when a song ranks #1 across all major real-time, daily, and weekly charts simultaneously. The Communist Party of the Soviet Union is a political organization and cannot release a song to compete on music charts. Therefore it cannot achieve a perfect all kill.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A \"perfect all kill\" is a modern music chart achievement associated with South Korean idol songs topping multiple real-time, daily, and weekly charts simultaneously. The Communist Party of the Soviet Union is a political organization and does not release music in a way that would be eligible for such chart metrics. Therefore it cannot achieve a perfect all kill.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

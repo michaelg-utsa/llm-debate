@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:34:28.612566Z",
+  "question": "Can a banana get a virus?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 168,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Banana plants can be infected by several plant viruses, such as Banana bunchy top virus and Banana streak virus. Since the banana fruit is part of the plant, it can carry viral particles or show effects of viral infection, even though it’s not the same as catching a human virus. Interpreting \"banana\" as the plant or its fruit, it can indeed get a virus in the plant-pathology sense.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Banana plants can be infected by plant viruses, such as Banana bunchy top virus or Banana streak virus. While the edible fruit itself isn’t typically described as “getting a virus” the way animals do, the banana (as part of the plant) can be affected by viral infection.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: bananas (as plants) are susceptible to plant viruses, with concrete examples like Banana bunchy top virus and Banana streak virus. This directly supports answering “yes” under a plant-pathology interpretation of “banana.” Neither debater provides counter-considerations about the common-language reading of “a banana” meaning the harvested fruit, which might make some readers hesitate, but they do acknowledge that distinction briefly. Since there were no debate rounds and the reasoning is equivalent in content and support, neither side is more persuasive than the other. Given general knowledge that plants, including banana plants, can be infected by viruses, the best-supported final answer is “yes.”",
+    "strongest_a": "Cites specific banana plant viruses and links infection to the banana as part of the plant.",
+    "weakest_a": "Relies on interpreting “banana” as plant/fruit without addressing the everyday meaning of a harvested banana in detail.",
+    "strongest_b": "Clear acknowledgement of the fruit-vs-plant ambiguity while still grounding the claim in known banana viruses.",
+    "weakest_b": "Does not add additional justification beyond A; no deeper support for the fruit itself being infected.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Bananas are living plant tissue, and plants can be infected by viruses. Bananas in particular can be affected by plant viruses such as Banana bunchy top virus. While these viruses do not infect humans, they can infect the banana plant and its fruit tissues.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Bananas are living plants and can be infected by plant viruses, such as Banana bunchy top virus. These viruses can spread through insect vectors or infected planting material. While this is not the same as a human virus infection, it is still a viral infection of the banana plant and can affect the fruit.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Bananas are living plants and can be infected by plant viruses, such as Banana bunchy top virus. These viruses can cause disease symptoms in the banana plant and affect the fruit’s development. While a banana can’t get human viruses, it can get plant-specific viruses.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A banana is a living plant tissue and can be infected by plant viruses. Bananas are known to suffer from viral diseases such as Banana bunchy top virus. While a banana cannot get human viruses like the flu, it can still get a virus in the plant-disease sense.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

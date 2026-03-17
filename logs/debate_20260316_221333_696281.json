@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T22:13:33.696281Z",
+  "question": "Would Doctor Strange like the Pittsburgh Steelers logo?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 111,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Doctor Strange is a Marvel superhero and sorcerer, and there’s no established connection suggesting he’s a fan of the NFL or the Pittsburgh Steelers specifically. The Steelers logo is a sports team emblem rather than something tied to magic or his personal symbolism. Without evidence of his preference for that team or logo, it’s unlikely he would particularly like it.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Doctor Strange is a Marvel superhero and there’s no established canon indicating he is a fan of the Pittsburgh Steelers or their branding. His interests are centered on mystic arts and protecting reality, not NFL team logos. Without any evidence of a connection or preference, it’s safer to say he wouldn’t particularly like the Steelers logo.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the same core rationale: there is no canon evidence that Doctor Strange has any affinity for the Pittsburgh Steelers or NFL logos. Their reasoning is plausible in a StrategyQA setting where, absent a stated preference, the safe inference is that he would not particularly like a specific sports logo. However, both arguments are somewhat weak because they equate “no evidence he likes it” with “he wouldn’t like it,” when the question is about whether he would like it, not whether we can prove he does. Neither debater considers alternative generic reasons he might like it (e.g., aesthetic appreciation) or frames the answer as “unlikely” vs a definitive “no.” Since the content is effectively identical, neither side is more persuasive than the other.",
+    "strongest_a": "Correctly notes lack of any established connection between Doctor Strange and the Steelers logo.",
+    "weakest_a": "Concludes a definite 'no' from absence of evidence rather than addressing likelihood or neutrality.",
+    "strongest_b": "Anchors the claim in canon: no indication Doctor Strange is a Steelers fan or cares about NFL branding.",
+    "weakest_b": "Same inferential gap: 'no evidence' is treated as sufficient to assert 'wouldn't like.'",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Doctor Strange is a Marvel superhero whose interests center on mystic arts and protecting reality, not on NFL team branding. There is no clear evidence in canon that he is a Pittsburgh Steelers fan or that he would have a particular preference for their logo. Given the lack of any established connection, it is unlikely he would specifically like the Steelers logo.",
+      "confidence": 3
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Doctor Strange is strongly associated with mystical symbols and circular sigils. The Pittsburgh Steelers logo is a stylized circular emblem with geometric star-like shapes, which resembles iconography he might find aesthetically compatible. While he has no explicit connection to the team, the logo’s design aligns with his taste for symbolic, arcane-looking imagery.",
+          "confidence": 2
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Doctor Strange is a fictional character and his personal preferences about sports team logos are not established. The Pittsburgh Steelers logo features simple geometric shapes and a clean, emblematic design, which could plausibly appeal to someone who appreciates symbols and iconography. Since there is no canon evidence either way, a mildly positive guess is reasonable.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "Doctor Strange is a Marvel sorcerer focused on mysticism and protecting reality, not a character known for interest in American football teams or their branding. The Pittsburgh Steelers logo is a sports emblem with no clear connection to his identity, values, or story. With no evidence he would specifically like it, the safest answer is no.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 2,
+        "no": 1
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

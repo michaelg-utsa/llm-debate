@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:43:42.218743Z",
+  "question": "Does  Lionel Richie believe in holistic medicine?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 196,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "There is no well-established public record or widely cited interview indicating that Lionel Richie endorses or practices holistic medicine. In the absence of credible evidence tying him to holistic medicine beliefs, the safest conclusion is that he does not (or at least it is not known that he does). StrategyQA-style questions typically rely on explicit, verifiable statements, which are lacking here.",
+      "confidence": 2
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "There is no well-established, widely cited evidence that Lionel Richie has publicly endorsed holistic medicine as a belief system. Most public information about him focuses on his music career and personal life rather than health or alternative medicine advocacy. Given the lack of reliable sources indicating such a belief, the safest answer is no.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on the same core rationale: there is no prominent, verifiable public statement linking Lionel Richie to holistic medicine. Since no debate rounds occurred, neither side provided additional evidence, citations, or specific counterfactual checks (e.g., interviews, biographies) that would differentiate their support. Debater A’s reasoning is slightly more aligned with StrategyQA norms by explicitly noting that these questions typically hinge on explicit, checkable statements, and that absence of such statements is informative for the task. Debater B’s reasoning is similar but more general and less tied to the dataset’s typical evidence style. Given identical conclusions and largely overlapping justification, the result is effectively a tie, with a marginal edge to A’s framing.",
+    "strongest_a": "Explicitly connects the decision rule to StrategyQA’s reliance on verifiable statements.",
+    "weakest_a": "Conflates lack of evidence with evidence of absence; provides no concrete source checks.",
+    "strongest_b": "Clear statement that public information does not show endorsement of holistic medicine.",
+    "weakest_b": "Also relies on absence of evidence without any specific sourcing or verification steps.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "There is no reliable public information indicating that Lionel Richie has expressed belief in holistic medicine. His public interviews and biographies focus primarily on his music career and personal life rather than alternative or holistic health practices. Without a clear statement or credible source, the safest conclusion is that he does not (at least not publicly) endorse holistic medicine.",
+      "confidence": 2
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "There is no well-known, reliable public record indicating that Lionel Richie has expressed belief in holistic medicine. Most available interviews and biographies focus on his music career and personal life rather than health philosophies. Without a clear statement from him endorsing holistic medicine, the safest conclusion is no.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "There is no well-known, reliable public record of Lionel Richie expressing a belief in holistic medicine. Most available interviews and biographies focus on his music career and personal life rather than alternative health practices. Without specific evidence of such a belief, the safest conclusion is that he does not (at least not publicly) endorse holistic medicine.",
+          "confidence": 2
+        },
+        {
+          "answer": "no",
+          "reasoning": "There is no well-established public record or widely reported statement indicating that Lionel Richie endorses or practices holistic medicine. Most available biographical and interview material about him focuses on his music career and personal life rather than alternative health beliefs. Given the lack of credible evidence supporting the claim, the safest answer is no.",
+          "confidence": 2
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

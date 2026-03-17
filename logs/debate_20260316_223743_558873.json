@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:37:43.558873Z",
+  "question": "Can food be cooked in the cosmic microwave background?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 179,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The cosmic microwave background is only about 2.7 K, just a few degrees above absolute zero, so it provides essentially no usable heat for cooking. Cooking requires temperatures high enough to denature proteins and drive chemical reactions, typically well above room temperature. In fact, an object exposed only to the CMB would tend to cool toward that temperature rather than heat up.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The cosmic microwave background is only about 2.7 K, far colder than any cooking temperature. It provides an extremely weak heat flux, so it would cool most objects rather than heat them. Cooking requires sustained heating to much higher temperatures to drive chemical changes and kill pathogens.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide essentially the same core justification: the CMB temperature is ~2.7 K, far below any temperature needed for cooking. Their reasoning correctly notes that an object in an environment dominated by the CMB would equilibrate toward that very low temperature, meaning it would cool rather than heat. Both also connect “cooking” to chemical/biological changes requiring much higher temperatures, which is relevant to the question. Since no debate occurred, there is no differentiation in rebuttal quality or depth. Overall, the arguments are straightforward, physically consistent, and equally supported.",
+    "strongest_a": "Correctly links CMB’s 2.7 K equilibrium temperature to cooling rather than heating, making cooking impossible.",
+    "weakest_a": "Does not quantify heat flux or address any hypothetical edge cases (e.g., extremely long times) explicitly, though unnecessary.",
+    "strongest_b": "Emphasizes both low temperature and weak heat flux, reinforcing that CMB cannot provide cooking-level energy input.",
+    "weakest_b": "Similar to A, lacks quantitative detail; largely repeats the same point without additional support.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The cosmic microwave background is only about 2.7 K, far colder than any temperature needed to cook food. It provides extremely little energy per unit area, so it cannot heat objects up; instead, objects would generally lose heat to space. Cooking requires sustained temperatures typically well above 60–100°C, which the CMB cannot supply.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The cosmic microwave background has a temperature of about 2.7 K, which is far colder than any temperature needed to cook food. Cooking requires adding heat to raise food well above room temperature, typically to at least tens of degrees Celsius. In the CMB, food would instead lose heat by radiation and cool toward 2.7 K.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The cosmic microwave background is only about 2.7 K (around -270°C), so it provides extremely little thermal energy. Cooking requires heating food to much higher temperatures to drive chemical changes and kill microbes. In deep space, objects exposed only to the CMB would instead cool toward that temperature rather than warm up.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The cosmic microwave background is only about 2.7 K, far colder than any temperature needed to cook food. Cooking requires adding heat to raise food well above room temperature, typically tens to hundreds of degrees Celsius. In deep space, objects tend to radiate heat away and would cool toward the CMB temperature rather than warm up from it.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

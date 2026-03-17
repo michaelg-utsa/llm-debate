@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:53:32.866174Z",
+  "question": "Is \"A Tale of Two Cities\" a parody of the Bible?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 60,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "\"A Tale of Two Cities\" is a historical novel by Charles Dickens set around the French Revolution, focusing on themes like sacrifice, resurrection, and justice. While it uses some Christian/Biblical imagery and moral themes, it is not written as a parody or satirical imitation of the Bible. Its genre and intent are dramatic and social-historical rather than comedic or parodic.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "\"A Tale of Two Cities\" is a historical novel by Charles Dickens set around the French Revolution, focusing on themes like sacrifice, resurrection, and social injustice. While it uses some Christian/Biblical imagery and moral themes, it is not written as a parody or satirical imitation of the Bible. A parody would intentionally mimic and mock the Bible’s style or content, which the novel does not do.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and provide essentially the same justification: the novel is a serious historical work, not an intentional satirical imitation of the Bible. Their reasoning correctly distinguishes between the presence of Biblical/Christian themes and imagery (which the novel does have) versus the defining feature of parody (intentional mimicry for comic or mocking effect). With no debate rounds, neither side improves or challenges the other, and neither introduces errors. Given general literary understanding of Dickens’s intent and the genre of the work, “no” is well-supported. Since the arguments are equivalent in strength and completeness, the result is a tie.",
+    "strongest_a": "Clearly explains that Biblical imagery/themes do not make a work a parody; emphasizes genre and authorial intent.",
+    "weakest_a": "Does not cite any specific textual evidence or scholarly characterization beyond general description.",
+    "strongest_b": "Defines parody explicitly (intentional mimicry and mockery) and contrasts it with the novel’s aims.",
+    "weakest_b": "Also lacks concrete supporting references; largely restates A’s points.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "\"A Tale of Two Cities\" is a historical novel by Charles Dickens set during the French Revolution. It is not written as a parody of the Bible, though it contains themes of sacrifice, resurrection, and redemption that can echo Christian ideas. Those thematic parallels do not make it a parody.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "\"A Tale of Two Cities\" is a historical novel by Charles Dickens set during the French Revolution, focused on themes like sacrifice, resurrection, and social injustice. While it contains Christian imagery and moral themes that can echo biblical ideas, it is not written as a parody of the Bible. It is generally regarded as serious literature rather than satirical religious commentary.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "\"A Tale of Two Cities\" is a historical novel by Charles Dickens set around the French Revolution, focusing on themes like sacrifice, resurrection, and social injustice. While it contains religious imagery and moral themes that can echo biblical ideas, it is not written as a parody of the Bible. A parody would intentionally imitate and mock or satirize the Bible, which the novel does not do.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "\"A Tale of Two Cities\" is a historical novel by Charles Dickens set during the French Revolution, focusing on themes like sacrifice, resurrection, and social injustice. While it contains Christian imagery and moral themes that can echo biblical ideas, it is not written as a parody of the Bible. A parody would intentionally imitate and mock or satirize the Bible, which this novel does not do.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

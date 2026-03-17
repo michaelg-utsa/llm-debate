@@ -1,0 +1,23 @@
+models:
+  debater_a: gpt-5.2
+  debater_b: gpt-5.2
+  judge: gpt-5.2
+  direct_qa: gpt-5.2
+  self_consistency: gpt-5.2
+
+generation:
+  temperature: 0.4
+  max_output_tokens: 900
+  debate_rounds: 4
+  min_rounds_before_early_stop: 3
+  early_stop_consecutive: 2
+  self_consistency_samples: 8
+
+logging:
+  log_dir: logs
+
+task:
+  domain: strategyqa
+  answer_choices:
+    - "yes"
+    - "no"

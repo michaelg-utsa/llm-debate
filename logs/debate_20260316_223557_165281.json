@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:35:57.165281Z",
+  "question": "Can pancreas removal cause bankruptcy?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 173,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Removing the pancreas (pancreatectomy) is a major surgery that can require intensive hospitalization, follow-up care, and lifelong management of diabetes and digestive enzyme replacement. In countries without universal coverage or for uninsured/underinsured patients, these costs can be extremely high and may lead to severe medical debt. Severe medical debt can contribute to or cause personal bankruptcy.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Removing the pancreas (pancreatectomy) is a major surgery that can be extremely expensive, especially in healthcare systems where patients may face large out-of-pocket costs. It can also lead to long-term needs like insulin therapy and enzyme replacement, plus lost income during recovery. These costs and financial impacts can contribute to severe debt and potentially bankruptcy for some individuals.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (yes) and provide broadly similar reasoning: pancreatectomy is a major, costly procedure with substantial downstream expenses (hospitalization, follow-up care, insulin and enzyme replacement) that can create large out-of-pocket burdens. Given general knowledge that high medical costs and lost income can contribute to personal bankruptcy in some healthcare systems, the claim is plausible and supported. Debater B adds an additional mechanism—lost income during recovery—which strengthens the causal pathway beyond direct medical bills. Debater A is slightly more specific about lifelong management needs, but B’s inclusion of both medical and income impacts makes the overall support marginally stronger. With no rebuttals or counterarguments, the best-supported final answer remains yes.",
+    "strongest_a": "Notes long-term, lifelong costs (diabetes management and enzyme replacement) after pancreatectomy.",
+    "weakest_a": "Does not mention indirect financial impacts like lost wages, which can be important for bankruptcy risk.",
+    "strongest_b": "Adds both ongoing medical costs and lost income during recovery as pathways to bankruptcy.",
+    "weakest_b": "Less specific than A about the clinical follow-up burden, relying on general statements about expense.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Removal of the pancreas is a major surgery that can lead to high medical bills, ongoing treatment costs, and long-term management needs like insulin and enzyme replacement. In places without comprehensive health coverage, these expenses can be financially overwhelming. Severe medical debt can contribute to or cause bankruptcy for some individuals.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Removing the pancreas (pancreatectomy) is a major surgery that can be extremely expensive, especially without adequate health insurance. The procedure, hospitalization, follow-up care, and lifelong management of resulting diabetes and digestive enzyme replacement can create large ongoing costs. Such medical expenses can lead to severe debt and potentially bankruptcy for some patients.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Removing the pancreas (pancreatectomy) is a major surgery that can lead to long hospital stays, complications, and lifelong needs like insulin and digestive enzyme replacement. In places without comprehensive health coverage, these medical bills and ongoing medication costs can be extremely high. Such large and persistent expenses can contribute to severe financial hardship, potentially leading to bankruptcy for some people.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Removing the pancreas (pancreatectomy) is a major surgery that can be extremely expensive, especially with complications, long hospital stays, and follow-up care. It can also lead to lifelong needs like insulin therapy and digestive enzyme replacement, adding ongoing medical costs. In places without comprehensive health coverage, these costs can create severe financial strain and potentially contribute to bankruptcy.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

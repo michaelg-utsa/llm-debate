@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:26:33.668942Z",
+  "question": "Did goddess Friday is named after despise felines?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 146,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Friday is named after the Norse goddess Frigg (or possibly Freyja), not after any concept of despising cats. There is no established historical link between the naming of Friday and hatred of felines. The premise appears to conflate unrelated ideas.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Friday is named after the Norse goddess Frigg (or possibly Freyja), not based on any attitude toward cats. There is no well-known tradition that Frigg/Freyja despised felines; in fact, Freyja is famously associated with cats pulling her chariot. So the naming of Friday is not tied to despising felines.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and broadly similar reasoning: Friday’s name derives from a Norse goddess (Frigg and/or Freyja) rather than any concept related to cats. Debater B is slightly more persuasive because it adds a specific counterpoint to the question’s premise: Freyja is positively associated with cats (her chariot is pulled by cats), which directly undermines the idea of “despising felines.” Debater A’s argument is correct in pointing out the lack of historical linkage, but it remains more general and does not directly rebut the feline aspect beyond saying it is unrelated. With no debate rounds, the decision rests on initial reasoning quality, where B provides the more targeted refutation. Therefore, the best-supported final answer is “no.”",
+    "strongest_a": "Correctly identifies Friday’s etymology as tied to Frigg/Freyja rather than any cat-related concept.",
+    "weakest_a": "Does not directly address the feline premise with a concrete historical/mythological detail.",
+    "strongest_b": "Directly rebuts the feline claim by noting Freyja’s well-known association with cats.",
+    "weakest_b": "Leaves some ambiguity about whether Friday is Frigg’s day or Freyja’s day, though it doesn’t affect the conclusion.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Friday is named after the Norse goddess Frigg (or possibly Freyja), not after any concept of despising cats. There is no historical basis that the naming of Friday relates to hatred or contempt for felines. Therefore the claim is false.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Friday is named after the Norse goddess Frigg (or possibly Freyja), not after any concept of despising cats. There is no well-known tradition or etymological link connecting the naming of Friday to hatred of felines. Therefore the claim does not hold.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Friday is named after the Norse goddess Frigg (or possibly Freyja), and there is no well-established tradition that she despised cats. In Norse mythology, Freyja is actually associated with cats, often depicted riding a chariot pulled by them. Therefore, the idea that the goddess behind the name Friday despised felines is not supported.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Friday is named after the Norse goddess Frigg (or possibly Freyja), not after any concept related to despising cats. There is no well-known tradition that Frigg or Freyja is characterized by hatred of felines. In fact, Freyja is often associated with cats in Norse mythology.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

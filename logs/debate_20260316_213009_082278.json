@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:30:09.082278Z",
+  "question": "Can soup be eaten with the hands?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 3,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Soup is a liquid food typically consumed using a utensil like a spoon or by drinking from a bowl or cup. Using bare hands to eat soup is generally impractical because it will spill and is difficult to handle. While one could soak bread or another food in soup and then eat that with hands, the soup itself isn’t normally eaten by hand.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Soup is a liquid food typically consumed with a spoon or by drinking from a bowl or cup. Using hands directly would not be practical because it would spill and be difficult to handle. While you could dip bread or other foods into soup with your hands, the soup itself isn’t normally eaten by hand.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical arguments: soup is primarily a liquid and is normally consumed with a spoon or by drinking, making it impractical to eat directly with bare hands. They also both acknowledge a potential edge case (using bread or another solid to soak up soup), but correctly distinguish that from “eating soup with the hands” in the direct sense. Since no debate occurred, neither side improved or challenged the other’s framing. The common-sense interpretation of the question is about directly eating soup, for which “no” is well supported. With no differentiating reasoning, the result is a tie and the final answer follows their shared conclusion.",
+    "strongest_a": "Clear practicality argument: liquid soup cannot be handled without spilling.",
+    "weakest_a": "Does not explicitly address unusual contexts (e.g., very thick soup or cultural practices) beyond a brief bread-dipping mention.",
+    "strongest_b": "Acknowledges the dipping-bread edge case while maintaining the main claim about soup itself.",
+    "weakest_b": "Reasoning is redundant and offers no additional support beyond common practice.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Soup is a liquid food typically eaten with a spoon or sipped from a bowl or cup. Using hands directly would not be practical because it would spill and be difficult to handle. While bread or other foods can be dipped by hand, the soup itself is not normally eaten with hands.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Soup is a liquid food typically consumed using a spoon or by drinking from a bowl or cup. Using hands directly would not effectively hold or scoop the liquid and would likely cause spills. While bread can be dipped into soup and held by hand, the soup itself is not normally eaten with hands.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Soup is a liquid food that is typically eaten using a spoon or by drinking from a bowl or cup. Using hands directly would not be practical because it would spill and be difficult to handle. While bread or other items can be dipped by hand, the soup itself is not normally eaten with hands.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Soup is a liquid food that is typically consumed with a spoon or by drinking from a bowl or cup. Using hands directly would not be practical because it would spill and be difficult to handle. While bread or other items can be dipped by hand, the soup itself is not normally eaten with hands.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

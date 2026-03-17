@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:49:16.757501Z",
+  "question": "Do all of the African regions that participated in the Portugese Colonial War share an official language?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 47,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The Portuguese Colonial War involved Portugal’s African territories of Angola, Mozambique, and Portuguese Guinea (now Guinea-Bissau), along with Cape Verde and São Tomé and Príncipe in the broader independence struggle context. All of these countries list Portuguese as an official language today. Therefore, the African regions that participated share an official language: Portuguese.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The Portuguese Colonial War involved Portugal's African territories of Angola, Mozambique, and Portuguese Guinea (now Guinea-Bissau), along with Cape Verde and São Tomé and Príncipe in related independence movements. These regions were all Portuguese colonies, and Portuguese was established as the official language in each. Therefore, they share an official language: Portuguese.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: the Portuguese Colonial War involved Portugal’s African territories (commonly Angola, Mozambique, and Portuguese Guinea/Guinea-Bissau) and they assert Portuguese is an official language across the relevant successor states. Since no debate occurred, there is no direct challenge to the scope of “African regions that participated” or to whether each has Portuguese as an official language. Debater A provides a slightly clearer link to present-day official-language status (“today”), while Debater B leans more on colonial-era establishment, which is less directly responsive if the question is interpreted in the present tense. However, both are broadly consistent with general knowledge that these Lusophone countries have Portuguese as an official language. With no differentiating rebuttals, the outcome is effectively a tie, and the best-supported answer remains “yes.”",
+    "strongest_a": "Connects participating territories to current official-language status (Portuguese).",
+    "weakest_a": "Does not justify that all listed regions truly 'participated' in the war versus broader independence context.",
+    "strongest_b": "Notes common colonial administration implying a shared official language (Portuguese).",
+    "weakest_b": "Relies on colonial-era language establishment rather than explicitly addressing current official-language status.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The African regions involved in the Portuguese Colonial War were Portuguese colonies such as Angola, Mozambique, and Portuguese Guinea (now Guinea-Bissau), along with Cape Verde and São Tomé and Príncipe in the broader conflict context. These territories shared Portuguese as the official language due to Portuguese colonial administration. Today, their successor states also generally retain Portuguese as an official language.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The African regions involved in the Portuguese Colonial War were Portuguese colonies such as Angola, Mozambique, and Portuguese Guinea (now Guinea-Bissau). Portuguese was the official language of these territories under Portuguese administration. Therefore, they shared an official language: Portuguese.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The African regions involved in the Portuguese Colonial War were Portuguese colonies such as Angola, Mozambique, and Portuguese Guinea (now Guinea-Bissau), along with Cape Verde and São Tomé and Príncipe in the broader conflict context. These territories all used Portuguese as the official language during Portuguese rule and retained Portuguese as an official language after independence. Therefore, they share an official language: Portuguese.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Portuguese Colonial War involved Portugal's African territories of Angola, Mozambique, and Portuguese Guinea (now Guinea-Bissau), along with Cape Verde and São Tomé and Príncipe in the broader conflict context. These regions all use Portuguese as an official language today. Therefore, they share an official language.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

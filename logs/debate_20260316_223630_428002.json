@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:36:30.428002Z",
+  "question": "Could Aretha Franklin vote for a president when her second child was born?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 175,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Aretha Franklin was born in 1942, and her second child was born in 1957. In the United States, the voting age was 21 at that time (it was lowered to 18 in 1971). Since she was only about 15 in 1957, she could not vote for president then.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Aretha Franklin was born in 1942, and her second child was born in 1957. By 1957 she was about 15 years old, which is below the U.S. voting age. The voting age was 21 at the time (it was lowered to 18 in 1971), so she could not vote for president then.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters present the same factual timeline: Aretha Franklin was born in 1942 and her second child was born in 1957, making her about 15 at the time. They also correctly note that the U.S. voting age in 1957 was 21 (prior to the 26th Amendment in 1971). Given that, the reasoning supports the conclusion that she could not vote for president when her second child was born. However, both debaters’ stated initial answers are “yes,” which contradicts their own reasoning. Since their arguments align and point clearly to “no,” neither side is more persuasive than the other; they are equally internally inconsistent in the same way. The best-supported final answer from the provided reasoning is therefore “no.”",
+    "strongest_a": "Correctly uses birth year and 1957 voting age (21) to infer she was too young to vote.",
+    "weakest_a": "Initial answer says “yes” despite reasoning concluding she could not vote.",
+    "strongest_b": "Same solid age-and-law comparison showing she was below voting age in 1957.",
+    "weakest_b": "Initial answer says “yes” while the reasoning supports “no.”",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Aretha Franklin was born in 1942, and her second child was born in 1957. In the United States, the voting age for presidential elections was 21 at that time (it was lowered to 18 in 1971). Since she was about 15 in 1957, she could not vote for president then.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Aretha Franklin was born in 1942, and her second child was born in 1957. In the United States, the voting age in 1957 was 21, so she would have been about 15 and not eligible then. However, the question asks whether she could vote for a president when her second child was born; since she was under 21 at that time, she could not.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Aretha Franklin was born in 1942, and her second child was born in 1957. In the United States, the voting age at that time was 21. Since she was only about 15 in 1957, she was not old enough to vote for president.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Aretha Franklin was born in 1942. Her second child, Edward, was born in 1957, when she was about 15. In the United States, the voting age was 21 until the 26th Amendment lowered it to 18 in 1971, so she could not vote in 1957.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

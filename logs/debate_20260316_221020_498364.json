@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:10:20.498364Z",
+  "question": "Can paresthesia be caused by a white pigment?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 106,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Paresthesia can be caused by exposure to certain chemicals, including some pigments. A common white pigment, titanium dioxide, is generally considered inert, but other white pigments or pigment additives/contaminants (e.g., lead-based compounds historically used as white pigment) can cause neurologic symptoms including numbness or tingling. Therefore, it is possible for a white pigment to cause paresthesia depending on its composition and exposure.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Paresthesia can be caused by exposure to certain chemicals and heavy metals. Some white pigments, such as lead white (basic lead carbonate), contain lead, and lead exposure can cause peripheral neuropathy with numbness and tingling (paresthesia). Therefore, a white pigment can cause paresthesia depending on its composition and exposure route.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue that paresthesia can result from exposure to certain chemicals and that some white pigments historically contained toxic heavy metals, especially lead. Debater B provides a clearer, more direct causal chain by naming a specific white pigment (lead white/basic lead carbonate) and linking lead exposure to peripheral neuropathy with numbness and tingling. Debater A’s argument is similar but slightly more diffuse, mentioning titanium dioxide as inert and then speculating about additives/contaminants, which weakens the directness. Since the question asks whether paresthesia can be caused by a white pigment (existentially), citing lead white suffices to support “yes.” With no rebuttals or counterevidence, both support “yes,” but B is marginally better supported due to specificity.",
+    "strongest_a": "Notes that some white pigments (e.g., lead-based) can cause neurologic symptoms including paresthesia.",
+    "weakest_a": "Relies partly on contaminants/additives and mentions an inert pigment, making the link less direct.",
+    "strongest_b": "Gives a specific example (lead white) and a well-known mechanism (lead neuropathy causing paresthesia).",
+    "weakest_b": "Does not discuss exposure context or modern relevance, but that is not required for the existential claim.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Paresthesia can be caused by exposure to certain chemicals, including some pigments used in paints. A common white pigment, lead carbonate (historically used as “white lead”), can cause lead poisoning, which may produce neurological symptoms such as numbness and tingling. Therefore, a white pigment can be a cause of paresthesia in cases of toxic exposure.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Paresthesia can be caused by exposure to certain chemicals, including some pigments used in paints. White pigment is often titanium dioxide, which is generally considered low-toxicity, but other white pigments or paint components (like lead-based pigments historically, or solvents/additives in pigmented products) can cause neurologic symptoms including tingling or numbness with sufficient exposure. Therefore, in some contexts, a white pigment can be associated with paresthesia.",
+          "confidence": 2
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Paresthesia can be caused by exposure to certain chemicals and toxins. Some white pigments, such as lead-based pigments historically used in paints, can cause neurological symptoms including numbness and tingling when they lead to lead poisoning. Therefore, a white pigment can be a cause in cases where it contains neurotoxic substances.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Paresthesia can be caused by exposure to certain chemicals and heavy metals that affect nerves. Some white pigments, such as lead white (basic lead carbonate), contain lead, which is neurotoxic and can produce neuropathy with tingling or numbness. Therefore, a white pigment can be a cause of paresthesia in cases of toxic exposure.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

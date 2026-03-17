@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:33:04.132646Z",
+  "question": "Could Casio's first invention be worn around the ankle?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 166,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Casio's first invention is commonly cited as the yubiwa pipe, a ring-like holder for cigarettes that fits on a finger. That is worn on the hand, not around the ankle. While you could theoretically strap many objects to an ankle, the invention was not designed or intended to be worn there.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Casio's first invention is commonly cited as the \"yubiwa pipe,\" a ring-like cigarette holder worn on a finger. That is designed to be worn on the hand, not around the ankle. While one could theoretically attach many objects to an ankle, it was not an ankle-worn item.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and nearly identical reasoning: Casio’s first invention is described as the yubiwa pipe, a ring-like cigarette holder intended to be worn on a finger. Given that description, it is not something designed to be worn around the ankle, so “no” follows from intended use. Neither provides an external citation, but the core factual claim about the yubiwa pipe being Casio’s first invention is plausible and consistently applied. Both also appropriately address the “could be worn” phrasing by distinguishing theoretical possibility from design/typical wear. Since there is no substantive difference in argument quality or completeness, the result is a tie with the shared conclusion.",
+    "strongest_a": "Correctly identifies the yubiwa pipe as finger-worn, not ankle-worn, and notes intent/design.",
+    "weakest_a": "No supporting citation; relies on a commonly cited claim without evidence.",
+    "strongest_b": "Clear, direct mapping from what the invention is (a ring) to why it wouldn’t be worn around the ankle.",
+    "weakest_b": "No additional nuance or sourcing beyond A; argument is essentially duplicated.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Casio's first invention is commonly cited as the \"yubiwa pipe,\" a finger ring that held a cigarette. It was designed to be worn on a finger, not around the ankle. Therefore it could not be worn around the ankle as intended.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Casio's first invention is commonly described as the \"Yubiwa\" ring pipe, a small ring-like holder for cigarettes that could be worn on a finger. It was designed to be worn as a ring, not as an anklet. While one could theoretically put a ring on an ankle, it is not intended or described as wearable around the ankle.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Casio's first invention is commonly cited as the \"Yubiwa\" cigarette holder ring, designed to be worn on a finger. Since it is a ring, it is intended for the hand rather than the ankle. Wearing it around the ankle would not match its designed form or typical use.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Casio's first invention is commonly described as the \"Yubiwa\" ring pipe, a small ring-like holder for cigarettes. It was designed to be worn on a finger, not around the ankle. While an object could theoretically be strapped elsewhere, the invention itself is not an ankle-worn item.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

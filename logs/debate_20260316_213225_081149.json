@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:32:25.081149Z",
+  "question": "Could Reza Shah be related to Queen Elizabeth I?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 7,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Reza Shah Pahlavi was an Iranian military officer who founded the Pahlavi dynasty in the 20th century, and his known ancestry is Iranian, not tied to the English Tudor royal line. Queen Elizabeth I was a 16th-century English monarch from the House of Tudor with well-documented European royal genealogy. There is no credible historical or genealogical basis to connect Reza Shah to Elizabeth I as a relative.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Reza Shah Pahlavi was an Iranian military officer who became Shah in the 20th century, from a family without known genealogical ties to the English Tudor dynasty. Queen Elizabeth I was a 16th-century English monarch whose lineage is well documented within European royal houses. There is no credible historical or genealogical connection suggesting they were related.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same conclusion (“no”) and broadly similar reasoning: Reza Shah Pahlavi’s background is Iranian and non-royal in the European sense, while Elizabeth I’s Tudor lineage is well documented within European dynasties, with no known bridge to Reza Shah. Given the question asks whether they “could be related,” the key issue is whether any plausible genealogical connection exists; both argue there is no credible historical or genealogical basis. Neither provides specific genealogical details (e.g., ancestry lines) or addresses the very broad possibility of extremely distant common ancestry, but in StrategyQA-style questions the intended interpretation is typically about meaningful, documented relation. Since both arguments are essentially identical and neither outperforms the other in evidence or logic, the result is a tie. The best-supported final answer from the presented reasoning is “no.”",
+    "strongest_a": "Correctly contrasts Reza Shah’s Iranian origins with Elizabeth I’s well-documented Tudor genealogy and notes no credible link.",
+    "weakest_a": "Does not explicitly address the possibility of extremely distant/common ancestry or provide concrete genealogical citations.",
+    "strongest_b": "Clear statement that there are no known genealogical ties between Reza Shah’s family and the Tudor line.",
+    "weakest_b": "Similarly lacks specific genealogical evidence and does not clarify the interpretation of “could be related.”",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Reza Shah Pahlavi was an Iranian monarch born in 1878, from a Persian family with no known genealogical connection to the Tudor dynasty. Queen Elizabeth I was born in 1533 and belonged to the English House of Tudor. Given the large time gap and distinct royal lineages, there is no credible basis to relate them by family.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Reza Shah Pahlavi was an Iranian monarch born in 1878 from a non-royal Mazandarani background, while Queen Elizabeth I was an English Tudor queen born in 1533. Any direct familial relationship would require a documented genealogical link across very different dynasties, regions, and centuries. There is no credible historical evidence that Reza Shah was related to Elizabeth I.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Reza Shah Pahlavi was an Iranian monarch born in 1878 from a Mazandarani military family, while Queen Elizabeth I was an English Tudor queen born in 1533. Any plausible genealogical relationship would require a documented lineage connection across different dynasties, countries, and centuries. There is no known or historically supported family link between the Pahlavi line and the Tudor royal family.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Reza Shah Pahlavi was an Iranian monarch born in 1878 from a Persian family with no known genealogical connection to the English Tudor dynasty. Queen Elizabeth I lived in the 16th century and was the daughter of Henry VIII, with well-documented European royal lineage. There is no credible historical or genealogical evidence linking Reza Shah to Elizabeth I.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

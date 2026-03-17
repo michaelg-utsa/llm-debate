@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:10:00.374329Z",
+  "question": "Did the leader of Heaven's Gate consider himself a prophet?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 105,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Heaven's Gate was led by Marshall Applewhite, who presented himself as a divinely appointed messenger with special revelation about humanity's transformation and salvation. He taught that he and his co-leader were the \"Two Witnesses\" from the Book of Revelation, a role typically understood as prophetic. This amounts to considering himself a prophet-like figure.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Heaven's Gate was led by Marshall Applewhite (\"Do\"), who presented himself as a divinely guided messenger with a special role in conveying a higher truth. While he used terms like \"teacher\" and \"messenger\" more than \"prophet,\" his claimed spiritual authority and revelatory mission align with considering himself a prophet-like figure.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and broadly similar reasoning: Applewhite claimed a special revelatory role and spiritual authority. Debater A is slightly more persuasive because it cites a more specific doctrinal claim attributed to Applewhite—identifying himself (and his co-leader) as the “Two Witnesses” from Revelation—which is a concrete link to a traditionally prophetic role. Debater B acknowledges the nuance that Applewhite may have preferred labels like “teacher” or “messenger,” but does not provide an equally specific textual or historical hook beyond general alignment. With no rebuttal rounds, the decision rests on which initial justification is better grounded and more directly answers whether he considered himself a prophet. A’s argument more directly supports the proposition that he saw himself in a prophetic office, even if not using the exact word “prophet.”",
+    "strongest_a": "Cites the specific claim that Applewhite saw himself as one of the “Two Witnesses” from Revelation, a clearly prophetic framing.",
+    "weakest_a": "Does not distinguish between being prophet-like and explicitly self-identifying as a “prophet.”",
+    "strongest_b": "Notes the terminology nuance (teacher/messenger vs prophet) while still connecting his role to prophetic authority.",
+    "weakest_b": "Relies on general characterization without a concrete cited claim comparable to the “Two Witnesses” point.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Heaven's Gate was led by Marshall Applewhite, who presented himself as a divinely guided messenger with special revelation. He taught that he and his co-leader were representatives sent from a higher, extraterrestrial level and delivered prophetic end-times teachings. This role aligns with considering himself a prophet.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Heaven's Gate was led by Marshall Applewhite, who presented himself as a divinely guided messenger with special revelation about salvation and ascension. He taught that he and his co-leader were chosen to deliver a higher truth and lead followers to the \"Next Level,\" which aligns with the role of a prophet. While he used his own terminology, his self-presentation functioned as that of a prophet.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The leader of Heaven's Gate, Marshall Applewhite, presented himself as a divinely guided messenger with special knowledge about a higher level of existence. He and his co-leader Bonnie Nettles were treated within the group as prophetic figures who delivered revelations about salvation and ascension. This role aligns with considering himself a prophet, even if he used different terminology.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Heaven's Gate was led by Marshall Applewhite, who taught that he and Bonnie Nettles were divinely appointed messengers. He presented himself as a spokesman for a higher, extraterrestrial \"Next Level\" and claimed special revelation about humanity's transformation. That role is effectively that of a prophet.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

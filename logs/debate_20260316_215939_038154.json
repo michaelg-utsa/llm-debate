@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:59:39.038154Z",
+  "question": "Is helium the cause of the Hindenburg explosion?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 76,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Hindenburg was filled with hydrogen, not helium, and hydrogen is highly flammable. Helium is inert and non-flammable, so it would not be the cause of an explosion. The disaster is generally attributed to ignition of leaking hydrogen, possibly triggered by static electricity or other ignition sources.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Hindenburg was filled with hydrogen, not helium, and hydrogen is highly flammable. The disaster is generally attributed to ignition of leaking hydrogen (possibly triggered by static electricity or another spark) and rapid burning of the airship’s materials. Helium is inert and nonflammable, so it would not be the cause of such an explosion.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same core argument: the Hindenburg used hydrogen rather than helium, and hydrogen is flammable while helium is inert and nonflammable. This directly addresses the causal question by distinguishing the gas actually present from helium and explaining why helium would not plausibly cause an explosion. Each also notes commonly cited ignition mechanisms (e.g., static electricity) and the role of burning materials, which is consistent with general historical accounts. Since there were no debate rounds, neither side adds extra evidence or refutes the other, and their support is effectively equivalent. Therefore, the outcome is a tie with the shared conclusion that helium was not the cause.",
+    "strongest_a": "Correctly identifies hydrogen (not helium) as the lifting gas and notes helium is nonflammable.",
+    "weakest_a": "Provides no additional sourcing or detail beyond the standard explanation.",
+    "strongest_b": "Adds that rapid burning of the airship’s materials contributed, while still correctly rejecting helium as the cause.",
+    "weakest_b": "Like A, lacks specific evidence or citations and largely repeats the same points.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Hindenburg used hydrogen as its lifting gas, not helium. Hydrogen is highly flammable and contributed to the rapid spread of the fire after ignition. Helium is inert and nonflammable, so it would not have caused such an explosion.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Hindenburg was filled with hydrogen, not helium. Hydrogen is highly flammable and is widely considered a key factor in the rapid spread of the fire after ignition. Helium is inert and nonflammable, so it would not have caused the explosion.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Hindenburg was filled primarily with hydrogen, not helium. Hydrogen is highly flammable and contributed to the rapid spread of the fire after ignition. Helium is inert and nonflammable, so it would not have been the cause of the explosion.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Hindenburg was filled with hydrogen, not helium, and hydrogen is highly flammable. The disaster is generally attributed to an ignition of leaking hydrogen (possibly triggered by static electricity or another spark) and the rapid burning of the airship’s skin and structure. Helium is inert and nonflammable, so it would not be the cause of such an explosion.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

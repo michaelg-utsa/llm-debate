@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:50:14.146392Z",
+  "question": "Would Michael Phelps be good at pearl hunting?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 50,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Pearl hunting requires strong swimming ability, comfort in open water, and the capacity to dive and stay calm underwater. Michael Phelps is an elite swimmer with exceptional aquatic endurance and breath control, which would transfer well to searching underwater. While specialized free-diving skills matter, his baseline aquatic competence suggests he’d be good at it.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Michael Phelps is an elite swimmer with exceptional breath control and underwater speed, which are key skills for diving-related tasks. Pearl hunting involves repeated dives and swimming efficiently underwater, so his physical abilities would likely translate well. While he is not trained as a pearl diver, his athletic profile suggests he would be good at it compared to an average person.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue for “yes” and there are no rebuttal rounds, so the decision rests on whose reasoning is better grounded and appropriately qualified. Each correctly notes that pearl hunting involves swimming, underwater comfort, and repeated dives, all areas where Michael Phelps’ elite aquatic fitness would be advantageous. Debater A slightly strengthens the case by explicitly acknowledging that specialized free-diving skills matter, but still concludes his baseline competence would transfer. Debater B makes a similar qualification (not trained as a pearl diver) and frames the claim comparatively (good relative to an average person), which matches the vague nature of the question. Overall, the arguments are essentially equivalent in support and caution, with no clear differentiator in evidential strength.",
+    "strongest_a": "Notes relevant skill transfer while acknowledging specialized free-diving skills could matter.",
+    "weakest_a": "Doesn’t address key pearl-hunting specifics like deep breath-hold diving technique, equalization, or working at depth.",
+    "strongest_b": "Connects underwater efficiency and repeated dives to pearl hunting and frames the claim relative to an average person.",
+    "weakest_b": "Similarly glosses over technical demands of actual pearl diving beyond general swimming ability.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Michael Phelps is an elite swimmer with exceptional breath control and underwater efficiency, which are useful for diving tasks. Pearl hunting often involves swimming and diving to retrieve oysters, so his aquatic skills would transfer well. While professional pearl diving also requires specific training and adaptation to conditions, his physical capabilities suggest he would likely perform well.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Michael Phelps is an elite swimmer with exceptional breath control and comfort in the water, which are important for diving tasks like pearl hunting. Pearl hunting typically involves repeated dives and efficient movement underwater, both of which align with his skills. While he may not have specific training in locating oysters, his physical abilities would likely make him good at the diving aspect of pearl hunting.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Michael Phelps is an elite swimmer with exceptional breath control and comfort in the water, which would help with diving tasks involved in pearl hunting. Pearl hunting often requires repeated dives and efficient swimming, both of which match his strengths. While he may not have specific training in free-diving techniques or underwater foraging, his athletic skills would likely translate well.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Michael Phelps is an elite swimmer with exceptional breath control and comfort in the water, which would help with repeated dives. Pearl hunting involves swimming and diving skills, so his athletic abilities would transfer well. While he may not have specific training for locating oysters, his physical capability would make him well-suited to the task.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

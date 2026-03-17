@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:58:45.752677Z",
+  "question": "Was Robert Downey Jr. a good role model as a young man?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 73,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "As a young man, Robert Downey Jr. was widely known for serious substance abuse and repeated legal troubles, including arrests and jail time in the 1990s. Those behaviors generally make someone a poor role model despite his talent and later turnaround. While he became a positive example of recovery later in life, the question is specifically about his youth.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "As a young man, Robert Downey Jr. struggled with serious substance abuse and had multiple arrests and legal troubles in the 1990s. Those behaviors generally make someone a poor role model at that time. Although he later turned his life around and became a positive example of recovery, the question is specifically about his youth.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical arguments and reach the same conclusion. They cite well-known public facts about Robert Downey Jr.’s early adulthood, particularly substance abuse and repeated legal troubles in the 1990s, and reasonably connect those behaviors to being a poor role model at that time. Both also appropriately note the later redemption arc but argue it does not apply to the question’s focus on his youth. Since there are no debate rounds and no differentiation in evidence quality or reasoning, neither side is more persuasive than the other. The best-supported answer from the presented reasoning is therefore \"no.\"",
+    "strongest_a": "Connects widely documented substance abuse/legal issues in youth to poor role-model status, while acknowledging later turnaround is out of scope.",
+    "weakest_a": "Does not define the boundary of “young man” precisely or provide specific examples beyond general references to the 1990s.",
+    "strongest_b": "Same clear, commonly supported rationale: youth marked by substance abuse and arrests, so not a good role model then.",
+    "weakest_b": "Largely repeats general claims without additional detail or nuance that could strengthen the case.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "As a young man, Robert Downey Jr. struggled with serious substance abuse and had multiple arrests and legal troubles. These behaviors are generally not considered exemplary or suitable for a role model. Although he later turned his life around and became a positive example of recovery, the question asks specifically about him as a young man.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "As a young man, Robert Downey Jr. struggled with serious substance abuse and had multiple arrests and legal problems. These behaviors generally conflict with what is considered a positive role model. Although he later turned his life around and became an example of recovery, his youth was marked by instability and harmful choices.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "As a young man, Robert Downey Jr. struggled with serious substance abuse and had multiple arrests and legal issues. Those behaviors are generally not considered exemplary or responsible for someone to emulate. Although he later turned his life around and became a positive example of recovery, his early years were not those of a good role model.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "As a young man, Robert Downey Jr. struggled with significant substance abuse and had multiple arrests and legal problems. Those behaviors generally do not align with being a good role model. Although he later turned his life around and became an example of recovery, the question asks specifically about his youth.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

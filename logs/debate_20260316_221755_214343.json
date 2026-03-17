@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:17:55.214343Z",
+  "question": "Is the Joker in a healthy romantic relationship?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 124,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Joker is typically portrayed as a violent, manipulative criminal whose relationships are defined by abuse and coercion rather than mutual respect. His most notable romance, with Harley Quinn, is widely depicted as toxic and psychologically abusive. That pattern is incompatible with a healthy romantic relationship.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Joker is typically portrayed as an abusive, manipulative partner, most notably in his relationship with Harley Quinn. Their dynamic involves coercion, violence, and psychological control rather than mutual respect and support. That does not fit a healthy romantic relationship.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave the same final answer (“no”) and relied on the same core justification: the Joker’s most prominent romantic association, especially with Harley Quinn, is commonly depicted as abusive and coercive rather than mutually supportive. Given the question asks about a “healthy romantic relationship,” pointing to a widely known toxic dynamic is directly relevant and persuasive. Neither debater introduced counterexamples from alternate continuities where the Joker might be portrayed differently, but within general cultural understanding their reasoning is sufficient. Because their arguments are essentially identical in content and strength, neither is more persuasive than the other. The best-supported final answer from the presented reasoning is “no.”",
+    "strongest_a": "Connects Joker’s most notable romance (Harley Quinn) to clear markers of an unhealthy relationship (abuse/coercion).",
+    "weakest_a": "Does not address possible alternate portrayals/continuities that could complicate a universal claim.",
+    "strongest_b": "Clearly states the relationship lacks mutual respect/support and involves psychological control, matching the ‘healthy’ criterion.",
+    "weakest_b": "Relies on general portrayal without citing any specific evidence beyond the common Harley Quinn dynamic.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Joker is typically portrayed as a violent, unstable criminal whose relationships are manipulative and abusive rather than supportive. His most notable romantic association, often with Harley Quinn, is widely depicted as toxic and harmful. These dynamics do not meet standards of a healthy romantic relationship.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Joker is typically portrayed as unstable, violent, and manipulative, which undermines the possibility of a healthy romantic relationship. His most notable relationship, often depicted with Harley Quinn, is characterized by abuse and coercion rather than mutual respect and support. Healthy relationships require trust, safety, and care, which are generally absent in his portrayals.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Joker is typically portrayed as unstable and violent, making him incapable of sustaining a healthy romantic relationship. His most notable relationship, often with Harley Quinn, is widely depicted as manipulative and abusive rather than supportive and respectful. These traits are inconsistent with a healthy partnership.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Joker is typically portrayed as unstable, violent, and manipulative, which undermines the possibility of a healthy romantic relationship. His most notable relationship, often with Harley Quinn, is commonly depicted as abusive and coercive rather than supportive and respectful. These traits and dynamics are inconsistent with a healthy partnership.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

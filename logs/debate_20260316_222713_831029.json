@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:27:13.831029Z",
+  "question": "Can spiders help eggplant farmers control parasites?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 148,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Spiders are generalist predators that eat many insect pests, including those that commonly parasitize crops like eggplant (e.g., aphids, moth larvae, and other small insects). By reducing pest populations, they can contribute to biological control in eggplant fields. While they are not a targeted, guaranteed solution, they can still help as part of integrated pest management.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Spiders are generalist predators that eat many insect pests found in crop fields, including those that can parasitize or damage eggplants. By reducing pest insect populations, they can contribute to biological control and lessen reliance on pesticides. While not a targeted solution for every parasite, they can still be helpful as part of integrated pest management.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: spiders are generalist predators that can reduce populations of insect pests affecting eggplant, thereby helping with biological control. Neither provides crop-specific evidence (e.g., named eggplant parasites and documented spider predation rates), but the general ecological claim is plausible and consistent with integrated pest management concepts. Since there were no debate rounds, there is no additional support or rebuttal to distinguish the positions. The reasoning is equally persuasive and equally limited in specificity. Therefore the result is a tie, with the best-supported final answer being that spiders can help.",
+    "strongest_a": "Connects spiders' generalist predation to reduced pest pressure in eggplant fields as part of IPM.",
+    "weakest_a": "Lacks specific evidence or examples directly tied to eggplant parasites and measurable control impact.",
+    "strongest_b": "Frames spiders as contributing to biological control and reduced pesticide reliance in crop systems.",
+    "weakest_b": "Also lacks eggplant-specific support and treats 'parasites' broadly without clarifying targets.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Spiders are generalist predators that eat many insect pests found in crop fields. In eggplant farms, they can help reduce populations of parasitic or pest insects such as aphids, caterpillars, and other small arthropods. By preying on these organisms, spiders can contribute to natural biological control and lower pest pressure.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Spiders are generalist predators that eat many insect pests found in crop fields. Eggplant can be attacked by parasites/pests like aphids, whiteflies, and caterpillars, which spiders may prey on. By reducing pest populations, spiders can contribute to biological control in eggplant farming, though they are not a complete solution on their own.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Spiders are generalist predators that eat many insect pests found in crop fields. Eggplant can be attacked by parasites/pests like aphids, whiteflies, and caterpillars, which spiders may prey on. By reducing pest populations, spiders can contribute to biological control in eggplant farming. They are not a complete solution but can help as part of integrated pest management.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Spiders are generalist predators that eat many insect pests found in crop fields. Eggplant can be attacked by parasites and pest insects such as aphids, whiteflies, and caterpillars, which spiders may prey on. By reducing pest populations, spiders can contribute to biological control in eggplant farming, though they are not a complete solution on their own.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:34:47.642640Z",
+  "question": "Was Dioskourides a lapidary?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 169,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Dioskourides (Pedanius Dioscorides) is best known as a 1st-century Greek physician and pharmacologist who wrote \"De Materia Medica\" about medicinal plants and substances. A lapidary is specifically a cutter/engraver of gemstones or an author of a lapidary text focused on stones. While he discussed minerals and some stones as drugs, he is not generally classified as a lapidary.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Dioskourides is best known as an ancient Greek physician and pharmacologist, author of \"De Materia Medica.\" A lapidary is someone who cuts, polishes, or engraves gemstones, which is not his primary historical role. While ancient medical texts sometimes mention minerals, that does not make him a lapidary by trade.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and broadly similar reasoning: Dioskourides is primarily known as a physician/pharmacologist and author of De Materia Medica, not as a gemstone cutter/engraver. They correctly distinguish between mentioning stones/minerals in a medical/pharmacological context and being classified as a lapidary by profession or genre. Debater A adds a slightly stronger nuance by noting that a lapidary can also mean an author of lapidary texts focused on stones, and argues Dioskourides is not generally categorized that way. Debater B’s reasoning is accurate but a bit narrower, focusing mainly on the craft/trade definition. With no further debate, the best-supported conclusion remains that he was not a lapidary.",
+    "strongest_a": "Recognizes both meanings of 'lapidary' (craftsperson or lapidary-text author) and argues Dioskourides is not generally classified as either.",
+    "weakest_a": "Does not provide a specific citation or example showing he is excluded from lapidary classifications.",
+    "strongest_b": "Clearly contrasts Dioskourides’ established historical role with the gemstone-working definition of lapidary.",
+    "weakest_b": "Over-relies on the trade definition and does not address the 'lapidary text' sense explicitly.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Dioskourides (Pedanius Dioscorides) was a Greek physician and pharmacologist known for writing \"De Materia Medica\" about medicinal substances. A lapidary is someone who cuts, polishes, or engraves gemstones, or an author of a gemstone-focused lapidary text. While he discussed some minerals and stones for medicinal uses, he is not primarily identified as a lapidary.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Dioskourides (Pedanius Dioscorides) is best known as a Greek physician and pharmacologist who wrote \"De Materia Medica\" about medicinal substances. A lapidary is someone who cuts, polishes, or engraves gemstones, or an author of a treatise on stones. While he discussed some minerals and stones for medicinal uses, he is not primarily identified as a lapidary.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Dioskourides (Pedanius Dioscorides) is best known as a Greek physician and pharmacologist who wrote \"De Materia Medica\" about medicinal substances. A lapidary is specifically a cutter/engraver of gemstones or a writer focused on gemstones. While he may have mentioned minerals and stones in his work, his primary role was not that of a lapidary.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Dioskourides (Pedanius Dioscorides) is best known as a Greek physician and pharmacologist who wrote \"De Materia Medica\" about medicinal substances. A lapidary is someone who cuts, polishes, or engraves gemstones, or an author of a lapidary text focused on stones. While Dioscorides discussed minerals and stones in a medical context, he is not primarily identified as a lapidary.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

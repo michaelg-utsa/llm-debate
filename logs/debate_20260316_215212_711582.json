@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:52:12.711582Z",
+  "question": "Would Republic of Korea Navy dominate Eritrea navy?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 56,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The Republic of Korea Navy is a large, modern blue-water force with advanced destroyers, frigates, submarines, naval aviation, and extensive training and logistics. Eritrea’s navy is small and primarily coastal, with limited numbers of patrol craft and far less capability in sensors, weapons, and sustainment. In a direct naval matchup, South Korea would overwhelmingly outclass Eritrea in firepower, reach, and operational experience.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The Republic of Korea Navy is a modern, blue-water capable force with large surface combatants, submarines, naval aviation support, and advanced sensors and missiles. Eritrea’s navy is small and primarily coastal, with limited platforms and reach. In a direct naval matchup, South Korea would have overwhelming advantages in numbers, technology, training, and logistics.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters reach the same conclusion (“yes”) and provide essentially the same justification: the Republic of Korea Navy is a large, modern, blue-water capable force, while Eritrea’s navy is small and largely coastal with limited platforms and capability. Given general knowledge about the relative scale, technology, and power-projection capacity of South Korea’s navy versus Eritrea’s, the conclusion is well supported. Neither side offers concrete fleet inventories or scenario constraints, but the qualitative comparison is sufficient for the StrategyQA-style question. Debater A is marginally more persuasive by adding a bit more detail about sustainment and operational experience, though the difference is small. With no rebuttals or counterarguments, the outcome is effectively a tie in argument quality, with a slight edge to A for specificity.",
+    "strongest_a": "Clear capability comparison including reach, sustainment, and operational experience advantages.",
+    "weakest_a": "No specific evidence (e.g., ship counts/capabilities) or assumptions about engagement context.",
+    "strongest_b": "Concise statement of overwhelming advantages in technology, training, and logistics.",
+    "weakest_b": "Highly similar to A and similarly lacks concrete supporting details.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The Republic of Korea Navy is a large, modern force with advanced destroyers, frigates, submarines, naval aviation support, and sophisticated sensors and missiles. Eritrea's navy is comparatively small and lightly equipped, focused mainly on coastal patrol and limited regional operations. In a direct naval matchup, South Korea would have overwhelming advantages in firepower, range, and command-and-control.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The Republic of Korea Navy is a large, modern force with advanced destroyers, frigates, submarines, naval aviation, and extensive training and logistics. Eritrea's navy is comparatively small and limited in blue-water capability and modern platforms. In a direct naval matchup, South Korea would have overwhelming advantages in firepower, sensors, and operational reach.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Republic of Korea Navy is a large, modern force with advanced destroyers, frigates, submarines, naval aviation support, and sophisticated sensors and missiles. Eritrea’s navy is comparatively small and lightly equipped, focused on coastal defense with limited blue-water capability. In a direct naval matchup, South Korea would have overwhelming advantages in firepower, range, and operational experience.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Republic of Korea Navy is a large, modern force with advanced destroyers, frigates, submarines, naval aviation, and extensive training and logistics. Eritrea's navy is comparatively small and limited in blue-water capability, with far fewer and less capable vessels. In a direct naval matchup, South Korea would have overwhelming advantages in firepower, sensors, and operational reach.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

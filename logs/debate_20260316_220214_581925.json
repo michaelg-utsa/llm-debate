@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:02:14.581925Z",
+  "question": "Will Gremlins sequels tie number of Matrix sequels?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 84,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Matrix has four films total, meaning it has three sequels. Gremlins has only one sequel (Gremlins 2), and there is no confirmed set of additional released sequels that would bring it to three. Therefore, Gremlins sequels will not tie the number of Matrix sequels.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Gremlins film series has one sequel (Gremlins 2: The New Batch) and no additional released sequels beyond that. The Matrix franchise has three sequels to the original film (Reloaded, Revolutions, and Resurrections). Since 1 does not equal 3, the Gremlins sequels will not tie the number of Matrix sequels.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same conclusion (“no”) and provide essentially the same core reasoning: Gremlins has only one released sequel while The Matrix has three sequels to the original. Debater B is slightly clearer and more explicit in enumerating the Matrix sequels by name and stating the numeric comparison (1 vs 3). Debater A’s reasoning is mostly correct but includes a potentially confusing phrasing about “four films total” and “three sequels,” which is accurate but less directly tied to the question than B’s explicit list. Neither debater addresses possible future Gremlins sequels beyond noting none are confirmed/released, but given the question framing, the released-film count comparison is the most grounded. Overall, B’s argument is marginally better supported due to specificity.",
+    "strongest_a": "Correctly compares sequel counts and notes Gremlins only has one sequel.",
+    "weakest_a": "Less specific; relies on a general statement about Matrix having four films and mentions unconfirmed future sequels without clarifying the timeframe.",
+    "strongest_b": "Names the Matrix sequels and clearly states the 1 vs 3 mismatch.",
+    "weakest_b": "Does not discuss any ambiguity about whether planned future Gremlins sequels could change the count.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The Gremlins film series has two movies: \"Gremlins\" and \"Gremlins 2: The New Batch.\" The Matrix series has three sequels to the original: \"The Matrix Reloaded,\" \"The Matrix Revolutions,\" and \"The Matrix Resurrections.\" Since 2 does not equal 3, the Gremlins sequels will not tie the number of Matrix sequels.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Gremlins film series has one sequel, \"Gremlins 2: The New Batch\" (1990), following the original 1984 film. The Matrix series has three sequels to the 1999 original (Reloaded, Revolutions, and Resurrections). Since 1 does not equal 3, the Gremlins sequels do not tie the number of Matrix sequels.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Gremlins film series has one sequel, \"Gremlins 2: The New Batch.\" The Matrix film series has three sequels: \"The Matrix Reloaded,\" \"The Matrix Revolutions,\" and \"The Matrix Resurrections.\" Since 1 does not tie 3, the Gremlins sequels will not tie the number of Matrix sequels.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Matrix film series has three sequels to the original: Reloaded, Revolutions, and Resurrections. Gremlins has only one sequel, Gremlins 2: The New Batch, and no additional released sequels. Therefore, Gremlins sequels do not tie the number of Matrix sequels.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

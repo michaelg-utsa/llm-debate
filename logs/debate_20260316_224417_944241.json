@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:44:17.944241Z",
+  "question": "Would a 75 degree Fahrenheit day be unusual on the Antarctic Peninsula?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 198,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "75°F is about 24°C, which is far warmer than typical summer temperatures on the Antarctic Peninsula, where highs are usually near freezing or only a few degrees above. While occasional warm föhn winds can cause brief spikes, reaching 24°C would be extremely rare. Therefore, such a day would be unusual there.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A 75°F (about 24°C) day is far above typical summer temperatures on the Antarctic Peninsula, which are usually near or below freezing. While occasional warm föhn-wind events can push temperatures above 20°C in rare cases, such warmth would still be highly unusual.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and nearly identical reasoning. Each correctly converts 75°F to about 24°C and compares it to typical Antarctic Peninsula summer conditions, which are generally near freezing to only a few degrees above. Both also acknowledge the possibility of rare föhn-wind warming events but argue that 24°C would still be extremely uncommon, supporting the claim that it would be unusual. With no debate rounds and no substantive differences in evidence or logic, neither side is more persuasive than the other. The best-supported final answer from the presented reasoning is therefore “yes.”",
+    "strongest_a": "Clear temperature conversion and comparison to typical near-freezing highs; notes rarity even with föhn winds.",
+    "weakest_a": "No concrete data or cited records to quantify how rare 24°C is on the peninsula.",
+    "strongest_b": "Acknowledges rare warm events yet maintains that 75°F remains highly unusual, aligning with climatological expectations.",
+    "weakest_b": "Also lacks specific supporting figures or references; largely repeats general claims.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "A 75°F (about 24°C) day would be far warmer than typical temperatures on the Antarctic Peninsula, even in summer. Summer highs there are usually near freezing, with occasional warm spells only reaching the low teens Celsius. While rare extreme records can approach or slightly exceed 20°C, 24°C would still be highly unusual.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The Antarctic Peninsula has a cold maritime polar climate, with typical summer temperatures only a few degrees above freezing. A temperature of 75°F (about 24°C) is far above normal for the region. While occasional warm föhn wind events can cause brief spikes, reaching 75°F would still be highly unusual.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The Antarctic Peninsula has a cold maritime polar climate, with typical summer temperatures only a few degrees above freezing. While occasional warm spells can push temperatures into the 50s or even 60s Fahrenheit, 75°F (about 24°C) would be far above normal. Such a temperature would be very rare and thus unusual for the region.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A 75°F (about 24°C) day would be far warmer than typical conditions on the Antarctic Peninsula, which is one of the milder parts of Antarctica but still generally cold. Summer temperatures there often hover near freezing, and even warm spells are usually only a few degrees above 0°C. Reaching 24°C would be extremely rare and would likely be near or beyond record levels.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:48:38.404901Z",
+  "question": "Do astronomers write horoscopes?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 45,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Astronomers are scientists who study celestial objects and phenomena using observation, physics, and mathematics. Horoscopes are part of astrology, a non-scientific practice, and are typically written by astrologers, not astronomers. While an individual astronomer could personally write a horoscope, it is not part of the profession.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Astronomers study celestial objects scientifically, using observation, physics, and mathematics. Horoscopes are part of astrology, a belief system not based on scientific methodology. While an individual astronomer could personally write a horoscope, it is not something astronomers do as astronomers.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave essentially the same argument: astronomy is a scientific discipline, while horoscopes belong to astrology, so writing horoscopes is not part of what astronomers do professionally. Each also appropriately noted the edge case that an individual astronomer could personally write a horoscope, but that does not make it a typical or defining activity of the profession. Since there were no debate rounds, neither side added additional evidence or rebuttals. The reasoning aligns with common distinctions between astronomy and astrology and directly addresses the question in a profession-based sense. With identical support, the result is a tie, and the best-supported answer is \"no.\"",
+    "strongest_a": "Clear distinction between astronomy (science) and horoscopes (astrology), addressing professional role.",
+    "weakest_a": "No concrete examples or sources; relies on general knowledge only.",
+    "strongest_b": "Explicitly frames that astronomers do not write horoscopes in their capacity as astronomers.",
+    "weakest_b": "Adds no additional support beyond Debater A; similarly unsourced.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Astronomers study celestial objects and phenomena using scientific methods. Horoscopes are part of astrology, which is a pseudoscientific belief system. While an individual astronomer could personally write a horoscope, it is not part of the astronomer profession.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Astronomers study celestial objects scientifically, using observation, physics, and mathematics. Horoscopes are part of astrology, which is a belief system not considered a scientific discipline. While an individual astronomer could personally write a horoscope, it is not something astronomers do as part of their professional role.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Astronomers are scientists who study celestial objects and phenomena using observation and physics. Horoscopes are part of astrology, which is a belief system not based on the scientific method. While an individual astronomer could personally write a horoscope, it is not something astronomers do as part of their profession.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Astronomers are scientists who study celestial objects and phenomena using observation and physics. Horoscopes are part of astrology, a belief system not considered a scientific discipline. While an individual astronomer could personally write a horoscope, it is not something astronomers do as part of their profession.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:59:22.698331Z",
+  "question": "Are Brian Cranston and Saoirse Ronan's combined Emmy Awards a prime number?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 75,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Brian Cranston has won 4 Primetime Emmy Awards (3 for Lead Actor in a Drama for \"Breaking Bad\" and 1 for Supporting Actor in a Comedy for \"Malcolm in the Middle\"). Saoirse Ronan has 0 Emmy Awards (she is primarily an Oscar/BAFTA nominee and has not won an Emmy). Their combined total is 4, which is not a prime number.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Brian Cranston has won 6 Emmy Awards (including multiple Primetime Emmys for acting/producing). Saoirse Ronan has 0 Emmy wins. Their combined total is 6, which is not a prime number.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters agree the final answer is \"no,\" differing only on Brian Cranston’s Emmy count (4 vs 6). Debater A provides a concrete breakdown of Cranston’s four Primetime Emmy acting wins (3 for Breaking Bad and 1 for Malcolm in the Middle) and notes Saoirse Ronan has zero Emmy wins, yielding 4, which is not prime. Debater B asserts 6 Emmys but does not specify which additional Emmy wins are being counted (e.g., producing, Creative Arts, or nominations), making the claim less supported. Given the question asks about \"Emmy Awards\" generally, clarity on what is being counted matters; A’s reasoning is more explicit and verifiable as stated. Since both totals (4 or 6) are non-prime, the conclusion remains \"no,\" but A is better supported.",
+    "strongest_a": "Gives a specific, itemized accounting of Cranston’s Emmy wins and correctly identifies 4 as non-prime.",
+    "weakest_a": "Assumes Saoirse Ronan has 0 Emmys without citing any evidence, though it is plausible.",
+    "strongest_b": "Also reaches the correct non-prime conclusion even if Cranston’s count were higher.",
+    "weakest_b": "Provides an unsupported Emmy total (6) without detailing which awards are included.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Brian Cranston has won 6 Emmy Awards (4 for acting in \"Breaking Bad\" and 2 as a producer). Saoirse Ronan has won 0 Emmy Awards. Their combined total is 6, which is not a prime number.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Brian Cranston has won 6 Primetime Emmy Awards. Saoirse Ronan has won 0 Emmy Awards. Their combined total is 6, which is not a prime number because it is divisible by 2 and 3.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Brian Cranston has won 6 Primetime Emmy Awards. Saoirse Ronan has won 0 Emmy Awards. Combined, that is 6, which is not a prime number because it is divisible by 2 and 3.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Brian Cranston has won 6 Emmy Awards (including multiple for acting and producing). Saoirse Ronan has won 0 Emmy Awards. Their combined total is 6, which is not a prime number because it is divisible by 2 and 3.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

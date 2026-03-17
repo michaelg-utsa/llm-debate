@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:36:52.174575Z",
+  "question": "Would you spend less on your food at Aldi than at Whole Foods?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 176,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Aldi is generally positioned as a discount grocery chain with lower prices and a limited-selection, private-label-heavy model. Whole Foods is typically a premium grocer with higher average prices, especially for organic and specialty items. For comparable baskets of common groceries, most shoppers would expect to spend less at Aldi than at Whole Foods.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Aldi is a discount grocery chain known for lower prices and a limited-selection, private-label model. Whole Foods is positioned as a premium/organic-focused retailer and typically has higher prices for comparable items. For a similar basket of groceries, you would generally spend less at Aldi.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Aldi is widely known as a discount grocer with a private-label, limited-selection model, while Whole Foods is positioned as a premium/organic retailer with higher typical prices. Given common consumer knowledge and typical price comparisons for similar baskets, the conclusion that you would spend less at Aldi is well supported. Neither debater provides specific data, but the claim is a broadly accepted generalization and fits the question’s everyday framing. Since there were no debate rounds and the reasoning is equivalent in strength and completeness, neither side is more persuasive than the other. The best-supported final answer remains \"yes.\"",
+    "strongest_a": "Correctly contrasts Aldi’s discount positioning with Whole Foods’ premium pricing for comparable baskets.",
+    "weakest_a": "No concrete evidence or caveats (regional variation, item mix) provided.",
+    "strongest_b": "Clear, concise statement of the same widely accepted price-positioning comparison.",
+    "weakest_b": "Also lacks specific supporting examples or data beyond general reputation.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Aldi is generally a discount grocery store with lower prices on many staple items. Whole Foods is positioned as a premium grocer and typically charges more for comparable products. While specific items and sales can vary, the overall basket cost is usually lower at Aldi.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Aldi is a discount grocery chain known for lower prices and a limited selection focused on private-label items. Whole Foods is positioned as a premium grocer with generally higher prices, especially for organic and specialty products. For comparable groceries, most shoppers would typically spend less at Aldi than at Whole Foods.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Aldi is a discount grocery chain known for lower prices and a limited selection of mostly store-brand items. Whole Foods is positioned as a premium grocer with generally higher prices, especially for organic and specialty products. For comparable groceries, the typical total cost is usually lower at Aldi than at Whole Foods.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Aldi is a discount grocery chain known for lower-priced store-brand items and a limited selection that reduces costs. Whole Foods is positioned as a premium grocer with generally higher prices, including many organic and specialty products. For comparable groceries, most shoppers would typically spend less at Aldi than at Whole Foods.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

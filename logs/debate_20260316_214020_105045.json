@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:40:20.105045Z",
+  "question": "Did Bill Gates help to develop the PlayStation 4?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 27,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The PlayStation 4 was developed by Sony Interactive Entertainment and its engineering teams. Bill Gates is a co-founder of Microsoft and was involved with Microsoft’s Xbox strategy, not Sony’s console development. There is no credible record of Gates contributing to PS4 development.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Bill Gates is a co-founder of Microsoft and was involved with Microsoft’s own gaming efforts like the Xbox, not Sony’s PlayStation line. The PlayStation 4 was developed by Sony Interactive Entertainment and its engineering teams. There is no credible record of Gates contributing to PS4 development.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and nearly identical reasoning. Each argues that the PS4 was developed by Sony’s internal teams and that Bill Gates, as Microsoft’s co-founder, was associated with Microsoft’s competing Xbox efforts rather than Sony hardware development. Neither provides specific citations, but the claim aligns with widely known industry roles and the lack of any notable public association between Gates and PS4 development. With no debate rounds, there is no additional evidence or rebuttal to distinguish the two. Therefore, the outcome is effectively a tie with a well-supported “no” based on general knowledge.",
+    "strongest_a": "Correctly distinguishes Sony’s PS4 development from Gates’s Microsoft/Xbox involvement.",
+    "weakest_a": "No concrete sources or specific evidence beyond general industry knowledge.",
+    "strongest_b": "Same clear, plausible separation of responsibilities between Sony and Gates/Microsoft.",
+    "weakest_b": "Also lacks citations or detailed supporting facts.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Bill Gates is a co-founder of Microsoft and was involved with Microsoft products like Windows and Xbox. The PlayStation 4 was developed by Sony Interactive Entertainment, not Microsoft. There is no credible evidence that Gates contributed to the PS4's development.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Bill Gates is best known as the co-founder of Microsoft and was involved with Microsoft products like Windows and the Xbox. The PlayStation 4 was developed by Sony Interactive Entertainment, not Microsoft. There is no credible record of Gates helping develop the PS4.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bill Gates is best known as the co-founder of Microsoft, which developed the Xbox line of consoles. The PlayStation 4 was developed by Sony Interactive Entertainment and its engineering teams, not by Microsoft or Gates. While Gates has been involved in gaming through Microsoft, there is no credible connection to him helping develop the PS4.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bill Gates is the co-founder of Microsoft and was involved with Microsoft's own gaming efforts like the Xbox, not Sony's PlayStation line. The PlayStation 4 was developed by Sony Interactive Entertainment and its engineering teams. There is no credible record of Gates helping develop the PS4.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

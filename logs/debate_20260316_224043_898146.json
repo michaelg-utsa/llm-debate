@@ -1,0 +1,180 @@
+{
+  "timestamp": "2026-03-16T22:40:43.898146Z",
+  "question": "Did the Paramount leader produce Titanic?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 187,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Titanic was produced by James Cameron and Jon Landau, among others, and released by Paramount Pictures in the US and 20th Century Fox internationally. \"Paramount leader\" typically refers to a political title (e.g., China’s paramount leader), not a film producer. Even if interpreted as Paramount Pictures’ leadership, the individuals credited as producers are not described as the \"Paramount leader.\"",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Titanic (1997) was produced by Paramount Pictures along with 20th Century Fox. The Paramount leader, meaning the head of Paramount, would be leading the studio that produced the film. Therefore, the Paramount leader did produce Titanic in that sense.",
+      "confidence": 2
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "no",
+        "argument": "No. “Paramount leader” most naturally refers to the leader of Paramount Pictures/Paramount Global, but Titanic (1997) was produced by James Cameron and Jon Landau through Lightstorm Entertainment and 20th Century Fox/Paramount as distributors, not by a Paramount corporate leader personally. Even if Paramount was involved in financing/distribution, the studio’s executive leader is not credited as the producer of the film.",
+        "rebuttal": "There is no opponent point yet; if the claim is that Paramount’s involvement implies its leader produced the film, that conflates studio participation with the specific producer credit, which belongs to Cameron and Landau.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "No. “Paramount leader” refers to an executive leading Paramount (Pictures/Paramount Global), and that person is not credited as a producer of Titanic (1997). The film’s producers are James Cameron and Jon Landau, with Paramount serving as a studio/distributor partner rather than an individual producer. Studio involvement in financing or distribution does not make the corporate leader the producer.",
+        "rebuttal": "Even if Paramount participated in distribution/financing, producer credit is a specific role held by Cameron and Landau, not by Paramount’s corporate leadership. The question asks whether the Paramount leader produced Titanic, which is not supported by film credits.",
+        "confidence": 5
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "no",
+        "argument": "No. Titanic (1997) is credited as produced by James Cameron and Jon Landau, not by any executive “leader” of Paramount. Paramount Pictures was involved as a studio/distributor partner, but corporate leadership is not the same as holding a producer credit on a specific film. Even if a Paramount leader oversaw the company during the release, that does not make them the film’s producer.",
+        "rebuttal": "Debater B’s point aligns with mine: producer is a specific credited role, and Titanic’s credited producers are Cameron and Landau. Paramount’s participation as a company doesn’t imply its leader personally produced the movie.",
+        "confidence": 5
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "No. The credited producers of Titanic (1997) are James Cameron and Jon Landau, and no “Paramount leader” (i.e., a Paramount Pictures/Paramount Global executive) is listed as a producer. Paramount’s role was as a studio/distributor/financier partner, which is distinct from an individual producer credit. Therefore the Paramount leader did not produce Titanic.",
+        "rebuttal": "Debater A is correct that conflating Paramount’s corporate involvement with its leader personally producing the film is an error. The question asks about the leader producing Titanic, and the film’s producer credits do not support that.",
+        "confidence": 5
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "no",
+        "argument": "No. “Titanic” (1997) is officially credited as produced by James Cameron and Jon Landau, not by any Paramount executive or “leader.” Paramount Pictures’ involvement was as a studio/distribution/financing partner, which does not equate to an individual corporate leader serving as the film’s producer. Since the question asks whether the Paramount leader produced the movie, the correct response follows the producer credits: they did not.",
+        "rebuttal": "The opponent’s latest point agrees with mine: producer is a specific credited role, and no Paramount leader is credited as a producer of Titanic. Paramount’s corporate participation doesn’t change that attribution.",
+        "confidence": 5
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "No. The film Titanic (1997) is credited as produced by James Cameron and Jon Landau. While Paramount Pictures was involved as a studio/distributor and co-financier, that does not mean the company’s “leader” (an executive) personally produced the film. Producer is a specific credited role, and no Paramount executive is listed in that capacity for Titanic.",
+        "rebuttal": "Debater A’s point is consistent with the credits-based interpretation: Paramount’s corporate involvement doesn’t translate into its leader being the producer. The question asks about the leader producing Titanic, and the credited producers are Cameron and Landau.",
+        "confidence": 5
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Both debaters ultimately converged on the same conclusion: the “Paramount leader” did not produce Titanic. The most persuasive reasoning is the distinction between a company’s involvement (financing/distribution) and an individual being credited as a producer; Titanic’s producer credits are consistently identified as James Cameron and Jon Landau. Debater A additionally noted the ambiguity of the phrase “paramount leader,” which more commonly refers to a political title, further weakening the “yes” interpretation. Debater B’s initial “yes” position relied on an equivocation (leader of a producing studio implies the leader produced the film), but B corrected this in the transcript and aligned with the credits-based argument. Given the shared, credit-focused reasoning and lack of evidence that any Paramount executive was a producer, “no” is best supported.",
+    "strongest_a": "Clear credits-based argument distinguishing studio involvement from individual producer role; notes ambiguity of 'paramount leader.'",
+    "weakest_a": "Doesn’t directly address the alternative interpretation that a studio can be said to 'produce' a film institutionally.",
+    "strongest_b": "Explicitly retracts the equivocation and reinforces that producer is a specific credited role not held by Paramount leadership.",
+    "weakest_b": "Initial 'yes' stance was based on a weak inference conflating corporate leadership with producer credit.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Paramount leader refers to the head of Paramount Pictures. Titanic (1997) was produced by James Cameron and Jon Landau, with production companies including Lightstorm Entertainment and 20th Century Fox/Paramount as distributors. A studio executive or leader at Paramount is not credited as the producer of the film.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 9,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Paramount leader refers to the head of Paramount Pictures (or Paramount Global). The film Titanic (1997) was produced by James Cameron and Jon Landau, and released by 20th Century Fox and Paramount Pictures. While Paramount distributed the movie in the United States, its leader did not personally produce it.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Titanic (1997) was produced by James Cameron and Jon Landau, among others, and released by Paramount Pictures in the U.S. and Canada. \"Paramount leader\" refers to the head of Paramount, which is a studio/distributor rather than an individual producer credit. The studio's leadership did not personally produce the film.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Paramount leader refers to the head of Paramount Pictures (or Paramount as a company), not an individual film producer. Titanic (1997) was produced by James Cameron and Jon Landau, and released by Paramount in the U.S. and Canada, with 20th Century Fox handling international distribution. Being the studio or its leader is not the same as producing the film.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Paramount leader refers to the head of Paramount Pictures/Paramount Global, not an individual film producer. Titanic (1997) was produced by James Cameron and Jon Landau, and released by 20th Century Fox and Paramount Pictures. While Paramount distributed the film in the U.S. and Canada, the Paramount leader did not personally produce it.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Titanic (1997) was produced by James Cameron and Jon Landau, among others. \"Paramount leader\" refers to the top leader of the Chinese Communist Party (e.g., Deng Xiaoping, Jiang Zemin, Hu Jintao, Xi Jinping), who are political figures rather than film producers. Therefore, a Paramount leader did not produce Titanic.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Paramount leader refers to the head of Paramount Pictures (or Paramount Global). The film Titanic (1997) was produced by James Cameron and Jon Landau, and it was released by 20th Century Fox and Paramount Pictures. While Paramount distributed the movie in the U.S. and Canada, the Paramount leader did not personally produce it.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Paramount leader refers to the head of Paramount Pictures, a film studio. Titanic (1997) was produced by James Cameron and Jon Landau, and released by 20th Century Fox and Paramount Pictures. A studio executive or \"leader\" is not credited as the producer of the film.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Titanic (1997) was produced by James Cameron and Jon Landau, among others. \"Paramount leader\" refers to the top leader of the Chinese Communist Party, a political role not associated with producing Hollywood films. Therefore, the Paramount leader did not produce Titanic.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Paramount leader refers to the head of Paramount Pictures, a film studio and distributor. Titanic (1997) was produced by James Cameron and Jon Landau under 20th Century Fox and Paramount Pictures, but not by a studio executive personally. Therefore, the Paramount leader did not produce Titanic.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 9
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 9,
+    "llm_calls_for_debate_plus_direct": 10,
+    "total_llm_calls": 19,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

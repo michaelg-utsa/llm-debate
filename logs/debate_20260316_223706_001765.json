@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:37:06.001765Z",
+  "question": "Is there a Marvel villain with the same name as a kind of citrus fruit?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 177,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Marvel has a villain named Mandarin, and a mandarin is also a type of citrus fruit (mandarin orange). Since the question asks whether there exists a Marvel villain sharing a name with a citrus fruit, this is a direct match.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Marvel has a villain named Mandarin, and mandarin is also a type of citrus fruit (mandarin orange). The character is best known as an Iron Man antagonist. Therefore, a Marvel villain shares a name with a citrus fruit.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same claim and supporting example: the Marvel villain The Mandarin shares a name with a citrus fruit (mandarin orange). The reasoning is straightforward and directly addresses the existential question being asked. Neither provides additional corroboration (e.g., publication details), but the example is widely known and plausibly sufficient. Since there were no rebuttals or competing arguments, neither side is more persuasive than the other. The best-supported final answer is therefore \"yes.\"",
+    "strongest_a": "Identifies The Mandarin as a Marvel villain and notes mandarin is a citrus fruit.",
+    "weakest_a": "Provides no additional sourcing or alternative examples beyond a single assertion.",
+    "strongest_b": "Adds context that The Mandarin is an Iron Man antagonist while making the same citrus-name link.",
+    "weakest_b": "Also relies on a single example without further verification or discussion of edge cases.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Marvel has a villain named Mandarin, an enemy of Iron Man. A mandarin is also a type of citrus fruit (mandarin orange). Therefore, there is a Marvel villain sharing a name with a citrus fruit.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Marvel has a villain named Mandarin, an enemy of Iron Man. A mandarin is also a type of citrus fruit (mandarin orange). Therefore, there is a Marvel villain sharing a name with a kind of citrus fruit.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Marvel has a villain named Mandarin, who is an enemy of Iron Man. A mandarin is also a type of citrus fruit (mandarin orange). Therefore, there is a Marvel villain sharing a name with a kind of citrus fruit.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Marvel has a villain named Mandarin, an enemy of Iron Man. A mandarin is also a type of citrus fruit (mandarin orange). Therefore, there is a Marvel villain sharing a name with a kind of citrus fruit.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:55:13.987993Z",
+  "question": "Could a Hwasong-15 missile hypothetically reach Voyager 2?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 65,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Hwasong-15 is an intercontinental ballistic missile designed for reaching targets on Earth, with a range on the order of tens of thousands of kilometers at most. Voyager 2 is far beyond Earth orbit—billions of kilometers away—so an ICBM cannot provide the required delta-v or sustained propulsion to reach it. Even a purely hypothetical direct shot would fall back to Earth long before approaching Voyager 2’s distance.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Hwasong-15 is an intercontinental ballistic missile designed for suborbital trajectories within or near Earth, with a range on the order of thousands of kilometers. Voyager 2 is far beyond Earth orbit—billions of kilometers away in interplanetary space—so an ICBM lacks the required delta-v, propulsion duration, and guidance to reach it. Even hypothetically, the missile’s energy and mission profile are nowhere near what’s needed for deep-space interception.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters converge on the same conclusion: a Hwasong-15 ICBM cannot reach Voyager 2. Their reasoning is consistent with general aerospace constraints: an ICBM is optimized for a suborbital ballistic arc to terrestrial targets and lacks the delta-v and propulsion needed for interplanetary distances. Voyager 2 is billions of kilometers away, far beyond Earth orbit, making interception by such a missile infeasible. Debater B is slightly more persuasive by explicitly noting not only range but also propulsion duration and guidance limitations, which strengthens the argument beyond a simple distance comparison. Debater A is also correct but uses a less precise range characterization (“tens of thousands of kilometers at most”) and focuses mainly on falling back to Earth. With no rebuttals, the best-supported final answer remains 'no'.",
+    "strongest_a": "Correctly contrasts ICBM Earth-targeted range/trajectory with Voyager 2’s interplanetary distance and delta-v needs.",
+    "weakest_a": "Range phrasing is a bit imprecise and the argument leans heavily on 'falls back to Earth' without addressing guidance/mission constraints.",
+    "strongest_b": "Adds multiple independent constraints (delta-v, propulsion duration, guidance) beyond mere range, making the infeasibility clearer.",
+    "weakest_b": "States ICBM range as 'thousands of kilometers' which may understate maximum ICBM reach, though it doesn’t change the conclusion.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Hwasong-15 is an intercontinental ballistic missile designed to reach targets on Earth, with a range on the order of tens of thousands of kilometers at most. Voyager 2 is far beyond Earth orbit, at billions of kilometers from Earth, and continues moving outward. Even hypothetically, an ICBM lacks the propulsion, guidance, and delta-v needed to reach such deep-space distances. Therefore it could not reach Voyager 2.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Hwasong-15 is an intercontinental ballistic missile designed for suborbital ballistic trajectories within or near Earth, with a range on the order of tens of thousands of kilometers at most. Voyager 2 is far beyond Earth orbit, at billions of kilometers away in interplanetary space. Even hypothetically, an ICBM lacks the velocity, propulsion, guidance, and endurance to reach or intercept a distant spacecraft like Voyager 2.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Hwasong-15 is an intercontinental ballistic missile designed for suborbital trajectories within or near Earth, with a range on the order of thousands of kilometers. Voyager 2 is far beyond Earth orbit, at billions of kilometers away in interplanetary space. Reaching it would require a spacecraft-capable launch with sufficient delta-v and long-duration navigation, not a ballistic missile. Therefore, it could not hypothetically reach Voyager 2.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Hwasong-15 is an intercontinental ballistic missile designed for suborbital trajectories to targets on Earth, with a range on the order of tens of thousands of kilometers at most. Voyager 2 is far beyond Earth orbit, at billions of kilometers from Earth, and continues to recede. Even with an idealized launch, the missile lacks the required delta-v, guidance, and endurance to travel and intercept a deep-space probe at that distance.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

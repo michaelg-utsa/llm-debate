@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T22:41:07.018098Z",
+  "question": "Could Bob Marley's children hypothetically win tug of war against Kublai Khan's children?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 188,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Bob Marley had many children, and in a tug of war the side with more participants and greater combined mass/strength has a major advantage. Kublai Khan’s number of children is not comparably large in common historical accounts, so it’s plausible Marley’s children could field a larger, heavier team. Since the question is hypothetical and doesn’t fix team sizes, a scenario where Marley’s children win is feasible.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Tug of war depends heavily on total team mass, strength, and coordination. Bob Marley had many children (commonly cited as 11), while Kublai Khan is generally recorded as having fewer surviving/recognized children, so Marley’s children could field a larger team and likely outweigh them. With more pullers, Marley’s children could hypothetically win even without assuming exceptional individual strength.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue \"yes\" on the basis that Bob Marley had many children and that tug-of-war advantage scales with number of participants and combined mass/strength. Debater B is slightly more persuasive because it provides a concrete commonly cited figure for Marley’s children (about 11) and ties that to the tug-of-war mechanics more explicitly. However, both arguments rely on an uncertain premise about Kublai Khan’s number of children; historically, he may have had multiple wives/concubines and potentially many offspring, so the comparison is not well-supported by evidence in either case. Both also exploit the ambiguity in the question about team size and eligibility (e.g., whether all children participate), which makes the claim “hypothetically could win” easier to satisfy. Given the permissive hypothetical framing, a \"yes\" remains defensible, but the support is moderate rather than strong.",
+    "strongest_a": "Correctly notes the hypothetical framing and that larger team size can create a feasible winning scenario.",
+    "weakest_a": "Asserts Kublai Khan’s children were not comparably numerous without support.",
+    "strongest_b": "Adds a concrete estimate (11 children) and connects it to total mass/participants in tug of war.",
+    "weakest_b": "Also assumes Kublai Khan had fewer children and overlooks historical uncertainty about his offspring count.",
+    "winner": "Debater B",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Bob Marley had many children, while Kublai Khan is generally recorded as having only a few sons. In a tug of war, having more participants typically provides a major advantage in total pulling force and stability. Hypothetically, if all of Marley’s children could participate against Khan’s children, the larger team would likely win.",
+      "confidence": 3
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Bob Marley had a relatively small number of children, while Kublai Khan, as a Mongol emperor, is historically associated with having many offspring and a large extended royal household. In a tug of war, having more participants generally provides a major advantage because total pulling force and weight can scale with team size. Even if individual strength varies, the likely numerical advantage for Kublai Khan's children would make it unlikely for Marley's children to win.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Bob Marley had many children, while Kublai Khan is generally recorded as having fewer surviving sons and daughters. In a tug of war, having more participants and being modern adults with potentially larger average body mass could provide a decisive advantage. Since this is hypothetical and not constrained to specific ages or training, the numerical and likely size advantage makes it plausible Marley's children could win.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Bob Marley had many children, while Kublai Khan is generally recorded as having fewer surviving children. In a tug of war, having more participants can provide a major advantage in total pulling force, assuming roughly comparable adult strength. Hypothetically, if both groups were of similar age and condition, Marley’s larger group could outweigh and out-pull Khan’s smaller group.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "no": 1,
+        "yes": 2
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

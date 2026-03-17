@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:41:42.243764Z",
+  "question": "Is Pan a symbol of virtue and virginity in women?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 190,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "In Greek mythology, Pan is a rustic god of the wild, shepherds, and fertility, often depicted as lustful and pursuing nymphs. Symbols of virtue and virginity in women are more associated with figures like Artemis or Athena, not Pan. Pan’s imagery and myths generally emphasize sexuality and nature rather than chastity.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "In Greek mythology, Pan is a rustic god of the wild, shepherds, and fertility, often associated with lust and pursuit of nymphs rather than chastity. Symbols of virtue and virginity are more commonly linked to figures like Artemis or Athena. Therefore Pan is not a symbol of virtue and virginity in women.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters gave the same answer (“no”) and supported it with consistent mythological characterization of Pan as a lustful rustic fertility deity rather than an emblem of chastity. Their reasoning aligns with common associations in Greek mythology, where virginity and female virtue are more typically symbolized by goddesses like Artemis or Athena. Neither provided citations, but the claims are broadly plausible and mutually reinforcing. With no debate rounds, there is no differentiation in argumentative strength beyond minor wording. Overall, the conclusion that Pan is not a symbol of virtue and virginity in women is well-supported by general knowledge of Pan’s myths and iconography.",
+    "strongest_a": "Correctly contrasts Pan’s sexual/fertility associations with chastity symbols like Artemis/Athena.",
+    "weakest_a": "No specific sources or examples cited; relies on general characterization.",
+    "strongest_b": "Clear, direct linkage between Pan’s lustful mythology and the negation of chastity symbolism.",
+    "weakest_b": "Essentially repeats A’s points without adding independent evidence or nuance.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Pan is a Greek god associated with the wild, shepherds, music, and fertility. He is commonly depicted as lustful and pursuing nymphs, which contrasts with ideals of virginity and chastity. Symbols of virtue and virginity in women are more often linked to figures like Artemis or Athena, not Pan.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Pan in Greek mythology is a rustic god of the wild, shepherds, and fertility, often associated with lust and pursuit of nymphs. Symbols of virtue and virginity in women are more commonly linked to deities like Artemis or Athena. Pan’s character and iconography do not represent chastity or virginity.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "In Greek mythology, Pan is a rustic god of the wild, shepherds, and fertility, often associated with lust and pursuit of nymphs. He is not a symbol of chastity, virtue, or virginity in women. Those qualities are more commonly linked to figures like Artemis or Athena.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Pan is a Greek god associated with the wild, shepherds, nature, and lustful or sexual energy. He is not a symbol of chastity, virtue, or virginity in women; those themes are more associated with figures like Artemis or Athena. Pan is often portrayed as pursuing nymphs rather than embodying restraint.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

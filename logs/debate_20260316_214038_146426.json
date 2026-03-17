@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:40:38.146426Z",
+  "question": "Were there eight humans on Noah's Ark?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 28,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "In the biblical account (Genesis), Noah, his wife, his three sons (Shem, Ham, Japheth), and their three wives were on the Ark. That totals eight humans. This is also commonly referenced in later biblical passages (e.g., 1 Peter 3:20) as 'eight persons' being saved through water.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "In the biblical account (Genesis), Noah, his wife, his three sons, and their wives are on the Ark. That totals eight people. This is also echoed in later references such as 1 Peter 3:20.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“yes”) and essentially identical reasoning: the Genesis narrative lists Noah, his wife, his three sons, and their three wives aboard the Ark, totaling eight humans. Each also supports this with a later biblical reference (1 Peter 3:20) that explicitly mentions “eight persons” being saved. Since there were no debate rounds, neither side engaged with potential ambiguities (e.g., differing traditions), but within the commonly cited biblical account their argument is straightforward and consistent. Because the arguments are equivalent in content and support, neither is more persuasive than the other. The best-supported final answer from the presented reasoning is “yes.”",
+    "strongest_a": "Correctly enumerates the eight humans on the Ark and cites 1 Peter 3:20 as corroboration.",
+    "weakest_a": "Does not address possible non-biblical or variant traditions that could change the count.",
+    "strongest_b": "Provides the same clear tally of eight people and an explicit supporting citation.",
+    "weakest_b": "Adds no additional justification beyond Debater A; similarly ignores potential interpretive edge cases.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "In the biblical account of Noah's Ark, Noah, his wife, his three sons, and their three wives were on the Ark. That totals eight humans. This is also referenced in later biblical passages (e.g., 1 Peter 3:20) describing eight people being saved through water.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "In the biblical account, Noah's Ark carried Noah, his wife, his three sons, and their three wives. That totals eight humans. This is commonly summarized as \"eight souls\" saved on the ark.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "In the biblical account, Noah's Ark carried Noah, his wife, his three sons, and their three wives. That totals eight humans. This is also referenced in later biblical passages describing eight people saved through the flood.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "In the biblical account, Noah's Ark carried Noah, his wife, his three sons, and their three wives. That totals eight humans. This is also referenced in later biblical passages describing eight people being saved through the flood.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

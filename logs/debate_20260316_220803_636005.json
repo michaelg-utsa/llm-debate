@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:08:03.636005Z",
+  "question": "Can giant pandas sell out a Metallica show?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 99,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Selling out a Metallica show means purchasing enough tickets to fill the venue, which requires money and the legal ability to transact. Giant pandas are non-human animals and cannot engage in commerce or buy tickets. While a zoo or sponsor could buy tickets in a panda-themed promotion, the pandas themselves cannot sell out the show.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Giant pandas are animals and cannot organize, promote, or sell tickets for a concert. Selling out a Metallica show requires human-run ticketing systems and an audience purchasing tickets. Pandas could at most be a marketing theme, but they themselves cannot sell out a show.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same answer (“no”) and provide broadly similar reasoning: selling out a Metallica show entails participating in human commercial and ticketing systems, which giant pandas cannot do. Debater A’s argument is slightly more precise because it focuses on the core requirement—purchasing tickets (money/legal capacity)—and also addresses a plausible confusion case (humans buying tickets in a panda-themed promotion) while maintaining that the pandas themselves are not the agents. Debater B adds that pandas cannot organize or promote ticket sales, but that point is somewhat secondary since “sell out” primarily concerns tickets being bought, not who promotes. With no transcript rounds, there’s no additional evidence to distinguish them beyond initial clarity and completeness. Overall, A is marginally better supported, but the outcome is effectively the same.",
+    "strongest_a": "Directly ties 'sell out' to the need to purchase tickets and the inability of pandas to transact legally/financially.",
+    "weakest_a": "Does not explicitly note that 'sell out' can occur without the subject promoting the event, though it implies this.",
+    "strongest_b": "Clearly states pandas cannot participate in human ticketing systems and distinguishes marketing theme vs. actual agency.",
+    "weakest_b": "Leans on 'organize/promote/sell tickets,' which is less central than the basic ability to buy tickets to cause a sell-out.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Giant pandas are animals and cannot organize, promote, or sell tickets for a concert. Selling out a Metallica show requires human-managed ticketing and audience demand. Pandas also cannot attend or participate in such commercial activities.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Giant pandas are animals and do not have the legal or practical ability to organize, market, or sell tickets for a concert. Selling out a Metallica show requires human-run ticketing systems and an audience purchasing tickets. Pandas also cannot attend or perform such actions in a way that would cause ticket sales.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Giant pandas are animals and cannot organize, promote, or sell tickets for a concert. Selling out a Metallica show requires human-managed ticket sales and audience demand. Pandas also do not attend concerts or participate in commerce in that way.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Giant pandas are animals and do not have the legal or practical ability to organize, market, or manage ticket sales for a concert. Selling out a Metallica show requires human-run promotion, ticketing infrastructure, and an audience purchasing tickets. Pandas cannot perform these actions or participate in commerce in that way.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

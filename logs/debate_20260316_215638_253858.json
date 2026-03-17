@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T21:56:38.253858Z",
+  "question": "Would Franz Ferdinand have survived with armadillo armor?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 69,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Armadillo armor is not bulletproof; it’s biological armor meant to deter predators and would not reliably stop early-20th-century pistol rounds at close range. Even if it reduced penetration, the attack involved multiple shots at point-blank range, and severe blunt trauma or partial penetration could still be fatal. Practical coverage is also limited (head/neck gaps), so survival is unlikely.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Armadillo armor is biological and not designed to stop close-range pistol bullets like those used in the assassination. Even if it reduced penetration, shots to the neck/head or major vessels could still be fatal, and the attack was at very close range. So it’s unlikely it would have reliably prevented death.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters reached the same conclusion (“no”) and offered largely overlapping reasoning: armadillo armor is biological, limited in coverage, and unlikely to stop close-range early-20th-century pistol rounds. Debater A provided slightly more concrete mechanisms for failure (multiple shots, blunt trauma even without full penetration, and gaps like head/neck), which makes the argument marginally more developed. Debater B’s reasoning is sound but more general and less specific about how the armor would fail beyond “not designed to stop bullets.” With no debate rounds, there is no additional evidence or rebuttal to differentiate them further. Overall, the best-supported answer from the presented reasoning is that Franz Ferdinand would not have survived.",
+    "strongest_a": "Gives multiple plausible failure modes: penetration, blunt trauma, and coverage gaps (neck/head).",
+    "weakest_a": "Does not quantify whether armadillo armor could stop or slow pistol rounds; relies on plausibility rather than evidence.",
+    "strongest_b": "Correctly emphasizes close-range pistol lethality and vulnerability of neck/head/major vessels.",
+    "weakest_b": "More conclusory and less detailed than A; fewer distinct mechanisms or specifics.",
+    "winner": "Debater A",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Armadillo armor is made of bony plates that can resist bites and some impacts, but it is not designed to stop bullets. Franz Ferdinand was killed by gunshots at close range, which would likely penetrate or bypass such armor. Even if some protection were offered, it would not reliably prevent fatal injury.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Franz Ferdinand was killed by gunshots at close range, and \"armadillo armor\" is not a real, tested form of ballistic protection. Even if it were interpreted as wearing armadillo shells, that would not reliably stop bullets, especially to vital areas like the neck or head. Therefore it is unlikely he would have survived.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Franz Ferdinand was killed by gunshot wounds from a pistol at close range. Armadillo armor is not real protective armor designed to stop bullets, and even if made from armadillo-like shell material it would be unlikely to reliably stop handgun rounds. It also would not necessarily protect all vital areas (neck/head) or prevent fatal bleeding. Therefore it is unlikely he would have survived.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Franz Ferdinand was killed by gunshots at close range. Armadillo armor is a hard, protective shell that could plausibly stop or deflect bullets, especially from early 20th-century handguns, if it covered the vital areas hit. If the armor prevented the bullets from penetrating his neck and torso, he likely would have survived the attack.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 2,
+        "yes": 1
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

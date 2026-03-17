@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:32:44.647155Z",
+  "question": "Would a bodybuilder choose maize over chicken breast for dinner?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 8,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Bodybuilders typically prioritize high-protein, lean foods at dinner to support muscle repair and growth. Chicken breast is very high in protein with relatively low fat and carbs, making it a common bodybuilding staple. Maize (corn) is primarily a carbohydrate source with much less protein per calorie, so it’s less likely to be chosen over chicken breast as the main dinner item.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Bodybuilders typically prioritize high-protein, lean foods at dinner to support muscle repair and growth. Chicken breast is a common choice because it is very high in protein and relatively low in fat and carbs. Maize (corn) is primarily a carbohydrate source and provides much less protein per serving, so it would be less typical as the main dinner protein.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: bodybuilders generally prioritize lean, high-protein foods for muscle repair, and chicken breast is a classic high-protein, low-fat option. They contrast this with maize being predominantly carbohydrate with comparatively low protein density, making it less likely to be chosen over chicken breast as the main dinner item. With no debate rounds, there is no additional evidence or rebuttal to distinguish the two positions. The reasoning aligns with common dietary practices in bodybuilding, where chicken breast is a staple protein source and corn is more of a carb side. Since both sides are equally supported and reach the same conclusion, the result is a tie with the shared final answer.",
+    "strongest_a": "Correctly emphasizes protein prioritization in bodybuilding and chicken breast as a lean staple.",
+    "weakest_a": "Does not acknowledge scenarios where maize could be chosen for carb-loading or dietary preference.",
+    "strongest_b": "Clear comparison of macronutrient roles (protein vs carbs) relevant to bodybuilding meal choices.",
+    "weakest_b": "Assumes 'dinner' implies main protein choice; could be context-dependent (e.g., maize as a side).",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Bodybuilders typically prioritize high-protein, lean foods for dinner to support muscle repair and growth. Chicken breast is a common choice because it is high in protein and relatively low in fat and carbs. Maize is primarily a carbohydrate source and provides much less protein per serving. While maize could be part of a meal, it would not usually be chosen over chicken breast as the main dinner item for bodybuilding goals.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A bodybuilder typically prioritizes high-protein, low-fat foods to support muscle repair and growth. Chicken breast is very high in protein and relatively low in calories and fat. Maize (corn) is primarily a carbohydrate source with much less protein per serving. Unless they specifically needed extra carbs, they would generally choose chicken breast over maize as the main dinner item.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bodybuilders typically prioritize high-protein, lean foods at dinner to support muscle repair and growth. Chicken breast is very high in protein and relatively low in fat and carbs, making it a common bodybuilding staple. Maize (corn) is primarily a carbohydrate source and provides much less protein per serving. Unless the goal is specifically to increase carbohydrate intake, chicken breast is the more likely choice.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bodybuilders typically prioritize high-protein, low-fat foods to support muscle repair and growth. Chicken breast is a lean, high-protein option, while maize (corn) is primarily a carbohydrate source with comparatively little protein. For dinner, a bodybuilder would more likely choose chicken breast as the main item, possibly adding maize as a carb side depending on their diet plan.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

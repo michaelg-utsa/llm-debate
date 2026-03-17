@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:51:33.486492Z",
+  "question": "Is a Coca plant farm likely to be found in Yakutsk?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 54,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Coca plants require warm, humid tropical to subtropical climates and are traditionally cultivated in Andean regions. Yakutsk is in Siberia and is one of the coldest cities on Earth, with long, severe winters and permafrost conditions. Those conditions make outdoor coca farming extremely unlikely.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Coca plants require warm, humid tropical or subtropical climates and are traditionally cultivated in Andean regions. Yakutsk is in Siberia and is one of the coldest cities on Earth, with extreme winters far below freezing. Those conditions are unsuitable for outdoor coca cultivation, making a coca farm very unlikely there.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: coca plants need warm tropical/subtropical conditions, while Yakutsk has an extremely cold Siberian climate with severe winters and permafrost. This directly addresses the likelihood of finding a coca plant farm there and relies on broadly correct general knowledge about both coca cultivation and Yakutsk’s climate. Neither debater introduces additional considerations (e.g., greenhouse cultivation), but the question asks what is “likely,” so outdoor climatic suitability is the dominant factor. Since the reasoning and conclusion are equivalent and well-supported, neither side is more persuasive than the other. The best-supported final answer is that it is not likely.",
+    "strongest_a": "Correctly contrasts coca’s warm-climate requirements with Yakutsk’s extreme cold/permafrost, making farming unlikely.",
+    "weakest_a": "Does not explicitly consider controlled-environment farming, though the question is about likelihood.",
+    "strongest_b": "Clear statement of Yakutsk’s extreme winters and unsuitability for coca cultivation, supporting 'unlikely.'",
+    "weakest_b": "Adds no distinct evidence beyond general climate mismatch; also omits greenhouse caveat.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Coca plants require warm, tropical or subtropical climates and are typically cultivated in regions like the Andes. Yakutsk is in Siberia and is known for an extremely cold subarctic climate with long, harsh winters. Those conditions are unsuitable for growing coca outdoors, making a coca plant farm very unlikely there.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Yakutsk is in Siberia and has an extremely cold subarctic climate with long, harsh winters. Coca plants require warm, tropical to subtropical conditions and are primarily cultivated in Andean regions of South America. The climate and geography of Yakutsk are unsuitable for coca farming, making it very unlikely to be found there.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Yakutsk is in Siberia and has an extremely cold subarctic climate with long, harsh winters. Coca plants require warm, tropical to subtropical conditions and are typically cultivated in Andean regions. The climate and growing conditions in Yakutsk are unsuitable for coca farming.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Coca plants require warm, tropical to subtropical climates and are traditionally cultivated in Andean regions of South America. Yakutsk is in Siberia and is known for extremely cold temperatures and permafrost, making outdoor coca cultivation impractical. A coca plant farm is therefore very unlikely to be found there.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

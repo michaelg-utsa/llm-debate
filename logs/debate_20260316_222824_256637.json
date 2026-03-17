@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:28:24.256637Z",
+  "question": "Would a pacifist be opposed to hunting?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 152,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Pacifism is a commitment to nonviolence and avoiding harm or killing. Hunting typically involves intentionally killing animals, which conflicts with that principle. While some pacifists might allow exceptions for survival, in general a pacifist would be opposed to hunting.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A pacifist is generally opposed to violence and harm, especially killing. Hunting typically involves killing animals, which conflicts with a commitment to nonviolence. While some pacifists might allow nonlethal or strictly necessary subsistence hunting, the general stance would be opposition.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: pacifism entails a commitment to nonviolence and avoiding killing, and hunting typically involves intentionally killing animals, so a pacifist would generally oppose it. Each also notes plausible edge cases (e.g., survival/subsistence or nonlethal hunting) but treats them as exceptions rather than the norm, which fits the question’s generic framing. With no debate rounds, neither side responds to potential counterarguments (such as pacifism being primarily about human conflict), but both provide a straightforward, commonly accepted linkage between pacifism and opposition to killing. Since their reasoning and conclusion are equivalent in strength and completeness, neither is more persuasive than the other. The best-supported final answer from the presented reasoning is “yes.”",
+    "strongest_a": "Connects pacifism’s nonviolence principle to hunting’s intentional killing, while acknowledging rare exceptions.",
+    "weakest_a": "Does not address the possible narrower definition of pacifism as opposition to human war rather than harm to animals.",
+    "strongest_b": "Clear statement that hunting conflicts with nonviolence, with a brief caveat about subsistence/nonlethal cases.",
+    "weakest_b": "Similarly omits discussion of pacifism’s potential focus on human-directed violence.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Pacifists generally oppose violence and killing. Hunting typically involves killing animals, which conflicts with a commitment to nonviolence. While some pacifists might allow hunting for survival, in general a pacifist would be opposed to it.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A pacifist generally opposes violence and the harming or killing of living beings. Hunting typically involves killing animals, which conflicts with that principle. While some pacifists might allow hunting for survival, in general a pacifist would be opposed to it.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A pacifist generally opposes violence and the taking of life. Hunting typically involves killing animals, which would conflict with that principle. While some pacifists might make exceptions for survival, in general they would be opposed to hunting.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "A pacifist generally opposes violence and the killing of living beings. Hunting typically involves intentionally killing animals, which conflicts with that principle. While some pacifists might allow non-lethal hunting or make exceptions for survival, the usual stance would be opposition.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

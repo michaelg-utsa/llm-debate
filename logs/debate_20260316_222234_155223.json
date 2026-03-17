@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:22:34.155223Z",
+  "question": "Can Arnold Schwarzenegger deadlift an adult Black rhinoceros?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 136,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "An adult black rhinoceros typically weighs on the order of 800–1,400 kg (and can be higher), far beyond what even elite strongmen can deadlift. Arnold Schwarzenegger, while exceptionally strong for bodybuilding, is not in the all-time strongest powerlifting/strongman tier, and his known lifts are nowhere near the 500+ kg range. Therefore he could not deadlift an adult black rhinoceros.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "An adult black rhinoceros typically weighs on the order of 800–1,400 kg (and can be higher), far beyond what even elite human deadlifters can lift. Arnold Schwarzenegger, while exceptionally strong, is not in the world-record deadlift range and would be limited to a few hundred kilograms at most. Therefore he could not deadlift an adult black rhinoceros.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters arrive at the same conclusion (“no”) and provide essentially the same supporting rationale: an adult black rhinoceros has a mass on the order of roughly 800–1,400+ kg, which is far beyond human deadlift capability, and certainly beyond Arnold Schwarzenegger’s known strength levels. With no debate rounds, there is no direct rebuttal or refinement, so the evaluation rests on the initial arguments. Debater A adds a slightly more specific comparison by noting Arnold is not in the all-time strongest powerlifting/strongman tier and referencing the gap to 500+ kg deadlifts, which helps contextualize the mismatch. Debater B’s reasoning is similarly sound but a bit more generic (“a few hundred kilograms at most”) without anchoring to known elite benchmarks. Overall, both are persuasive and consistent with general knowledge about rhino mass versus human lifting limits, making this effectively a tie with a clear final answer.",
+    "strongest_a": "Provides concrete rhino mass range and contextualizes Arnold’s strength relative to elite strongmen/powerlifters.",
+    "weakest_a": "Doesn’t cite specific verified Arnold deadlift numbers, relying on general comparison.",
+    "strongest_b": "Clearly states the rhino’s mass is far beyond human deadlift capability and Arnold’s likely limits.",
+    "weakest_b": "More vague about actual human/Arnold deadlift benchmarks, offering less quantitative context.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "An adult black rhinoceros typically weighs around 800–1,400 kg (1,800–3,100 lb). Arnold Schwarzenegger’s best deadlifts are far below that range, and even elite strongmen deadlifts are generally under 600 kg in competition. Therefore, he could not deadlift an adult black rhinoceros.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "An adult black rhinoceros typically weighs well over 1,000 kg (often around 800–1,400+ kg). Arnold Schwarzenegger, even at peak strength, could not deadlift anywhere near that weight; elite human deadlift records are around 500 kg. Therefore, he could not deadlift an adult black rhinoceros.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "An adult black rhinoceros typically weighs well over 1,000 kg (often around 800–1,400+ kg). Even elite human deadlifters lift under 600 kg in competition, and Arnold Schwarzenegger was not a world-record powerlifter at that level. Therefore, he could not deadlift an adult black rhinoceros.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "An adult Black rhinoceros typically weighs well over 800 kg and can exceed 1,000 kg. Even elite human deadlifters lift on the order of 400–500 kg, far below a rhino’s mass. Arnold Schwarzenegger, while exceptionally strong, is not in the range required to deadlift an adult black rhino.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

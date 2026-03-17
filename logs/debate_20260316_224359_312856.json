@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:43:59.312856Z",
+  "question": "Is the Greek alphabet as common as Sumerian cuneiform?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 197,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Greek alphabet is still widely used today in Greece and in scientific and mathematical notation worldwide. Sumerian cuneiform is an ancient writing system that is no longer used in everyday communication and is mainly encountered in specialized academic contexts. Therefore, the Greek alphabet is far more common than Sumerian cuneiform.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Greek alphabet is still widely used today, both for the Greek language and for symbols in science and mathematics. Sumerian cuneiform is an ancient writing system that is no longer used in everyday life and is mainly encountered in specialized academic contexts. Therefore, the Greek alphabet is far more common than Sumerian cuneiform.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) with essentially identical reasoning. They correctly contrast the modern, ongoing use of the Greek alphabet (in Greece and as scientific/mathematical symbols) with Sumerian cuneiform’s status as an ancient script used mainly in specialist academic contexts today. Given that “as common as” implies comparable prevalence, the argument that Greek is far more common supports answering “no.” Neither provides quantitative evidence, but the qualitative comparison aligns with general knowledge about contemporary usage. Since there is no substantive difference between the two positions and no debate rounds, neither side is more persuasive than the other.",
+    "strongest_a": "Clear modern-vs-ancient usage contrast supporting that Greek is much more prevalent.",
+    "weakest_a": "No quantitative support or explicit definition of “common.”",
+    "strongest_b": "Accurately notes Greek alphabet’s continued everyday and symbolic use versus cuneiform’s niche status.",
+    "weakest_b": "No quantitative support or explicit definition of “common.”",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Greek alphabet is still widely used today, both for writing Greek and for symbols in science, mathematics, and engineering. Sumerian cuneiform is an ancient writing system that is no longer used in everyday communication and is mostly encountered in specialized academic contexts. Therefore, the Greek alphabet is far more common than Sumerian cuneiform.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Greek alphabet is still widely used today in Greece and in many scientific and mathematical contexts worldwide. Sumerian cuneiform is an ancient writing system that is no longer used for everyday communication and is mainly encountered in historical and academic study. Therefore, the Greek alphabet is far more common than Sumerian cuneiform.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Greek alphabet is still used today in Greece and widely encountered globally in science, mathematics, and symbols. Sumerian cuneiform is an ancient writing system that is no longer used for everyday communication and is mainly seen in academic or museum contexts. Therefore, the Greek alphabet is far more common than Sumerian cuneiform.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Greek alphabet is still widely used today, both for writing Greek and for symbols in science and mathematics. Sumerian cuneiform is an ancient writing system that is no longer used in everyday communication and is mainly studied by specialists. Therefore, the Greek alphabet is far more common than Sumerian cuneiform.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

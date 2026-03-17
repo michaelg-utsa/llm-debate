@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:30:58.740376Z",
+  "question": "Was The Great Gatsby inspired by the novel 1984?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 161,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Great Gatsby was published in 1925, while George Orwell’s 1984 was published in 1949. A work cannot be inspired by a novel that did not yet exist. Fitzgerald’s influences are typically linked to the Jazz Age, his own experiences, and earlier literature, not Orwell’s later dystopia.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Great Gatsby was published in 1925, while George Orwell's 1984 was published in 1949, so Gatsby could not have been inspired by a later novel. Any thematic similarities would be coincidental or due to shared broader influences rather than direct inspiration. Therefore the answer is no.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same conclusion and essentially the same argument: publication chronology makes direct inspiration impossible. This is a strong, decisive point because The Great Gatsby (1925) predates 1984 (1949) by decades, so Fitzgerald could not have drawn from Orwell’s later work. Neither debater introduces any extraneous or speculative claims beyond noting that any similarities would not indicate direct influence. With no debate rounds, there is no differentiation in responsiveness or rebuttal. As a result, the outcome is best treated as a tie with a well-supported final answer of \"no.\"",
+    "strongest_a": "Correctly uses publication dates to rule out inspiration.",
+    "weakest_a": "Adds minor claims about Fitzgerald’s influences without sourcing, though unnecessary.",
+    "strongest_b": "Clear statement that thematic similarity wouldn’t imply direct inspiration given chronology.",
+    "weakest_b": "Largely repeats the same point as A; no additional supporting detail.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Great Gatsby was published in 1925, while George Orwell's 1984 was published in 1949. Since 1984 came decades later, it could not have inspired The Great Gatsby. There is no historical basis for such an influence.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The Great Gatsby was published in 1925, while George Orwell's 1984 was published in 1949. A work cannot be inspired by a novel that had not yet been written and published. Gatsby is generally associated with Fitzgerald's experiences and themes of the Jazz Age rather than Orwellian dystopia.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Great Gatsby was published in 1925, while George Orwell's 1984 was published in 1949. Since 1984 came decades later, it could not have inspired Fitzgerald's novel. Gatsby is generally associated with Fitzgerald's experiences and observations of the Jazz Age rather than dystopian political fiction.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Great Gatsby was published in 1925, while George Orwell's 1984 was published in 1949. A book cannot be inspired by a later work. Fitzgerald's novel is generally associated with themes and influences from the Jazz Age and his own experiences, not Orwell's dystopian fiction.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

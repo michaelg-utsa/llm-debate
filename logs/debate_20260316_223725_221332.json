@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:37:25.221332Z",
+  "question": "Can someone with dermatitis be a hand model?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 178,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Dermatitis is a skin condition that can vary in severity and may be intermittent or limited to certain areas. A person could still be a hand model if their hands are clear enough at the time of work or if the condition is mild and manageable. Whether they get hired depends on the specific job’s appearance requirements, but it’s not inherently impossible.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Dermatitis doesn’t automatically prevent someone from being a hand model; it depends on severity, visibility, and whether it can be managed or concealed for shoots. Many modeling jobs are project-based, and clients may accept minor skin issues or work around them with makeup, lighting, or retouching. However, active flare-ups or significant scarring could limit opportunities for certain campaigns.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“yes”) and provide similar reasoning: dermatitis varies in severity, can be intermittent, and does not categorically prevent hand modeling. Each notes that employability depends on the appearance requirements of the job and that mild or controlled cases could still work, which aligns with general knowledge about modeling being contingent on visual presentation rather than medical diagnoses per se. Debater B adds more concrete industry-relevant considerations (makeup, lighting, retouching, project-based nature of gigs), making their support slightly more detailed. Debater A’s argument is sound but a bit more general and less tied to practical mechanisms. Since there is no direct clash and both support “yes,” the result is effectively a tie, with a slight edge to B’s specificity but not enough to overturn the shared conclusion.",
+    "strongest_a": "Correctly frames dermatitis as variable and not inherently disqualifying.",
+    "weakest_a": "Less specific about how shoots can accommodate skin issues.",
+    "strongest_b": "Adds practical modeling/production factors (concealment, retouching, client acceptance) supporting feasibility.",
+    "weakest_b": "Relies on generalities about industry flexibility without concrete evidence.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Someone with dermatitis can be a hand model, but it depends on the severity and whether the skin appears clear enough for the specific job. Many hand modeling gigs require smooth, unblemished skin, so active flare-ups could limit opportunities. With treatment, makeup, lighting, or selecting jobs that don’t require close-up perfection, it may still be feasible.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Dermatitis is a skin condition that can affect the appearance of the hands, but it does not inherently prevent someone from being a hand model. If the dermatitis is mild, well-controlled, or not visible during shoots, they could still work. However, severe flare-ups might limit opportunities depending on the job's requirements for clear skin.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Dermatitis is a skin condition that can affect the appearance of the hands, but it does not inherently prevent someone from being a hand model. If the dermatitis is mild, well-controlled, or not visible during shoots, they could still work. However, severe flare-ups might limit opportunities depending on the job's aesthetic requirements.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Dermatitis is a skin condition that can vary widely in severity and visibility. A person with mild or well-controlled dermatitis could still model hands, especially if flare-ups are infrequent or can be managed for shoots. However, if dermatitis causes visible redness, scaling, or cracking at the time of work, it may limit suitability for certain jobs, but it does not make it impossible in general.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

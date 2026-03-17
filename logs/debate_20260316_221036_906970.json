@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:10:36.906970Z",
+  "question": "Does an organ donor need to be dead to donate a kidney?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 107,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A person can donate a kidney while alive because humans have two kidneys and can live normally with one. Living kidney donation is common and typically done for transplantation to a relative or matched recipient. Only some organs (like the heart) require the donor to be deceased.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A person can donate one kidney while alive because humans typically have two kidneys and can live with one functioning kidney. Deceased donation is also common, but death is not required for kidney donation. Living kidney donation is a standard medical practice with careful screening and consent.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and provide essentially the same justification: kidneys can be donated by living donors because people generally have two and can live with one. This aligns with common medical practice of living kidney donation, so the conclusion is well-supported. Neither side introduces conflicting claims or logical gaps, and there are no debate rounds to differentiate performance. Debater B adds slightly more context (mentioning screening and consent), but it does not materially change the support level compared to Debater A. Overall, the support is strong and the outcome is a tie.",
+    "strongest_a": "Correctly notes that living kidney donation is possible because humans can live with one kidney.",
+    "weakest_a": "Provides limited detail beyond the basic rationale and a brief comparison to organs like the heart.",
+    "strongest_b": "Mentions living kidney donation as standard practice and notes screening/consent, adding credibility.",
+    "weakest_b": "Largely repeats the same core point without additional evidence or nuance.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "A person can donate a kidney while alive because humans typically have two kidneys and can live with one. Living kidney donation is common and is done through surgery after medical evaluation. Some kidney donations also occur after death, but death is not required to donate a kidney.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A person can donate a kidney while alive because humans have two kidneys and can typically live with one functioning kidney. This is called living kidney donation and is commonly done for relatives or compatible recipients. Some kidney donations also come from deceased donors, but death is not required for kidney donation.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A person can donate a kidney while alive because humans can live with one functioning kidney. Living kidney donation is a common medical practice, typically from a healthy donor to a recipient. Therefore, an organ donor does not need to be dead to donate a kidney.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A person can donate a kidney while alive because humans typically have two kidneys and can live with one. Living kidney donation is a common form of organ donation, often to a relative or compatible recipient. Only some organs require the donor to be deceased, but kidneys do not.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:57:15.422928Z",
+  "question": "Does Ludacris perform classical music?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 71,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Ludacris is primarily known as a hip-hop/rap artist and actor, with his music career centered on rap albums and collaborations in that genre. There is no well-known evidence of him performing classical music in the sense of being a classical musician or giving classical performances.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Ludacris is primarily known as a hip-hop/rap artist and actor, not a classical musician. His discography and public performances are centered on rap and mainstream popular music rather than classical repertoire.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide essentially identical reasoning: Ludacris is widely known as a hip-hop/rap artist and actor, with no notable association with classical performance. Neither provides specific citations or examples, but the claim aligns with common public knowledge about his career and discography. Since there were no debate rounds, neither side refines or challenges the other’s position. The support is adequate but not deeply evidenced, so confidence is moderate rather than maximal. Overall, the best-supported final answer from the presented reasoning is “no.”",
+    "strongest_a": "Correctly notes Ludacris’s established identity as a rap/hip-hop artist rather than a classical performer.",
+    "weakest_a": "No concrete evidence or references; relies on absence of well-known examples.",
+    "strongest_b": "Points to discography and public performances being centered on rap/pop rather than classical repertoire.",
+    "weakest_b": "Also lacks specific supporting details or citations.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Ludacris is primarily known as a rapper and actor, associated with hip-hop and mainstream popular music. Classical music refers to a distinct Western art-music tradition typically performed by orchestras, ensembles, or classically trained soloists. There is no well-known evidence that Ludacris performs classical music as part of his professional work.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Ludacris is primarily known as a rapper and actor, with his music career centered on hip-hop. Classical music performance typically involves orchestral or classical vocal/instrumental repertoire, which is not associated with his public work. There is no well-known evidence that he performs classical music professionally.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Ludacris is primarily known as a rapper and hip-hop artist, as well as an actor. His musical work is in rap and related popular genres rather than Western classical music. There is no notable record of him performing classical music as a classical musician.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Ludacris is primarily known as a rapper and hip-hop artist, as well as an actor. His musical releases and performances are in rap/hip-hop rather than Western classical genres. There is no well-known evidence that he performs classical music in a professional or public capacity.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

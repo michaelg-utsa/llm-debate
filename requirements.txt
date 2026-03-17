@@ -1,0 +1,4 @@
+openai>=1.100.0
+streamlit>=1.44.0
+PyYAML>=6.0.2
+pandas>=2.2.0

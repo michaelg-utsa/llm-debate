@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:28:07.200823Z",
+  "question": "Do ants outperform apes on language ability?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 151,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Apes have demonstrated limited language abilities through trained use of symbols or sign language, showing some understanding of vocabulary and simple syntax. Ants communicate via pheromones and tactile signals, but this is not language in the sense of flexible, learned symbolic communication with compositional structure. Therefore ants do not outperform apes on language ability.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Apes (especially great apes) can learn and use symbolic communication systems to some extent, including signs or lexigrams, showing limited language-like abilities. Ants communicate via pheromones and simple signals, but this is not language in the human-like symbolic, generative sense. Therefore ants do not outperform apes on language ability.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and largely the same justification. Each contrasts ape language-like abilities (trained symbol/sign/lexigram use with some limited semantics and rudimentary structure) with ant communication (pheromones/tactile signals that are largely fixed and non-compositional). Given common scientific understanding, it is reasonable to treat ape communication as closer to “language ability” than ant signaling, so the conclusion that ants do not outperform apes is well-supported. Neither debater provides citations or addresses edge cases (e.g., defining “language” broadly as any communication system), but within the typical meaning of language ability their reasoning is coherent. Since there is no substantive disagreement and both arguments are comparably strong, the outcome is a tie.",
+    "strongest_a": "Clear distinction between flexible symbolic communication in apes and fixed chemical signaling in ants.",
+    "weakest_a": "Relies on an implicit definition of language without defending it or considering broader definitions.",
+    "strongest_b": "Accurately notes apes’ limited learned symbolic systems versus ants’ simple pheromone-based signaling.",
+    "weakest_b": "No additional evidence or nuance beyond A; does not address potential definitional ambiguity.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Apes have demonstrated limited language abilities through trained use of symbols, sign language, and understanding of some human words. Ants communicate effectively using pheromones and simple signals, but this is not considered language in the human-like sense and lacks the complexity seen in ape language studies. Therefore, ants do not outperform apes on language ability.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Apes have demonstrated limited language-related abilities, such as learning signs or using symbol boards to communicate basic concepts. Ants communicate through pheromones and simple signals, but this is not considered language in the human-like sense and lacks the flexibility and syntax seen in ape experiments. Therefore, ants do not outperform apes on language ability.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Apes have demonstrated limited language-related abilities, such as learning symbols or sign-like systems and understanding some structured commands. Ants communicate using pheromones and simple signals, but this is not comparable to language in terms of syntax or flexible symbolic meaning. Therefore, ants do not outperform apes on language ability.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Apes have demonstrated limited language abilities, such as learning sign language or using symbol boards to communicate basic concepts. Ants communicate using pheromones and simple signals, but this is not considered language in the human-like sense and lacks the flexibility and symbolic structure seen in ape communication studies. Therefore, ants do not outperform apes on language ability.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

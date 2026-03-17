@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:45:59.455663Z",
+  "question": "Was Moon Jae-in born outside of Khanbaliq?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 40,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Moon Jae-in was born in Geoje, South Gyeongsang Province, Korea (in 1953). Khanbaliq is the historical name for Beijing in China. Since Geoje is not in or near Beijing, he was born outside of Khanbaliq.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Moon Jae-in was born in Geoje, South Gyeongsang Province, Korea (then under U.S. military administration after WWII). Khanbaliq is the historical name for Beijing in China. Since Geoje is not Beijing, he was born outside of Khanbaliq.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same core argument: Moon Jae-in was born in Geoje, Korea, and Khanbaliq is a historical name for Beijing, China, so Geoje is outside Khanbaliq. This reasoning is straightforward and relies on widely known biographical and historical-geographical facts. Neither side introduces conflicting evidence or a nuanced interpretation that would change the conclusion. Debater B adds an extra historical note about U.S. military administration, but it is irrelevant to the location comparison. With no debate rounds and essentially identical support, neither side is more persuasive than the other.",
+    "strongest_a": "Correctly identifies Geoje as Moon Jae-in’s birthplace and Khanbaliq as Beijing, making the outside/inside inference clear.",
+    "weakest_a": "Provides no citation or additional support beyond the basic factual assertion.",
+    "strongest_b": "Same clear geographic comparison between Geoje and Khanbaliq (Beijing).",
+    "weakest_b": "Includes irrelevant administrative-history detail that doesn’t strengthen the argument.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Moon Jae-in was born in Geoje, South Korea, in 1953. Khanbaliq is the historical name for Beijing in China. Since Geoje is not Beijing, he was born outside of Khanbaliq.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Moon Jae-in was born in Geoje, South Gyeongsang Province, in what is now South Korea. Khanbaliq is the historical name for Beijing, China. Since Geoje is not Beijing, he was born outside of Khanbaliq.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Moon Jae-in was born in Geoje, South Gyeongsang Province, Korea (then under U.S. military administration). Khanbaliq is the historical name for Beijing, China. Since Geoje is not Beijing, he was born outside of Khanbaliq.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Moon Jae-in was born in Geoje, South Gyeongsang Province, Korea (then under U.S. military administration). Khanbaliq is the historical name for Beijing in China. Since Geoje is not in or near Beijing, he was born outside of Khanbaliq.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

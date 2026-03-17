@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:07:44.345487Z",
+  "question": "Was Charlemagne's father instrumental in outcome of the Battle of Tours?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 98,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Battle of Tours (732) was led by Charles Martel, who was Charlemagne’s grandfather, not his father. Charlemagne’s father was Pepin the Short, whose reign began later and did not determine the outcome of that battle. Therefore, Charlemagne’s father was not instrumental in the battle’s outcome.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Battle of Tours (732) is chiefly associated with Charles Martel, who led the Frankish forces to victory. Charlemagne's father was Pepin the Short, who became king later and was not a key figure in that battle. Therefore, Charlemagne's father was not instrumental in the outcome.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer and essentially the same justification: the Battle of Tours (732) was led by Charles Martel, who was Charlemagne’s grandfather, not his father. They correctly identify Charlemagne’s father as Pepin the Short and note that Pepin’s reign and prominence came later, making it unlikely he influenced the battle’s outcome. The reasoning directly addresses the question by clarifying the relevant family relationship and historical timeline. With no further debate rounds, neither side adds additional supporting detail beyond this core point. Since the arguments are equivalent in strength and completeness, the result is a tie, and the best-supported final answer is “no.”",
+    "strongest_a": "Correctly distinguishes Charles Martel (grandfather) from Pepin the Short (father) and ties that to the battle’s leadership.",
+    "weakest_a": "Does not provide any additional evidence about Pepin’s role in 732 beyond the timeline claim.",
+    "strongest_b": "Accurately attributes the battle to Charles Martel and excludes Pepin the Short as a key figure.",
+    "weakest_b": "Offers no extra corroboration or nuance; largely repeats the standard association without further support.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Charlemagne's father was Pepin the Short, who was born after the Battle of Tours (732) and therefore could not have influenced its outcome. The Frankish leader instrumental in that battle was Charles Martel, who was Charlemagne's grandfather. Thus, Charlemagne's father was not instrumental in the battle's outcome.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Charlemagne's father was Pepin the Short, whose father was Charles Martel. The Battle of Tours (732) was won by Charles Martel, who is often credited as the key Frankish leader in that outcome. Since Pepin was not the commander and was likely a child at the time, he was not instrumental in the battle's outcome.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Charlemagne's father was Pepin the Short, son of Charles Martel. The Battle of Tours (732) was led by Charles Martel, who is widely credited as the key Frankish commander whose actions determined the outcome. Since Pepin was Charles Martel's son and not a leader in that battle, the instrumental figure was Charlemagne's grandfather, not his father.",
+          "confidence": 2
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Charlemagne's father was Pepin the Short, whose father was Charles Martel. The Battle of Tours (732) was led by Charles Martel, who is often credited as a decisive commander in its outcome. Since Charlemagne's father is directly descended from and tied to Charles Martel's line, and the key figure at Tours was Charlemagne's grandfather rather than Pepin himself, the question hinges on whether Pepin was instrumental; he was not. Therefore, Charlemagne's father was not instrumental in the outcome of the Battle of Tours.",
+          "confidence": 2
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

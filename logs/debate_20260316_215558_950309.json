@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:55:58.950309Z",
+  "question": "Did mercenaries fight for England in the Glorious Revolution?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 67,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "During the Glorious Revolution (1688–1689), William of Orange’s invasion force included foreign professional soldiers, notably Dutch troops and other hired/paid units, fighting in support of replacing James II. These forces effectively fought on the side that became the new English regime, so mercenary-style troops did fight for England in the conflict. While many were allied national troops rather than strictly private mercenaries, the question’s intent about foreign paid soldiers is satisfied.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The Glorious Revolution involved William of Orange’s invasion of England in 1688, and his forces included foreign professional soldiers, notably Dutch troops and other hired units. Such troops functioned as mercenaries in the sense of being paid soldiers fighting outside their home country. Therefore, mercenaries did fight in England during the Glorious Revolution.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: William of Orange’s invasion force contained foreign professional soldiers (especially Dutch troops) who fought in England during 1688–1689. Neither provides concrete evidence that these troops were “mercenaries” in the strict sense (privately hired soldiers) rather than regular troops of the Dutch Republic or allied contingents, which weakens the direct support for the specific term in the question. Debater A is slightly more careful by acknowledging this definitional ambiguity and reframing the claim as “mercenary-style” or “foreign paid soldiers,” which better anticipates a potential objection. Debater B asserts the mercenary label more straightforwardly without addressing the distinction between allied national forces and mercenaries. Given the binary answer format and common loose usage equating foreign paid soldiers with mercenaries, the best-supported answer from the presented reasoning remains “yes,” but with moderate confidence due to the definitional gap.",
+    "strongest_a": "Notes William’s force included foreign professional soldiers and acknowledges the mercenary-vs-allied-troops ambiguity.",
+    "weakest_a": "Does not substantiate that any troops were actually mercenaries (privately hired) rather than regular allied forces.",
+    "strongest_b": "Clearly ties the presence of foreign troops in William’s army to the claim that mercenaries fought in the conflict.",
+    "weakest_b": "Equates foreign troops with mercenaries without addressing the definitional distinction or providing supporting detail.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "In the Glorious Revolution (1688–1689), William of Orange’s invasion force included foreign troops such as Dutch soldiers and other European auxiliaries, but these were not mercenaries hired by England. England’s side relied on its own forces and political defections rather than employing mercenary companies. While foreign soldiers fought in the conflict, they did so as part of William’s coalition, not as mercenaries fighting for England.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "During the Glorious Revolution, William of Orange invaded England with a large army that included foreign professional soldiers. These troops were effectively mercenaries from England’s perspective because they were paid and recruited from abroad rather than being English levies. They fought in support of William’s claim and the political change in England, even though major pitched battles were limited.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "During the Glorious Revolution, William of Orange’s invasion force included foreign professional soldiers, notably Dutch troops and other hired or contracted units. These can be considered mercenaries in the sense that they were not English national forces and were paid to fight. They fought in support of the change of regime in England.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "During the Glorious Revolution, William of Orange’s invasion force included foreign troops hired or serving for pay, such as Dutch and other continental soldiers. These forces fought in England to support William’s claim and the overthrow of James II. In that sense, mercenary or paid foreign soldiers did fight in England during the conflict.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

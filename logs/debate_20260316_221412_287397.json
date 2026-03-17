@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:14:12.287397Z",
+  "question": "Would Dave Chappelle pray over a Quran?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 113,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Praying over a Quran is a specifically Islamic practice, and Dave Chappelle is primarily known as a comedian rather than for Islamic devotional acts. While he has been reported to have converted to Islam, that alone doesn’t imply he would perform a particular ritual like praying over the physical Quran. With no clear evidence that he does this practice, the safer answer is no.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Dave Chappelle is widely reported to be a Muslim, and Muslims treat the Quran with reverence, but \"praying over\" a Quran is not a standard Islamic practice. Typically, Muslims pray (salat) facing the qibla and may recite from the Quran, rather than perform a ritual of praying over the physical book. So it’s unlikely he would specifically \"pray over\" a Quran.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters answer “no” and there are no rebuttal rounds, so the decision rests on which justification is better grounded. Debater B provides a clearer semantic and cultural argument: “praying over a Quran” is not a typical or well-defined Islamic ritual, since Muslims pray salat and may recite Quran rather than pray over the physical book. Debater A’s reasoning leans more on uncertainty about Chappelle’s personal practices and lack of evidence, which is weaker because the question is more about plausibility/meaning than documented behavior. Given common Islamic practice, B’s explanation better supports that the described act is unlikely. Therefore the best-supported final answer is “no.”",
+    "strongest_a": "Appropriately cautious about inferring a specific ritual from a general religious identity.",
+    "weakest_a": "Relies on lack of evidence about Chappelle rather than analyzing whether the practice itself is standard or meaningful.",
+    "strongest_b": "Explains that “praying over” a Quran is not a standard Islamic practice, making the scenario unlikely.",
+    "weakest_b": "Does not address alternative interpretations of the phrase (e.g., making dua while holding/near the Quran).",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Dave Chappelle is widely known to have converted to Islam. Muslims regard the Quran as a sacred text and may recite prayers or supplications while reading it, but they typically do not \"pray over\" it in the way some other traditions might pray over objects. So the phrasing is not something he would ordinarily do.",
+      "confidence": 3
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Dave Chappelle is widely known as a practicing Muslim, and Muslims treat the Quran with reverence. Prayer in Islam is directed to God (Allah), not to the Quran as an object. While he might recite from the Quran or handle it respectfully, \"praying over\" a Quran is not a typical Islamic practice.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Dave Chappelle is widely known to have converted to Islam, and Muslims typically treat the Quran with great reverence. However, \"praying over\" a Quran is not a standard Islamic practice; Muslims pray to God and may recite from the Quran, but they do not generally pray over the physical book itself. So the phrasing of the question suggests an action that is unlikely in normal practice.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Dave Chappelle is widely known as a comedian and public figure who has identified with Islam, but praying \"over a Quran\" is not a standard or required Islamic practice in the way the question implies. Muslims may recite from or hold the Quran with respect, but prayer is directed to God rather than performed over the physical book. So it is unlikely to say he would specifically pray over a Quran.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

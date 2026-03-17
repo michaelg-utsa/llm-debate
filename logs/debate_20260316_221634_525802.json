@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:16:34.525802Z",
+  "question": "Did Mickey Mouse appear in a cartoon with Bugs Bunny in 1930?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 120,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Mickey Mouse is a Disney character and Bugs Bunny is a Warner Bros. character, and they did not share cartoons in 1930. Bugs Bunny’s character was not formally established until later (around 1940), making a 1930 joint cartoon impossible. Cross-studio appearances between them are extremely rare and occurred much later, not in 1930.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Bugs Bunny as a character was not established in 1930; his official debut is generally dated to 1940 (e.g., \"A Wild Hare\"). Mickey Mouse did appear in cartoons in 1930, but there were no cross-studio cartoons featuring both Mickey and Bugs then. Therefore Mickey could not have appeared in a 1930 cartoon with Bugs Bunny.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and rely on two mutually reinforcing points: Bugs Bunny was not an established character in 1930 and Disney/Warner Bros. crossovers were not occurring then. Debater B is slightly more persuasive because it cites a commonly referenced benchmark for Bugs Bunny’s official debut (“A Wild Hare” in 1940), making the timeline argument more concrete. Debater A adds the general point about cross-studio appearances being rare and much later, but provides less specific anchoring. Neither side presents any countervailing evidence suggesting an earlier proto–Bugs Bunny appearance alongside Mickey, but given general animation history, the reasoning is consistent. With no debate rounds, the decision rests on which initial reasoning is better supported and more specific.",
+    "strongest_a": "Correctly notes the studio separation and that Bugs Bunny wasn’t established in 1930, making a joint 1930 cartoon implausible.",
+    "weakest_a": "Less specific about dates/works and relies on broad claims about rarity of crossovers without concrete citations.",
+    "strongest_b": "Provides a specific, widely recognized reference point for Bugs Bunny’s debut around 1940 (e.g., 'A Wild Hare'), strengthening the timeline argument.",
+    "weakest_b": "Does not address potential edge cases like earlier proto-Bugs characters, though this omission likely doesn’t change the conclusion.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Bugs Bunny was not created or appearing in cartoons in 1930; his recognizable debut came later, around 1940. Mickey Mouse cartoons in 1930 were produced by Disney, while Bugs Bunny is a Warner Bros. character. There was no 1930 cartoon featuring both characters together.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Bugs Bunny was not created or established as a character until later in the late 1930s and early 1940s, so he did not appear in cartoons in 1930. Mickey Mouse did appear in cartoons in 1930, but not alongside Bugs Bunny. Cross-studio cartoons featuring both characters were not a feature of that era.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Mickey Mouse is a Disney character, while Bugs Bunny is a Warner Bros. character, and they did not share cartoons in that era. Bugs Bunny’s recognizable character was not established until later in the 1930s and 1940s, and there is no known 1930 cartoon featuring both. Cross-studio character crossovers like that were not typical at the time.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Bugs Bunny as a character was not established in 1930; his recognizable debut came later in the late 1930s/1940. Mickey Mouse cartoons in 1930 were produced by Disney, while Bugs Bunny is a Warner Bros. character. Cross-studio cartoons featuring both characters did not exist at that time.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:36:32.592244Z",
+  "question": "Does Nicole Kidman despise Roman Josi?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 16,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Nicole Kidman is an Australian actor and public figure, while Roman Josi is a Swiss professional hockey player. There is no widely reported relationship or public dispute between them, and no credible evidence that she has expressed hatred or contempt toward him. In the absence of any such indication, the reasonable answer is no.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Nicole Kidman is an Australian actor, and Roman Josi is a Swiss professional ice hockey player. There is no widely known public relationship or controversy between them suggesting animosity, let alone that she \"despises\" him. In the absence of any credible evidence of such a sentiment, the reasonable answer is no.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical reasoning: Nicole Kidman and Roman Josi operate in unrelated public spheres and there is no known public dispute or evidence of animosity. Given the question asks about a strong personal sentiment (\"despise\"), the absence of any reported connection or controversy is a reasonable basis to answer \"no\" in a StrategyQA setting. Neither debater provides specific citations, but both rely on a common-sense default that such a claim would likely be notable if true. With no debate rounds and no differentiating arguments, neither side is more persuasive than the other. The best-supported final answer remains \"no\" based on lack of evidence for the contrary.",
+    "strongest_a": "Appropriately treats 'despise' as requiring credible public evidence and notes none exists.",
+    "weakest_a": "No concrete sources or examples; argument is purely from absence of reports.",
+    "strongest_b": "Clear framing that there is no known relationship or controversy implying animosity.",
+    "weakest_b": "Also relies entirely on absence of evidence without any supporting references.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "There is no reliable public information indicating that Nicole Kidman despises Roman Josi. They are in unrelated fields (acting and professional hockey) and there are no known statements or documented interactions suggesting hostility. In the absence of evidence, the reasonable answer is no.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Nicole Kidman is an actress and public figure, while Roman Josi is a professional hockey player. There is no widely known public relationship or documented conflict between them. Without credible evidence that she has expressed hatred or contempt toward him, the reasonable answer is no.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Nicole Kidman is an Australian actress, while Roman Josi is a Swiss professional ice hockey player. There is no widely known public relationship, interaction, or controversy between them that would indicate she despises him. In the absence of any credible evidence of animosity, the reasonable answer is no.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Nicole Kidman is an Australian-American actress, while Roman Josi is a Swiss professional ice hockey player. There is no widely known public relationship or interaction between them that would suggest she despises him. In the absence of credible evidence indicating animosity, the reasonable answer is no.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:39:04.502159Z",
+  "question": "Is sound barrier too much for Audi R8 V-10 Plus to break?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 23,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The sound barrier corresponds to about 343 m/s (around 767 mph) at sea level. An Audi R8 V-10 Plus has a top speed on the order of ~200 mph, far below supersonic speed. Therefore, the sound barrier is far too high for it to break under normal conditions.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The sound barrier is about Mach 1, roughly 343 m/s or 767 mph at sea level. An Audi R8 V-10 Plus has a top speed around 200+ mph, far below supersonic speed. Therefore it cannot break the sound barrier under normal driving conditions.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical arguments: the sound barrier is around Mach 1 (~343 m/s or ~767 mph at sea level), while the Audi R8 V-10 Plus has a top speed around 200+ mph. This comparison directly supports the conclusion that the car cannot reach supersonic speed, so the sound barrier is too much for it to break. Neither provides citations, but the numerical orders of magnitude are widely known and internally consistent. No debate occurred, and neither side addresses edge cases (e.g., modified vehicles), but the question appears to concern the standard car. Since the reasoning and support are the same, neither is more persuasive than the other.",
+    "strongest_a": "Correctly compares Mach 1 speed to the R8's much lower top speed.",
+    "weakest_a": "Assumes 'normal conditions' without clarifying stock vs modified scenarios.",
+    "strongest_b": "Uses the same clear quantitative comparison between sound barrier and car top speed.",
+    "weakest_b": "No additional evidence or nuance beyond the basic speed comparison.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The sound barrier at sea level is about 767 mph (1,235 km/h). The Audi R8 V-10 Plus has a top speed around 205 mph (330 km/h), far below the speed of sound. Therefore it cannot break the sound barrier under normal conditions.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The sound barrier is about 767 mph (1235 km/h) at sea level, varying with conditions. An Audi R8 V-10 Plus has a top speed around 205 mph (about 330 km/h), far below the speed of sound. Therefore it cannot break the sound barrier under normal driving conditions.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The sound barrier is about 343 m/s (around 767 mph) at sea level. An Audi R8 V-10 Plus has a top speed roughly around 200 mph, far below the speed of sound. Therefore it cannot break the sound barrier under normal driving conditions.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The sound barrier at sea level is about 767 mph (1,235 km/h). The Audi R8 V-10 Plus has a top speed around 205 mph (330 km/h), far below the speed of sound. Therefore it cannot break the sound barrier under normal driving conditions.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

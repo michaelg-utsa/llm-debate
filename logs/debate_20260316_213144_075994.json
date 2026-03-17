@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-03-16T21:31:44.075994Z",
+  "question": "Is the largest city in New Mexico also known as Yootó?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 5,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The largest city in New Mexico is Albuquerque. Albuquerque is also known by the Navajo name “Yootó” (often rendered as “Yootó”/“Yootóó”). Therefore, the largest city in New Mexico is also known as Yootó.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The largest city in New Mexico is Albuquerque. \"Yootó\" is a Navajo name associated with the area of Albuquerque, but the city itself is not commonly \"also known as Yootó\" in standard usage. Therefore the statement is not accurate as phrased.",
+      "confidence": 4
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "The largest city in New Mexico is Albuquerque. Albuquerque is also known by the Navajo name “Yootó,” a commonly cited exonym/endonym used for the city in Navajo-language contexts. Since Yootó refers to Albuquerque, the state’s largest city is indeed also known as Yootó.",
+        "rebuttal": "No opponent point has been presented yet; if the opposition claims Yootó refers to a different place, the key check is that Yootó is widely documented as the Navajo name for Albuquerque.",
+        "confidence": 4
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "The largest city in New Mexico is Albuquerque, but “Yootó” is not a widely established or standard alternate name for Albuquerque in general usage. Albuquerque is commonly known by names like “Duke City,” and in Navajo it is more typically rendered as “Beeʼeldííl Dahsinil” (or similar forms), not “Yootó.” “Yootó” appears more plausibly as a Navajo term used for a different place or as a nonstandard/incorrect attribution rather than a recognized alias for Albuquerque. Therefore, the largest city in New Mexico is not also known as Yootó.",
+        "rebuttal": "Debater A’s claim hinges on “widely documented,” but that’s exactly what’s missing: the commonly cited Navajo name for Albuquerque is not “Yootó.” Without a reliable, standard reference tying “Yootó” specifically to Albuquerque, the identification looks like a mix-up rather than an accepted alternate name.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 2,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "The largest city in New Mexico is Albuquerque. “Yootó” is attested as a Navajo name used to refer to Albuquerque (i.e., a Navajo-language toponym/exonym for the city). Since the question asks whether the largest city is also known as Yootó, the existence of that established Navajo name is sufficient to answer yes, regardless of whether other nicknames (e.g., “Duke City”) are more common in English.",
+        "rebuttal": "Debater B’s point that other Navajo renderings exist doesn’t negate that “Yootó” is used for Albuquerque; multiple Navajo names/variants can coexist for the same place. The claim at issue is not “most common name,” but whether Albuquerque is also known as Yootó at all.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Albuquerque is the largest city in New Mexico, but “Yootó” is not a clearly established or standard alternate name for Albuquerque in reliable, mainstream references. When a question says a city is “also known as” a name, it typically implies a recognized alias/toponym, not a disputed or obscure attribution. Commonly documented Navajo naming for Albuquerque uses other forms (often glossed as “Beeʼeldííl Dahsinil” or similar variants), making “Yootó” look like a mix-up or nonstandard usage rather than an accepted name. Without a solid, authoritative linkage of “Yootó” to Albuquerque, the safer correct response is no.",
+        "rebuttal": "Debater A asserts “Yootó” is attested for Albuquerque but provides no concrete authority; mere possibility of multiple variants doesn’t establish that this specific form is actually used for Albuquerque. The burden is to show “Yootó” is a recognized toponym for Albuquerque, not just claim it exists.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 3,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "New Mexico’s largest city is Albuquerque. “Yootó” is used as a Navajo name for Albuquerque in Navajo-language contexts, so Albuquerque can be described as also known as Yootó. The question is existential—whether the city is also known by that name—not whether it is the most common English nickname. Therefore the correct response is yes.",
+        "rebuttal": "Debater B’s objection is about prominence and standardization, but “also known as” does not require the dominant or official label—only that the name is used to refer to the city. The existence of other Navajo renderings doesn’t preclude “Yootó” being another attested Navajo name/variant for Albuquerque.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "The largest city in New Mexico is Albuquerque, but calling it “also known as Yootó” requires that Yootó be a recognized, documented alternate name for the city. In standard references and common usage, Albuquerque’s nicknames are things like “Duke City,” and Navajo toponyms for Albuquerque are typically given in other forms/variants rather than “Yootó.” Without a clear authoritative source tying “Yootó” specifically to Albuquerque (as opposed to a misattribution or obscure/nonstandard rendering), the claim that the city is “also known as” Yootó is not supported. Therefore the correct answer is no.",
+        "rebuttal": "Debater A keeps asserting existential “attestation” but provides no concrete, authoritative linkage showing Yootó is actually used for Albuquerque. “Also known as” in a QA setting generally tracks recognized aliases/toponyms, not an unverified or highly obscure variant that may be a mix-up.",
+        "confidence": 3
+      }
+    },
+    {
+      "round": 4,
+      "debater_a": {
+        "answer": "yes",
+        "argument": "The largest city in New Mexico is Albuquerque. “Yootó” is a Navajo toponym used to refer to Albuquerque in Navajo-language contexts, so Albuquerque is indeed also known as Yootó. The question is about whether that alternate name exists, not whether it is the dominant English nickname or the only Navajo rendering. Since Yootó is used as a name for Albuquerque, the correct response is yes.",
+        "rebuttal": "Debater B’s standard is too strict: “also known as” does not require the most common or official label, only that the name is used to denote the place. Multiple Navajo forms can coexist for the same city, so the existence of other Navajo names doesn’t refute that Yootó refers to Albuquerque.",
+        "confidence": 3
+      },
+      "debater_b": {
+        "answer": "no",
+        "argument": "Albuquerque is the largest city in New Mexico, but the claim that it is “also known as Yootó” is not supported by standard, authoritative place-name references. In Navajo, Albuquerque is typically given as “Beeʼeldííl Dahsinil” (and close variants), while “Yootó” is not commonly listed as an established Navajo toponym for the city. In a StrategyQA-style question, “also known as” generally tracks a recognized alias/toponym, not an unverified or highly obscure attribution. Absent clear documentation that Yootó is a real alternate name for Albuquerque, the correct answer is no.",
+        "rebuttal": "Debater A keeps asserting mere “existence/attestation” but provides no concrete authority tying Yootó to Albuquerque; without that, the appeal to “multiple variants can coexist” doesn’t establish that this specific variant is actually used for the city. The burden is to show Yootó is a recognized name for Albuquerque, not just claim it.",
+        "confidence": 3
+      }
+    }
+  ],
+  "judge": {
+    "analysis": "Both debaters agree the largest city in New Mexico is Albuquerque; the dispute is whether “Yootó” is an established alternate name for it. Debater A repeatedly asserts that Yootó is an attested Navajo name for Albuquerque, but never supplies any concrete supporting detail (e.g., a dictionary/atlas form, a translation, or a commonly cited reference), so the claim remains unsupported within the debate. Debater B, while also not citing sources, provides a more specific counterpoint by naming an alternative Navajo form for Albuquerque and arguing that “also known as” in this QA context implies a recognized alias rather than an obscure or questionable attribution. Given the evidentiary standard in the transcript, B’s position is better supported because it challenges A’s key premise and highlights the lack of substantiation. Overall, the debate record favors “no” due to insufficient demonstrated linkage between Yootó and Albuquerque.",
+    "strongest_a": "Correctly identifies Albuquerque as New Mexico’s largest city and frames the question as existential (“also known as” meaning any attested alternate name).",
+    "weakest_a": "Provides no concrete evidence or authoritative linkage that “Yootó” specifically refers to Albuquerque, relying on repeated assertion.",
+    "strongest_b": "Directly contests the claimed alias by offering a more commonly documented Navajo name for Albuquerque and arguing “also known as” implies recognized usage.",
+    "weakest_b": "Also lacks citations and leans on assumptions about what counts as ‘recognized’ in StrategyQA-style wording.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name associated with Santa Fe, not Albuquerque. Therefore, the largest city is not also known as Yootó.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 11,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Albuquerque is known in the Navajo language as Yootó (often written Yootó or Yóótó). Therefore, the largest city in New Mexico is also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name associated with Albuquerque. Therefore, the largest city in New Mexico is also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Albuquerque is also known by the Navajo name “Yootó,” commonly translated as “big village.” Therefore, the largest city in New Mexico is also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The largest city in New Mexico is Albuquerque. \"Yootó\" is a Navajo name associated with the area of Albuquerque, but it is not a commonly used alternate name for the city in general usage. Therefore, the largest city is not also known as Yootó in the usual sense.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The largest city in New Mexico is Albuquerque. In the Navajo language, Albuquerque is known as Yootó (also rendered as Yóótó). Therefore, the largest city in New Mexico is also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name that refers to Santa Fe, the state capital, not Albuquerque. Therefore, the largest city is not also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name associated with Santa Fe, not Albuquerque. Therefore, the largest city is not also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name used to refer to Albuquerque. Therefore, the largest city in New Mexico is also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name associated with Santa Fe, not Albuquerque. Therefore, the largest city is not also known as Yootó.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Yootó is a Navajo name associated with the area of Albuquerque, but the city itself is not commonly known by that name in general usage. Therefore, the largest city is not also known as Yootó in the usual sense of being widely recognized by that name.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The largest city in New Mexico is Albuquerque. Albuquerque is also known by the Navajo name “Yootó,” commonly glossed as “bead town.” Therefore, the largest city in New Mexico is also known as Yootó.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 6,
+        "no": 5
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 11,
+    "llm_calls_for_debate_plus_direct": 12,
+    "total_llm_calls": 23,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

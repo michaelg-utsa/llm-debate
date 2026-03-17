@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:44:56.471291Z",
+  "question": "Was Michael Crichton ever in danger of flunking out of Harvard as an undergraduate?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 200,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Biographical accounts of Michael Crichton’s Harvard undergraduate years describe him struggling academically early on, including receiving very low grades and being at risk academically. He later rebounded after changing his approach and interests, but the early period is commonly characterized as putting him in danger of failing out.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Biographical accounts of Michael Crichton’s Harvard years describe him struggling academically early on, including very low grades and being at risk of academic failure before he changed approach and later excelled. He has been described as nearly failing out before turning things around.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same claim: that Crichton struggled academically early at Harvard and was at risk of failing out before turning things around. Neither provides a specific citation, concrete anecdote (e.g., probation, specific grades, or an explicit quote), or distinguishes between “poor performance” and the stricter standard of being in danger of flunking out. With no debate rounds, there is no additional evidentiary development or rebuttal. Given the parity of arguments and lack of supporting detail, neither side is more persuasive than the other, though both converge on the same final answer. The best-supported final answer from the presented reasoning is therefore “yes,” but with low confidence due to the absence of corroboration.",
+    "strongest_a": "Correctly notes an early academic struggle followed by a rebound narrative commonly found in biographies.",
+    "weakest_a": "No concrete evidence or sourcing to substantiate the specific claim of being in danger of flunking out.",
+    "strongest_b": "Clearly states the ‘nearly failing out’ characterization and the turnaround, aligning with common biographical summaries.",
+    "weakest_b": "Also lacks specific citations or details distinguishing low grades from actual risk of dismissal.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 2
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Michael Crichton struggled academically early in his undergraduate years at Harvard. He later described doing poorly enough that he was at risk of failing out. After switching his focus (including time studying anthropology), his performance improved and he graduated.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "As an undergraduate at Harvard, Michael Crichton became disillusioned with the English department and began submitting essays under a pseudonym, which led to conflict with faculty. During this period his academic standing suffered, and accounts of his biography note he was at risk of failing out before he switched his focus and recovered. He ultimately graduated, but there was a time when flunking out was a real possibility.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "As an undergraduate at Harvard, Michael Crichton reportedly struggled academically early on and had very poor grades. Accounts of his biography note that his performance was bad enough that he was at risk of failing out. He later rebounded after changing his approach and field of study.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "As an undergraduate at Harvard, Michael Crichton reportedly struggled academically at one point and was at risk of failing out. Accounts of his early college years describe poor grades before he changed his approach and later graduated. This indicates he was in danger of flunking out during his time there.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

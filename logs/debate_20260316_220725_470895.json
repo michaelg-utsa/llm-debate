@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:07:25.470895Z",
+  "question": "Did Harry Houdini's wife make psychics look foolish?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 97,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "After Harry Houdini died, his wife Bess Houdini participated in séances and publicly tested mediums using a secret code they had agreed on. When mediums failed to produce the correct coded message, she used that to show their claims were unreliable. This helped make some psychics/mediums look foolish or fraudulent in the public eye.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "After Harry Houdini died, his wife Bess participated in séances and publicly tested mediums using a secret code phrase the couple had agreed on. When mediums claimed to contact Houdini but could not produce the correct code, she exposed them as fraudulent, which made them look foolish. This was part of the broader effort associated with Houdini’s legacy of debunking spiritualists.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: Bess Houdini attended séances and used a prearranged secret code to test mediums claiming to contact Harry Houdini, and when they failed she treated that as exposing them. This reasoning is plausible and aligns with general historical accounts that she conducted “Houdini séances” and did not receive the correct code, which undercut mediums’ claims. Neither side provides specific examples, dates, or citations, but the question is broad (“make psychics look foolish”), and their explanation directly supports that interpretation. Since there were no debate rounds, neither side challenged assumptions or clarified what counts as “psychics,” but both connect her actions to public debunking. With identical support, the result is a tie and the best-supported answer remains “yes.”",
+    "strongest_a": "Clear causal link from secret-code tests to publicly discrediting mediums.",
+    "weakest_a": "No concrete evidence or specific incidents showing public impact beyond the general claim.",
+    "strongest_b": "Frames her actions as exposing fraud in line with Houdini’s broader anti-spiritualist legacy.",
+    "weakest_b": "Adds little beyond A and similarly lacks specific corroborating details.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "After Harry Houdini's death, his wife Bess Houdini participated in séances and publicly tested mediums who claimed to contact him. She used a secret code they had agreed on, which no medium successfully produced. Her involvement in these tests and the publicized failures helped expose fraudulent claims and made some psychics look foolish.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "After Harry Houdini died, his wife Bess Houdini participated in séances and public tests meant to see if mediums could contact him using a secret code they had agreed on. When mediums failed to produce the correct code, it undermined their claims and made them appear fraudulent. These efforts were part of broader attempts associated with Houdini’s legacy to expose fake spiritualists.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "After Harry Houdini died, his wife Bess cooperated with efforts to test spiritualists by using a secret code phrase that only they knew. When mediums claimed to contact Houdini but failed to provide the correct code, it exposed their claims as fraudulent. These public failures made many psychics look foolish.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "After Harry Houdini's death, his wife Bess Houdini participated in efforts to test mediums who claimed they could contact him. She used a secret code that Houdini said he would use if communication were real, and mediums repeatedly failed to produce it. These public failures helped expose fraudulent claims and made some psychics look foolish.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

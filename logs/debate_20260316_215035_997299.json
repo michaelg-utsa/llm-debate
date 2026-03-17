@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T21:50:35.997299Z",
+  "question": "Did Paul the Apostle's cause of death violate the tenets of Ahimsa?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 51,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Paul the Apostle is traditionally believed to have been executed (beheaded) in Rome, meaning his death was caused by others rather than by his own actions. Ahimsa is a principle of non-violence that concerns one’s conduct in avoiding harm to living beings. Being a victim of violence does not itself constitute a violation of Ahimsa by the person killed.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Paul the Apostle is traditionally believed to have been executed by beheading under Roman authority. Ahimsa is a principle of non-violence that constrains one’s own actions, not whether one is harmed by others. Paul’s death was a violent act done to him, not a violation committed by him.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and rely on the same core reasoning: Paul’s death is traditionally described as an execution carried out by others, and ahimsa is primarily a constraint on one’s own conduct rather than a standard violated by being victimized. This is a plausible interpretation of “violate the tenets of ahimsa,” since the person whose actions would be evaluated is Paul, not his executioners. Neither debater addresses a possible alternative reading of the question—whether the manner of death (violent killing) is itself contrary to ahimsa regardless of agency—but given the phrasing about Paul’s cause of death, focusing on Paul’s agency is reasonable. Debater B’s explanation is slightly clearer in explicitly tying ahimsa to “one’s own actions” and contrasting that with harm done to him. With no further debate, the support for “no” is essentially equal, with a minor edge to B for clarity.",
+    "strongest_a": "Correctly distinguishes being a victim of violence from committing violence under ahimsa.",
+    "weakest_a": "Does not consider alternative interpretations where the violent cause of death could be seen as conflicting with ahimsa in a broader sense.",
+    "strongest_b": "Clearly frames ahimsa as governing the agent’s actions and notes Paul did not perform the violent act.",
+    "weakest_b": "Also omits discussion of broader/agency-independent readings of ahimsa and the question wording.",
+    "winner": "Debater B",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Paul the Apostle is traditionally believed to have been executed (often said to be beheaded) by Roman authorities. Ahimsa is a principle of non-violence that prohibits causing harm, but Paul was the victim rather than the perpetrator. His cause of death does not represent him violating Ahimsa; it reflects violence done to him.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Ahimsa is the principle of non-violence and avoiding harm to living beings. Paul the Apostle is traditionally believed to have been executed (often said to be beheaded) under Roman authority. An execution is a violent killing and thus involves harm, which conflicts with the tenets of Ahimsa.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Paul the Apostle is traditionally believed to have been executed (often said to be beheaded) by Roman authorities. Ahimsa is the principle of non-violence, and an execution is an act of violence by the executioners, not a voluntary violent act by the person executed. Paul’s death does not indicate he committed violence as part of his cause of death, so it would not be a violation of Ahimsa on his part.",
+          "confidence": 3
+        },
+        {
+          "answer": "no",
+          "reasoning": "Ahimsa is the principle of non-violence, especially the avoidance of harming living beings. Paul the Apostle is traditionally believed to have been executed (martyred) by others, meaning his death was violence done to him rather than violence he committed. Being a victim of execution does not itself constitute a violation of Ahimsa by Paul.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "yes": 1,
+        "no": 2
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

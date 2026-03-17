@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T21:36:54.923836Z",
+  "question": "Would it be possible to fit a football field in Alcatraz Island?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 17,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A standard American football field including end zones is 360 ft long and 160 ft wide (about 57,600 sq ft). Alcatraz Island is only about 22 acres total and is irregularly shaped with steep slopes and buildings, leaving no single flat, unobstructed rectangle that large. Given the island’s narrow dimensions and terrain, fitting a full football field footprint is not realistically possible.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A standard American football field including end zones is about 360 ft by 160 ft (roughly 57,600 sq ft). Alcatraz Island is about 22 acres in total, but most of it is steep, irregularly shaped, and occupied by buildings and cliffs, leaving no single flat rectangular area large enough. So fitting a full football field on the island as a usable field is not feasible.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: a football field is 360×160 ft (~57,600 sq ft) and Alcatraz is ~22 acres but steep, irregular, and built up, so there is no flat rectangle to place a field. The area comparison alone actually suggests it could fit in principle (22 acres is far larger than 57,600 sq ft), so the key claim is about usable flat, unobstructed dimensions. However, neither debater provides concrete island dimensions (length/width) or evidence about the largest flat area, so the conclusion rests on plausibility rather than demonstrated impossibility. Given common knowledge that Alcatraz is small, rocky, and heavily developed, the “not feasible” conclusion is reasonable, but it is not rigorously proven. Since both sides are identical in support, neither is more persuasive than the other.",
+    "strongest_a": "Correctly quantifies football field footprint and notes terrain/buildings constrain usable flat space.",
+    "weakest_a": "Does not substantiate the claim that no 360×160 ft area exists with specific island dimensions or flat-area data.",
+    "strongest_b": "Uses the same relevant quantitative comparison and focuses on feasibility given topography and development.",
+    "weakest_b": "Conflates total area with suitability without providing concrete measurements of available flat rectangular space.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "A standard American football field including end zones is about 360 feet long and 160 feet wide. Alcatraz Island is roughly 1,675 feet long and 930 feet wide at its maximum dimensions, with a total area of about 22 acres. Even accounting for irregular shape and existing structures, the island’s overall footprint is large enough to accommodate a football field somewhere on it.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "A standard American football field including end zones is about 360 feet long and 160 feet wide. Alcatraz Island is roughly 1,500 feet long and about 600 feet wide at its widest, giving enough area to accommodate that rectangle. While the island has steep terrain and buildings that could limit placement, in terms of overall island dimensions it is possible to fit a football field.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A standard American football field including end zones is about 360 feet long and 160 feet wide. Alcatraz Island is relatively small and irregularly shaped, with much of its area taken up by steep slopes, buildings, and limited flat open space. While the island’s total area is larger than the field’s footprint, there isn’t a sufficiently large, unobstructed, flat rectangle to fit a full football field.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A standard American football field including end zones is about 360 feet long and 160 feet wide. Alcatraz Island is relatively small and irregularly shaped, with steep rocky slopes and most flat areas already occupied by buildings and infrastructure. While the island’s total area is a few dozen acres, there isn’t a single flat, unobstructed rectangle large enough to accommodate a full football field.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "yes": 1,
+        "no": 2
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": false
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

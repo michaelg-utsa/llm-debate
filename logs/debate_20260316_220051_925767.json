@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:00:51.925767Z",
+  "question": "Were plants crucial for The King of Rock'n Roll's snack with bananas?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 80,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "The \"King of Rock'n Roll\" refers to Elvis Presley, whose famous snack is the peanut butter and banana sandwich (often fried). Bananas come from banana plants, so plants are essential to that snack. Even the peanut butter originates from peanuts, which are also plants.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "The \"King of Rock'n Roll\" refers to Elvis Presley, whose famous snack is a peanut butter and banana sandwich (often fried). Bananas come from banana plants, so plants are essential to that snack. Therefore, plants were crucial for his snack with bananas.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters identify “The King of Rock'n Roll” as Elvis Presley and connect the question to his well-known peanut butter and banana sandwich. Each argues that bananas are produced by plants, making plants necessary for a snack featuring bananas. Debater A adds an extra supporting point that peanut butter also comes from a plant source (peanuts), slightly strengthening the “plants were crucial” claim beyond just bananas. Debater B’s reasoning is essentially the same but a bit less comprehensive. Since both reach the same conclusion with plausible general-knowledge support and there was no rebuttal, A is marginally more persuasive due to the additional ingredient justification.",
+    "strongest_a": "Adds that both bananas and peanuts (peanut butter) are plant-derived, reinforcing necessity.",
+    "weakest_a": "Does not address any potential ambiguity in what “plants” could mean in the question.",
+    "strongest_b": "Correctly links Elvis to the banana-based snack and notes bananas come from plants.",
+    "weakest_b": "Provides no additional support beyond the banana-to-plant connection.",
+    "winner": "Debater A",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "The \"King of Rock'n Roll\" refers to Elvis Presley. His famous snack, the peanut butter and banana sandwich, includes bananas, which are produced by banana plants. Since the snack depends on bananas, plants were crucial to it.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "The \"King of Rock'n Roll\" refers to Elvis Presley. A well-known snack associated with him is a peanut butter and banana sandwich (sometimes with bacon). Bananas come from plants, so plants were crucial for that snack.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The \"King of Rock'n Roll\" refers to Elvis Presley. His famous snack, the peanut butter and banana sandwich (often with bacon), includes bananas, which are plants. Since bananas are a key ingredient, a plant product was crucial to the snack.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "The \"King of Rock'n Roll\" refers to Elvis Presley. A well-known snack associated with him is a peanut butter and banana sandwich (often also with bacon). Bananas come from plants, so plants were crucial to that snack because one of its key ingredients is plant-derived.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

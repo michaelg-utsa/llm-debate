@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:42:00.865987Z",
+  "question": "Are Durian fruits an olfactory delight?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 191,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "Durian is widely known for a strong, pungent odor that many people find unpleasant, to the point that it is banned in some public places. While some enthusiasts enjoy its smell, the common perception is that it is not an olfactory delight. Given the question’s general framing, the typical answer is negative.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "Durian is widely known for a very strong odor that many people find unpleasant, often compared to rotten onions or sewage. It’s even banned in some public places in parts of Southeast Asia due to the smell. While some enjoy it, calling it an olfactory delight in general is not accurate.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same answer and reasoning: durian is notorious for a strong, pungent odor that many people find unpleasant, with real-world evidence like bans in public places. Given the phrasing “an olfactory delight,” the common, general perception is the relevant standard, and both argue that the typical reaction is negative. Neither provides countervailing evidence that the smell is broadly considered pleasant, beyond acknowledging a minority of enthusiasts. Since there were no debate rounds, there is no differentiation in argumentative strength beyond minor phrasing. Overall, the support for answering “no” is strong and unchallenged, and neither debater clearly outperforms the other.",
+    "strongest_a": "Appeals to widely known public perception and notes bans due to odor.",
+    "weakest_a": "Does not define the standard for 'delight' beyond common perception or cite specific sources.",
+    "strongest_b": "Gives vivid, commonly cited comparisons and reinforces with the public-place ban point.",
+    "weakest_b": "Also relies on general reputation without additional evidence or nuance about subjective taste.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Durian is widely known for its very strong odor that many people find unpleasant, often compared to rotten onions or sulfur. While some enthusiasts enjoy the smell, the common perception is that it is offensive rather than delightful. Therefore, it is generally not considered an olfactory delight.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Durian is widely known for its very strong odor, often compared to rotten onions or sewage. Many people find the smell unpleasant enough that it is banned in some public places. While some enjoy it, it is not generally considered an olfactory delight.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Durian is widely known for having a very strong odor that many people find unpleasant, often compared to rotten onions or sulfur. Because of this smell, it is banned in some public places and transportation systems. While some enthusiasts enjoy the aroma, it is not generally considered an olfactory delight.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "Durian is widely known for having a very strong odor that many people find unpleasant, often compared to rotten onions or sewage. Because of this smell, it is banned in some public places and transportation in parts of Southeast Asia. While some individuals enjoy the aroma, it is not generally considered an olfactory delight by most people.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:44:31.018437Z",
+  "question": "Did either side score a touchdown during the Football War?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 36,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The Football War refers to the 1969 armed conflict between El Salvador and Honduras, not an American football game. While it was sparked by tensions around World Cup qualifying matches, the war itself involved military combat, where \"touchdowns\" are not a relevant concept. Therefore neither side scored a touchdown during the Football War.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The Football War refers to the 1969 armed conflict between El Salvador and Honduras, sparked in part by tensions around World Cup qualifying matches. It was a military conflict, not an American football game, so there were no touchdowns scored by either side. The term \"football\" here refers to soccer.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: the “Football War” is the 1969 armed conflict between El Salvador and Honduras, named due to its association with soccer (World Cup qualifying) tensions, and not an American football game. Given that a “touchdown” is a scoring event specific to American/Canadian football, it would not occur in a military conflict (nor in soccer matches). Neither debater introduces any conflicting evidence, and their reasoning aligns with general knowledge about the term. Since their support and clarity are equivalent and no debate occurred to differentiate them, the result is a tie. The best-supported final answer is that no touchdowns were scored by either side.",
+    "strongest_a": "Correctly identifies the Football War as a real military conflict where touchdowns are inapplicable.",
+    "weakest_a": "Does not explicitly note that even the triggering matches were soccer, which also has no touchdowns.",
+    "strongest_b": "Explicitly clarifies that “football” refers to soccer here, reinforcing why touchdowns don’t apply.",
+    "weakest_b": "Adds no additional evidence beyond definitional clarification; largely repeats A.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The Football War refers to a brief armed conflict in 1969 between El Salvador and Honduras, not an American football game. Since it was a military conflict, there were no touchdowns scored by either side. The name comes from tensions surrounding soccer matches, but touchdowns are not part of soccer either.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The \"Football War\" refers to the 1969 armed conflict between El Salvador and Honduras, not an American football game. Although it was sparked by tensions around soccer matches, the war itself did not involve scoring touchdowns. Therefore, neither side scored a touchdown during the Football War.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Football War refers to the 1969 armed conflict between El Salvador and Honduras, sparked in part by tensions surrounding soccer matches. It was a real military conflict, not an American football game. Therefore, neither side scored a touchdown.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The Football War refers to the 1969 armed conflict between El Salvador and Honduras, named after soccer matches that heightened tensions. It was not an American football game, so there were no touchdowns to be scored. Therefore, neither side scored a touchdown during the Football War.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:08:21.892844Z",
+  "question": "Would a vegan prefer a natural bongo drum over a synthetic one?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 100,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "A \"natural\" bongo drum typically uses animal hide for the drumheads, which a vegan would avoid. A synthetic bongo drum uses non-animal materials and is more consistent with vegan preferences. While \"natural\" can sound appealing, veganism is defined by avoiding animal-derived products.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "A natural bongo drum typically uses animal hide for the drumhead, which many vegans avoid because it is an animal-derived product. A synthetic bongo drum can use non-animal materials, aligning better with vegan preferences. Therefore, a vegan would generally prefer the synthetic option over the natural one.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same conclusion (“no”) and rely on the same key premise: “natural” bongo drums commonly use animal hide for drumheads, which conflicts with vegan avoidance of animal-derived products. This is a straightforward and generally accurate association for traditional hand drums, making the preference for synthetic materials plausible. Neither debater explores edge cases (e.g., a “natural” drum made with plant-based heads) or clarifies that “natural” could refer to wood shells rather than the head material, but given typical usage, their inference remains well-supported. Since the arguments are essentially identical in content and strength and no debate occurred to differentiate them, neither side is more persuasive than the other. The best-supported final answer remains that a vegan would not prefer the natural (hide-headed) option over a synthetic one.",
+    "strongest_a": "Correctly links 'natural' bongo heads to animal hide, conflicting with vegan principles.",
+    "weakest_a": "Does not consider alternative meanings of 'natural' or non-hide natural heads.",
+    "strongest_b": "Clear alignment argument: synthetic materials avoid animal-derived components and fit vegan preferences.",
+    "weakest_b": "Assumes 'natural' necessarily implies animal hide without qualification.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Traditional natural bongo drums often use animal hide for the drumheads, which a vegan would typically avoid. Synthetic bongos usually use plastic or other non-animal materials for the heads. So a vegan would generally prefer the synthetic option over a natural-hide drum.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "A natural bongo drum typically uses animal hide for the drumhead, which a vegan would avoid. A synthetic bongo drum uses non-animal materials and is more consistent with vegan preferences. Therefore, a vegan would generally prefer the synthetic option over the natural one.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "A natural bongo drum is typically made with animal hide drumheads, which a vegan would avoid. A synthetic drumhead is usually made from plastic or other non-animal materials and aligns better with vegan preferences. While some vegans might prefer \"natural\" materials in general, the animal-derived component is the key issue here.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "A natural bongo drum traditionally uses animal hide for the drumhead, which a vegan would typically avoid. Synthetic bongos are usually made with plastic or other non-animal materials. Therefore, a vegan would generally prefer the synthetic option over the natural one.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

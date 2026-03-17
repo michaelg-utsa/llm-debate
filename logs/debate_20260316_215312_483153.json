@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T21:53:12.483153Z",
+  "question": "Does Final Fantasy VI require electricity to play?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 59,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Final Fantasy VI is a video game originally played on electronic hardware like the Super Nintendo Entertainment System, which needs electrical power to operate. Even if played via later ports or emulation, the device running it still requires electricity. Therefore, playing the game requires electricity.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Final Fantasy VI is a video game originally played on electronic hardware like the Super Nintendo Entertainment System. Running the console (or any modern platform/emulator) requires electrical power. Therefore, you need electricity to play it.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially identical arguments: Final Fantasy VI is a video game that must be run on electronic hardware (SNES originally, or later ports/emulators), and such hardware requires electrical power. This is a straightforward, generally correct inference from common knowledge about how video games are played. Neither side offers additional nuance (e.g., edge cases like non-electric hypothetical play), but none is needed for the question as posed. Since there were no debate rounds and no substantive differences in reasoning quality, neither side is more persuasive than the other. The best-supported answer from the presented reasoning is that electricity is required.",
+    "strongest_a": "Correctly ties gameplay to the need for powered electronic hardware across original and modern platforms.",
+    "weakest_a": "Adds no additional support beyond the obvious; no consideration of potential edge-case interpretations.",
+    "strongest_b": "Clear, direct statement that any console/platform/emulator requires electrical power.",
+    "weakest_b": "Reasoning is redundant with A and does not add independent justification or examples.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Final Fantasy VI is a video game that runs on electronic hardware such as a Super Nintendo console, a computer, or a modern game system. These devices require electrical power to operate. Therefore, you need electricity to play the game.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Final Fantasy VI is a video game originally played on electronic gaming consoles like the Super Nintendo. Operating the console and displaying the game on a TV or monitor requires electrical power. Even if played via modern ports or emulators, the device running it still needs electricity.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Final Fantasy VI is a video game originally played on electronic gaming consoles like the Super Nintendo Entertainment System. Operating the console and displaying the game on a TV or monitor requires electrical power. Even if played via later ports or emulation, the device running it still needs electricity.",
+          "confidence": 5
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Final Fantasy VI is a video game that runs on electronic hardware such as the Super Nintendo Entertainment System or later digital platforms. Operating that console or device requires electrical power, whether from a wall outlet or a battery. Therefore, you need electricity to play it.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

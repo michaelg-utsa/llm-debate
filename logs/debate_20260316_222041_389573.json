@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:20:41.389573Z",
+  "question": "Could you buy Hershey's Kisses in red foil with farthings after 1960?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 130,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "After 1960, farthings were no longer legal tender in the UK (they were demonetized around 1961), so you generally couldn’t use them to buy goods. While Hershey’s Kisses in red foil existed as a product, paying with farthings after 1960 wouldn’t be accepted in normal commerce. Therefore, you could not buy them with farthings after 1960.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "After 1960, farthings were no longer legal tender in the UK (they were demonetized around 1961), so you generally couldn't use them to buy goods. Hershey's Kisses in red foil are a product you could buy, but not with a currency that had been withdrawn. Therefore, after 1960 you could not buy them with farthings in normal commerce.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same answer (“no”) and essentially identical reasoning: UK farthings ceased to be legal tender around 1961, so they would not be accepted for purchases after 1960. This is a plausible chain: if farthings aren’t legal tender, ordinary merchants won’t accept them, making the purchase infeasible in normal commerce. However, neither debater addresses potential edge cases (e.g., a collector/novelty transaction or a merchant voluntarily accepting demonetized coins), and they don’t establish that the relevant purchase context is the UK rather than elsewhere. Given the StrategyQA framing, the intended interpretation is likely about standard purchasing with valid currency, under which demonetization supports “no.” Since their arguments are equivalent, neither is more persuasive than the other.",
+    "strongest_a": "Connects post-1960 demonetization of farthings to inability to use them in normal commerce.",
+    "weakest_a": "Assumes the purchase context is governed by UK legal tender rules and ignores voluntary acceptance edge cases.",
+    "strongest_b": "Same clear legal-tender-based reasoning linking farthing withdrawal to inability to buy goods.",
+    "weakest_b": "Does not justify why UK demonetization is the relevant constraint for buying Hershey’s Kisses, nor address nonstandard transactions.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "Farthings were a British coin that ceased to be legal tender in the UK in 1961 and were effectively withdrawn from circulation around 1960. After 1960, you generally could not use farthings to make purchases. Therefore you could not buy Hershey's Kisses in red foil with farthings after 1960.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "Hershey's Kisses in red foil were available after 1960, but farthings were an old British coin that had been withdrawn from circulation by then. Since farthings were no longer legal tender for everyday purchases after 1960, you generally could not use them to buy retail items like candy. Therefore, you could not buy red-foil Hershey's Kisses with farthings after 1960.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Hershey's Kisses have been sold in various foil colors, including red for certain holidays, after 1960. However, farthings were a British coin that was demonetized in the UK in 1961 and had effectively stopped circulating before then. After 1960 you would not realistically be able to use farthings as valid money to buy candy like Hershey's Kisses.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "Farthings were a British coin that ceased to be legal tender in 1961 and were effectively out of use by 1960. After 1960, you generally could not use farthings to make purchases in normal commerce. Even if Hershey's Kisses in red foil were available, paying with farthings after 1960 would not be feasible.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

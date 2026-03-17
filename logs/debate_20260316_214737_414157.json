@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-03-16T21:47:37.414157Z",
+  "question": "Can French Toast hypothetically kill a Lannister?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 42,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "A Lannister is a human character, and a piece of French toast is a physical object. Hypothetically, French toast could kill a person via choking, severe allergic reaction to ingredients, or if used in an unusual way (e.g., contaminated with poison). Since the question is about hypothetical possibility rather than likelihood, the answer is yes.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "A Lannister is a fictional human character, and French toast is food. Hypothetically, French toast could kill a person if it caused choking, a severe allergic reaction, or was contaminated/poisoned. Therefore it could hypothetically kill a Lannister as well.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters argue that a Lannister is a (fictional) human and French toast is a physical food item that could, in principle, cause death through choking, allergic reaction, or poisoning/contamination. These mechanisms are plausible under a broad “hypothetically” standard, and neither debater makes an obvious logical error. Debater B is slightly clearer in explicitly bridging the fictional-status point (a Lannister as a fictional human) to the hypothetical scenario, but the substance is essentially identical. Since both independently reach the same conclusion with comparable support and there was no rebuttal, the result is effectively a tie. The best-supported final answer given the reasoning is “yes.”",
+    "strongest_a": "Provides multiple plausible mechanisms (choking, allergy, poison) and correctly focuses on hypothetical possibility.",
+    "weakest_a": "Does not explicitly address the fictional nature of Lannisters, though it’s implicit.",
+    "strongest_b": "Explicitly notes Lannisters are fictional humans and applies the same plausible lethal mechanisms.",
+    "weakest_b": "Largely repeats A’s points without adding additional justification or nuance.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "French toast is a food item and does not have agency to act on its own. Even hypothetically, it is not a weapon or living being capable of intentionally killing someone. While a person could use food in a harmful way, the question asks whether French toast itself can kill a Lannister.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "French toast is a food item and does not have agency to act on its own. Even hypothetically, it would not be capable of intentionally killing a person such as a Lannister. While someone could use food to harm someone (e.g., poisoning), that would be the person’s action, not the French toast itself.",
+          "confidence": 4
+        },
+        {
+          "answer": "no",
+          "reasoning": "French toast is a food item and does not have agency to act on its own. Even hypothetically, without being used as a weapon by someone else, it cannot intentionally kill a person. A Lannister is a human character, so the toast itself would not be capable of causing death.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "French toast is food, and in normal circumstances it cannot kill someone by itself. Hypothetically, it could contribute to a death if it caused choking, triggered a severe allergy, or was poisoned and then eaten by a Lannister. Since the question allows hypothetical scenarios, such mechanisms make it possible.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 2,
+        "yes": 1
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": false
+    },
+    "self_consistency_correct": {
+      "correct": false
+    }
+  }
+}

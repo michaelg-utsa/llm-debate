@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:06:18.328583Z",
+  "question": "Would WWF be angrier if you killed koala instead of black swan?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 94,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "WWF focuses heavily on protecting threatened wildlife, and koalas are widely recognized as vulnerable and a major conservation symbol. Black swans are generally not considered threatened and are relatively common in Australia. Killing a more at-risk, conservation-priority species would likely draw stronger condemnation from WWF.",
+      "confidence": 4
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "WWF generally prioritizes protection of threatened and vulnerable wildlife, and koalas are widely recognized as a conservation concern in Australia. Black swans are common and not typically considered threatened. Killing a koala would therefore more directly conflict with WWF’s conservation goals and likely provoke a stronger reaction.",
+      "confidence": 4
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same argument: WWF would react more strongly to killing a koala because koalas are widely viewed as vulnerable and a conservation symbol, whereas black swans are generally common and not threatened. This reasoning aligns with WWF’s mission to prioritize threatened species and biodiversity protection, making the conclusion plausible. Neither debater provides specific WWF policy statements or evidence about relative conservation status, but the comparative claim is supported by general knowledge. Since there were no debate rounds and the arguments are equivalent in quality and content, neither side is more persuasive than the other. The best-supported final answer from the presented reasoning is that WWF would be angrier about killing a koala.",
+    "strongest_a": "Clear comparison based on conservation priority (vulnerable koala vs common black swan).",
+    "weakest_a": "No concrete citations or WWF-specific evidence; relies on general perception of species status.",
+    "strongest_b": "Directly ties WWF’s likely reaction to its mission focus on threatened species.",
+    "weakest_b": "Adds no additional support beyond the shared general-status argument.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 4
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "WWF focuses on protecting wildlife, especially threatened and vulnerable species. Koalas are widely recognized as vulnerable and are a major conservation focus in Australia. Black swans are generally common and not typically considered threatened. Killing a koala would therefore likely provoke a stronger reaction from WWF.",
+      "confidence": 4
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "WWF focuses on protecting wildlife, especially species that are threatened or vulnerable. Koalas are widely recognized as vulnerable in parts of Australia and are a flagship conservation species, so killing one would likely draw stronger condemnation. Black swans are generally common and not considered threatened, so the conservation urgency is typically lower.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "WWF focuses heavily on protecting threatened wildlife and habitats, and koalas are widely recognized as vulnerable and a conservation priority in Australia. Black swans are generally common and not typically considered threatened. Killing a more at-risk species like a koala would therefore be more likely to provoke stronger condemnation from WWF.",
+          "confidence": 4
+        },
+        {
+          "answer": "yes",
+          "reasoning": "WWF focuses heavily on protecting threatened wildlife and habitats, and koalas are widely recognized as vulnerable due to habitat loss and other pressures. Black swans are generally common and not typically a conservation priority species. Killing a more threatened, iconic species like a koala would therefore be more likely to draw stronger condemnation from WWF.",
+          "confidence": 4
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

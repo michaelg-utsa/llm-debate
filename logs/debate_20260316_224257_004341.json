@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:42:57.004341Z",
+  "question": "Does Düsseldorf have only a small number of smoggy days each year?",
+  "ground_truth": "yes",
+  "metadata": {
+    "row_index": 194,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "yes",
+      "brief_reasoning": "Düsseldorf is in western Germany with a temperate climate and generally good air quality compared to heavily polluted regions. While it can experience occasional pollution episodes, it is not known for frequent smog, so the number of smoggy days per year is typically small.",
+      "confidence": 3
+    },
+    "debater_b": {
+      "answer": "yes",
+      "brief_reasoning": "Düsseldorf is in western Germany with a temperate climate and generally good air-quality controls compared with heavily polluted regions. While it can experience occasional pollution episodes, persistent smog is not common on many days each year. Overall, it would be characterized as having only a small number of smoggy days annually.",
+      "confidence": 3
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give essentially the same answer and reasoning: Düsseldorf’s temperate Western European climate and Germany’s relatively strong air-quality regulations make frequent smog unlikely. Neither provides concrete evidence (e.g., statistics on “smoggy days” or official air-quality reports), so the support is largely plausibility-based rather than demonstrated. With no debate rounds, there is no comparative advantage from rebuttal or additional sourcing. Given general knowledge that major German cities can have pollution episodes but are not typically characterized by many “smoggy days” annually, the shared conclusion is moderately supported. Because the arguments are nearly identical in strength and weakness, the result is a tie, and the best-supported final answer remains “yes.”",
+    "strongest_a": "Plausible contextual claim that Düsseldorf is not known for frequent smog due to climate and generally good air quality.",
+    "weakest_a": "No specific data or definition of 'smoggy days' to substantiate the claim.",
+    "strongest_b": "Notes air-quality controls/regulation as a reason persistent smog is uncommon.",
+    "weakest_b": "Also lacks concrete evidence or quantified support; largely repeats A.",
+    "winner": "Tie",
+    "final_answer": "yes",
+    "confidence": 3
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "yes",
+      "reasoning": "Düsseldorf is in western Germany with a temperate oceanic climate and generally good air quality compared to heavily industrial or basin cities. Smog episodes can occur, but they are relatively infrequent and typically limited to short periods during stagnant winter conditions. Overall, it would be accurate to say it has only a small number of smoggy days each year.",
+      "confidence": 3
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "yes",
+          "reasoning": "Düsseldorf is in western Germany with a temperate oceanic climate and generally good air quality compared to heavily industrial or basin cities. Smog episodes in such climates tend to be infrequent and usually limited to occasional winter inversions or regional pollution events. Therefore, it would have only a small number of smoggy days in a typical year.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Düsseldorf is in western Germany with a temperate oceanic climate and generally moderate air quality compared to heavily industrial or basin cities. Smog episodes can occur, but they are not frequent on an annual basis. Therefore it would have only a small number of smoggy days each year.",
+          "confidence": 3
+        },
+        {
+          "answer": "yes",
+          "reasoning": "Düsseldorf is in western Germany with a temperate oceanic climate and generally moderate air quality compared with heavily industrialized or basin cities. Smog episodes can occur, especially during winter inversions or heat waves, but they are not frequent across the year. Overall, the city would be expected to have only a small number of notably smoggy days annually.",
+          "confidence": 3
+        }
+      ],
+      "majority_answer": "yes",
+      "vote_counts": {
+        "yes": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}

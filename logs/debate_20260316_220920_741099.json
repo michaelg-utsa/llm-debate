@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-03-16T22:09:20.741099Z",
+  "question": "Does the United States of America touch the Indian Ocean?",
+  "ground_truth": "no",
+  "metadata": {
+    "row_index": 103,
+    "source_file": "strategyqa_200.jsonl"
+  },
+  "config": {
+    "models": {
+      "debater_a": "gpt-5.2",
+      "debater_b": "gpt-5.2",
+      "judge": "gpt-5.2",
+      "direct_qa": "gpt-5.2",
+      "self_consistency": "gpt-5.2"
+    },
+    "generation": {
+      "temperature": 0.4,
+      "max_output_tokens": 900,
+      "debate_rounds": 4,
+      "min_rounds_before_early_stop": 3,
+      "early_stop_consecutive": 2,
+      "self_consistency_samples": 8
+    },
+    "logging": {
+      "log_dir": "logs"
+    },
+    "task": {
+      "domain": "strategyqa",
+      "answer_choices": [
+        "yes",
+        "no"
+      ]
+    }
+  },
+  "initial_positions": {
+    "debater_a": {
+      "answer": "no",
+      "brief_reasoning": "The United States has coastlines on the Atlantic, Pacific, and Arctic Oceans, plus the Gulf of Mexico and various seas. None of its states or territories border the Indian Ocean; the closest are Pacific territories like Guam and the Northern Mariana Islands, which are in the western Pacific. Therefore, the USA does not touch the Indian Ocean.",
+      "confidence": 5
+    },
+    "debater_b": {
+      "answer": "no",
+      "brief_reasoning": "The United States has coastlines on the Atlantic Ocean, Pacific Ocean, and the Arctic Ocean (via Alaska), plus the Gulf of Mexico. It does not have any territory with a coastline on the Indian Ocean. Therefore, it does not touch the Indian Ocean.",
+      "confidence": 5
+    }
+  },
+  "rounds": [],
+  "judge": {
+    "analysis": "Both debaters give the same final answer (“no”) and provide essentially the same supporting rationale: the U.S. has coastlines on the Atlantic, Pacific, and Arctic (plus Gulf of Mexico), but no state or territory borders the Indian Ocean. Debater A adds a slightly more specific check by mentioning nearby western Pacific territories (e.g., Guam, Northern Mariana Islands) and clarifying they are still in the Pacific, which marginally strengthens the argument. Neither debater addresses potential edge cases like overseas military bases, but the question is about the United States touching the Indian Ocean via its territory, and both arguments align with general geographic knowledge. With no debate rounds and no conflicting claims, the result is a tie with a slight edge in detail to A, but not enough to separate them meaningfully.",
+    "strongest_a": "Notes U.S. territories like Guam are in the Pacific, not the Indian Ocean.",
+    "weakest_a": "Does not explicitly rule out any U.S. territory in the Indian Ocean beyond a few examples.",
+    "strongest_b": "Clear enumeration of U.S. ocean coastlines excluding the Indian Ocean.",
+    "weakest_b": "Less specific about territories and possible edge cases.",
+    "winner": "Tie",
+    "final_answer": "no",
+    "confidence": 5
+  },
+  "baselines": {
+    "direct_qa": {
+      "answer": "no",
+      "reasoning": "The United States does not have any coastline on the Indian Ocean. Its ocean coastlines are on the Atlantic, Pacific, and Arctic Oceans, plus the Gulf of Mexico. U.S. territories are also not located on the Indian Ocean.",
+      "confidence": 5
+    },
+    "self_consistency": {
+      "num_samples": 3,
+      "samples": [
+        {
+          "answer": "no",
+          "reasoning": "The United States has coastlines on the Atlantic Ocean, Pacific Ocean, and Arctic Ocean (via Alaska), plus the Gulf of Mexico. It does not have any territory with a coastline on the Indian Ocean. Therefore, it does not touch the Indian Ocean.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The United States has coastlines on the Atlantic Ocean, Pacific Ocean, and Arctic Ocean, plus the Gulf of Mexico. The Indian Ocean borders regions like East Africa, South Asia, and Australia. No U.S. state or territory has a coastline on the Indian Ocean.",
+          "confidence": 5
+        },
+        {
+          "answer": "no",
+          "reasoning": "The United States has coastlines on the Atlantic Ocean, Pacific Ocean, and the Arctic Ocean via Alaska, plus the Gulf of Mexico. The Indian Ocean borders countries in Africa, Asia, and Australia, and the U.S. has no territory with a coastline on it. Therefore, the United States does not touch the Indian Ocean.",
+          "confidence": 5
+        }
+      ],
+      "majority_answer": "no",
+      "vote_counts": {
+        "no": 3
+      }
+    }
+  },
+  "metrics": {
+    "debate_llm_calls": 3,
+    "llm_calls_for_debate_plus_direct": 4,
+    "total_llm_calls": 7,
+    "debate_correct": {
+      "correct": true
+    },
+    "direct_qa_correct": {
+      "correct": true
+    },
+    "self_consistency_correct": {
+      "correct": true
+    }
+  }
+}
